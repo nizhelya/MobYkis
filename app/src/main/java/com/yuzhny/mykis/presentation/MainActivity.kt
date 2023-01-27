@@ -1,7 +1,9 @@
-package com.yuzhny.mykis
+package com.yuzhny.mykis.presentation
+
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.yuzhny.mykis.R
 
 class MainActivity : AppCompatActivity() {
 
