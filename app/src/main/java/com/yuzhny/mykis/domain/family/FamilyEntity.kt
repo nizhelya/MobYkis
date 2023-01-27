@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import java.util.Date
 
-@Entity
+@Entity(tableName = "family")
 data class FamilyEntity(
     @PrimaryKey(autoGenerate = true)
     @Json(name = "rec_id")
@@ -20,7 +20,7 @@ data class FamilyEntity(
     var lastName :String = "Unknown" ,
     var surName :String = "Unknown" ,
 
-    var born :Date,
+    var born :String,
 
     var sex:String = "Unknown" ,
 
