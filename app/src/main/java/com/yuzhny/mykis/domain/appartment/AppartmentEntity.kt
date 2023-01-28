@@ -55,4 +55,17 @@ data class AppartmentEntity(
     var phone: String = "Unknown",
 
     var kod: String = "Unknown"
-)
+){
+//    companion object testAppartment{
+//        fun loadAppartment():List<AppartmentEntity>{
+//            return listOf<AppartmentEntity>(
+//                AppartmentEntity(
+//                    0 , "Химиков 14" , "Шулик Родион Виталиевич", "ШРВ" , "GFG65464564"
+//                    , "25/06/2022", 50.00 , 45.00 , 5.00 , 0.00 , 50.00 ,
+//                    4 ,1 ,0 , "rshulik74@gmail.com", "+380634742842" , "4323534654"
+//
+//                )
+//            )
+//        }
+//    }
+}
