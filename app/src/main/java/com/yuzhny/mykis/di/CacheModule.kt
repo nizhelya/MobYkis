@@ -23,7 +23,10 @@ object CacheModule {
             appContext,
             AppDatabase::class.java,
             AppDatabase.DATABASE_NAME
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
+            .build()
     }
     @Provides
     fun provideAppartmentDao(db: AppDatabase): AppartmentDao {

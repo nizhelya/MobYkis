@@ -10,7 +10,7 @@ import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 interface AppartmentDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAppartment(appartment:List<AppartmentEntity>)
+   fun insertAppartment(appartment:List<AppartmentEntity>)
 
 //    @Query("select * from appartment")
 //    fun getAppartments():List<AppartmentEntity>
