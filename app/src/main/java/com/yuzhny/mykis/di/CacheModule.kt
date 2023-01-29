@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.di
 
+import android.content.Context
 import androidx.room.Room
 import com.yuzhny.mykis.BaseApplication
 import com.yuzhny.mykis.data.dao.AppartmentDao
@@ -8,6 +9,7 @@ import com.yuzhny.mykis.data.cache.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -16,11 +18,12 @@ import javax.inject.Singleton
 object CacheModule {
     @Singleton
     @Provides
-    fun provideDb(app:BaseApplication): AppDatabase {
-        return Room
-            .databaseBuilder(app, AppDatabase::class.java , AppDatabase.DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
+    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
+        return Room.databaseBuilder(
+            appContext,
+            AppDatabase::class.java,
+            AppDatabase.DATABASE_NAME
+        ).build()
     }
     @Provides
     fun provideAppartmentDao(db: AppDatabase): AppartmentDao {
