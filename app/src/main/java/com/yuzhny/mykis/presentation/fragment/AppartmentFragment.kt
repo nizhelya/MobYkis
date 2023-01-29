@@ -34,31 +34,9 @@ class AppartmentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appartment.addAppartment(loadAppartment())
-
+        lifecycleScope.launch {
+            appartment.deleteAppartment(AppartmentEntity(1))
+        }
     }
-    fun loadAppartment():List<AppartmentEntity> {
-        return listOf<AppartmentEntity>(
-            AppartmentEntity(
-                0,
-                "Химиков 14",
-                "Шулик Родион Виталиевич",
-                "ШРВ",
-                "GFG65464564",
-                "25/06/2022",
-                50.00,
-                45.00,
-                5.00,
-                0.00,
-                50.00,
-                4,
-                1,
-                0,
-                "rshulik74@gmail.com",
-                "+380634742842",
-                "4323534654"
 
-            )
-        )
-    }
 }
