@@ -13,6 +13,7 @@ import com.yuzhny.mykis.data.cache.database.AppDatabase
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -35,8 +36,10 @@ class AppartmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
-            appartment.deleteAppartment(AppartmentEntity(1))
+//            appartment.deleteAppartment(AppartmentEntity(1))
+            appartment.addAppartment(appartment.remoteGetAppartments())
         }
     }
+
 
 }
