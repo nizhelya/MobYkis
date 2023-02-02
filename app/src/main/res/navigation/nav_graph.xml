@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/appartmentFragment"
-        android:name="com.yuzhny.mykis.presentation.fragment.AppartmentFragment"
+        android:name="com.yuzhny.mykis.presentation.fragment.AppartmentListFragment"
         android:label="fragment_appartment"
-        tools:layout="@layout/fragment_appartment" />
+        tools:layout="@layout/fragment_list_appartment" />
 </navigation>
