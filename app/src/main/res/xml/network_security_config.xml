@@ -9,7 +9,8 @@
         </trust-anchors>
     </domain-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">62.16.2.32</domain>
+<!--        <domain includeSubdomains="true">192.168.88.243</domain>-->
+        <domain includeSubdomains="true">195.138.91.67</domain>
     </domain-config>
     <debug-overrides>
         <trust-anchors>

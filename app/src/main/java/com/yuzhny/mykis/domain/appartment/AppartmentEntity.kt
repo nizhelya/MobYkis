@@ -10,7 +10,7 @@ data class AppartmentEntity(
     @PrimaryKey(autoGenerate = false)
     @Json(name = "address_id")
     @ColumnInfo(name = "address_id")
-    var addressId: Int,
+    var addressId: Int ,
 
     var address: String = "Unknown",
 
@@ -44,28 +44,15 @@ data class AppartmentEntity(
     @ColumnInfo(name = "area_otopl")
     var areaOtopl: Double = 0.00,
 
-    var tenant: Byte = 0,
+    var tenant:Int = 0,
 
-    var podnan: Byte = 0,
+    var podnan: Int = 0,
 
-    var absent: Byte = 0,
+    var absent: Int = 0,
 
     var email: String = "Unknown",
 
     var phone: String = "Unknown",
 
     var kod: String = "Unknown"
-){
-//    companion object testAppartment{
-//        fun loadAppartment():List<AppartmentEntity>{
-//            return listOf<AppartmentEntity>(
-//                AppartmentEntity(
-//                    0 , "Химиков 14" , "Шулик Родион Виталиевич", "ШРВ" , "GFG65464564"
-//                    , "25/06/2022", 50.00 , 45.00 , 5.00 , 0.00 , 50.00 ,
-//                    4 ,1 ,0 , "rshulik74@gmail.com", "+380634742842" , "4323534654"
-//
-//                )
-//            )
-//        }
-//    }
-}
+)

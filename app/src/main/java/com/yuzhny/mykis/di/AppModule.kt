@@ -40,21 +40,13 @@ object AppModule {
     fun provideRetrofit(moshi: Moshi): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .client(createClient())
+//            .client(createClient())
             .baseUrl(BASE_URL)
             .build()
 
     }
 
-    private fun createClient(): OkHttpClient {
-        val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-        if (BuildConfig.DEBUG) {
-            val loggingInterceptor =
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
-            okHttpClientBuilder.addInterceptor(loggingInterceptor)
-        }
-        return okHttpClientBuilder.build()
-    }
+
 
     @Singleton
     @Provides

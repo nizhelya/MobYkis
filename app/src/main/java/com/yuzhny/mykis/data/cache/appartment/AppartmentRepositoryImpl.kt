@@ -4,6 +4,7 @@ import com.yuzhny.mykis.data.dao.AppartmentDao
 import com.yuzhny.mykis.data.remote.service.ApiService
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import kotlinx.coroutines.flow.Flow
+//import java.util.concurrent.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -33,7 +34,8 @@ class AppartmentRepositoryImpl @Inject constructor(
         return  appartmentDao.getAppartments()
     }
 
-    override suspend fun remoteGetAppartments(): AppartmentEntity {
-        return apiService.getAppartments()
+    override suspend fun remoteGetAppartments(addressId: Int):AppartmentEntity {
+        val map = mapOf<String , Int>("address_id" to addressId)
+        return apiService.getAppartments(map)
     }
 }
