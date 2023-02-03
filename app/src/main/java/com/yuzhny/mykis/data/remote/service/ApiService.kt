@@ -23,5 +23,5 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST(GET_APPARTMENTS)
-    suspend fun getAppartments(@FieldMap params :Map<String , Int> ):AppartmentEntity
+    suspend fun getAppartments(@FieldMap params :Map<String , Int> ):List<AppartmentEntity>
 }

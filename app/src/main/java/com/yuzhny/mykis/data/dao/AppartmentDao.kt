@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface AppartmentDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertAppartment(appartment:AppartmentEntity)
+    suspend fun insertAppartment(appartment:List<AppartmentEntity>)
 
     @Update
     suspend fun updateAppartment(appartment: AppartmentEntity)

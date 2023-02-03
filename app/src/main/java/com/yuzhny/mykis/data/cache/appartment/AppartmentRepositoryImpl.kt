@@ -14,7 +14,7 @@ class AppartmentRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ):AppartmentRepository {
 
-    override suspend fun addAppartment(appartments :AppartmentEntity){
+    override suspend fun addAppartment(appartments :List<AppartmentEntity>){
         appartmentDao.insertAppartment(appartments)
     }
 
@@ -34,7 +34,7 @@ class AppartmentRepositoryImpl @Inject constructor(
         return  appartmentDao.getAppartments()
     }
 
-    override suspend fun remoteGetAppartments(addressId: Int):AppartmentEntity {
+    override suspend fun remoteGetAppartments(addressId: Int):List<AppartmentEntity> {
         val map = mapOf<String , Int>("address_id" to addressId)
         return apiService.getAppartments(map)
     }

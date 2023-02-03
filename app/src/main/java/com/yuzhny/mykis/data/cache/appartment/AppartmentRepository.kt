@@ -5,10 +5,10 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface AppartmentRepository {
-    suspend fun addAppartment(appartment:AppartmentEntity)
+    suspend fun addAppartment(appartment:List<AppartmentEntity>)
     suspend fun updateAppartment(appartment: AppartmentEntity)
     suspend fun deleteAppartment(appartment: AppartmentEntity)
     suspend fun getAppartment(addressId:Int): Flow<AppartmentEntity>
     suspend fun getAppartments():Flow<List<AppartmentEntity>>
-    suspend fun remoteGetAppartments( addressId: Int ):AppartmentEntity
+    suspend fun remoteGetAppartments( addressId: Int ):List<AppartmentEntity>
 }

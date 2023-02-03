@@ -10,7 +10,7 @@ data class AppartmentEntity(
     @PrimaryKey(autoGenerate = false)
     @Json(name = "address_id")
     @ColumnInfo(name = "address_id")
-    var addressId: Int ,
+    var addressId: Int = 0 ,
 
     var address: String = "Unknown",
 
