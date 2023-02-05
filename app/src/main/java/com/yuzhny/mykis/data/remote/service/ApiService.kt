@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.data.remote.service
 
+import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
@@ -17,11 +18,14 @@ interface ApiService {
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_APPARTMENTS = "getAppartmentsById.php"
         const val DELETE_APPARTMENT = "deleteAppartment.php"
+        const val PARAM_ADDRESS_ID = "address_id"
+        const val PARAM_TOKEN = "token"
+
     }
 
     //appartment
 
     @FormUrlEncoded
     @POST(GET_APPARTMENTS)
-    suspend fun getAppartments(@FieldMap params :Map<String , Int> ):List<AppartmentEntity>
+    fun getAppartments(@FieldMap params :Map<String , String> ):Call<GetAppartmentsResponse>
 }

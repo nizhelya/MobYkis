@@ -37,7 +37,7 @@ class AppartmentListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.saveAppartmentById(1)
+//        viewModel.saveAppartmentById(1)
     }
 
 

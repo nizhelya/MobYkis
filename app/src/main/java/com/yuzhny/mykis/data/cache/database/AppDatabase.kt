@@ -7,7 +7,7 @@ import com.yuzhny.mykis.data.dao.FamilyDao
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
 
-@Database(entities = [AppartmentEntity::class , FamilyEntity::class] , version = 1 )
+@Database(entities = [AppartmentEntity::class , FamilyEntity::class] , version = 1 ,exportSchema = false)
 abstract class AppDatabase:RoomDatabase() {
     abstract fun appartmentDao(): AppartmentDao
     abstract fun familyDao(): FamilyDao
