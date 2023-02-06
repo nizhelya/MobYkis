@@ -26,13 +26,13 @@ class AppartmentRepositoryImpl @Inject constructor(
         appartmentDao.deleteAppartment(appartment)
     }
 
-    override suspend fun getAppartment(addressId: Int): Flow<AppartmentEntity> {
+    override fun getAppartment(addressId: Int): List<AppartmentEntity> {
         return appartmentDao.getAppartment(addressId)
     }
 
-    override suspend fun getAppartments(): Flow<List<AppartmentEntity>> {
-        return  appartmentDao.getAppartments()
-    }
+//    override suspend fun getAppartment(): Flow<List<AppartmentEntity>> {
+//        return  appartmentDao.getAppartments()
+//    }
 
 
 }

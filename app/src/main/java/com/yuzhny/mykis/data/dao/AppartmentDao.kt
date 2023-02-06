@@ -17,7 +17,7 @@ interface AppartmentDao {
     suspend fun deleteAppartment(appartment:AppartmentEntity)
 
     @Query("select * from appartment where address_id= :addressId")
-    fun getAppartment(addressId:Int): Flow<AppartmentEntity>
+    fun getAppartment(addressId:Int): List<AppartmentEntity>
 
     @Query("select * from appartment")
     fun getAppartments():Flow<List<AppartmentEntity>>

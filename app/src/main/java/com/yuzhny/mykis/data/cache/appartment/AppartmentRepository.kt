@@ -8,6 +8,5 @@ interface AppartmentRepository {
     suspend fun addAppartment(appartment:List<AppartmentEntity>)
     suspend fun updateAppartment(appartment: AppartmentEntity)
     suspend fun deleteAppartment(appartment: AppartmentEntity)
-    suspend fun getAppartment(addressId:Int): Flow<AppartmentEntity>
-    suspend fun getAppartments():Flow<List<AppartmentEntity>>
+    suspend fun getAppartment(addressId: Int):List<AppartmentEntity>
 }
