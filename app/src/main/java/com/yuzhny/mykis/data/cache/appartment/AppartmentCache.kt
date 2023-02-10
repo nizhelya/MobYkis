@@ -1,6 +1,8 @@
 package com.yuzhny.mykis.data.cache.appartment
 
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
+import com.yuzhny.mykis.domain.type.Either
+import com.yuzhny.mykis.domain.type.Failure
 import kotlinx.coroutines.flow.Flow
 
 

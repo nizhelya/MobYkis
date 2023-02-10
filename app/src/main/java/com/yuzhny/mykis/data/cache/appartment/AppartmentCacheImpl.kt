@@ -3,6 +3,8 @@ package com.yuzhny.mykis.data.cache.appartment
 import com.yuzhny.mykis.data.dao.AppartmentDao
 import com.yuzhny.mykis.data.remote.service.ApiService
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
+import com.yuzhny.mykis.domain.type.Either
+import com.yuzhny.mykis.domain.type.Failure
 import kotlinx.coroutines.flow.Flow
 //import java.util.concurrent.Flow
 import javax.inject.Inject
@@ -26,10 +28,9 @@ class AppartmentRepositoryImpl @Inject constructor(
         appartmentDao.deleteAppartment(appartment)
     }
 
-    override fun getAppartment(addressId: Int): List<AppartmentEntity> {
+    override suspend fun getAppartment(addressId: Int): List<AppartmentEntity> {
         return appartmentDao.getAppartment(addressId)
     }
-
 //    override suspend fun getAppartment(): Flow<List<AppartmentEntity>> {
 //        return  appartmentDao.getAppartments()
 //    }
