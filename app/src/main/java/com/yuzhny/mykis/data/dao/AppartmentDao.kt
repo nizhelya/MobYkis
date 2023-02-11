@@ -1,6 +1,7 @@
 package com.yuzhny.mykis.data.dao
 
 import androidx.room.*
+import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -8,17 +9,20 @@ import kotlinx.coroutines.flow.Flow
 interface AppartmentDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertAppartment(appartment:List<AppartmentEntity>)
+    fun insertAppartment(appartment:List<AppartmentEntity>)
 
-    @Update
-    suspend fun updateAppartment(appartment: AppartmentEntity)
-
-    @Delete
-    suspend fun deleteAppartment(appartment:AppartmentEntity)
-
-    @Query("select * from appartment where address_id= :addressId")
-    fun getAppartment(addressId:Int): List<AppartmentEntity>
+//    @Update
+//    suspend fun updateAppartment(appartment: AppartmentEntity)
+//
+//    @Delete
+//    suspend fun deleteAppartment(appartment:AppartmentEntity)
+//
+//    @Query("select * from appartment where address_id= :addressId")
+//    fun getAppartment(addressId:Int): List<AppartmentEntity>
 
     @Query("select * from appartment")
-    fun getAppartments():Flow<List<AppartmentEntity>>
+    fun getAppartment(): List<AppartmentEntity>
+
+//    @Query("select * from appartment")
+//    fun getAppartments():Flow<List<AppartmentEntity>>
 }

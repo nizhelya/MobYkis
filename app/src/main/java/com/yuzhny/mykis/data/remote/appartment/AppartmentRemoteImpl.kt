@@ -14,7 +14,7 @@ class AppartmentRemoteImpl @Inject constructor(
     private val service: ApiService
 ) : AppartmentRemote {
 
-    override fun getAppartment(
+    override fun getAppartments(
         addressId: Int,
         token: String
     ): Either<Failure, List<AppartmentEntity>> {

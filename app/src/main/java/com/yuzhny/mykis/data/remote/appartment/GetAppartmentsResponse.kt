@@ -4,7 +4,7 @@ import com.yuzhny.mykis.data.remote.core.BaseResponse
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 
 class GetAppartmentsResponse (
-    success: Int,
+    success:Int,
     message: String,
     val appartments: List<AppartmentEntity>
 ) : BaseResponse(success, message)

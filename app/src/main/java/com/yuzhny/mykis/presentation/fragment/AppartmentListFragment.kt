@@ -6,15 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.yuzhny.mykis.R
-import com.yuzhny.mykis.data.cache.appartment.AppartmentRepository
-import com.yuzhny.mykis.domain.appartment.AppartmentEntity
+import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.presentation.viewmodel.AppartmentListViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.ViewModelLifecycle
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -22,7 +18,7 @@ class AppartmentListFragment : Fragment() {
 
 
     @Inject
-    lateinit var appartment :AppartmentRepository
+    lateinit var appartment :AppartmentCache
 
 
     private val viewModel:AppartmentListViewModel by viewModels()
@@ -38,6 +34,7 @@ class AppartmentListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        viewModel.saveAppartmentById(1)
+        Log.d("Test1",viewModel.getAppartments().toString())
     }
 
 

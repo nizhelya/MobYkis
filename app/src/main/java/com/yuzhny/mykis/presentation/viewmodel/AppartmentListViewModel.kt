@@ -1,30 +1,64 @@
 package com.yuzhny.mykis.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.yuzhny.mykis.data.cache.appartment.AppartmentRepository
+import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
+import com.yuzhny.mykis.domain.appartment.GetAppartments
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AppartmentListViewModel @Inject constructor(private val repository: AppartmentRepository):ViewModel() {
+class AppartmentListViewModel @Inject constructor(
+    private val repository: AppartmentCache,
+    private val getAppartmentsUseCase: GetAppartments
+) : BaseViewModel() {
 
     private val _appartment = MutableLiveData<List<AppartmentEntity>>()
-    val appartment :LiveData<List<AppartmentEntity>> get() = _appartment
+    val appartment: LiveData<List<AppartmentEntity>> get() = _appartment
 
 
-    fun insertAppartment(appart:List<AppartmentEntity>){
-        viewModelScope.launch {
-            repository.addAppartment(appart)
+    //    fun getAppartments(needFetch: Boolean = false) {
+//        getAppartmentsUseCase(needFetch) { it ->
+//            it.either(::handleFailure) {
+//                handleAppartments(
+//                    it,
+//                    !needFetch
+//                )
+//            }
+//        }
+//    }
+    fun getAppartments(needFetch: Boolean = false) {
+        getAppartmentsUseCase(needFetch) { it ->
+            it.either(::handleFailure) {
+                handleAppartments(
+                    it, !needFetch
+                )
+            }
         }
     }
 
+    private fun handleAppartments(appartments: List<AppartmentEntity>, fromCache: Boolean) {
+        _appartment.value = appartments
+        updateProgress(false)
+
+        if (fromCache) {
+            updateProgress(true)
+            getAppartments(true)
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
+    }
+
+//    fun insertAppartment(appart:List<AppartmentEntity>){
+//        viewModelScope.launch {
+//            repository.addAppartment(appart)
+//        }
+//    }
+//
 //
 //    suspend fun getAppartmentById(addressId:Int):List<AppartmentEntity>{
 //            try {

@@ -1,13 +1,13 @@
 package com.yuzhny.mykis.di
 
-import com.yuzhny.mykis.data.cache.appartment.AppartmentRepository
-import com.yuzhny.mykis.data.cache.appartment.AppartmentRepositoryImpl
+import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
+import com.yuzhny.mykis.data.cache.appartment.AppartmentCacheImpl
+import com.yuzhny.mykis.data.cache.user.UserCache
+import com.yuzhny.mykis.data.cache.user.UserCacheImpl
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemoteImpl
-import com.yuzhny.mykis.data.remote.service.ApiService
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
@@ -17,10 +17,14 @@ import javax.inject.Singleton
 abstract class AppartmentModule {
     @Singleton
     @Binds
-    abstract fun bindAppartmentRepository(impl:AppartmentRepositoryImpl):AppartmentRepository
+    abstract fun bindAppartmentRepository(impl:AppartmentCacheImpl):AppartmentCache
 
     @Singleton
     @Binds
     abstract fun bindAppartmentRemote(impl: AppartmentRemoteImpl): AppartmentRemote
+
+    @Singleton
+    @Binds
+    abstract fun bindUserCache(impl: UserCacheImpl):UserCache
 
   }

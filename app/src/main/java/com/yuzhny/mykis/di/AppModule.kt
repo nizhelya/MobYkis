@@ -1,15 +1,21 @@
 package com.yuzhny.mykis.di
 
+
 import android.content.Context
 import androidx.room.Room
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.yuzhny.mykis.BuildConfig
+import com.yuzhny.mykis.data.AppartmentRepositoryImpl
+import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.database.AppDatabase
+import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.dao.AppartmentDao
 import com.yuzhny.mykis.data.dao.FamilyDao
+import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.service.ApiService
 import com.yuzhny.mykis.data.remote.service.ApiService.Companion.BASE_URL
+import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -86,6 +92,16 @@ object AppModule {
     @Provides
     fun provideFamilyDao(db: AppDatabase): FamilyDao {
         return db.familyDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideAppartmentRepository(
+        appartmentRemote: AppartmentRemote,
+        userCache: UserCache,
+        appartmentCache: AppartmentCache
+    ): AppartmentRepository {
+        return AppartmentRepositoryImpl(appartmentRemote,appartmentCache,userCache)
     }
 
 }
