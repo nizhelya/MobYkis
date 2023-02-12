@@ -12,16 +12,16 @@ class AppartmentRepositoryImpl (private val appartmentRemote: AppartmentRemote,
                                 private val appartmentCache: AppartmentCache,
                                 private val userCache: UserCache
 ):AppartmentRepository{
-    override fun getAppartments(needFetch: Boolean): Either<Failure, List<AppartmentEntity>> {
+    override fun getAppartmentsByUser(needFetch: Boolean): Either<Failure, List<AppartmentEntity>> {
         return userCache.getCurrentUser()
             .flatMap {
                 return@flatMap if (needFetch) {
-                    appartmentRemote.getAppartments(it.userId,it.token)
+                    appartmentRemote.getAppartmentsByUser(it.userId,it.token)
                 } else {
-                    Either.Right(appartmentCache.getAppartments())
+                    Either.Right(appartmentCache.getAppartmentsByUser())
                 }
             }
             .map { it.sortedBy { it.address } }
-            .onNext { it.map { appartmentCache.addAppartment(listOf(it)) } }
+            .onNext { it.map { appartmentCache.addAppartmentByUser(listOf(it)) } }
     }
 }

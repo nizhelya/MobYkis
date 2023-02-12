@@ -29,5 +29,5 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST(GET_MY_FLAT)
-    fun getAppartments(@FieldMap params :Map<String , String> ):Call<GetAppartmentsResponse>
+    fun getAppartmentsByUser(@FieldMap params :Map<String , String> ):Call<GetAppartmentsResponse>
 }

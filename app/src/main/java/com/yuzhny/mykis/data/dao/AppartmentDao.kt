@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface AppartmentDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAppartment(appartment:List<AppartmentEntity>)
+    fun addAppartmentByUser(appartment:List<AppartmentEntity>)
 
 //    @Update
 //    suspend fun updateAppartment(appartment: AppartmentEntity)
@@ -21,7 +21,7 @@ interface AppartmentDao {
 //    fun getAppartment(addressId:Int): List<AppartmentEntity>
 
     @Query("select * from appartment")
-    fun getAppartment(): List<AppartmentEntity>
+    fun getAppartmentsByUser(): List<AppartmentEntity>
 
 //    @Query("select * from appartment")
 //    fun getAppartments():Flow<List<AppartmentEntity>>

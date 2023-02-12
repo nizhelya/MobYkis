@@ -28,7 +28,7 @@ class AppartmentListViewModel @Inject constructor(
 //            }
 //        }
 //    }
-    fun getAppartments(needFetch: Boolean = false) {
+    fun getAppartmentsByUser(needFetch: Boolean = false) {
         getAppartmentsUseCase(needFetch) { it ->
             it.either(::handleFailure) {
                 handleAppartments(
@@ -44,7 +44,7 @@ class AppartmentListViewModel @Inject constructor(
 
         if (fromCache) {
             updateProgress(true)
-            getAppartments(true)
+            getAppartmentsByUser(true)
         }
     }
 

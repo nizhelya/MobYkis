@@ -8,5 +8,5 @@ class GetAppartments  @Inject constructor(
     private val appartmentRepository: AppartmentRepository
 ) : UseCase<List<AppartmentEntity>, Boolean>() {
 
-    override suspend fun run(needFetch: Boolean) = appartmentRepository.getAppartments(needFetch)
+    override suspend fun run(needFetch: Boolean) = appartmentRepository.getAppartmentsByUser(needFetch)
 }
