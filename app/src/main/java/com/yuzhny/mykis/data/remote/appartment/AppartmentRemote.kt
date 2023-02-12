@@ -5,5 +5,5 @@ import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
 
 interface AppartmentRemote {
-    fun getAppartments(addressId: Int, token: String): Either<Failure, List<AppartmentEntity>>
+    fun getAppartments(userId:Int, token: String): Either<Failure, List<AppartmentEntity>>
 }

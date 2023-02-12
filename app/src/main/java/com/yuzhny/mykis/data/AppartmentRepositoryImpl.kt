@@ -16,7 +16,7 @@ class AppartmentRepositoryImpl (private val appartmentRemote: AppartmentRemote,
         return userCache.getCurrentUser()
             .flatMap {
                 return@flatMap if (needFetch) {
-                    appartmentRemote.getAppartments(1455, it[0].token)
+                    appartmentRemote.getAppartments(it.userId,it.token)
                 } else {
                     Either.Right(appartmentCache.getAppartments())
                 }

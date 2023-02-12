@@ -7,12 +7,16 @@ import com.squareup.moshi.Json
 
 @Entity(tableName = "appartment")
 data class AppartmentEntity(
+    val id: Int,
+    @ColumnInfo(name = "user_id")
+    val userId: Int,
     @PrimaryKey(autoGenerate = false)
     @Json(name = "address_id")
     @ColumnInfo(name = "address_id")
-    var addressId: Int = 0 ,
+    val addressId: Int = 0,
+    @Json(name = "user_id")
 
-    var address: String = "Unknown",
+    val address: String = "Unknown",
 
     var nanim: String = "Unknown",
 
@@ -44,7 +48,7 @@ data class AppartmentEntity(
     @ColumnInfo(name = "area_otopl")
     var areaOtopl: Double = 0.00,
 
-    var tenant:Int = 0,
+    var tenant: Int = 0,
 
     var podnan: Int = 0,
 

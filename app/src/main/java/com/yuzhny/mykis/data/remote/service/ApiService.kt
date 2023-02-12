@@ -17,8 +17,10 @@ interface ApiService {
 //        const val SERVER_URL = "http://195.138.91.67/YkisMobileRest"
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_APPARTMENTS = "getAppartmentsById.php"
+        const val GET_MY_FLAT="getAppartmentsByUser.php"
         const val DELETE_APPARTMENT = "deleteAppartment.php"
         const val PARAM_ADDRESS_ID = "address_id"
+        const val PARAM_USER_ID = "user_id"
         const val PARAM_TOKEN = "token"
 
     }
@@ -26,6 +28,6 @@ interface ApiService {
     //appartment
 
     @FormUrlEncoded
-    @POST(GET_APPARTMENTS)
+    @POST(GET_MY_FLAT)
     fun getAppartments(@FieldMap params :Map<String , String> ):Call<GetAppartmentsResponse>
 }

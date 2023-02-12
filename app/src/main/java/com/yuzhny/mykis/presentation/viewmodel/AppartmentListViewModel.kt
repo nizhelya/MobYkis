@@ -32,7 +32,7 @@ class AppartmentListViewModel @Inject constructor(
         getAppartmentsUseCase(needFetch) { it ->
             it.either(::handleFailure) {
                 handleAppartments(
-                    it, !needFetch
+                   it, !needFetch
                 )
             }
         }
@@ -48,10 +48,6 @@ class AppartmentListViewModel @Inject constructor(
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-
-    }
 
 //    fun insertAppartment(appart:List<AppartmentEntity>){
 //        viewModelScope.launch {

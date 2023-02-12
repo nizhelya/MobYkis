@@ -15,22 +15,22 @@ class AppartmentRemoteImpl @Inject constructor(
 ) : AppartmentRemote {
 
     override fun getAppartments(
-        addressId: Int,
+        userId: Int,
         token: String
     ): Either<Failure, List<AppartmentEntity>> {
         return request.make(
             service.getAppartments(
                 createGetAppartmentsMap(
-                    addressId,
+                    userId,
                     token
                 )
             )
         ) { it.appartments }
     }
 
-    private fun createGetAppartmentsMap(addressId: Int, token: String): Map<String, String> {
+    private fun createGetAppartmentsMap(userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
-        map.put(ApiService.PARAM_ADDRESS_ID, addressId.toString())
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)
         return map
     }
