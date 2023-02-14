@@ -1,8 +1,7 @@
-package com.yuzhny.mykis.presentation.appartment
+package com.yuzhny.mykis.presentation.appartment.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import com.yuzhny.mykis.presentation.core.BaseAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.yuzhny.mykis.databinding.ItemAppartmentListBinding

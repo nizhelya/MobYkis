@@ -16,6 +16,7 @@ class AppartmentRepositoryImpl (private val appartmentRemote: AppartmentRemote,
         return userCache.getCurrentUser()
             .flatMap {
                 return@flatMap if (needFetch) {
+                    appartmentCache.deleteAllAppartments(it.userId)
                     appartmentRemote.getAppartmentsByUser(it.userId,it.token)
                 } else {
                     Either.Right(appartmentCache.getAppartmentsByUser())

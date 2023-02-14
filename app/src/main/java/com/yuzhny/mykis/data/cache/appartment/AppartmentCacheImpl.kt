@@ -32,5 +32,9 @@ class AppartmentCacheImpl @Inject constructor(
         return appartmentDao.getAppartmentsByUser()
     }
 
+    override fun deleteAllAppartments(userId:Int) {
+        appartmentDao.deleteAllAppartments(userId)
+    }
+
 
 }
