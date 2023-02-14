@@ -1,18 +1,14 @@
-package com.yuzhny.mykis.presentation.fragment
+package com.yuzhny.mykis.presentation.appartment.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
-import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
-import com.yuzhny.mykis.domain.appartment.AppartmentEntity
-import com.yuzhny.mykis.presentation.appartment.AppartmentAdapter
-import com.yuzhny.mykis.presentation.viewmodel.AppartmentListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -20,13 +16,13 @@ import javax.inject.Inject
 class AppartmentListFragment : Fragment() {
 
     @Inject
-    lateinit var viewAdapter:AppartmentAdapter
+    lateinit var viewAdapter: AppartmentAdapter
 
     private var _binding: FragmentListAppartmentBinding? = null
     private val binding get() = _binding!!
 
 
-    private val viewModel:AppartmentListViewModel by viewModels()
+    private val viewModel: AppartmentListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +41,9 @@ class AppartmentListFragment : Fragment() {
             }
         }
         binding.recyclerView.adapter = viewAdapter
+        binding.addPlantFab.setOnClickListener {
+            findNavController().navigate(R.id.action_appartmentFragment_to_addAppartmentFragment)
+        }
     }
 
 //    private fun handleAppartment(appartmens: List<AppartmentEntity>?) {

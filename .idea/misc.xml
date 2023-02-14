@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_add_home.xml" value="0.253" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.257" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.232" />
         <entry key="app/src/main/res/drawable/ic_no_signal.xml" value="0.2235" />
         <entry key="app/src/main/res/drawable/network_error.xml" value="0.2235" />
         <entry key="app/src/main/res/layout/fragment_add_appartment.xml" value="0.2752502274795268" />

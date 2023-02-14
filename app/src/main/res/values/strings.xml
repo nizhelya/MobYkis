@@ -2,4 +2,7 @@
     <string name="app_name">MobYkis</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="code_hint">Секретний код</string>
+    <string name="appartment_list_label">Перелік квартир</string>
+    <string name="appartment_add_label">Додати квартиру</string>
 </resources>

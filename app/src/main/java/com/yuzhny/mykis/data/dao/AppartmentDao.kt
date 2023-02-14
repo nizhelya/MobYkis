@@ -14,8 +14,8 @@ interface AppartmentDao {
 //    @Update
 //    suspend fun updateAppartment(appartment: AppartmentEntity)
 //
-//    @Delete
-//    suspend fun deleteAppartment(appartment:AppartmentEntity)
+    @Query("delete from appartment where user_id != :userId")
+    fun deleteAllAppartments(userId:Int)
 //
 //    @Query("select * from appartment where address_id= :addressId")
 //    fun getAppartment(addressId:Int): List<AppartmentEntity>

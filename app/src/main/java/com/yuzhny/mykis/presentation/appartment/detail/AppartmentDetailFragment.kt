@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.presentation.fragment
+package com.yuzhny.mykis.presentation.appartment.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import com.yuzhny.mykis.R
 
 
-class AddAppartmentFragment : Fragment() {
-
+class AppartmentDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -20,7 +18,8 @@ class AddAppartmentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_appartment, container, false)
+        return inflater.inflate(R.layout.fragment_appartment_detail, container, false)
     }
+
 
 }

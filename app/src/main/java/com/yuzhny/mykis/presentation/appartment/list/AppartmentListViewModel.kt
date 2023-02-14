@@ -1,10 +1,11 @@
-package com.yuzhny.mykis.presentation.viewmodel
+package com.yuzhny.mykis.presentation.appartment.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.appartment.GetAppartments
+import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
