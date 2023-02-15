@@ -1,6 +1,7 @@
 package com.yuzhny.mykis.di
 
 import com.yuzhny.mykis.data.AddressRepositoryImpl
+import com.yuzhny.mykis.data.AppartmentRepositoryImpl
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCacheImpl
 import com.yuzhny.mykis.data.cache.user.UserCache
@@ -10,6 +11,7 @@ import com.yuzhny.mykis.data.remote.address.AddressRemoteImpl
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemoteImpl
 import com.yuzhny.mykis.domain.address.AddressRepository
+import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -19,9 +21,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 abstract class AppartmentModule {
+
     @Singleton
     @Binds
-    abstract fun bindAppartmentRepository(impl:AppartmentCacheImpl):AppartmentCache
+    abstract fun bindAppartmentCache(impl:AppartmentCacheImpl):AppartmentCache
 
     @Singleton
     @Binds
@@ -35,7 +38,5 @@ abstract class AppartmentModule {
     @Binds
     abstract fun bindAddressRemote(impl:AddressRemoteImpl):AddressRemote
 
-    @Singleton
-    @Binds
-    abstract fun bindAddressRepository(impl:AddressRepositoryImpl):AddressRepository
+
   }
