@@ -6,17 +6,19 @@ import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
+import com.yuzhny.mykis.domain.type.flatMap
 
 class AddressRepositoryImpl(
     private val remote: AddressRemote,
     private val userCache: UserCache
 ) :AddressRepository{
     override fun getBlocks(): Either<Failure, List<AddressEntity>> {
-
+        return userCache.getCurrentUser()
+            .flatMap { return@flatMap remote.getBlocks(it.userId,it.token) }
     }
 
-    override fun getHouses(blockId: Int): Either<Failure, List<AddressEntity>> {
-        TODO("Not yet implemented")
-    }
+//    override fun getHouses(blockId: Int): Either<Failure, List<AddressEntity>> {
+//        TODO("Not yet implemented")
+//    }
 
 }

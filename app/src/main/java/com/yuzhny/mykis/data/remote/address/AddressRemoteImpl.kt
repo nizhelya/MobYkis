@@ -32,23 +32,23 @@ class AddressRemoteImpl @Inject constructor(
         }
     }
 
-    override fun getHouses(
-        blockId: Int,
-        userId: Int,
-        token: String
-    ): Either<Failure, List<AddressEntity>> {
-        return request.make(
-            service.getHouses(
-                createGetHousesMap(
-                    blockId,
-                    userId,
-                    token
-                )
-            )
-        ) {
-            it.address
-        }
-    }
+//    override fun getHouses(
+//        blockId: Int,
+//        userId: Int,
+//        token: String
+//    ): Either<Failure, List<AddressEntity>> {
+//        return request.make(
+//            service.getHouses(
+//                createGetHousesMap(
+//                    blockId,
+//                    userId,
+//                    token
+//                )
+//            )
+//        ) {
+//            it.address
+//        }
+//    }
 
     private fun createGetBlocksMap(userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
@@ -56,11 +56,11 @@ class AddressRemoteImpl @Inject constructor(
         map.put(ApiService.PARAM_TOKEN, token)
         return map
     }
-    private fun createGetHousesMap(blockId:Int,userId: Int, token: String): Map<String, String> {
-        val map = HashMap<String, String>()
-        map.put(ApiService.BLOCK_ID, blockId.toString())
-        map.put(ApiService.PARAM_USER_ID, userId.toString())
-        map.put(ApiService.PARAM_TOKEN, token)
-        return map
-    }
+//    private fun createGetHousesMap(blockId:Int,userId: Int, token: String): Map<String, String> {
+//        val map = HashMap<String, String>()
+//        map.put(ApiService.BLOCK_ID, blockId.toString())
+//        map.put(ApiService.PARAM_USER_ID, userId.toString())
+//        map.put(ApiService.PARAM_TOKEN, token)
+//        return map
+//    }
 }

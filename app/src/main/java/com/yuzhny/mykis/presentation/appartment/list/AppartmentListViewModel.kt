@@ -3,6 +3,7 @@ package com.yuzhny.mykis.presentation.appartment.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
+import com.yuzhny.mykis.domain.address.GetBlocks
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.appartment.GetAppartments
 import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
@@ -12,7 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AppartmentListViewModel @Inject constructor(
     private val repository: AppartmentCache,
-    private val getAppartmentsUseCase: GetAppartments
+    private val getAppartmentsUseCase: GetAppartments,
+    private val getBlocks: GetBlocks
 ) : BaseViewModel() {
 
     private val _appartment = MutableLiveData<List<AppartmentEntity>>()
@@ -49,6 +51,11 @@ class AppartmentListViewModel @Inject constructor(
         }
     }
 
+    fun testBlocks() {
+        getBlocks(true){
+            it -> it.either(::handleFailure)
+        }
+    }
 
 //    fun insertAppartment(appart:List<AppartmentEntity>){
 //        viewModelScope.launch {
