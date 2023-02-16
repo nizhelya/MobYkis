@@ -5,4 +5,5 @@
     <string name="code_hint">Секретний код</string>
     <string name="appartment_list_label">Перелік квартир</string>
     <string name="appartment_add_label">Додати квартиру</string>
+    <string name="pick_block">Район</string>
 </resources>

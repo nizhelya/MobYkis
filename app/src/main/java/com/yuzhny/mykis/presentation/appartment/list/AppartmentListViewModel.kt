@@ -3,6 +3,7 @@ package com.yuzhny.mykis.presentation.appartment.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
+import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.address.GetBlocks
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.appartment.GetAppartments
@@ -14,11 +15,13 @@ import javax.inject.Inject
 class AppartmentListViewModel @Inject constructor(
     private val repository: AppartmentCache,
     private val getAppartmentsUseCase: GetAppartments,
-    private val getBlocks: GetBlocks
 ) : BaseViewModel() {
 
     private val _appartment = MutableLiveData<List<AppartmentEntity>>()
     val appartment: LiveData<List<AppartmentEntity>> get() = _appartment
+
+    private val _address = MutableLiveData<List<AddressEntity>>()
+    val address: LiveData<List<AddressEntity>> get() = _address
 
 
     //    fun getAppartments(needFetch: Boolean = false) {
@@ -31,11 +34,12 @@ class AppartmentListViewModel @Inject constructor(
 //            }
 //        }
 //    }
+
     fun getAppartmentsByUser(needFetch: Boolean = false) {
         getAppartmentsUseCase(needFetch) { it ->
             it.either(::handleFailure) {
                 handleAppartments(
-                   it, !needFetch
+                    it, !needFetch
                 )
             }
         }
@@ -51,12 +55,10 @@ class AppartmentListViewModel @Inject constructor(
         }
     }
 
-    fun testBlocks() {
-        getBlocks(true){
-            it -> it.either(::handleFailure)
-        }
+    override fun onCleared() {
+        super.onCleared()
+        getAppartmentsUseCase.unsubscribe()
     }
-
 //    fun insertAppartment(appart:List<AppartmentEntity>){
 //        viewModelScope.launch {
 //            repository.addAppartment(appart)

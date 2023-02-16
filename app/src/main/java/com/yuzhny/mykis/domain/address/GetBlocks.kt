@@ -8,6 +8,6 @@ import javax.inject.Inject
 
 class GetBlocks @Inject constructor(
    private val addressRepository: AddressRepository
-) : UseCase<List<AddressEntity>, Boolean>() {
-    override suspend fun run(params: Boolean): Either<Failure, List<AddressEntity>> = addressRepository.getBlocks()
+) : UseCase<List<AddressEntity>,Boolean>() {
+    override suspend fun run(params:Boolean): Either<Failure, List<AddressEntity>> = addressRepository.getBlocks()
 }
