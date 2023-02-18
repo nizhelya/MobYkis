@@ -17,10 +17,6 @@ class AddAppartmentViewModel @Inject constructor(
     private val _address = MutableLiveData<List<AddressEntity>>()
     val address : LiveData<List<AddressEntity>> = _address
 
-
-    private val _listBlocks = MutableLiveData<List<String>>()
-    val listBlocks:LiveData<List<String>> get() = _listBlocks
-
     fun getBlocksList(){
         getBlocks(true){ it ->
             it.either(::handleFailure) {
@@ -33,6 +29,5 @@ class AddAppartmentViewModel @Inject constructor(
 
     private fun handleAddress(address:List<AddressEntity>){
         _address.value = address
-        _listBlocks.value = address.map { it.block }
     }
 }

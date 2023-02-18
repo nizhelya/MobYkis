@@ -1,11 +1,13 @@
 package com.yuzhny.mykis.presentation.appartment.add
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -17,7 +19,7 @@ import kotlinx.coroutines.delay
 
 class AddAppartmentFragment : Fragment() {
 
-    private val viewModel:AddAppartmentViewModel by activityViewModels()
+    private val viewModel: AddAppartmentViewModel by activityViewModels()
 
     private var _binding: FragmentAddAppartmentBinding? = null
     private val binding get() = _binding!!
@@ -31,19 +33,22 @@ class AddAppartmentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAddAppartmentBinding.inflate(inflater,container,false)
+        _binding = FragmentAddAppartmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBlocksList()
-        viewModel.listBlocks.observe(this.viewLifecycleOwner){
-            i -> i?.let {
-            binding.blocksList.setAdapter(  ArrayAdapter(requireContext(),R.layout.drop_down_item, it))
+        viewModel.address.observe(this.viewLifecycleOwner) { i ->
+            i?.let {
+                val adapter = AddressArrayAdapter(requireContext(), it)
+                binding.blockSpinner.adapter = adapter
+
             }
         }
-
+        binding.tipCode.setOnClickListener { Toast.makeText(requireContext(),"Код можна отримати в касах прийому комунальних платежів при оплаті. Код знаходиться у верхньому лівому кутку роздруківки про оплату"
+            ,Toast.LENGTH_LONG).show() }
     }
 }
 

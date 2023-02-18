@@ -6,17 +6,40 @@
     tools:context=".presentation.appartment.add.AddAppartmentFragment"
     android:orientation="vertical">
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/blocks_spinner"
+    <TextView
+        android:id="@+id/tittle"
+        style="@android:style/Widget.DeviceDefault.Light.TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/pick_block"
+        android:gravity="center"
+        android:text="@string/add_appartment"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.WindowTitle"
+        android:textSize="36sp"
+        android:layout_margin="16dp"/>
+
+
+
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/block_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/street_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pick_street"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         >
         <AutoCompleteTextView
-            android:id="@+id/blocks_list"
+            android:id="@+id/street_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
@@ -24,15 +47,22 @@
 
 
     </com.google.android.material.textfield.TextInputLayout>
-
+    <ImageView
+        android:id="@+id/tip_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_info"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="8dp" />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_label"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="@string/code_hint"        android:layout_margin="10dp"
+        android:hint="@string/code_hint"
+        android:layout_marginStart="16dp"
 
+        android:layout_marginEnd="16dp"
         >
 
     <com.google.android.material.textfield.TextInputEditText
