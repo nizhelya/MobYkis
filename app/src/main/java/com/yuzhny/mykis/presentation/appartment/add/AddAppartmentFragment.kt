@@ -54,7 +54,7 @@ class AddAppartmentFragment : Fragment() {
                 binding.blockSpinner.adapter = blockAdapter
             }
         }
-        viewModel.address.observe(this.viewLifecycleOwner) { i ->
+        viewModel.streets.observe(this.viewLifecycleOwner) { i ->
             i?.let {
                 streetAdapter = StreetArrayAdapter(requireContext(), it)
                 binding.streetSpinner.adapter = streetAdapter
