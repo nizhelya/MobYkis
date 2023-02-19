@@ -25,6 +25,9 @@
         android:name="com.yuzhny.mykis.presentation.appartment.add.AddAppartmentFragment"
         android:label="@string/appartment_add_label"
         tools:layout="@layout/fragment_add_appartment" >
+        <action
+            android:id="@+id/action_addAppartmentFragment_to_testStreetFragment"
+            app:destination="@id/testStreetFragment" />
     </fragment>
     <fragment
         android:id="@+id/appartmentDetailFragment"
@@ -35,4 +38,9 @@
             android:name="item_id"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/testStreetFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.add.TestStreetFragment"
+        android:label="fragment_test_street"
+        tools:layout="@layout/fragment_test_street" />
 </navigation>

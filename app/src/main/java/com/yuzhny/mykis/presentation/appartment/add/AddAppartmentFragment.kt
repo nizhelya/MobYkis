@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
 import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
@@ -49,6 +50,7 @@ class AddAppartmentFragment : Fragment() {
         }
         binding.tipCode.setOnClickListener { Toast.makeText(requireContext(),"Код можна отримати в касах прийому комунальних платежів при оплаті. Код знаходиться у верхньому лівому кутку роздруківки про оплату"
             ,Toast.LENGTH_LONG).show() }
+        binding.button2.setOnClickListener { findNavController().navigate(R.id.action_addAppartmentFragment_to_testStreetFragment) }
     }
 }
 
