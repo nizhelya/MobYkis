@@ -29,24 +29,17 @@
         android:layout_marginEnd="16dp"
         style="@style/Base.Widget.AppCompat.Spinner.Underlined"
         />
-
-    <com.google.android.material.textfield.TextInputLayout
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/street_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/pick_street"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_margin="16dp"
-        >
-        <AutoCompleteTextView
-            android:id="@+id/street_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+        />
 
 
-    </com.google.android.material.textfield.TextInputLayout>
     <ImageView
         android:id="@+id/tip_code"
         android:layout_width="wrap_content"

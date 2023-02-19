@@ -16,6 +16,7 @@ import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
 import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
 
 class AddAppartmentFragment : Fragment() {
@@ -25,6 +26,11 @@ class AddAppartmentFragment : Fragment() {
     private var _binding: FragmentAddAppartmentBinding? = null
     private val binding get() = _binding!!
 
+    @Inject
+    lateinit var blockAdapter: AddressArrayAdapter
+
+    @Inject
+    lateinit var streetAdapter:StreetArrayAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,16 +47,22 @@ class AddAppartmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBlocksList()
+        viewModel.getStreetList(4)
         viewModel.address.observe(this.viewLifecycleOwner) { i ->
             i?.let {
-                val adapter = AddressArrayAdapter(requireContext(), it)
-                binding.blockSpinner.adapter = adapter
-
+                blockAdapter = AddressArrayAdapter(requireContext(), it)
+                binding.blockSpinner.adapter = blockAdapter
             }
         }
+        viewModel.address.observe(this.viewLifecycleOwner) { i ->
+            i?.let {
+                streetAdapter = StreetArrayAdapter(requireContext(), it)
+                binding.streetSpinner.adapter = streetAdapter
+            }
+        }
+
         binding.tipCode.setOnClickListener { Toast.makeText(requireContext(),"Код можна отримати в касах прийому комунальних платежів при оплаті. Код знаходиться у верхньому лівому кутку роздруківки про оплату"
             ,Toast.LENGTH_LONG).show() }
-        binding.button2.setOnClickListener { findNavController().navigate(R.id.action_addAppartmentFragment_to_testStreetFragment) }
     }
 }
 
