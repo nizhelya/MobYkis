@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.presentation.appartment.add
+package com.yuzhny.mykis.presentation.appartment.add.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -15,6 +15,8 @@ import javax.inject.Singleton
 @Singleton
 class StreetArrayAdapter @Inject constructor(@ApplicationContext context: Context, addressList:List<AddressEntity>)
     : ArrayAdapter<AddressEntity>(context , 0 , addressList) {
+    val addressSelected = addressList
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         return initView(position, convertView, parent)
     }

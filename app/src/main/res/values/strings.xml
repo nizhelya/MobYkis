@@ -9,4 +9,7 @@
     <string name="pick_street">Вулиця</string>
     <string name="add_appartment">Нова квартира</string>
     <string name="tooltip_code">Код можна отримати в касах прийому комунальних платежів при оплаті. Код знаходиться у верхньому лівому кутку роздруківки про оплату</string>
+    <string name="choose_block">Район</string>
+    <string name="choose_street">Вулиця</string>
+    <string name="choose_house">Дім</string>
 </resources>

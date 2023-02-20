@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.appartment.add.AddAppartmentFragment"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tittle"
-        style="@android:style/Widget.DeviceDefault.Light.TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/add_appartment"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.WindowTitle"
-        android:textSize="36sp"
-        android:layout_margin="16dp"/>
-
-
-
-
-    <androidx.appcompat.widget.AppCompatSpinner
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
         android:id="@+id/block_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-        />
-    <androidx.appcompat.widget.AppCompatSpinner
+        app:smsp_hint="@string/choose_block"
+        style="@style/spinnerStyle"  />
+
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
         android:id="@+id/street_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+        app:smsp_hint="@string/choose_street"
+        style="@style/spinnerStyle"
         />
+
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/house_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:smsp_hint="@string/choose_house"
+        style="@style/spinnerStyle"
+        />
+
 
 
     <ImageView

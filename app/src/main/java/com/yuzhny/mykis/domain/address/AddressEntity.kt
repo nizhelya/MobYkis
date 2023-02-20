@@ -10,6 +10,7 @@ data class AddressEntity(
     @Json(name = "street_id")
     val streetId:Int=0,
     val street:String="Unknown",
+    @Json(name = "house_id")
     val houseId:Int=0,
     val house:String="Unknown",
     val addressId:Int=0
