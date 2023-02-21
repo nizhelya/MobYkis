@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        app:smsp_hint="@string/choose_block"
+        app:smsp_hint="@string/block"
         style="@style/spinnerStyle"  />
 
     <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
@@ -24,7 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:smsp_hint="@string/choose_street"
+        app:smsp_hint="@string/street"
         style="@style/spinnerStyle"
         />
 
@@ -35,7 +35,17 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:smsp_hint="@string/choose_house"
+        app:smsp_hint="@string/house"
+        style="@style/spinnerStyle"
+        />
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/flat_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:smsp_hint="@string/flat"
         style="@style/spinnerStyle"
         />
 
@@ -60,17 +70,18 @@
         >
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/name_input"
+        android:id="@+id/code_input"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="textAutoComplete"
         android:singleLine="true"
+        android:inputType="number"
         />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/check_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility ="gone"
         android:text="Street" />
 </LinearLayout>

@@ -30,5 +30,10 @@ class AddressRepositoryImpl(
             .flatMap { return@flatMap remote.getHousesFromStreet(streetId,blockId,it.userId,it.token) }
     }
 
+    override fun getFlatsFromHouse(houseId: Int): Either<Failure, List<AddressEntity>> {
+        return userCache.getCurrentUser()
+            .flatMap { return@flatMap remote.getFlatsFromHouse(houseId , it.userId ,it.token) }
+    }
+
 
 }

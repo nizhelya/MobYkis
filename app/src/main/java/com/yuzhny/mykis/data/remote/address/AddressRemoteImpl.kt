@@ -70,6 +70,24 @@ class AddressRemoteImpl @Inject constructor(
         }
     }
 
+    override fun getFlatsFromHouse(
+        houseId: Int,
+        userId: Int,
+        token: String
+    ): Either<Failure, List<AddressEntity>> {
+        return request.make(
+            service.getFlatsFromHouse(
+                createGetFlatsMap(
+                    houseId,
+                    userId,
+                    token
+                )
+            )
+        ) {
+            it.address
+        }
+    }
+
 
     private fun createGetBlocksMap(userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
@@ -86,10 +104,17 @@ class AddressRemoteImpl @Inject constructor(
     }
     private fun createGetHousesMap(streetId: Int , blockId: Int,userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
-        map.put(ApiService.BLOCK_ID, blockId.toString())
         map.put(ApiService.STREET_ID, streetId.toString())
+        map.put(ApiService.BLOCK_ID, blockId.toString())
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
+        map.put(ApiService.PARAM_TOKEN, token)
+        return map
+    }private fun createGetFlatsMap(houseId: Int,userId: Int, token: String): Map<String, String> {
+        val map = HashMap<String, String>()
+        map.put(ApiService.HOUSE_ID, houseId.toString())
         map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)
         return map
     }
+
 }

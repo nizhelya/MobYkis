@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linear"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="16dp"
-
+    android:paddingTop="10dp"
+    android:paddingBottom="8dp"
     >
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:visibility="visible"
         tools:text="435352" />
     <TextView
@@ -26,7 +26,16 @@
         android:layout_width="wrap_content"
         android:textAppearance="?attr/textAppearanceHeadline6"
         android:layout_height="wrap_content"
+        android:paddingRight="16dp"
         android:textSize="18dp"
         android:ellipsize="marquee"
         tools:text="Район 4"/>
+    <TextView
+        android:id="@+id/code_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="4dp"
+        android:paddingRight="16dp"
+        android:ellipsize="marquee"
+        tools:text="999999"/>
 </LinearLayout>

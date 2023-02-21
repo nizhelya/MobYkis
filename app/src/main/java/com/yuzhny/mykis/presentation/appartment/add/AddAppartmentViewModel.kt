@@ -2,10 +2,8 @@ package com.yuzhny.mykis.presentation.appartment.add
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.yuzhny.mykis.domain.address.AddressEntity
-import com.yuzhny.mykis.domain.address.GetBlocks
-import com.yuzhny.mykis.domain.address.GetHousesFromStreet
-import com.yuzhny.mykis.domain.address.GetStreetsFromBlock
+import com.yuzhny.mykis.domain.address.*
+import com.yuzhny.mykis.domain.appartment.GetAppartments
 import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.SplittableRandom
@@ -15,13 +13,15 @@ import javax.inject.Inject
 class AddAppartmentViewModel @Inject constructor(
     private val getBlocks: GetBlocks,
     private val getStreetsFromBlock: GetStreetsFromBlock,
-    private val getHousesFromStreet: GetHousesFromStreet
-):BaseViewModel() {
+    private val getHousesFromStreet: GetHousesFromStreet,
+    private val getFlatsFromHouse: GetFlatsFromHouse,
+    private val getAppartmentsUseCase: GetAppartments
+    ):BaseViewModel() {
 
 
 
-    private val _address = MutableLiveData<List<AddressEntity>>()
-    val address : LiveData<List<AddressEntity>> = _address
+    private val _blocks = MutableLiveData<List<AddressEntity>>()
+    val blocks : LiveData<List<AddressEntity>> = _blocks
 
     private val _streets = MutableLiveData<List<AddressEntity>>()
     val streets: LiveData<List<AddressEntity>> = _streets
@@ -29,11 +29,15 @@ class AddAppartmentViewModel @Inject constructor(
     private val _houses = MutableLiveData<List<AddressEntity>>()
     val houses: LiveData<List<AddressEntity>> = _houses
 
+    private val _flats = MutableLiveData<List<AddressEntity>>()
+    val flats: LiveData<List<AddressEntity>> = _flats
+
     fun getBlocksList(){
         getBlocks(true){ it ->
             it.either(::handleFailure) {
-                handleAddress(
-                    it
+                handle(
+                    it,
+                    _blocks
                 )
             }
         }
@@ -42,8 +46,9 @@ class AddAppartmentViewModel @Inject constructor(
     fun getStreetList(blockId:Int){
         getStreetsFromBlock(blockId){ it ->
             it.either(::handleFailure) {
-                handleStreets(
-                    it
+                handle(
+                    it,
+                    _streets
                 )
             }
         }
@@ -51,20 +56,24 @@ class AddAppartmentViewModel @Inject constructor(
     fun getHousesList(streetId:Int, blockId:Int){
         getHousesFromStreet( AddressEntity( streetId = streetId , blockId = blockId)){ it ->
             it.either(::handleFailure) {
-                handleHouses(
-                    it
+                handle(
+                    it,
+                    _houses
                 )
             }
         }
     }
-
-    private fun handleAddress(address:List<AddressEntity>){
-        _address.value = address
+    fun getFlatsList(houseId:Int){
+        getFlatsFromHouse(houseId){ it ->
+            it.either(::handleFailure) {
+                handle(
+                    it,
+                    _flats
+                )
+            }
+        }
     }
-    private fun handleStreets(address:List<AddressEntity>){
-        _streets.value = address
-    }
-    private fun handleHouses(address:List<AddressEntity>){
-        _houses.value = address
+    private fun handle(address: List<AddressEntity> , liveData : MutableLiveData<List<AddressEntity>> ){
+            liveData.value = address
     }
 }
