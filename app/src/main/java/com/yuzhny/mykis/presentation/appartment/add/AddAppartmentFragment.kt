@@ -18,15 +18,16 @@ import com.yuzhny.mykis.presentation.appartment.add.adapter.StreetArrayAdapter
 import javax.inject.Inject
 
 
-class AddAppartmentFragment : Fragment()  {
+class AddAppartmentFragment : Fragment() {
 
     private val viewModel: AddAppartmentViewModel by activityViewModels()
 
     private var _binding: FragmentAddAppartmentBinding? = null
     private val binding get() = _binding!!
-    private var chooseBlockId :Int = 0
-    private var chooseHouseId :Int = 0
-    private var chooseSecretCode :Long = 0
+    private var chooseBlockId: Int = 0
+    private var chooseHouseId: Int = 0
+    private var chooseSecretCode: Long = 0
+
     @Inject
     lateinit var blockAdapter: BlockArrayAdapter
 
@@ -34,10 +35,10 @@ class AddAppartmentFragment : Fragment()  {
     lateinit var streetAdapter: StreetArrayAdapter
 
     @Inject
-    lateinit var houseAdapter:HouseArrayAdapter
+    lateinit var houseAdapter: HouseArrayAdapter
 
     @Inject
-    lateinit var flatAdapter:FlatArrayAdapter
+    lateinit var flatAdapter: FlatArrayAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,35 +63,43 @@ class AddAppartmentFragment : Fragment()  {
             }
         }
 
-            binding.blockSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-                override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-                ) {
-                        viewModel.getStreetList(blockAdapter.addressSelected[position].blockId)
-                    chooseBlockId = blockAdapter.addressSelected[position].blockId
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                }
-
-            }
-        viewModel.streets.observe(this.viewLifecycleOwner) { i ->
-            i?.let {
-                streetAdapter = StreetArrayAdapter(requireContext(), it)
-                binding.streetSpinner.adapter = streetAdapter
-            }
-        }
-        binding.streetSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        binding.blockSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
-                viewModel.getHousesList(streetAdapter.addressSelected[position].streetId , chooseBlockId)
+                viewModel.getStreetList(blockAdapter.addressSelected[position].blockId)
+                chooseBlockId = blockAdapter.addressSelected[position].blockId
+                viewModel.clearLiveData()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+        }
+        viewModel.streets.observe(this.viewLifecycleOwner) { i ->
+            i?.let {
+                streetAdapter = StreetArrayAdapter(requireContext(), it)
+                binding.streetSpinner.adapter = streetAdapter
+            }
+        }
+        binding.streetSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                viewModel.getHousesList(
+                    streetAdapter.addressSelected[position].streetId,
+                    chooseBlockId
+                )
+                viewModel.clearLiveData()
+                if (houseAdapter.addressSelected.size > 1) {
+                    binding.houseSpinner.visibility = View.GONE
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -101,6 +110,7 @@ class AddAppartmentFragment : Fragment()  {
             i?.let {
                 houseAdapter = HouseArrayAdapter(requireContext(), it)
                 binding.houseSpinner.adapter = houseAdapter
+                setVisibleHouse(it)
             }
         }
         binding.houseSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -120,9 +130,9 @@ class AddAppartmentFragment : Fragment()  {
             }
 
         }
-        viewModel.flats.observe(this.viewLifecycleOwner){
-            it -> it?.let {
-                flatAdapter = FlatArrayAdapter(requireContext() , it)
+        viewModel.flats.observe(this.viewLifecycleOwner) { it ->
+            it?.let {
+                flatAdapter = FlatArrayAdapter(requireContext(), it)
                 binding.flatSpinner.adapter = flatAdapter
             }
         }
@@ -141,21 +151,38 @@ class AddAppartmentFragment : Fragment()  {
             }
 
         }
-        binding.tipCode.setOnClickListener { Toast.makeText(requireContext(),"Код можна отримати в касах прийому комунальних платежів при оплаті. Код знаходиться у верхньому лівому кутку роздруківки про оплату"
-            ,Toast.LENGTH_LONG).show()
+        binding.tipCode.setOnClickListener {
+            Toast.makeText(
+                requireContext(),
+                "Код можна отримати в касах прийому комунальних платежів при оплаті. Код знаходиться у верхньому лівому кутку роздруківки про оплату",
+                Toast.LENGTH_LONG
+            ).show()
         }
-        binding.checkCode.setOnClickListener { checkSecretCode(chooseSecretCode.toString(),
-            binding.codeInput.text.toString()
-        ) }
-
-    }
-    private fun checkSecretCode(secretCode:String , userSecretCode:String) {
-        if(secretCode==userSecretCode){
-            Toast.makeText(requireContext(), "Код верный" , Toast.LENGTH_LONG).show()
-        }else Toast.makeText(requireContext(), "Код неверный" , Toast.LENGTH_LONG).show()
+        binding.checkCode.setOnClickListener {
+            checkSecretCode(
+                chooseSecretCode.toString(),
+                binding.codeInput.text.toString()
+            )
+        }
 
     }
 
+    private fun checkSecretCode(secretCode: String, userSecretCode: String) {
+        if (secretCode == userSecretCode) {
+            Toast.makeText(requireContext(), "Код верный", Toast.LENGTH_LONG).show()
+        } else Toast.makeText(requireContext(), "Код неверный", Toast.LENGTH_LONG).show()
+
+    }
+    private fun setVisibleHouse(listAddress:List<AddressEntity>){
+        if (listAddress.isEmpty()) {
+            binding.houseSpinner.visibility = View.GONE
+        } else if (listAddress.size == 1) {
+            binding.houseSpinner.visibility = View.GONE
+            viewModel.getFlatsList(listAddress[0].houseId)
+        } else {
+            binding.houseSpinner.visibility = View.VISIBLE
+        }
+    }
 }
 
 

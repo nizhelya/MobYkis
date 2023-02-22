@@ -13,4 +13,5 @@
     <string name="street">Вулиця</string>
     <string name="house">Дім</string>
     <string name="flat">Квартира</string>
+    <string name="next">Продовжити</string>
 </resources>

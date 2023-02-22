@@ -76,4 +76,12 @@ class AddAppartmentViewModel @Inject constructor(
     private fun handle(address: List<AddressEntity> , liveData : MutableLiveData<List<AddressEntity>> ){
             liveData.value = address
     }
+    fun clearLiveData(){
+        _houses.value = listOf()
+        _flats.value =listOf()
+    }
+    fun clearFlats(){
+        _flats.value =listOf()
+    }
+
 }

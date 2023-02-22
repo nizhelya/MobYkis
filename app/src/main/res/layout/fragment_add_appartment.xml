@@ -15,6 +15,14 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
         app:smsp_hint="@string/block"
+        app:smsp_arrowColor="?colorOnPrimaryContainer"
+        app:smsp_isOutlined="true"
+        app:smsp_multilineError="false"
+        app:smsp_outlinedBoxColor="@color/grey"
+        app:smsp_outlinedBoxRadius="12dp"
+        app:smsp_outlinedHintPadding="4dp"
+        app:smsp_outlinedHintStartX="10dp"
+        app:smsp_outlinedStrokeWidth="1dp"
         style="@style/spinnerStyle"  />
 
     <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
@@ -25,7 +33,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:smsp_hint="@string/street"
+        app:smsp_arrowColor="?colorOnPrimaryContainer"
         style="@style/spinnerStyle"
+        app:smsp_isOutlined="true"
+        app:smsp_multilineError="false"
+        app:smsp_outlinedBoxColor="@color/grey"
+        app:smsp_outlinedBoxRadius="12dp"
+        app:smsp_outlinedHintPadding="4dp"
+        app:smsp_outlinedHintStartX="10dp"
+        app:smsp_outlinedStrokeWidth="1dp"
         />
 
     <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
@@ -35,8 +51,17 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:visibility="gone"
         app:smsp_hint="@string/house"
+        app:smsp_arrowColor="?colorOnPrimaryContainer"
         style="@style/spinnerStyle"
+        app:smsp_isOutlined="true"
+        app:smsp_multilineError="false"
+        app:smsp_outlinedBoxColor="@color/grey"
+        app:smsp_outlinedBoxRadius="12dp"
+        app:smsp_outlinedHintPadding="4dp"
+        app:smsp_outlinedHintStartX="10dp"
+        app:smsp_outlinedStrokeWidth="1dp"
         />
     <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
         android:id="@+id/flat_spinner"
@@ -46,7 +71,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:smsp_hint="@string/flat"
+        app:smsp_arrowColor="?colorOnPrimaryContainer"
         style="@style/spinnerStyle"
+        app:smsp_isOutlined="true"
+        app:smsp_multilineError="false"
+        app:smsp_outlinedBoxColor="@color/grey"
+        app:smsp_outlinedBoxRadius="12dp"
+        app:smsp_outlinedHintPadding="4dp"
+        app:smsp_outlinedHintStartX="10dp"
+        app:smsp_outlinedStrokeWidth="1dp"
         />
 
 
@@ -65,7 +98,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/code_hint"
         android:layout_marginStart="16dp"
-
         android:layout_marginEnd="16dp"
         >
 
@@ -83,5 +115,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility ="gone"
-        android:text="Street" />
+        android:text="@string/next"
+        android:layout_margin="16dp"/>
+
+
 </LinearLayout>
