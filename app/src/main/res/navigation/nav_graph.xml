@@ -25,6 +25,9 @@
         android:name="com.yuzhny.mykis.presentation.appartment.add.AddAppartmentFragment"
         android:label="@string/add_appartment"
         tools:layout="@layout/fragment_add_appartment" >
+        <action
+            android:id="@+id/action_addAppartmentFragment_to_appartmentFragment"
+            app:destination="@id/appartmentFragment" />
     </fragment>
     <fragment
         android:id="@+id/appartmentDetailFragment"

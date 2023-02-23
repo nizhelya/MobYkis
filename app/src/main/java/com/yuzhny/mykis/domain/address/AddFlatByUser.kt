@@ -9,6 +9,6 @@ import javax.inject.Inject
 
 class AddFlatByUser @Inject constructor(
     private val addressRepository: AddressRepository
-) : UseCase<List<AddressEntity>, Int>() {
-    override suspend fun run(params:Int): Either<Failure, List<Any>> = addressRepository.addFlatByUser(params)
+) : UseCase<GetAddressResponse, Int>() {
+    override suspend fun run(params:Int): Either<Failure, GetAddressResponse> = addressRepository.addFlatByUser(params)
 }

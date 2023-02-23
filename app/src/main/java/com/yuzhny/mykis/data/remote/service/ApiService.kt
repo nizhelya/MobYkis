@@ -29,7 +29,7 @@ interface ApiService {
         const val GET_STREETS="getStreetsFromBlock.php"
         const val GET_HOUSES="getHousesFromStreet.php"
         const val GET_FLATS="getFlatsFromHouse.php"
-        const val ADD_FLAT_BY_USER="addFlatByUser.php"
+        const val ADD_FLAT_BY_USER="addMyFlatByUser.php"
         const val PARAM_ADDRESS_ID = "address_id"
         const val PARAM_USER_ID = "user_id"
         const val STREET_ID = "street_id"

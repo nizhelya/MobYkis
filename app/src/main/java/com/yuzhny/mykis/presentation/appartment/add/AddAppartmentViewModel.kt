@@ -15,7 +15,7 @@ class AddAppartmentViewModel @Inject constructor(
     private val getStreetsFromBlock: GetStreetsFromBlock,
     private val getHousesFromStreet: GetHousesFromStreet,
     private val getFlatsFromHouse: GetFlatsFromHouse,
-    private val getAppartmentsUseCase: GetAppartments
+    private val addFlatByUser: AddFlatByUser
     ):BaseViewModel() {
 
 
@@ -31,6 +31,9 @@ class AddAppartmentViewModel @Inject constructor(
 
     private val _flats = MutableLiveData<List<AddressEntity>>()
     val flats: LiveData<List<AddressEntity>> = _flats
+
+    private val _resultText = MutableLiveData<String>()
+    val resultText: LiveData<String> = _resultText
 
     fun getBlocksList(){
         getBlocks(true){ it ->
@@ -73,8 +76,21 @@ class AddAppartmentViewModel @Inject constructor(
             }
         }
     }
+    fun addFlat(addressId:Int){
+        addFlatByUser(addressId){
+            it.either(::handleFailure){
+                handleResultText(
+                    it.message,
+                    _resultText
+                )
+            }
+        }
+    }
     private fun handle(address: List<AddressEntity> , liveData : MutableLiveData<List<AddressEntity>> ){
             liveData.value = address
+    }
+    private fun handleResultText(result:String , liveData : MutableLiveData<String> ){
+        liveData.value = result
     }
     fun clearLiveData(){
         _houses.value = listOf()

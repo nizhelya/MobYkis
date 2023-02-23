@@ -9,6 +9,9 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.presentation.appartment.add.adapter.BlockArrayAdapter
@@ -27,6 +30,7 @@ class AddAppartmentFragment : Fragment() {
     private var chooseBlockId: Int = 0
     private var chooseHouseId: Int = 0
     private var chooseSecretCode: Long = 0
+    private var selectedFlat: Int = 0
 
     @Inject
     lateinit var blockAdapter: BlockArrayAdapter
@@ -134,12 +138,12 @@ class AddAppartmentFragment : Fragment() {
             it?.let {
                 flatAdapter = FlatArrayAdapter(requireContext(), it)
                 binding.flatSpinner.adapter = flatAdapter
-                if(it.isNotEmpty()){
+                if (it.isNotEmpty()) {
                     binding.codeLabel.visibility = View.VISIBLE
                     binding.checkCode.visibility = View.VISIBLE
                     binding.tipCode.visibility = View.VISIBLE
 
-                }else {
+                } else {
                     binding.codeLabel.visibility = View.GONE
                     binding.checkCode.visibility = View.GONE
                     binding.tipCode.visibility = View.GONE
@@ -155,6 +159,7 @@ class AddAppartmentFragment : Fragment() {
                 id: Long
             ) {
                 chooseSecretCode = flatAdapter.addressSelected[position].secretCode
+                selectedFlat = flatAdapter.addressSelected[position].flatId
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -170,22 +175,31 @@ class AddAppartmentFragment : Fragment() {
         binding.checkCode.setOnClickListener {
             checkSecretCode(
                 chooseSecretCode.toString(),
-                binding.codeInput.text.toString()
+                binding.codeInput.text.toString(),
+                selectedFlat
             )
         }
+        viewModel.resultText.observe(this.viewLifecycleOwner) { i ->
+            i?.let {
+                Toast.makeText(requireContext() , it  ,Toast.LENGTH_LONG).show()
+            }
+        }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.clearAllLiveData()
     }
 
-    private fun checkSecretCode(secretCode: String, userSecretCode: String) {
+    private fun checkSecretCode(secretCode: String, userSecretCode: String, addressId: Int) {
         if (secretCode == userSecretCode) {
-            Toast.makeText(requireContext(), "Код верный", Toast.LENGTH_LONG).show()
+            viewModel.addFlat(addressId)
+            findNavController().navigate(R.id.action_addAppartmentFragment_to_appartmentFragment)
         } else Toast.makeText(requireContext(), "Код неверный", Toast.LENGTH_LONG).show()
 
     }
-    private fun setVisibleHouse(listAddress:List<AddressEntity>){
+
+    private fun setVisibleHouse(listAddress: List<AddressEntity>) {
         if (listAddress.isEmpty()) {
             binding.houseSpinner.visibility = View.GONE
         } else if (listAddress.size == 1) {
