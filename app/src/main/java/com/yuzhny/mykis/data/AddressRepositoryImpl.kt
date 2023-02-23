@@ -2,6 +2,8 @@ package com.yuzhny.mykis.data
 
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.remote.address.AddressRemote
+import com.yuzhny.mykis.data.remote.core.BaseResponse
+import com.yuzhny.mykis.domain.BaseResponseData
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.type.Either
@@ -33,6 +35,11 @@ class AddressRepositoryImpl(
     override fun getFlatsFromHouse(houseId: Int): Either<Failure, List<AddressEntity>> {
         return userCache.getCurrentUser()
             .flatMap { return@flatMap remote.getFlatsFromHouse(houseId , it.userId ,it.token) }
+    }
+
+    override fun addFlatByUser(addressId: Int): Either<Failure, BaseResponseData> {
+        return userCache.getCurrentUser()
+            .flatMap { return@flatMap remote.addFlatsByUser(addressId, it.userId, it.token) }
     }
 
 

@@ -2,6 +2,8 @@ package com.yuzhny.mykis.data.remote.service
 
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
+import com.yuzhny.mykis.data.remote.core.BaseResponse
+import com.yuzhny.mykis.domain.BaseResponseData
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import kotlinx.coroutines.flow.Flow
@@ -27,10 +29,12 @@ interface ApiService {
         const val GET_STREETS="getStreetsFromBlock.php"
         const val GET_HOUSES="getHousesFromStreet.php"
         const val GET_FLATS="getFlatsFromHouse.php"
+        const val ADD_FLAT_BY_USER="addFlatByUser.php"
         const val PARAM_ADDRESS_ID = "address_id"
         const val PARAM_USER_ID = "user_id"
         const val STREET_ID = "street_id"
         const val HOUSE_ID = "house_id"
+        const val ADDRESS_ID = "address_id"
         const val BLOCK_ID = "raion_id"
         const val PARAM_TOKEN = "token"
 
@@ -53,4 +57,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(GET_FLATS)
     fun getFlatsFromHouse(@FieldMap params :Map<String , String> ):Call<GetAddressResponse>
+    @FormUrlEncoded
+    @POST(ADD_FLAT_BY_USER)
+    fun addFlatsByUser(@FieldMap params :Map<String , String> ):Call<GetAddressResponse>
 }

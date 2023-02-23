@@ -1,8 +1,10 @@
 package com.yuzhny.mykis.data.remote.address
 
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
+import com.yuzhny.mykis.data.remote.core.BaseResponse
 import com.yuzhny.mykis.data.remote.core.Request
 import com.yuzhny.mykis.data.remote.service.ApiService
+import com.yuzhny.mykis.domain.BaseResponseData
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.type.Either
@@ -88,6 +90,22 @@ class AddressRemoteImpl @Inject constructor(
         }
     }
 
+    override fun addFlatsByUser(addressId: Int, userId: Int, token: String) :Either<Failure , GetAddressResponse>{
+        return request.make(
+            service.addFlatsByUser(
+                createAddFlatsMap(
+                    addressId,
+                    userId,
+                    token
+                )
+            )
+        )
+            {
+                it
+            }
+
+    }
+
 
     private fun createGetBlocksMap(userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
@@ -116,5 +134,11 @@ class AddressRemoteImpl @Inject constructor(
         map.put(ApiService.PARAM_TOKEN, token)
         return map
     }
-
+    private fun createAddFlatsMap(addressId: Int,userId: Int, token: String): Map<String, String> {
+        val map = HashMap<String, String>()
+        map.put(ApiService.ADDRESS_ID, addressId.toString())
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
+        map.put(ApiService.PARAM_TOKEN, token)
+        return map
+    }
 }
