@@ -23,18 +23,6 @@ class AppartmentListViewModel @Inject constructor(
     private val _address = MutableLiveData<List<AddressEntity>>()
     val address: LiveData<List<AddressEntity>> get() = _address
 
-
-    //    fun getAppartments(needFetch: Boolean = false) {
-//        getAppartmentsUseCase(needFetch) { it ->
-//            it.either(::handleFailure) {
-//                handleAppartments(
-//                    it,
-//                    !needFetch
-//                )
-//            }
-//        }
-//    }
-
     fun getAppartmentsByUser(needFetch: Boolean = false) {
         getAppartmentsUseCase(needFetch) { it ->
             it.either(::handleFailure) {
@@ -59,25 +47,4 @@ class AppartmentListViewModel @Inject constructor(
         super.onCleared()
         getAppartmentsUseCase.unsubscribe()
     }
-//    fun insertAppartment(appart:List<AppartmentEntity>){
-//        viewModelScope.launch {
-//            repository.addAppartment(appart)
-//        }
-//    }
-//
-//
-//    suspend fun getAppartmentById(addressId:Int):List<AppartmentEntity>{
-//            try {
-//               return  repository.remoteGetAppartments(addressId)
-//            } catch ( e: Exception) {
-//                Log.d("TestRemote", "$e")
-//                return listOf()
-//            }
-//        }
-//    fun saveAppartmentById(addressId: Int){
-//        viewModelScope.launch {
-//            repository.addAppartment(getAppartmentById(addressId))
-//        }
-//    }
-
 }

@@ -3,15 +3,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="code_hint">Секретний код</string>
-    <string name="appartment_list_label">Перелік квартир</string>
-    <string name="appartment_add_label">Додати квартиру</string>
+    <string name="list_appartment">Перелік квартир</string>
+    <string name="add_appartment">Додати квартиру</string>
     <string name="pick_block">Район</string>
     <string name="pick_street">Вулиця</string>
-    <string name="add_appartment">Нова квартира</string>
     <string name="tooltip_code">Код можна отримати в касах прийому комунальних платежів при оплаті. Код знаходиться у верхньому лівому кутку роздруківки про оплату</string>
     <string name="block">Район</string>
     <string name="street">Вулиця</string>
     <string name="house">Дім</string>
     <string name="flat">Квартира</string>
+    <string name="no_data_title">Нема записів</string>
+    <string name="no_data_subtitle">Додайте свою квартиру</string>
     <string name="next">Продовжити</string>
 </resources>

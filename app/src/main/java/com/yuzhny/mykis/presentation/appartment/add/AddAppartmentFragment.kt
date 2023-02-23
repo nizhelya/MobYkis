@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
 import android.widget.AdapterView
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
@@ -134,6 +134,17 @@ class AddAppartmentFragment : Fragment() {
             it?.let {
                 flatAdapter = FlatArrayAdapter(requireContext(), it)
                 binding.flatSpinner.adapter = flatAdapter
+                if(it.isNotEmpty()){
+                    binding.codeLabel.visibility = View.VISIBLE
+                    binding.checkCode.visibility = View.VISIBLE
+                    binding.tipCode.visibility = View.VISIBLE
+
+                }else {
+                    binding.codeLabel.visibility = View.GONE
+                    binding.checkCode.visibility = View.GONE
+                    binding.tipCode.visibility = View.GONE
+                }
+
             }
         }
         binding.flatSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -144,12 +155,10 @@ class AddAppartmentFragment : Fragment() {
                 id: Long
             ) {
                 chooseSecretCode = flatAdapter.addressSelected[position].secretCode
-                binding.checkCode.visibility = View.VISIBLE
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
-
         }
         binding.tipCode.setOnClickListener {
             Toast.makeText(
@@ -164,7 +173,10 @@ class AddAppartmentFragment : Fragment() {
                 binding.codeInput.text.toString()
             )
         }
-
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.clearAllLiveData()
     }
 
     private fun checkSecretCode(secretCode: String, userSecretCode: String) {

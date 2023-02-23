@@ -20,6 +20,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textSize="16dp"
         android:visibility="visible"
+        android:fontFamily="@font/hinted_cello_sans_medium_italic"
         tools:text="435352" />
     <TextView
         android:id="@+id/item_address"

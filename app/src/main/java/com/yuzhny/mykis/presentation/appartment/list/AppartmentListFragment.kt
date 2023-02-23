@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
+import com.yuzhny.mykis.domain.address.AddressEntity
+import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -38,6 +40,7 @@ class AppartmentListFragment : Fragment() {
         viewModel.appartment.observe(this.viewLifecycleOwner){i->
             i?.let {
                 viewAdapter.submitList(it)
+                checkIsEmptyRecycleView(it)
             }
         }
         binding.recyclerView.adapter = viewAdapter
@@ -45,10 +48,15 @@ class AppartmentListFragment : Fragment() {
             findNavController().navigate(R.id.action_appartmentFragment_to_addAppartmentFragment)
         }
     }
-
-//    private fun handleAppartment(appartmens: List<AppartmentEntity>?) {
-//        if (appartmens != null && appartmens.isNotEmpty()) {
-//            viewAdapter.submitList(appartmens)
-//        }
-//    }
+    private fun checkIsEmptyRecycleView(addressEntity: List<AppartmentEntity>){
+        if(addressEntity.isNullOrEmpty()){
+            binding.noDataImage.visibility = View.VISIBLE
+            binding.noDataTitle.visibility = View.VISIBLE
+            binding.noDataSubtitle.visibility = View.VISIBLE
+        }else {
+            binding.noDataImage.visibility = View.GONE
+            binding.noDataTitle.visibility = View.GONE
+            binding.noDataSubtitle.visibility = View.GONE
+        }
+    }
 }

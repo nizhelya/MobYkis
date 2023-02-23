@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class UserCacheImpl @Inject constructor() :UserCache{
     override fun getCurrentUser(): Either<Failure,UserEntity> {
-        return Either.Right(UserEntity(8,"Petya","example@gmail.com","url","543ger245"))
+        return Either.Right(UserEntity( -1,"Petya","example@gmail.com","url","543ger245"))
     }
 }

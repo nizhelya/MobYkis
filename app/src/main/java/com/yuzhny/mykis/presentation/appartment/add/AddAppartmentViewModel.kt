@@ -80,8 +80,11 @@ class AddAppartmentViewModel @Inject constructor(
         _houses.value = listOf()
         _flats.value =listOf()
     }
-    fun clearFlats(){
+    fun clearAllLiveData(){
+        _houses.value = listOf()
+        _streets.value = listOf()
         _flats.value =listOf()
     }
+
 
 }

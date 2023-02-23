@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     tools:context=".presentation.appartment.list.AppartmentListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,7 +22,44 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add_home"
-        android:text="Add plant"
+        android:text="@string/add_appartment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-</FrameLayout>
+
+    <ImageView
+        android:id="@+id/no_data_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_no_data"
+        android:layout_marginTop="72dp"
+        android:paddingStart="18dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/no_data_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_title"
+        android:gravity="center"
+        android:textSize="36sp"
+        android:visibility="gone"
+
+        android:textColor="?colorOnPrimaryContainer"
+        android:fontFamily="@font/nunito_bold"
+        app:layout_constraintTop_toBottomOf="@id/no_data_image" />
+
+    <TextView
+        android:id="@+id/no_data_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_subtitle"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="20sp"
+        android:fontFamily="@font/signika_negative_light"
+        app:layout_constraintTop_toBottomOf="@id/no_data_title"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
