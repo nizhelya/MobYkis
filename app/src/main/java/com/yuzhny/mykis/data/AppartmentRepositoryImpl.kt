@@ -19,7 +19,9 @@ class AppartmentRepositoryImpl (private val appartmentRemote: AppartmentRemote,
                     appartmentCache.deleteAllAppartments(it.userId)
                     appartmentRemote.getAppartmentsByUser(it.userId,it.token)
                 } else {
-                    Either.Right(appartmentCache.getAppartmentsByUser())
+                    Either.Right(
+                        appartmentCache.getAppartmentsByUser()
+                    )
                 }
             }
             .map { it.sortedBy { it.address } }

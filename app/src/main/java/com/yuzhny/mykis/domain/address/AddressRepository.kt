@@ -1,12 +1,8 @@
 package com.yuzhny.mykis.domain.address
 
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
-import com.yuzhny.mykis.data.remote.core.BaseResponse
-import com.yuzhny.mykis.domain.BaseResponseData
-import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
-import com.yuzhny.mykis.domain.type.None
 
 interface AddressRepository {
     fun getBlocks(): Either<Failure, List<AddressEntity>>

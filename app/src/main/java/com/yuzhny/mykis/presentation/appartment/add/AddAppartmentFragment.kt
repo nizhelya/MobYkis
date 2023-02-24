@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
 import android.widget.AdapterView
+import android.widget.BaseAdapter
 import android.widget.Toast
+import android.widget.Toast.makeText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
 import com.yuzhny.mykis.domain.address.AddressEntity
+import com.yuzhny.mykis.domain.type.Failure
 import com.yuzhny.mykis.presentation.appartment.add.adapter.BlockArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.FlatArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.HouseArrayAdapter
@@ -168,7 +171,7 @@ class AddAppartmentFragment : Fragment() {
         binding.tipCode.setOnClickListener {
             Toast.makeText(
                 requireContext(),
-                "Код можна отримати в касах прийому комунальних платежів при оплаті. Код знаходиться у верхньому лівому кутку роздруківки про оплату",
+                getString(R.string.tooltip_code),
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -181,7 +184,7 @@ class AddAppartmentFragment : Fragment() {
         }
         viewModel.resultText.observe(this.viewLifecycleOwner) { i ->
             i?.let {
-                Toast.makeText(requireContext() , it  ,Toast.LENGTH_LONG).show()
+                Snackbar.make(binding.mainLayout , it.message  ,Snackbar.LENGTH_SHORT).show()
             }
         }
     }
@@ -194,8 +197,7 @@ class AddAppartmentFragment : Fragment() {
     private fun checkSecretCode(secretCode: String, userSecretCode: String, addressId: Int) {
         if (secretCode == userSecretCode) {
             viewModel.addFlat(addressId)
-            findNavController().navigate(R.id.action_addAppartmentFragment_to_appartmentFragment)
-        } else Toast.makeText(requireContext(), "Код неверный", Toast.LENGTH_LONG).show()
+        } else Toast.makeText(requireContext(), getString(R.string.incorrect_code), Toast.LENGTH_LONG).show()
 
     }
 
@@ -209,6 +211,7 @@ class AddAppartmentFragment : Fragment() {
             binding.houseSpinner.visibility = View.VISIBLE
         }
     }
+
 }
 
 

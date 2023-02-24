@@ -17,6 +17,8 @@ sealed class Failure {
     object AlreadyRequestedFriendError : Failure()
     object ContactNotFoundError : Failure()
 
+    object FlatAlreadyInDataBase : Failure()
+
     object NoSavedAccountsError : Failure()
 
     object FilePickError : Failure()

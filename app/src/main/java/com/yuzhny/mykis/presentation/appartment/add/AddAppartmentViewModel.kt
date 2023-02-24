@@ -2,6 +2,7 @@ package com.yuzhny.mykis.presentation.appartment.add
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.domain.address.*
 import com.yuzhny.mykis.domain.appartment.GetAppartments
 import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
@@ -32,8 +33,9 @@ class AddAppartmentViewModel @Inject constructor(
     private val _flats = MutableLiveData<List<AddressEntity>>()
     val flats: LiveData<List<AddressEntity>> = _flats
 
-    private val _resultText = MutableLiveData<String>()
-    val resultText: LiveData<String> = _resultText
+    private val _resultText = MutableLiveData<GetAddressResponse>()
+    val resultText: LiveData<GetAddressResponse> = _resultText
+
 
     fun getBlocksList(){
         getBlocks(true){ it ->
@@ -77,11 +79,11 @@ class AddAppartmentViewModel @Inject constructor(
         }
     }
     fun addFlat(addressId:Int){
-        addFlatByUser(addressId){
+        addFlatByUser(addressId){ it->
             it.either(::handleFailure){
+
                 handleResultText(
-                    it.message,
-                    _resultText
+                    it
                 )
             }
         }
@@ -89,8 +91,8 @@ class AddAppartmentViewModel @Inject constructor(
     private fun handle(address: List<AddressEntity> , liveData : MutableLiveData<List<AddressEntity>> ){
             liveData.value = address
     }
-    private fun handleResultText(result:String , liveData : MutableLiveData<String> ){
-        liveData.value = result
+    private fun handleResultText(result:GetAddressResponse){
+        _resultText.value = result
     }
     fun clearLiveData(){
         _houses.value = listOf()
