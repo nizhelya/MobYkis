@@ -2,6 +2,7 @@ package com.yuzhny.mykis.data.remote.service
 
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
+import com.yuzhny.mykis.data.remote.family.GetFamilyResponse
 import retrofit2.Call
 import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded
@@ -24,6 +25,7 @@ interface ApiService {
         const val GET_HOUSES="getHousesFromStreet.php"
         const val GET_FLATS="getFlatsFromHouse.php"
         const val ADD_FLAT_BY_USER="addMyFlatByUser.php"
+        const val GET_FAMILY="getFamilyFromFlat.php"
         const val PARAM_ADDRESS_ID = "address_id"
         const val PARAM_USER_ID = "user_id"
         const val STREET_ID = "street_id"
@@ -54,4 +56,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(ADD_FLAT_BY_USER)
     fun addFlatsByUser(@FieldMap params :Map<String , String> ):Call<GetAddressResponse>
+    @FormUrlEncoded
+    @POST(GET_FAMILY)
+    fun getFamilyFromFlat(@FieldMap params :Map<String , String> ):Call<GetFamilyResponse>
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.domain.address.*
 import com.yuzhny.mykis.domain.appartment.GetAppartments
+import com.yuzhny.mykis.domain.family.request.GetFamilyFromFlat
 import com.yuzhny.mykis.domain.type.None
 import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,6 +37,7 @@ class AddAppartmentViewModel @Inject constructor(
 
     private val _resultText = MutableLiveData<GetAddressResponse>()
     val resultText: LiveData<GetAddressResponse> = _resultText
+
 
 
     fun getBlocksList(){

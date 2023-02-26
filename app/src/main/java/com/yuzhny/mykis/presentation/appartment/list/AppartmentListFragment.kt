@@ -36,6 +36,7 @@ class AppartmentListFragment : BaseFragment<FragmentListAppartmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAppartmentsByUser()
+        viewModel.getFamily(6314)
         viewModel.appartment.observe(this.viewLifecycleOwner){i->
             i?.let {
                 viewAdapter.submitList(it)

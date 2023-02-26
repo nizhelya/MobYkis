@@ -262,9 +262,12 @@ class GeneralFunctionsClass
                  'address_id'=>$row['address_id'],
                  'address'=>$row['address'],
                  'rodstvo'=>$row['rodstvo'],
+                 'firstname'=>$row['firstname'],
                  'surname'=>$row['surname'],
                  'lastname'=>$row['lastname'],
-                 'born'=>$row['born']
+                 'born'=>$row['born'],
+                 'sex'=>$row['sex'],
+                 'phone'=>$row['phone']
             );
 
             array_push($families, $family);

@@ -8,19 +8,26 @@ import java.util.Date
 
 @Entity(tableName = "family")
 data class FamilyEntity(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @Json(name = "rec_id")
     @ColumnInfo(name = "rec_id")
     var recId :Int ,
     @Json(name = "address_id")
     @ColumnInfo(name = "address_id")
-    var addressId :Int ,
+    var addressId :Int = 0 ,
+    var address :String = "Unknown" ,
+    var rodstvo :String = "Unknown" ,
+    @Json(name = "firstname")
+    @ColumnInfo(name = "firstname")
+    var fistname :String = "Unknown",
+    @Json(name = "lastname")
+    @ColumnInfo(name = "lastname")
+    var lastname :String = "Unknown" ,
+    @Json(name = "surname")
+    @ColumnInfo(name = "surname")
+    var surname :String = "Unknown" ,
 
-    var fistName :String = "Unknown",
-    var lastName :String = "Unknown" ,
-    var surName :String = "Unknown" ,
-
-    var born :String,
+    var born :String ="Unknown",
 
     var sex:String = "Unknown" ,
 
