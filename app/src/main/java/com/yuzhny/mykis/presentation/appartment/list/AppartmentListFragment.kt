@@ -11,25 +11,24 @@ import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
+import com.yuzhny.mykis.presentation.core.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AppartmentListFragment : Fragment() {
+class AppartmentListFragment : BaseFragment<FragmentListAppartmentBinding>() {
 
     @Inject
     lateinit var viewAdapter: AppartmentAdapter
 
-    private var _binding: FragmentListAppartmentBinding? = null
-    private val binding get() = _binding!!
-
-
     private val viewModel: AppartmentListViewModel by viewModels()
+
+    override fun getViewBinding(view: View): FragmentListAppartmentBinding = FragmentListAppartmentBinding.bind(view)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
        _binding = FragmentListAppartmentBinding.inflate(inflater,container,false)
         return binding.root
     }

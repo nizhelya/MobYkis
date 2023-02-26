@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.domain.address.*
 import com.yuzhny.mykis.domain.appartment.GetAppartments
+import com.yuzhny.mykis.domain.type.None
 import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.SplittableRandom
@@ -38,7 +39,7 @@ class AddAppartmentViewModel @Inject constructor(
 
 
     fun getBlocksList(){
-        getBlocks(true){ it ->
+        getBlocks(None()){ it ->
             it.either(::handleFailure) {
                 handle(
                     it,

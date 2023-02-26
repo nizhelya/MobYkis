@@ -15,21 +15,23 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
+import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.type.Failure
 import com.yuzhny.mykis.presentation.appartment.add.adapter.BlockArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.FlatArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.HouseArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.StreetArrayAdapter
+import com.yuzhny.mykis.presentation.core.BaseFragment
+import com.yuzhny.mykis.presentation.core.ext.onFailure
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
-class AddAppartmentFragment : Fragment() {
+class AddAppartmentFragment : BaseFragment<FragmentAddAppartmentBinding>() {
 
     private val viewModel: AddAppartmentViewModel by activityViewModels()
 
-    private var _binding: FragmentAddAppartmentBinding? = null
-    private val binding get() = _binding!!
     private var chooseBlockId: Int = 0
     private var chooseHouseId: Int = 0
     private var chooseSecretCode: Long = 0
@@ -47,6 +49,8 @@ class AddAppartmentFragment : Fragment() {
     @Inject
     lateinit var flatAdapter: FlatArrayAdapter
 
+    override fun getViewBinding(view: View): FragmentAddAppartmentBinding = FragmentAddAppartmentBinding.bind(view)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -62,6 +66,7 @@ class AddAppartmentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel.getBlocksList()
         viewModel.blocks.observe(this.viewLifecycleOwner) { i ->
             i?.let {
