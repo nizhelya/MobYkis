@@ -10,8 +10,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AppartmentAdapter @Inject constructor():
+class AppartmentAdapter @Inject constructor( val appartmentListener: AppartmentListener):
     BaseAdapter<AppartmentEntity, AppartmentAdapter.AppartmentViewHolder>(AppartmentDiffCallback()) {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,19 +22,21 @@ class AppartmentAdapter @Inject constructor():
         return AppartmentViewHolder(binding)
     }
 
-    class AppartmentViewHolder(val binding:ItemAppartmentListBinding) : BaseAdapter.BaseViewHolder(binding.root) {
-        init {
-//            binding.btnRemoveAppartment.setOnClickListener {
-//                onClick?.onClick(item, it)
-//            }
-        }
+    override fun onBindViewHolder(holder: AppartmentViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+        val appartment = getItem(position)
+        holder.bindItem(appartmentListener)
+        holder.idText.text = appartment.addressId.toString()
+        holder.addressText.text = appartment.address
+    }
 
-        override fun onBind(item: Any) {
-            (item as? AppartmentEntity)?.let {
-                binding.idText.text = item.addressId.toString()
-                binding.addressText.text = item.address
-            }
+
+    class AppartmentViewHolder(val binding:ItemAppartmentListBinding) : BaseAdapter.BaseViewHolder(binding.root) {
+        fun bindItem(clickListener: AppartmentListener, appartment: AppartmentEntity) {
+            binding.clickListener = clickListener
         }
+    }
+
     }
     class AppartmentDiffCallback : DiffUtil.ItemCallback<AppartmentEntity>() {
 
@@ -51,4 +54,7 @@ class AppartmentAdapter @Inject constructor():
             return oldItem == newItem
         }
     }
+}
+class AppartmentListener(val clickListener: (appartment: AppartmentEntity) -> Unit) {
+    fun onClick(appartment: AppartmentEntity) = clickListener(appartment)
 }

@@ -37,7 +37,7 @@ class AppartmentListFragment : BaseFragment<FragmentListAppartmentBinding>() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getAppartmentsByUser()
         viewModel.getFamily(6314)
-        viewModel.appartment.observe(this.viewLifecycleOwner){i->
+        viewModel.appartments.observe(this.viewLifecycleOwner){i->
             i?.let {
                 viewAdapter.submitList(it)
                 checkIsEmptyRecycleView(it)

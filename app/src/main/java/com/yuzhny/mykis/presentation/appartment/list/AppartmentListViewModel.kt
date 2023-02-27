@@ -21,8 +21,11 @@ class AppartmentListViewModel @Inject constructor(
     private val getFamilyFromFlat: GetFamilyFromFlat
 ) : BaseViewModel() {
 
-    private val _appartment = MutableLiveData<List<AppartmentEntity>>()
-    val appartment: LiveData<List<AppartmentEntity>> get() = _appartment
+    private val _appartment = MutableLiveData<AppartmentEntity>()
+    val appartment: LiveData<AppartmentEntity> get() = _appartment
+
+    private val _appartments = MutableLiveData<List<AppartmentEntity>>()
+    val appartments: LiveData<List<AppartmentEntity>> get() = _appartments
 
     private val _address = MutableLiveData<List<AddressEntity>>()
     val address: LiveData<List<AddressEntity>> get() = _address
@@ -49,9 +52,11 @@ class AppartmentListViewModel @Inject constructor(
         }
     }
 
-
+    fun getAppartment(appartment:AppartmentEntity){
+        _appartment.value = appartment
+    }
     private fun handleAppartments(appartments: List<AppartmentEntity>, fromCache: Boolean) {
-        _appartment.value = appartments
+        _appartments.value = appartments
         updateProgress(false)
 
         if (fromCache) {

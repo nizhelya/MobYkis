@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_appartmentFragment_to_appartmentDetailFragment"
             app:destination="@id/appartmentDetailFragment" />
-        <argument
-            android:name="item_id"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/addAppartmentFragment"
@@ -35,7 +32,7 @@
         android:label="fragment_appartment_detail"
         tools:layout="@layout/fragment_appartment_detail" >
         <argument
-            android:name="item_id"
+            android:name="address_id"
             app:argType="integer" />
     </fragment>
 

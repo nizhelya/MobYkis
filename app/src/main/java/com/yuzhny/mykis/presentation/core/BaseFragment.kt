@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.presentation.core
 
+import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,5 +31,10 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         _binding = getViewBinding(view)
     }
     abstract fun getViewBinding(view: View): VB
+
+    protected fun setOnItemClickListener(func: (Any?, View) -> Unit) {
+        viewAdapter.setOnClick(func)
+    }
+
 
 }
