@@ -1,6 +1,5 @@
 package com.yuzhny.mykis.presentation.core
 
-import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.viewbinding.ViewBinding
 import com.yuzhny.mykis.domain.type.Failure
 import javax.inject.Inject
 
+/*
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     var _binding: VB? = null
@@ -37,4 +37,4 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     }
 
 
-}
+}*/

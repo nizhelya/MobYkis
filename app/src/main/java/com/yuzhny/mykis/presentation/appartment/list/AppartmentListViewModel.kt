@@ -17,12 +17,11 @@ import javax.inject.Inject
 @HiltViewModel
 class AppartmentListViewModel @Inject constructor(
     private val repository: AppartmentCache,
-    private val getAppartmentsUseCase: GetAppartments,
-    private val getFamilyFromFlat: GetFamilyFromFlat
+    private val getAppartmentsUseCase: GetAppartments
 ) : BaseViewModel() {
 
-    private val _appartment = MutableLiveData<AppartmentEntity>()
-    val appartment: LiveData<AppartmentEntity> get() = _appartment
+    private var _appartment :AppartmentEntity = AppartmentEntity()
+    val appartment: AppartmentEntity get() = _appartment
 
     private val _appartments = MutableLiveData<List<AppartmentEntity>>()
     val appartments: LiveData<List<AppartmentEntity>> get() = _appartments
@@ -30,8 +29,7 @@ class AppartmentListViewModel @Inject constructor(
     private val _address = MutableLiveData<List<AddressEntity>>()
     val address: LiveData<List<AddressEntity>> get() = _address
 
-    private val _family = MutableLiveData<List<FamilyEntity>>()
-    val family: LiveData<List<FamilyEntity>> get() = _family
+
 
     fun getAppartmentsByUser(needFetch: Boolean = false) {
         getAppartmentsUseCase(needFetch) { it ->
@@ -42,18 +40,9 @@ class AppartmentListViewModel @Inject constructor(
             }
         }
     }
-    fun getFamily(addressId:Int , needFetch: Boolean = false) {
-        getFamilyFromFlat(FamilyBooleanInt(addressId = addressId , needFetch = needFetch)) { it ->
-            it.either(::handleFailure) {
-                handleFamily(
-                    it, !needFetch ,addressId
-                )
-            }
-        }
-    }
 
-    fun getAppartment(appartment:AppartmentEntity){
-        _appartment.value = appartment
+    fun getAppartment(appartmentEntity: AppartmentEntity){
+        _appartment = appartmentEntity
     }
     private fun handleAppartments(appartments: List<AppartmentEntity>, fromCache: Boolean) {
         _appartments.value = appartments
@@ -64,15 +53,7 @@ class AppartmentListViewModel @Inject constructor(
             getAppartmentsByUser(true)
         }
     }
-    private fun handleFamily(families: List<FamilyEntity>, fromCache: Boolean , addressId: Int) {
-        _family.value = families
-        updateProgress(false)
 
-        if (fromCache) {
-            updateProgress(true)
-            getFamily(addressId, true)
-        }
-    }
 
     override fun onCleared() {
         super.onCleared()

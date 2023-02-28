@@ -5,13 +5,18 @@
 
     <data>
         <variable
+            name="data"
+            type="com.yuzhny.mykis.domain.appartment.AppartmentEntity" />
+        <variable
             name="clickListener"
             type="com.yuzhny.mykis.presentation.appartment.list.AppartmentListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(data)}"
+        >
 
         <LinearLayout
             android:id="@+id/linear"
@@ -21,7 +26,6 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp"
-            android:onClick=""
             >
 
             <TextView

@@ -4,31 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.TranslateAnimation
 import android.widget.AdapterView
-import android.widget.BaseAdapter
 import android.widget.Toast
-import android.widget.Toast.makeText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
-import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
 import com.yuzhny.mykis.domain.address.AddressEntity
-import com.yuzhny.mykis.domain.type.Failure
 import com.yuzhny.mykis.presentation.appartment.add.adapter.BlockArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.FlatArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.HouseArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.StreetArrayAdapter
-import com.yuzhny.mykis.presentation.core.BaseFragment
-import com.yuzhny.mykis.presentation.core.ext.onFailure
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
-class AddAppartmentFragment : BaseFragment<FragmentAddAppartmentBinding>() {
+class AddAppartmentFragment : Fragment()
+{
+    private var _binding: FragmentAddAppartmentBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: AddAppartmentViewModel by activityViewModels()
 
@@ -49,7 +43,7 @@ class AddAppartmentFragment : BaseFragment<FragmentAddAppartmentBinding>() {
     @Inject
     lateinit var flatAdapter: FlatArrayAdapter
 
-    override fun getViewBinding(view: View): FragmentAddAppartmentBinding = FragmentAddAppartmentBinding.bind(view)
+//    override fun getViewBinding(view: View): FragmentAddAppartmentBinding = FragmentAddAppartmentBinding.bind(view)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

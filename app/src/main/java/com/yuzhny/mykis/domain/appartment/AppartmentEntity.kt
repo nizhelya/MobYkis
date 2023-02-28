@@ -7,11 +7,11 @@ import com.squareup.moshi.Json
 
 @Entity(tableName = "appartment")
 data class AppartmentEntity(
-    val id: Int,
+    val id: Int = 0,
 
     @Json(name = "user_id")
     @ColumnInfo(name = "user_id")
-    val userId: Int,
+    val userId: Int = 0,
 
     @PrimaryKey(autoGenerate = false)
     @Json(name = "address_id")
