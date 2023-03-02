@@ -2,6 +2,7 @@ package com.yuzhny.mykis.di
 
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -128,5 +129,7 @@ object AppModule {
     ):FamilyRepository {
         return FamilyRepositoryImpl(familyCache , familyRemote, userCache )
     }
+
+
 
 }

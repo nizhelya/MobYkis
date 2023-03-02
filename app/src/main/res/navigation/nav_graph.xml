@@ -28,9 +28,9 @@
     </fragment>
     <fragment
         android:id="@+id/appartmentDetailFragment"
-        android:name="com.yuzhny.mykis.presentation.appartment.detail.AppartmentDetailFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.detail.FamilyListFragment"
         android:label="fragment_appartment_detail"
-        tools:layout="@layout/fragment_appartment_detail" >
+        tools:layout="@layout/fragment_family_list" >
         <argument
             android:name="address_id"
             app:argType="integer" />

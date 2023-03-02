@@ -4,12 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.domain.address.*
-import com.yuzhny.mykis.domain.appartment.GetAppartments
-import com.yuzhny.mykis.domain.family.request.GetFamilyFromFlat
+import com.yuzhny.mykis.domain.address.request.*
 import com.yuzhny.mykis.domain.type.None
 import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.SplittableRandom
 import javax.inject.Inject
 
 @HiltViewModel
@@ -107,5 +105,13 @@ class AddAppartmentViewModel @Inject constructor(
         _flats.value =listOf()
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        getBlocks.unsubscribe()
+        getStreetsFromBlock.unsubscribe()
+        getHousesFromStreet.unsubscribe()
+        getFlatsFromHouse.unsubscribe()
+        addFlatByUser.unsubscribe()
+    }
 
 }

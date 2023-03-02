@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -27,9 +29,8 @@ class AppartmentListFragment : Fragment()
     @Inject
     lateinit var viewAdapter: AppartmentListAdapter
 
-    private val viewModel: AppartmentListViewModel by viewModels()
+    private val viewModel: AppartmentListViewModel by activityViewModels()
 
-//    override fun getViewBinding(view: View): FragmentListAppartmentBinding = FragmentListAppartmentBinding.bind(view)
 
 
 
@@ -52,9 +53,11 @@ class AppartmentListFragment : Fragment()
             }
         }
         viewAdapter.appartmentListener.onItemClick = {
+            viewModel.getAppartment(it)
+//            Toast.makeText(requireContext() , it.addressId.toString(), Toast.LENGTH_LONG ).show()
             findNavController().navigate(AppartmentListFragmentDirections
                 .actionAppartmentFragmentToAppartmentDetailFragment(it.addressId))
-            viewModel.getAppartment(it)
+
         }
         binding.recyclerView.adapter = viewAdapter
         binding.addPlantFab.setOnClickListener {

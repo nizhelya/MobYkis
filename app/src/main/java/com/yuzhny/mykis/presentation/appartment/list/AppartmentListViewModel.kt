@@ -4,12 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.domain.address.AddressEntity
-import com.yuzhny.mykis.domain.address.GetBlocks
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
-import com.yuzhny.mykis.domain.appartment.GetAppartments
-import com.yuzhny.mykis.domain.family.FamilyEntity
-import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
-import com.yuzhny.mykis.domain.family.request.GetFamilyFromFlat
+import com.yuzhny.mykis.domain.appartment.request.GetAppartments
 import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -20,8 +16,8 @@ class AppartmentListViewModel @Inject constructor(
     private val getAppartmentsUseCase: GetAppartments
 ) : BaseViewModel() {
 
-    private var _appartment :AppartmentEntity = AppartmentEntity()
-    val appartment: AppartmentEntity get() = _appartment
+    private val _appartment = MutableLiveData<AppartmentEntity>()
+    val appartment: LiveData<AppartmentEntity> get() = _appartment
 
     private val _appartments = MutableLiveData<List<AppartmentEntity>>()
     val appartments: LiveData<List<AppartmentEntity>> get() = _appartments
@@ -29,7 +25,7 @@ class AppartmentListViewModel @Inject constructor(
     private val _address = MutableLiveData<List<AddressEntity>>()
     val address: LiveData<List<AddressEntity>> get() = _address
 
-
+    var app = AppartmentEntity()
 
     fun getAppartmentsByUser(needFetch: Boolean = false) {
         getAppartmentsUseCase(needFetch) { it ->
@@ -42,7 +38,7 @@ class AppartmentListViewModel @Inject constructor(
     }
 
     fun getAppartment(appartmentEntity: AppartmentEntity){
-        _appartment = appartmentEntity
+        _appartment.value = appartmentEntity
     }
     private fun handleAppartments(appartments: List<AppartmentEntity>, fromCache: Boolean) {
         _appartments.value = appartments

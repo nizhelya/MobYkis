@@ -2,7 +2,6 @@ package com.yuzhny.mykis.presentation.appartment.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
 import com.yuzhny.mykis.domain.family.request.GetFamilyFromFlat
@@ -11,7 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AppartmentDetailViewModel @Inject constructor(
+class FamilyListViewModel @Inject constructor(
     private val getFamilyFromFlat: GetFamilyFromFlat
 ) : BaseViewModel(){
     private val _family = MutableLiveData<List<FamilyEntity>>()
