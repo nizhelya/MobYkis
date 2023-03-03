@@ -13,8 +13,10 @@
         <entry key="app/src/main/res/layout/drop_down_item.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/fragment_add_appartment.xml" value="0.536" />
         <entry key="app/src/main/res/layout/fragment_appartment_detail.xml" value="0.3151041666666667" />
+        <entry key="app/src/main/res/layout/fragment_family_list.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/fragment_list_appartment.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/item_appartment_list.xml" value="0.22760416666666666" />
+        <entry key="app/src/main/res/layout/item_family_list.xml" value="0.6" />
       </map>
     </option>
   </component>

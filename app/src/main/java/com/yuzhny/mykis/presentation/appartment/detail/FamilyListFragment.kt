@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.yuzhny.mykis.databinding.FragmentFamilyListBinding
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FamilyListFragment  : Fragment() {
@@ -19,6 +20,9 @@ class FamilyListFragment  : Fragment() {
 
     private var _binding : FragmentFamilyListBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var familyAdapter: FamilyListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -34,10 +38,14 @@ class FamilyListFragment  : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         listViewModel.appartment.observe(this.viewLifecycleOwner){
-            binding.testText.text = it.address
-            binding.testTextAddressId.text = it.addressId.toString()
             Toast.makeText(requireContext() , it.addressId.toString(), Toast.LENGTH_LONG ).show()
             familyViewModel.getFamily(it.addressId)
         }
+        familyViewModel.family.observe(this.viewLifecycleOwner){
+            i -> i?.let {
+                familyAdapter.submitList(it)
+            }
+        }
+        binding.recyclerView.adapter = familyAdapter
     }
 }

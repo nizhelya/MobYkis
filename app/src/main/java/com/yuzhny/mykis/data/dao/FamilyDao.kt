@@ -11,6 +11,6 @@ import com.yuzhny.mykis.domain.family.FamilyEntity
 interface FamilyDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertFamily(appartment:List<FamilyEntity>)
-    @Query("select * from family")
-    fun getFamilyFromFlat(): List<FamilyEntity>
+    @Query("select * from family where address_id = :addressId")
+    fun getFamilyFromFlat(addressId:Int): List<FamilyEntity>
 }

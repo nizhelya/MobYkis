@@ -13,21 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <!--    tools:context=".presentation.appartment.detail.FamilyListFragment"-->
-
-        <TextView
-            android:id="@+id/test_text"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/test_text_address_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="123"
-            app:layout_constraintStart_toStartOf="@id/test_text"
-            app:layout_constraintTop_toBottomOf="@id/test_text" />
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_family_list"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

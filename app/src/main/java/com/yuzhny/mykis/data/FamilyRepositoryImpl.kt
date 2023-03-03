@@ -19,7 +19,7 @@ class FamilyRepositoryImpl (
                     familyRemote.getFamilyFromFlat(params.addressId , it.userId , it.token)
                 }else {
                     Either.Right(
-                        familyCache.getFamilyFromFlat()
+                        familyCache.getFamilyFromFlat(params.addressId)
                     )
                 }
             }

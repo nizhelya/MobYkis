@@ -11,25 +11,29 @@ data class FamilyEntity(
     @PrimaryKey(autoGenerate = false)
     @Json(name = "rec_id")
     @ColumnInfo(name = "rec_id")
-    var recId :Int ,
+    val recId :Int ,
     @Json(name = "address_id")
     @ColumnInfo(name = "address_id")
-    var addressId :Int = 0 ,
-    var address :String = "Unknown" ,
-    var rodstvo :String = "Unknown" ,
+    val addressId :Int = 0 ,
+    val address :String = "Unknown" ,
+    val rodstvo :String = "Unknown" ,
     @Json(name = "firstname")
     @ColumnInfo(name = "firstname")
-    var fistname :String = "Unknown",
+    val fistname :String = "Unknown",
     @Json(name = "lastname")
     @ColumnInfo(name = "lastname")
-    var lastname :String = "Unknown" ,
+    val lastname :String = "Unknown" ,
     @Json(name = "surname")
     @ColumnInfo(name = "surname")
-    var surname :String = "Unknown" ,
+    val surname :String = "Unknown" ,
 
-    var born :String ="Unknown",
+    val born :String ="Unknown",
 
-    var sex:String = "Unknown" ,
+    val sex:String = "Unknown" ,
 
-    var phone:String = "Unknown"
+    var phone:String = "Unknown" ,
+
+    var isExpandable : Boolean = false
+
+
 )
