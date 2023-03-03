@@ -16,5 +16,7 @@
     <string name="no_data_subtitle">Додайте свою квартиру</string>
     <string name="incorrect_code">Неправельний код</string>
     <string name="born_text">Дата народження:</string>
+    <string name="relationship_text">Родинність:</string>
+    <string name="sex_text">Стать:</string>
     <string name="next">Продовжити</string>
 </resources>

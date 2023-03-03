@@ -38,7 +38,6 @@ class FamilyListFragment  : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         listViewModel.appartment.observe(this.viewLifecycleOwner){
-            Toast.makeText(requireContext() , it.addressId.toString(), Toast.LENGTH_LONG ).show()
             familyViewModel.getFamily(it.addressId)
         }
         familyViewModel.family.observe(this.viewLifecycleOwner){
