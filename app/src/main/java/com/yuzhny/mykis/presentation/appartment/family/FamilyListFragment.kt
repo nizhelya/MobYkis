@@ -1,10 +1,9 @@
-package com.yuzhny.mykis.presentation.appartment.detail
+package com.yuzhny.mykis.presentation.appartment.family
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.yuzhny.mykis.databinding.FragmentFamilyListBinding
@@ -12,7 +11,7 @@ import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class FamilyListFragment  : Fragment() {
 
     private val familyViewModel : FamilyListViewModel by activityViewModels()
@@ -21,8 +20,8 @@ class FamilyListFragment  : Fragment() {
     private var _binding : FragmentFamilyListBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var familyAdapter: FamilyListAdapter
+//    @Inject
+    val familyAdapter: FamilyListAdapter = FamilyListAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

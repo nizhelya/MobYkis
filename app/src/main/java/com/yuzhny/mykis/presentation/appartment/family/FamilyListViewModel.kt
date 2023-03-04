@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.presentation.appartment.detail
+package com.yuzhny.mykis.presentation.appartment.family
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

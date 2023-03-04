@@ -59,7 +59,7 @@ class AppartmentListFragment : BaseFragment()
             appartmentListViewModel.getAppartment(it)
 //            Toast.makeText(requireContext() , it.addressId.toString(), Toast.LENGTH_LONG ).show()
             findNavController().navigate(AppartmentListFragmentDirections
-                .actionAppartmentFragmentToAppartmentDetailFragment(it.addressId))
+                .actionAppartmentFragmentToViewPagerFragment(it.addressId))
 
         }
         binding.recyclerView.adapter = viewAdapter

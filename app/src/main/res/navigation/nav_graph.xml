@@ -14,8 +14,8 @@
             android:id="@+id/action_appartmentFragment_to_addAppartmentFragment"
             app:destination="@id/addAppartmentFragment" />
         <action
-            android:id="@+id/action_appartmentFragment_to_appartmentDetailFragment"
-            app:destination="@id/appartmentDetailFragment" />
+            android:id="@+id/action_appartmentFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/addAppartmentFragment"
@@ -27,10 +27,9 @@
             app:destination="@id/appartmentFragment" />
     </fragment>
     <fragment
-        android:id="@+id/appartmentDetailFragment"
-        android:name="com.yuzhny.mykis.presentation.appartment.detail.FamilyListFragment"
-        android:label="fragment_appartment_detail"
-        tools:layout="@layout/fragment_family_list" >
+        android:id="@+id/viewPagerFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.detail.ViewPagerFragment"
+        android:label="ViewPagerFragment" >
         <argument
             android:name="address_id"
             app:argType="integer" />

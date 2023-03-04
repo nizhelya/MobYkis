@@ -1,18 +1,14 @@
-package com.yuzhny.mykis.presentation.appartment.detail
+package com.yuzhny.mykis.presentation.appartment.family
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.yuzhny.mykis.R
-import com.yuzhny.mykis.databinding.ItemAppartmentListBinding
 import com.yuzhny.mykis.databinding.ItemFamilyListBinding
-import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
-import com.yuzhny.mykis.presentation.appartment.list.AppartmentListAdapter
 import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 
@@ -27,12 +23,15 @@ class FamilyListAdapter @Inject constructor() : ListAdapter<FamilyEntity, Family
 
     override fun onBindViewHolder(holder: FamilyViewHolder, position: Int) {
         val family = getItem(position)
-        holder.binding.surname.text = family.surname
-        holder.binding.fistname.text = family.fistname
-        holder.binding.lastname.text = family.lastname
-        holder.binding.born.text = family.born
-        holder.binding.relationship.text = family.rodstvo
-        holder.binding.sex.text = family.sex
+        holder.binding.apply {
+            surname.text = family.surname
+            fistname.text = family.fistname
+            lastname.text = family.lastname
+            born.text = family.born
+            relationship.text = family.rodstvo
+            sex.text = family.sex
+            phone.text = family.phone
+        }
 
         val isExpandable: Boolean = family.isExpandable
          if (isExpandable){
@@ -43,7 +42,7 @@ class FamilyListAdapter @Inject constructor() : ListAdapter<FamilyEntity, Family
              holder.binding.viewOpen.setImageResource(R.drawable.ic_expand_more)
          }
 
-        holder.binding.constraintLayout.setOnClickListener {
+        holder.binding.cardView.setOnClickListener {
             family.isExpandable = !family.isExpandable
             notifyItemChanged(position , Unit)
         }

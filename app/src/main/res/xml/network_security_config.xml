@@ -11,7 +11,11 @@
     <domain-config cleartextTrafficPermitted="true">
 
 <!--        <domain includeSubdomains="true">192.168.88.243</domain>-->
+<<<<<<< HEAD
         <domain includeSubdomains="true">192.168.0.177</domain>
+=======
+        <domain includeSubdomains="true">192.168.0.105</domain>
+>>>>>>> 041d007f3eaecab124d82d657ff62f768f93fede
     </domain-config>
     <debug-overrides>
         <trust-anchors>

@@ -33,7 +33,8 @@ data class FamilyEntity(
 
     var phone:String = "Unknown" ,
 
-    var isExpandable : Boolean = false
+    var isExpandable : Boolean = false,
 
+    val subsidia : Byte = 0
 
 )
