@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:strokeColor="@color/cardview_light_background"
@@ -16,10 +16,12 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +80,8 @@
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="born,born_text,
             relationship_text,relationship,
-            sex,sex_text"/>
+            sex,sex_text,
+            phone,phone_text"/>
         <TextView
             android:id="@+id/born_text"
             android:layout_width="0dp"
@@ -87,16 +90,17 @@
             android:text="@string/born_text"
             android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout2"
             />
         <TextView
             android:id="@+id/born"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_bold"
-            android:padding="8dp"
+            android:padding="2dp"
             app:layout_constraintStart_toEndOf="@id/born_text"
             app:layout_constraintTop_toTopOf="@id/born_text"
+            app:layout_constraintBottom_toBottomOf="@id/born_text"
             tools:text="25/05/2006"/>
         <TextView
             android:id="@+id/sex_text"
@@ -116,14 +120,15 @@
             android:padding="8dp"
             app:layout_constraintStart_toEndOf="@id/sex_text"
             app:layout_constraintTop_toTopOf="@id/sex_text"
+            app:layout_constraintBottom_toBottomOf="@id/sex_text"
             tools:text="М"/>
         <TextView
             android:id="@+id/relationship_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:fontFamily="@font/signika_negative_light"
             android:text="@string/relationship_text"
-            android:padding="8dp"
             app:layout_constraintStart_toStartOf="@id/sex_text"
             app:layout_constraintTop_toBottomOf="@id/sex_text"
             />
@@ -132,9 +137,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_bold"
-            android:padding="8dp"
             app:layout_constraintStart_toEndOf="@id/relationship_text"
             app:layout_constraintTop_toTopOf="@id/relationship_text"
+            app:layout_constraintBottom_toBottomOf="@id/relationship_text"
             tools:text="Cин"/>
+        <TextView
+            android:id="@+id/phone_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:fontFamily="@font/signika_negative_light"
+            android:text="@string/phone_text"
+            app:layout_constraintStart_toStartOf="@id/relationship_text"
+            app:layout_constraintTop_toBottomOf="@id/relationship_text"
+            />
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            app:layout_constraintStart_toEndOf="@id/phone_text"
+            app:layout_constraintTop_toTopOf="@id/phone_text"
+            app:layout_constraintBottom_toBottomOf="@id/phone_text"
+            tools:text="+380634742842"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

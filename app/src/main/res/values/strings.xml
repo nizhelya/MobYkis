@@ -4,6 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="code_hint">Секретний код</string>
     <string name="list_appartment">Перелік квартир</string>
+    <string name="list_family">Склад сім\'ї</string>
+    <string name="bti">БТІ</string>
     <string name="add_appartment">Додати квартиру</string>
     <string name="pick_block">Район</string>
     <string name="pick_street">Вулиця</string>
@@ -18,5 +20,6 @@
     <string name="born_text">Дата народження:</string>
     <string name="relationship_text">Родинність:</string>
     <string name="sex_text">Стать:</string>
+    <string name="phone_text">Номер телефона:</string>
     <string name="next">Продовжити</string>
 </resources>

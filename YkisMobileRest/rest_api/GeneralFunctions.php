@@ -267,7 +267,8 @@ class GeneralFunctionsClass
                  'lastname'=>$row['lastname'],
                  'born'=>$row['born'],
                  'sex'=>$row['sex'],
-                 'phone'=>$row['phone']
+                 'phone'=>$row['phone'],
+                 'subsidia'=>$row['subsidia']
             );
 
             array_push($families, $family);
