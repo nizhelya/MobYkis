@@ -145,4 +145,4 @@ data class AppartmentEntity(
     @ColumnInfo(name = "data_in")
     val data_in: String = "Unknown"
 
-    )
+)

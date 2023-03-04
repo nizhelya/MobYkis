@@ -4,32 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
-import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
-import com.yuzhny.mykis.domain.family.FamilyEntity
-import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
+import com.yuzhny.mykis.presentation.core.BaseFragment
+import com.yuzhny.mykis.presentation.core.ext.onFailure
+import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AppartmentListFragment : Fragment()
+class AppartmentListFragment : BaseFragment()
 {
     private var _binding : FragmentListAppartmentBinding? = null
     private val binding get() = _binding!!
     @Inject
     lateinit var viewAdapter: AppartmentListAdapter
 
-    private val viewModel: AppartmentListViewModel by activityViewModels()
+    val  appartmentListViewModel: AppartmentListViewModel by activityViewModels()
 
 
 
@@ -38,6 +32,10 @@ class AppartmentListFragment : Fragment()
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View{
+        appartmentListViewModel.apply {
+            onSuccess(appartments, ::handleAppartment)
+            onFailure(failureData, ::handleFailure)
+        }
        _binding = FragmentListAppartmentBinding.inflate(inflater,container,false)
         binding.recyclerView.adapter = viewAdapter
         return binding.root
@@ -45,15 +43,20 @@ class AppartmentListFragment : Fragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getAppartmentsByUser()
-        viewModel.appartments.observe(this.viewLifecycleOwner){i->
+        appartmentListViewModel.getAppartmentsByUser()
+
+
+        appartmentListViewModel.appartments.observe(this.viewLifecycleOwner){i->
             i?.let {
                 viewAdapter.submitList(it)
                 checkIsEmptyRecycleView(it)
             }
         }
+
+
+
         viewAdapter.appartmentListener.onItemClick = {
-            viewModel.getAppartment(it)
+            appartmentListViewModel.getAppartment(it)
 //            Toast.makeText(requireContext() , it.addressId.toString(), Toast.LENGTH_LONG ).show()
             findNavController().navigate(AppartmentListFragmentDirections
                 .actionAppartmentFragmentToAppartmentDetailFragment(it.addressId))
@@ -64,7 +67,13 @@ class AppartmentListFragment : Fragment()
             findNavController().navigate(R.id.action_appartmentFragment_to_addAppartmentFragment)
         }
     }
+    private fun handleAppartment(appartmentEntity:  List<AppartmentEntity>?) {
+        if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {
+            viewAdapter.submitList(appartmentEntity)
+            checkIsEmptyRecycleView(appartmentEntity)
 
+        }
+    }
     private fun checkIsEmptyRecycleView(addressEntity: List<AppartmentEntity>){
         if(addressEntity.isNullOrEmpty()){
             binding.noDataImage.visibility = View.VISIBLE
