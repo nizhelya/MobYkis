@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
@@ -16,10 +17,13 @@ import com.yuzhny.mykis.presentation.appartment.add.adapter.BlockArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.FlatArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.HouseArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.add.adapter.StreetArrayAdapter
+import com.yuzhny.mykis.presentation.core.BaseFragment
+import com.yuzhny.mykis.presentation.core.ext.onFailure
+import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import javax.inject.Inject
 
 
-class AddAppartmentFragment : Fragment()
+class AddAppartmentFragment : BaseFragment()
 {
     private var _binding: FragmentAddAppartmentBinding? = null
     private val binding get() = _binding!!
@@ -54,6 +58,9 @@ class AddAppartmentFragment : Fragment()
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel.apply {
+            onFailure(failureData, ::handleFailure)
+        }
         _binding = FragmentAddAppartmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -196,6 +203,7 @@ class AddAppartmentFragment : Fragment()
     private fun checkSecretCode(secretCode: String, userSecretCode: String, addressId: Int) {
         if (secretCode == userSecretCode) {
             viewModel.addFlat(addressId)
+            findNavController().navigate(R.id.action_addAppartmentFragment_to_appartmentFragment)
         } else Toast.makeText(requireContext(), getString(R.string.incorrect_code), Toast.LENGTH_LONG).show()
 
     }

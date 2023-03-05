@@ -35,6 +35,8 @@ data class FamilyEntity(
 
     var isExpandable : Boolean = false,
 
-    val subsidia : Byte = 0
+    val subsidia : Byte = 0 ,
+
+    val vkl :Byte = 0
 
 )

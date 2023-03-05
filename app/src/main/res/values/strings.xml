@@ -21,10 +21,13 @@
     <string name="relationship_text">Родинність:</string>
     <string name="sex_text">Стать:</string>
     <string name="phone_text">Номер телефона:</string>
+    <string name="subsidia_text">Субсидія:</string>
+    <string name="vkl_text">Вкл:</string>
     <string name="next">Продовжити</string>
 //error
-    <string name="error_network">Нет сетевого подключения.</string>
-    <string name="error_server">Ошибка сервера.</string>
+    <string name="error_network">Нет сетевого подключения</string>
+    <string name="error_flat_in_db">Ви вже додали цю квартиру</string>
+    <string name="error_server">Ошибка сервера</string>
     <string name="error_email_already_exist">Email уже существует.</string>
     <string name="error_password_mismatch">Пароли не совпадают.</string>
     <string name="error_auth">Неправильный email или пароль.</string>

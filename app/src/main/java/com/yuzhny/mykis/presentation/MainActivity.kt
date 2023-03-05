@@ -1,13 +1,18 @@
 package com.yuzhny.mykis.presentation
 
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.data.cache.database.AppDatabase
+import com.yuzhny.mykis.databinding.ActivityMainBinding
+import com.yuzhny.mykis.databinding.FragmentFamilyListBinding
 import com.yuzhny.mykis.presentation.core.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -16,8 +21,7 @@ import javax.inject.Inject
 class MainActivity : BaseActivity(){
 
 
-   private lateinit var navController: NavController
-
+    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,4 +34,5 @@ class MainActivity : BaseActivity(){
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
 }

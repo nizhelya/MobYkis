@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.yuzhny.mykis.databinding.FragmentFamilyListBinding
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
+import com.yuzhny.mykis.presentation.core.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 //@AndroidEntryPoint
-class FamilyListFragment  : Fragment() {
+class FamilyListFragment  : BaseFragment() {
 
     private val familyViewModel : FamilyListViewModel by activityViewModels()
     private val listViewModel : AppartmentListViewModel by activityViewModels()

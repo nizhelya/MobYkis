@@ -23,7 +23,7 @@ class AppartmentListFragment : BaseFragment()
     @Inject
     lateinit var viewAdapter: AppartmentListAdapter
 
-    val  appartmentListViewModel: AppartmentListViewModel by activityViewModels()
+    private val  appartmentListViewModel: AppartmentListViewModel by activityViewModels()
 
 
 

@@ -37,7 +37,7 @@ fun <T : BaseResponse> Response<T>.isSucceed(): Boolean {
 fun <T : BaseResponse> Response<T>.parseError(): Failure {
     val message = (body() as BaseResponse).message
     return when (message) {
-        "Ви вже додали цю квартиру" -> Failure.FlatAlreadyInDataBase
+        "You have already added this apartment" -> Failure.FlatAlreadyInDataBase
         "there is a user has this email",
         "email already exists" -> Failure.EmailAlreadyExistError
         "error in email or password" -> Failure.AuthError

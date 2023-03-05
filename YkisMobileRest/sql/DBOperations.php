@@ -71,7 +71,7 @@ class DBOperations {
   //family
   public function getFamilyFromFlat($address_id){
     $com = new DbConnect();
-    $sql = 'SELECT t1.* , (case when t1.`subsidia` = "да" then TRUE else FALSE end) as subsidia FROM YISGRAND.FAMALY as t1 WHERE t1.address_id = '.$address_id.' ORDER BY t1.surname  , t1.firstname ';
+    $sql = 'SELECT t1.* , (case when t1.`subsidia` = "да" then TRUE else FALSE end) as subsidia ,  (case when t1.`vkl` = "да" then TRUE else FALSE end) as vkl , (case when t1.`sex` = "Men" then "Чоловік" when t1.`sex` = "Women" then "Жінка" else "" end) as sex FROM YISGRAND.FAMALY as t1 WHERE t1.address_id = '.$address_id.' ORDER BY t1.surname  , t1.firstname ';
 
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
