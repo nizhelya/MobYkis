@@ -38,6 +38,7 @@ fun <T : BaseResponse> Response<T>.parseError(): Failure {
     val message = (body() as BaseResponse).message
     return when (message) {
         "You have already added this apartment" -> Failure.FlatAlreadyInDataBase
+        "Incorrect code"-> Failure.IncorrectCode
         "there is a user has this email",
         "email already exists" -> Failure.EmailAlreadyExistError
         "error in email or password" -> Failure.AuthError

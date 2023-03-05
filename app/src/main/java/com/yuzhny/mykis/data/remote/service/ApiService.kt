@@ -13,11 +13,11 @@ interface ApiService {
     companion object{
 //        const val SERVER_URL = "https://is.yuzhny.com/YkisMobileRest"
 //        const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
-//        const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
+        const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
 
 //        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
 
-        const val SERVER_URL = "http://192.168.0.105/MobYkis/YkisMobileRest"
+//        const val SERVER_URL = "http://192.168.0.105/MobYkis/YkisMobileRest"
 
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_APPARTMENTS = "getAppartmentsById.php"
@@ -29,11 +29,13 @@ interface ApiService {
         const val GET_FLATS="getFlatsFromHouse.php"
         const val ADD_FLAT_BY_USER="addMyFlatByUser.php"
         const val GET_FAMILY="getFamilyFromFlat.php"
+        const val CHECK_ADD_FLAT="checkAddFlat.php"
         const val PARAM_ADDRESS_ID = "address_id"
         const val PARAM_USER_ID = "user_id"
         const val STREET_ID = "street_id"
         const val HOUSE_ID = "house_id"
         const val ADDRESS_ID = "address_id"
+        const val KOD = "kod"
         const val BLOCK_ID = "raion_id"
         const val PARAM_TOKEN = "token"
 
@@ -62,4 +64,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(GET_FAMILY)
     fun getFamilyFromFlat(@FieldMap params :Map<String , String> ):Call<GetFamilyResponse>
+    @FormUrlEncoded
+    @POST(CHECK_ADD_FLAT)
+    fun checkCode(@FieldMap params :Map<String , String> ):Call<GetAddressResponse>
 }

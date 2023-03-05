@@ -76,4 +76,19 @@ class DBOperations {
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
   }
+
+  public function checkAddFlat($address_id , $kod){
+    $com = new DbConnect();
+    $sql = 'SELECT COUNT(t1.address_id) as success FROM YIS.APPARTMENT as t1  WHERE t1.address_id = '.$address_id.' and t1.kod = "'.$kod.'" ';
+
+    $result = mysqli_query($com->getDb(), $sql);
+    return $result;
+  }
+
+   public function deleteFlatByUser($address_id , $user_id){
+    $com = new DbConnect();
+    $sql = 'DELETE FROM  YISGRAND.MYFLAT as t1 WHERE t1.address_id = '.$address_id.'  and t1.user_id = '.$user_id.' ';
+    mysqli_query( $com->getDb(), $sql);
+    return $result;
+  }
 }

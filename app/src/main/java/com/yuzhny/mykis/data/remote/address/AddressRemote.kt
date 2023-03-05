@@ -10,4 +10,5 @@ interface AddressRemote {
     fun getHousesFromStreet(streetId:Int , blockId:Int, userId:Int, token: String): Either<Failure, List<AddressEntity>>
     fun getFlatsFromHouse(houseId:Int, userId:Int, token: String): Either<Failure, List<AddressEntity>>
     fun addFlatsByUser(addressId:Int , userId: Int , token: String): Either<Failure ,GetAddressResponse>
+    fun checkCode(kod:String , addressId:Int , userId: Int ,  token: String): Either<Failure ,GetAddressResponse>
 }

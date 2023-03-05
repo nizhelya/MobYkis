@@ -1,6 +1,6 @@
 package com.yuzhny.mykis.data.remote.core
 
 open class BaseResponse(
-    val success:Int,
+    var success:Int,
     val message: String
 )

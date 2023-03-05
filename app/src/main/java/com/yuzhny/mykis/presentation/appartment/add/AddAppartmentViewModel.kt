@@ -16,7 +16,8 @@ class AddAppartmentViewModel @Inject constructor(
     private val getStreetsFromBlock: GetStreetsFromBlock,
     private val getHousesFromStreet: GetHousesFromStreet,
     private val getFlatsFromHouse: GetFlatsFromHouse,
-    private val addFlatByUser: AddFlatByUser
+    private val addFlatByUser: AddFlatByUser ,
+    private val checkCodeUseCase : CheckCode ,
     ):BaseViewModel() {
 
 
@@ -36,6 +37,10 @@ class AddAppartmentViewModel @Inject constructor(
     private val _resultText = MutableLiveData<GetAddressResponse>()
     val resultText: LiveData<GetAddressResponse> = _resultText
 
+    private val _checkText = MutableLiveData<GetAddressResponse>()
+    val checkText: LiveData<GetAddressResponse> = _checkText
+
+
 
 
     fun getBlocksList(){
@@ -44,6 +49,16 @@ class AddAppartmentViewModel @Inject constructor(
                 handle(
                     it,
                     _blocks
+                )
+            }
+        }
+    }
+    fun checkCode(kod : String , addressId: Int){
+        checkCodeUseCase(FlatCode(kod = kod , addressId = addressId)){ it ->
+            it.either(::handleFailure) {
+                handleResultText(
+                    it,
+                    _checkText
                 )
             }
         }
@@ -84,7 +99,8 @@ class AddAppartmentViewModel @Inject constructor(
             it.either(::handleFailure){
 
                 handleResultText(
-                    it
+                    it,
+                    _resultText
                 )
             }
         }
@@ -92,8 +108,8 @@ class AddAppartmentViewModel @Inject constructor(
     private fun handle(address: List<AddressEntity> , liveData : MutableLiveData<List<AddressEntity>> ){
             liveData.value = address
     }
-    private fun handleResultText(result:GetAddressResponse){
-        _resultText.value = result
+    private fun handleResultText(result:GetAddressResponse , liveData: MutableLiveData<GetAddressResponse>){
+        liveData.value = result
     }
     fun clearLiveData(){
         _houses.value = listOf()
@@ -112,6 +128,7 @@ class AddAppartmentViewModel @Inject constructor(
         getHousesFromStreet.unsubscribe()
         getFlatsFromHouse.unsubscribe()
         addFlatByUser.unsubscribe()
+        checkCodeUseCase.unsubscribe()
     }
 
 }

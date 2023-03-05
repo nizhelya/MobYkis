@@ -28,7 +28,6 @@ class FlatArrayAdapter  @Inject constructor(@ApplicationContext context: Context
         val view = LayoutInflater.from(context).inflate(R.layout.drop_down_item , parent,false)
         view.item_address.text = address!!.flat
         view.item_id.text = address.flatId.toString()
-        view.code_address.text = address.secretCode.toString()
         return view
     }
 }

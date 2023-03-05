@@ -41,5 +41,10 @@ class AddressRepositoryImpl(
             .flatMap { return@flatMap remote.addFlatsByUser(addressId, it.userId, it.token) }
     }
 
+    override fun checkCode(kod: String, addressId: Int): Either<Failure, GetAddressResponse> {
+        return userCache.getCurrentUser()
+            .flatMap { return@flatMap remote.checkCode(kod , addressId , it.userId , it.token) }
+    }
+
 
 }

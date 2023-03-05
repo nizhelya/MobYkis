@@ -16,17 +16,19 @@
     <string name="flat">Квартира</string>
     <string name="no_data_title">Нема записів</string>
     <string name="no_data_subtitle">Додайте свою квартиру</string>
-    <string name="incorrect_code">Неправельний код</string>
+
     <string name="born_text">Дата народження:</string>
     <string name="relationship_text">Родинність:</string>
     <string name="sex_text">Стать:</string>
     <string name="phone_text">Номер телефона:</string>
     <string name="subsidia_text">Субсидія:</string>
-    <string name="vkl_text">Вкл:</string>
+    <string name="vkl_text">Прописаний:</string>
+    <string name="ots_text">Відсутній:</string>
     <string name="next">Продовжити</string>
 //error
     <string name="error_network">Нет сетевого подключения</string>
     <string name="error_flat_in_db">Ви вже додали цю квартиру</string>
+    <string name="error_incorrect_code">Неправильний код</string>
     <string name="error_server">Ошибка сервера</string>
     <string name="error_email_already_exist">Email уже существует.</string>
     <string name="error_password_mismatch">Пароли не совпадают.</string>

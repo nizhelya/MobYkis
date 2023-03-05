@@ -17,7 +17,5 @@ data class AddressEntity(
     @Json(name = "address_id")
     val flatId:Int=0,
     @Json(name = "address")
-    val flat:String="Unknown",
-    @Json(name = "kod")
-    val secretCode :Long = 0
+    val flat:String="Unknown"
 )

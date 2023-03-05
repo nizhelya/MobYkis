@@ -2,6 +2,7 @@ package com.yuzhny.mykis.data.remote.address
 
 import com.yuzhny.mykis.data.remote.core.Request
 import com.yuzhny.mykis.data.remote.service.ApiService
+import com.yuzhny.mykis.data.remote.service.ApiService.Companion.KOD
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
@@ -102,6 +103,26 @@ class AddressRemoteImpl @Inject constructor(
 
     }
 
+    override fun checkCode(
+        kod: String,
+        addressId: Int,
+        userId: Int,
+        token: String
+    ): Either<Failure, GetAddressResponse> {
+        return  request.make(
+            service.checkCode(
+                createCheckCodeMap(
+                    kod,
+                    addressId,
+                    userId,
+                    token
+                )
+            )
+        ){
+           it
+        }
+    }
+
 
     private fun createGetBlocksMap(userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
@@ -132,6 +153,14 @@ class AddressRemoteImpl @Inject constructor(
     }
     private fun createAddFlatsMap(addressId: Int,userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
+        map.put(ApiService.ADDRESS_ID, addressId.toString())
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
+        map.put(ApiService.PARAM_TOKEN, token)
+        return map
+    }
+    private fun createCheckCodeMap(kod:String ,addressId: Int,userId: Int, token: String): Map<String, String> {
+        val map = HashMap<String, String>()
+        map.put(ApiService.KOD , kod)
         map.put(ApiService.ADDRESS_ID, addressId.toString())
         map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)

@@ -276,4 +276,45 @@ class GeneralFunctionsClass
         }
         return $families;
     }
+     public function checkAddFlat($resultCheck)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        //print_r($resultFlats);
+        while ($row = mysqli_fetch_array($resultCheck)) {
+            if($row['success'] == 0){
+               $mes = "Incorrect code";
+            } else {
+                $mes = "Success";
+            }
+             $result = array(
+                 'success'=>$row['success'],
+                 'message'=>$mes
+            );
+
+            array_push($results, $result);
+//             print_r($results);
+        }
+        return $results;
+    } public function deleteFlatByUSer($resultCheck)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        print_r($resultCheck;
+//         while ($row = mysqli_fetch_array($resultCheck)) {
+//             if($row['success'] == 1){
+//                $mes = "Success";
+//             } else {
+//                 $mes = "Flat is not deleted";
+//             }
+//              $result = array(
+//                  'success'=>$row['success'],
+//                  'message'=>$mes
+//             );
+//
+//             array_push($results, $result);
+// //             print_r($results);
+        }
+        return $results;
+    }
 }

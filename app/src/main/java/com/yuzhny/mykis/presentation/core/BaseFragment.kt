@@ -13,6 +13,7 @@ abstract class BaseFragment : Fragment() {
  private val binding get() = _binding!!
  open fun handleFailure(failure: Failure?) {
   when (failure) {
+   is Failure.IncorrectCode -> showMessage(getString(R.string.error_incorrect_code))
    is Failure.FlatAlreadyInDataBase -> showMessage(getString(R.string.error_flat_in_db))
    is Failure.NetworkConnectionError -> showMessage(getString(R.string.error_network))
    is Failure.ServerError -> showMessage(getString(R.string.error_server))

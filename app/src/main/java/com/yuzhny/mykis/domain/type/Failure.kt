@@ -18,6 +18,7 @@ sealed class Failure {
     object ContactNotFoundError : Failure()
 
     object FlatAlreadyInDataBase : Failure()
+    object IncorrectCode : Failure()
 
     object NoSavedAccountsError : Failure()
 
