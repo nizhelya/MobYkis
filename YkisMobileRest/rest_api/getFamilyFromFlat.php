@@ -20,7 +20,7 @@ if (isset($_POST['address_id']) && !empty($_POST['address_id']) &&
         echo json_encode($response);
 } else {
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing getFamilyFromFlat";
+    $response["message"] = "Required field(s) is missing";
      $response["family"] = array();
     echo json_encode($response);
 }

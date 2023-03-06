@@ -19,7 +19,7 @@ if (isset($_POST['raion_id']) && !empty($_POST['raion_id']) && isset($_POST['use
         echo json_encode($response);
 } else {
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing getStreetsFromBlock";
+    $response["message"] = "Required field(s) is missing";
     echo json_encode($response);
 }
 

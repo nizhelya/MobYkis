@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.data.remote.appartment
 
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.core.Request
 import com.yuzhny.mykis.data.remote.service.ApiService
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
@@ -30,8 +31,33 @@ class AppartmentRemoteImpl @Inject constructor(
         }
     }
 
+    override fun deleteFlatByUser(
+        addressId: Int,
+        userId: Int,
+        token: String
+    ): Either<Failure, GetSimpleResponse> {
+        return request.make(
+            service.deleteFlatByUser(
+                createDeleteFlatByUserMap(
+                    addressId,
+                    userId,
+                    token
+                )
+            )
+        ){
+            it
+        }
+    }
+
     private fun createGetAppartmentsByUserMap(userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
+        map.put(ApiService.PARAM_TOKEN, token)
+        return map
+    }
+    private fun createDeleteFlatByUserMap(addressId:Int , userId: Int, token: String): Map<String, String> {
+        val map = HashMap<String, String>()
+        map.put(ApiService.PARAM_ADDRESS_ID , addressId.toString())
         map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)
         return map

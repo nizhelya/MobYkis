@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.domain.address.request
 
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.interactor.UseCase
@@ -9,6 +10,6 @@ import javax.inject.Inject
 
 class AddFlatByUser @Inject constructor(
     private val addressRepository: AddressRepository
-) : UseCase<GetAddressResponse, Int>() {
-    override suspend fun run(params:Int): Either<Failure, GetAddressResponse> = addressRepository.addFlatByUser(params)
+) : UseCase<GetSimpleResponse, Int>() {
+    override suspend fun run(params:Int): Either<Failure, GetSimpleResponse> = addressRepository.addFlatByUser(params)
 }

@@ -9,21 +9,14 @@ import com.yuzhny.mykis.domain.type.Failure
 
 
 abstract class BaseFragment : Fragment() {
- private var _binding : ActivityMainBinding? = null
- private val binding get() = _binding!!
  open fun handleFailure(failure: Failure?) {
   when (failure) {
+   is Failure.MissingFields -> showMessage(getString(R.string.error_missing_fields))
+   is Failure.FailDeleteFlat -> showMessage(getString(R.string.error_delete_flat))
    is Failure.IncorrectCode -> showMessage(getString(R.string.error_incorrect_code))
    is Failure.FlatAlreadyInDataBase -> showMessage(getString(R.string.error_flat_in_db))
    is Failure.NetworkConnectionError -> showMessage(getString(R.string.error_network))
    is Failure.ServerError -> showMessage(getString(R.string.error_server))
-   is Failure.EmailAlreadyExistError -> showMessage(getString(R.string.error_email_already_exist))
-   is Failure.AuthError -> showMessage(getString(R.string.error_auth))
-//   is Failure.TokenError -> navigator.showLogin(this)
-   is Failure.AlreadyFriendError -> showMessage(getString(R.string.error_already_friend))
-   is Failure.AlreadyRequestedFriendError -> showMessage(getString(R.string.error_already_requested_friend))
-   is Failure.FilePickError -> showMessage(getString(R.string.error_picking_file))
-   is Failure.EmailNotRegisteredError -> showMessage(getString(R.string.email_not_registered))
    is Failure.CantSendEmailError -> showMessage(getString(R.string.error_cant_send_email))
   }
  }

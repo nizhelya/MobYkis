@@ -1,6 +1,7 @@
 package com.yuzhny.mykis.data
 
 import com.yuzhny.mykis.data.cache.user.UserCache
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.AddressRemote
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.domain.address.AddressEntity
@@ -36,12 +37,12 @@ class AddressRepositoryImpl(
             .flatMap { return@flatMap remote.getFlatsFromHouse(houseId , it.userId ,it.token) }
     }
 
-    override fun addFlatByUser(addressId: Int): Either<Failure, GetAddressResponse> {
+    override fun addFlatByUser(addressId: Int): Either<Failure, GetSimpleResponse> {
         return userCache.getCurrentUser()
             .flatMap { return@flatMap remote.addFlatsByUser(addressId, it.userId, it.token) }
     }
 
-    override fun checkCode(kod: String, addressId: Int): Either<Failure, GetAddressResponse> {
+    override fun checkCode(kod: String, addressId: Int): Either<Failure, GetSimpleResponse> {
         return userCache.getCurrentUser()
             .flatMap { return@flatMap remote.checkCode(kod , addressId , it.userId , it.token) }
     }

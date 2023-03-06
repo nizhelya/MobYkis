@@ -19,7 +19,7 @@ if (isset($_POST['house_id']) && !empty($_POST['house_id']) && isset($_POST['use
         echo json_encode($response);
 } else {
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing getFlatsFromHouse";
+    $response["message"] = "Required field(s) is missing";
     echo json_encode($response);
 }
 

@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.data.remote.service
 
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.data.remote.family.GetFamilyResponse
@@ -22,7 +23,7 @@ interface ApiService {
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_APPARTMENTS = "getAppartmentsById.php"
         const val GET_MY_FLAT="getAppartmentsByUser.php"
-        const val DELETE_APPARTMENT = "deleteAppartment.php"
+        const val DELETE_FLAT = "deleteFlatByUser.php"
         const val GET_BLOCKS="getBlocks.php"
         const val GET_STREETS="getStreetsFromBlock.php"
         const val GET_HOUSES="getHousesFromStreet.php"
@@ -60,11 +61,14 @@ interface ApiService {
     fun getFlatsFromHouse(@FieldMap params :Map<String , String> ):Call<GetAddressResponse>
     @FormUrlEncoded
     @POST(ADD_FLAT_BY_USER)
-    fun addFlatsByUser(@FieldMap params :Map<String , String> ):Call<GetAddressResponse>
+    fun addFlatsByUser(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
     @FormUrlEncoded
     @POST(GET_FAMILY)
     fun getFamilyFromFlat(@FieldMap params :Map<String , String> ):Call<GetFamilyResponse>
     @FormUrlEncoded
     @POST(CHECK_ADD_FLAT)
-    fun checkCode(@FieldMap params :Map<String , String> ):Call<GetAddressResponse>
+    fun checkCode(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
+    @FormUrlEncoded
+    @POST(DELETE_FLAT)
+    fun deleteFlatByUser(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
 }

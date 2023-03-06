@@ -37,17 +37,13 @@ fun <T : BaseResponse> Response<T>.isSucceed(): Boolean {
 fun <T : BaseResponse> Response<T>.parseError(): Failure {
     val message = (body() as BaseResponse).message
     return when (message) {
+        "Failed to delete apartment" -> Failure.FailDeleteFlat
         "You have already added this apartment" -> Failure.FlatAlreadyInDataBase
+        "You have already added this apartment" -> Failure.FlatAlreadyInDataBase
+        "Required field(s) is missing"-> Failure.MissingFields
         "Incorrect code"-> Failure.IncorrectCode
         "there is a user has this email",
-        "email already exists" -> Failure.EmailAlreadyExistError
-        "error in email or password" -> Failure.AuthError
         "Token is invalid" -> Failure.TokenError
-        "this contact is already in your friends list" -> Failure.AlreadyFriendError
-        "already found in your friend requests",
-        "you requested adding this friend before" -> Failure.AlreadyRequestedFriendError
-        "No Contact has this email" -> Failure.ContactNotFoundError
-        " this email is not registered before" -> Failure.EmailNotRegisteredError
         "can't send email to you" -> Failure.CantSendEmailError
         else -> Failure.ServerError
     }

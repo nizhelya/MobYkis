@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.data.remote.address
 
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.core.Request
 import com.yuzhny.mykis.data.remote.service.ApiService
 import com.yuzhny.mykis.data.remote.service.ApiService.Companion.KOD
@@ -87,7 +88,7 @@ class AddressRemoteImpl @Inject constructor(
         }
     }
 
-    override fun addFlatsByUser(addressId: Int, userId: Int, token: String) :Either<Failure , GetAddressResponse>{
+    override fun addFlatsByUser(addressId: Int, userId: Int, token: String) :Either<Failure , GetSimpleResponse>{
         return request.make(
             service.addFlatsByUser(
                 createAddFlatsMap(
@@ -108,7 +109,7 @@ class AddressRemoteImpl @Inject constructor(
         addressId: Int,
         userId: Int,
         token: String
-    ): Either<Failure, GetAddressResponse> {
+    ): Either<Failure, GetSimpleResponse> {
         return  request.make(
             service.checkCode(
                 createCheckCodeMap(

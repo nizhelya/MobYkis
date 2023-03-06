@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.presentation.viewmodel
+package com.yuzhny.mykis.presentation.core
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

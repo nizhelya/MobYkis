@@ -87,8 +87,8 @@ class DBOperations {
 
    public function deleteFlatByUser($address_id , $user_id){
     $com = new DbConnect();
-    $sql = 'DELETE FROM  YISGRAND.MYFLAT as t1 WHERE t1.address_id = '.$address_id.'  and t1.user_id = '.$user_id.' ';
+    $sql = 'DELETE FROM  YISGRAND.MYFLAT WHERE address_id = '.$address_id.'  and user_id = '.$user_id.' ';
     mysqli_query( $com->getDb(), $sql);
-    return $result;
+    return $com->getDb();
   }
 }

@@ -19,11 +19,10 @@ if (isset($_POST['user_id']) &&
         $results = $generalFunctionsObject->addFlatByUser($result);
         $response["success"] = $results[0]["success"];
         $response["message"] = $results[0]["message"];
-        $response["address"] = array();
         echo json_encode($response);
 } else {
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing getStreetsFromBlock";
+    $response["message"] = "Required field(s) is missing";
     $response["address"] = array();
     echo json_encode($response);
 }

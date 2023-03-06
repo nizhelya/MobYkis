@@ -2,11 +2,11 @@ package com.yuzhny.mykis.presentation.appartment.add
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.yuzhny.mykis.data.remote.address.GetAddressResponse
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.domain.address.*
 import com.yuzhny.mykis.domain.address.request.*
 import com.yuzhny.mykis.domain.type.None
-import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
+import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ class AddAppartmentViewModel @Inject constructor(
     private val getFlatsFromHouse: GetFlatsFromHouse,
     private val addFlatByUser: AddFlatByUser ,
     private val checkCodeUseCase : CheckCode ,
-    ):BaseViewModel() {
+    ): BaseViewModel() {
 
 
 
@@ -34,11 +34,11 @@ class AddAppartmentViewModel @Inject constructor(
     private val _flats = MutableLiveData<List<AddressEntity>>()
     val flats: LiveData<List<AddressEntity>> = _flats
 
-    private val _resultText = MutableLiveData<GetAddressResponse>()
-    val resultText: LiveData<GetAddressResponse> = _resultText
+    private val _resultText = MutableLiveData<GetSimpleResponse>()
+    val resultText: LiveData<GetSimpleResponse> = _resultText
 
-    private val _checkText = MutableLiveData<GetAddressResponse>()
-    val checkText: LiveData<GetAddressResponse> = _checkText
+    private val _checkText = MutableLiveData<GetSimpleResponse>()
+    val checkText: LiveData<GetSimpleResponse> = _checkText
 
 
 
@@ -108,7 +108,7 @@ class AddAppartmentViewModel @Inject constructor(
     private fun handle(address: List<AddressEntity> , liveData : MutableLiveData<List<AddressEntity>> ){
             liveData.value = address
     }
-    private fun handleResultText(result:GetAddressResponse , liveData: MutableLiveData<GetAddressResponse>){
+    private fun handleResultText(result: GetSimpleResponse, liveData: MutableLiveData<GetSimpleResponse>){
         liveData.value = result
     }
     fun clearLiveData(){

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
 import com.yuzhny.mykis.domain.family.request.GetFamilyFromFlat
-import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
+import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

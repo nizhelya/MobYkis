@@ -3,17 +3,19 @@ package com.yuzhny.mykis.presentation.appartment.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
+import com.yuzhny.mykis.domain.appartment.request.DeleteFlatByUser
 import com.yuzhny.mykis.domain.appartment.request.GetAppartments
-import com.yuzhny.mykis.presentation.viewmodel.BaseViewModel
+import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class AppartmentListViewModel @Inject constructor(
-    private val repository: AppartmentCache,
-    private val getAppartmentsUseCase: GetAppartments
+    private val getAppartmentsUseCase: GetAppartments,
+    private val deleteFlatByUser: DeleteFlatByUser
 ) : BaseViewModel() {
 
     private val _appartment = MutableLiveData<AppartmentEntity>()
@@ -25,8 +27,18 @@ class AppartmentListViewModel @Inject constructor(
     private val _address = MutableLiveData<List<AddressEntity>>()
     val address: LiveData<List<AddressEntity>> get() = _address
 
-    var app = AppartmentEntity()
+    private val _resultText = MutableLiveData<GetSimpleResponse>()
+    val resultText: LiveData<GetSimpleResponse> = _resultText
 
+    fun deleteFlat(addressId:Int){
+        deleteFlatByUser(addressId){
+            it -> it.either(::handleFailure){
+                    handleResultText(
+                        it , _resultText
+                    )
+            }
+        }
+    }
     fun getAppartmentsByUser(needFetch: Boolean = false) {
         getAppartmentsUseCase(needFetch) { it ->
             it.either(::handleFailure) {
@@ -50,7 +62,9 @@ class AppartmentListViewModel @Inject constructor(
         }
     }
 
-
+    private fun handleResultText(result: GetSimpleResponse, liveData: MutableLiveData<GetSimpleResponse>){
+        liveData.value = result
+    }
     override fun onCleared() {
         super.onCleared()
         getAppartmentsUseCase.unsubscribe()

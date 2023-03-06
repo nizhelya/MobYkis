@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.yuzhny.mykis.R
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.databinding.FragmentAddAppartmentBinding
 import com.yuzhny.mykis.domain.address.AddressEntity
@@ -200,16 +201,17 @@ class AddAppartmentFragment : BaseFragment()
             }
         }
     }
-    private fun handleResultText(getAddressResponse: GetAddressResponse?) {
-        getAddressResponse?.let {
+    private fun handleResultText(getSimpleResponse: GetSimpleResponse?) {
+        getSimpleResponse?.let {
             if(it.success == 1){
                 it.success = 0
+                Toast.makeText(requireContext() , getString(R.string.success_add_flat) , Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_addAppartmentFragment_to_appartmentFragment)
             }
         }
     }
-    private fun handleCheckText(getAddressResponse: GetAddressResponse?) {
-        getAddressResponse?.let {
+    private fun handleCheckText(getSimpleResponse: GetSimpleResponse?) {
+        getSimpleResponse?.let {
             if(it.success == 1) {
                 it.success = 0
                 addAppartmentViewModel.addFlat(selectedFlat)

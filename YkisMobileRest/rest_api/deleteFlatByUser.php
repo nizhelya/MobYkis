@@ -1,4 +1,4 @@
-<?php
+ <?php
 $response = array();
 
 include_once "GeneralFunctions.php";
@@ -13,19 +13,23 @@ if (isset($_POST['user_id']) &&
     $user_id = $_POST['user_id'];
     $token = $_POST['token'];
     $dbOperationsObject = new DBOperations();
-    $generalFunctionsObject = new GeneralFunctionsClass();
+//     $generalFunctionsObject = new GeneralFunctionsClass();
 
         $result = $dbOperationsObject->deleteFlatByUser($address_id , $user_id);
-        $results = $generalFunctionsObject->deleteFlatByUser($result);
-        $response["success"] = $results[0]["success"];
-        $response["message"] = $results[0]["message"];
-        $response["address"] = array();
+//         $results = $generalFunctionsObject->deleteFlatByUser($result);
+        if(mysqli_affected_rows($result)>0){
+        $response["success"] = 1;
+        $response["message"] =  "Appartment deleted";
+        }else{
+            $response["success"] = 0;
+            $response["message"] = "Failed to delete apartment";
+        }
         echo json_encode($response);
+
 } else {
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing getStreetsFromBlock";
-    $response["address"] = array();
+    $response["message"] = "Required field(s) is missing";
     echo json_encode($response);
 }
 
-?>
+ ?>

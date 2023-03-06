@@ -6,19 +6,13 @@ package com.yuzhny.mykis.domain.type
 sealed class Failure {
     object NetworkConnectionError : Failure()
     object ServerError : Failure()
-    object AuthError : Failure()
     object TokenError : Failure()
-
-    object EmailAlreadyExistError : Failure()
-    object EmailNotRegisteredError : Failure()
     object CantSendEmailError : Failure()
-
-    object AlreadyFriendError : Failure()
-    object AlreadyRequestedFriendError : Failure()
-    object ContactNotFoundError : Failure()
 
     object FlatAlreadyInDataBase : Failure()
     object IncorrectCode : Failure()
+    object MissingFields : Failure()
+    object FailDeleteFlat: Failure()
 
     object NoSavedAccountsError : Failure()
 

@@ -22,7 +22,7 @@ if (isset($_POST['street_id']) && !empty($_POST['street_id']) &&
         echo json_encode($response);
 } else {
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing getHousesFromStreet";
+    $response["message"] = "Required field(s) is missing";
     echo json_encode($response);
 }
 
