@@ -107,9 +107,10 @@ object AppModule {
     fun provideAppartmentRepository(
         appartmentRemote: AppartmentRemote,
         userCache: UserCache,
+        familyCache: FamilyCache,
         appartmentCache: AppartmentCache
     ): AppartmentRepository {
-        return AppartmentRepositoryImpl(appartmentRemote,appartmentCache,userCache)
+        return AppartmentRepositoryImpl(appartmentRemote,appartmentCache,familyCache,userCache)
     }
 
     @Singleton
