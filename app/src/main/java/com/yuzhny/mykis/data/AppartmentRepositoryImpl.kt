@@ -40,6 +40,7 @@ class AppartmentRepositoryImpl(
                     addressIdList.add(i.addressId)
                 }
                 familyCache.deleteFamilyFromFlat(addressIdList)
+                addressIdList.clear()
             }
             .onNext {
                 it.map {
