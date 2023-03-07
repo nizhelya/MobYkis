@@ -269,7 +269,13 @@ class GeneralFunctionsClass
                  'sex'=>$row['sex'],
                  'phone'=>$row['phone'],
                  'subsidia'=>$row['subsidia'],
-                 'vkl'=>$row['vkl']
+                 'vkl'=>$row['vkl'],
+                 'inn'=>$row['inn'],
+                 'document'=>$row['document'],
+                 'seria'=>$row['seria'],
+                 'nomer'=>$row['nomer'],
+                 'datav'=>$row['datav'],
+                 'organ'=>$row['organ']
             );
 
             array_push($families, $family);

@@ -37,6 +37,18 @@ data class FamilyEntity(
 
     val subsidia : Byte = 0 ,
 
-    val vkl :Byte = 0
+    val vkl :Byte = 0 ,
+
+    val inn :String  = "Unknown",
+
+    val document :String  = "Unknown",
+
+    val seria :String = "Unknown",
+
+    val nomer : String = "Unknown",
+
+    val datav : String? = "Unknown",
+
+    val organ :String = "Unknown"
 
 )

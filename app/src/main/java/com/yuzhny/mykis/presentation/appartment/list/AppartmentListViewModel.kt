@@ -68,5 +68,6 @@ class AppartmentListViewModel @Inject constructor(
     override fun onCleared() {
         super.onCleared()
         getAppartmentsUseCase.unsubscribe()
+        deleteFlatByUser.unsubscribe()
     }
 }

@@ -24,6 +24,17 @@
     <string name="subsidia_text">Субсидія:</string>
     <string name="vkl_text">Прописаний:</string>
     <string name="ots_text">Відсутній:</string>
+    <string name="inn_text">РНОКПП:</string>
+    <string name="card_text">Статутні документи</string>
+    <string name="doc_text">Документ:</string>
+    <string name="seria_text">Серія:</string>
+    <string name="number_text">Номер:</string>
+    <string name="date_issue_text">Дата видачі:</string>
+    <string name="issued_text">Виданий:</string>
+    <string name="desc_delete">Ви дійсно бажаєте видалити\n %s зі списку ваших квартир? Додати її заново можно за допомогою секретного кода</string>
+    <string name="title_delete">Видалити квартиру?</string>
+    <string name="back">Назад</string>
+    <string name="delete">Видалити</string>
     <string name="next">Продовжити</string>
 //error
     <string name="error_network">Немає доступу до Інтернету \n Перевірте підключення</string>

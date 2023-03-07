@@ -37,44 +37,86 @@ class FamilyListAdapter @Inject constructor() : ListAdapter<FamilyEntity, Family
             relationship.text = family.rodstvo
             sex.text = family.sex
             phone.text = family.phone
+            inn.text = family.inn
+            doc.text = family.document
+            seria.text = family.seria
+            number.text = family.nomer
+            dateIssued.text = family.datav
+            issued.text = family.organ
             subsidia.isChecked = trueOrFalse(family.subsidia)
             vkl.isChecked = trueOrFalse(family.vkl)
             hideIfEmpty(family.sex , linearSex )
             hideIfEmpty(family.rodstvo , linearRelationship)
             hideIfEmpty(family.phone ,linearPhone)
+            hideIfEmpty(family.inn ,linearInn)
+            hideIfEmpty(family.document ,linearDoc)
+            hideIfEmpty(family.seria ,linearSeria)
+            hideIfEmpty(family.nomer ,linearNumber)
+            hideIfEmpty(family.datav , linearDate)
+            hideIfEmpty(family.organ ,linearIssued)
         }
 
 
 
         val isExpandable: Boolean = family.isExpandable
          if (isExpandable){
-             holder.binding.sex.visibility = View.VISIBLE
-             holder.binding.sexText.visibility = View.VISIBLE
-             holder.binding.born.visibility = View.VISIBLE
-             holder.binding.bornText.visibility = View.VISIBLE
-             holder.binding.relationship.visibility = View.VISIBLE
-             holder.binding.relationshipText.visibility = View.VISIBLE
-             holder.binding.phone.visibility = View.VISIBLE
-             holder.binding.phoneText.visibility = View.VISIBLE
-             holder.binding.subsidia.visibility = View.VISIBLE
-             holder.binding.subsidiaText.visibility = View.VISIBLE
-             holder.binding.vkl.visibility = View.VISIBLE
-             holder.binding.vklText.visibility = View.VISIBLE
-             holder.binding.viewOpen.setImageResource(R.drawable.ic_expand_less)
+             holder.binding.apply {
+                 sex.visibility = View.VISIBLE
+                 sexText.visibility = View.VISIBLE
+                 born.visibility = View.VISIBLE
+                 bornText.visibility = View.VISIBLE
+                 relationship.visibility = View.VISIBLE
+                 relationshipText.visibility = View.VISIBLE
+                 phone.visibility = View.VISIBLE
+                 phoneText.visibility = View.VISIBLE
+                 subsidia.visibility = View.VISIBLE
+                 subsidiaText.visibility = View.VISIBLE
+                 vkl.visibility = View.VISIBLE
+                 vklText.visibility = View.VISIBLE
+                 cardText.visibility = View.VISIBLE
+                 innText.visibility = View.VISIBLE
+                 inn.visibility = View.VISIBLE
+                 docText.visibility = View.VISIBLE
+                 doc.visibility = View.VISIBLE
+                 seriaText.visibility = View.VISIBLE
+                 seria.visibility = View.VISIBLE
+                 number.visibility = View.VISIBLE
+                 numberText.visibility = View.VISIBLE
+                 dateText.visibility = View.VISIBLE
+                 dateIssued.visibility = View.VISIBLE
+                 issuedText.visibility = View.VISIBLE
+                 issued.visibility = View.VISIBLE
+                 viewOpen.setImageResource(R.drawable.ic_expand_less)
+             }
          }else {
-             holder.binding.sex.visibility = View.GONE
-             holder.binding.sexText.visibility = View.GONE
-             holder.binding.born.visibility = View.GONE
-             holder.binding.bornText.visibility = View.GONE
-             holder.binding.relationship.visibility = View.GONE
-             holder.binding.relationshipText.visibility = View.GONE
-             holder.binding.phone.visibility = View.GONE
-             holder.binding.phoneText.visibility = View.GONE
-             holder.binding.subsidia.visibility = View.GONE
-             holder.binding.subsidiaText.visibility = View.GONE
-             holder.binding.vklText.visibility = View.GONE
-             holder.binding.vkl.visibility = View.GONE
-             holder.binding.viewOpen.setImageResource(R.drawable.ic_expand_more)
+             holder.binding.apply {
+                 sex.visibility = View.GONE
+                 sexText.visibility = View.GONE
+                 born.visibility = View.GONE
+                 bornText.visibility = View.GONE
+                 relationship.visibility = View.GONE
+                 relationshipText.visibility = View.GONE
+                 phone.visibility = View.GONE
+                 phoneText.visibility = View.GONE
+                 subsidia.visibility = View.GONE
+                 subsidiaText.visibility = View.GONE
+                 vklText.visibility = View.GONE
+                 vkl.visibility = View.GONE
+                 cardText.visibility = View.GONE
+                 innText.visibility = View.GONE
+                 inn.visibility = View.GONE
+                 docText.visibility = View.GONE
+                 doc.visibility = View.GONE
+                 seriaText.visibility = View.GONE
+                 seria.visibility = View.GONE
+                 number.visibility = View.GONE
+                 numberText.visibility = View.GONE
+                 dateText.visibility = View.GONE
+                 dateIssued.visibility = View.GONE
+                 issuedText.visibility = View.GONE
+                 issued.visibility = View.GONE
+                 viewOpen.setImageResource(R.drawable.ic_expand_more)
+             }
          }
 
         holder.binding.cardView.setOnClickListener {

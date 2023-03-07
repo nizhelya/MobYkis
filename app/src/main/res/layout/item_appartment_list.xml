@@ -8,14 +8,18 @@
             name="data"
             type="com.yuzhny.mykis.domain.appartment.AppartmentEntity" />
         <variable
-            name="clickListener"
-            type="com.yuzhny.mykis.presentation.appartment.list.AppartmentListener" />
+            name="clickShortListener"
+            type="com.yuzhny.mykis.presentation.appartment.list.AppartmentShortListener" />
+        <variable
+            name="clickLongListener"
+            type="com.yuzhny.mykis.presentation.appartment.list.AppartmentLongListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(data)}"
+        android:onClick="@{() -> clickShortListener.onClick(data)}"
+        android:onLongClick="@{() -> clickLongListener.onLongClick(data)}"
         >
 
         <LinearLayout

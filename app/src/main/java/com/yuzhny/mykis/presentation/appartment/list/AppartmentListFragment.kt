@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
@@ -58,21 +59,20 @@ class AppartmentListFragment : BaseFragment()
 
 
 
-        viewAdapter.appartmentListener.onItemClick = {
+        viewAdapter.appartmentShortListener.onItemClick = {
             appartmentListViewModel.getAppartment(it)
-//            Toast.makeText(requireContext() , it.addressId.toString(), Toast.LENGTH_LONG ).show()
             findNavController().navigate(AppartmentListFragmentDirections
                 .actionAppartmentFragmentToViewPagerFragment(it.addressId))
 
+        }
+        viewAdapter.appartmentLongListener.onItemLongClick= {
+            showFinalScoreDialog(it.addressId , it.address)
         }
         binding.recyclerView.adapter = viewAdapter
         binding.addPlantFab.setOnClickListener {
             findNavController().navigate(R.id.action_appartmentFragment_to_addAppartmentFragment)
         }
-        binding.testButton.setOnClickListener {
-            appartmentListViewModel.deleteFlat(1)
-            appartmentListViewModel.getAppartmentsByUser(true)
-        }
+
     }
     private fun handleAppartment(appartmentEntity:  List<AppartmentEntity>?) {
         if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {
@@ -86,6 +86,7 @@ class AppartmentListFragment : BaseFragment()
             if(it.success == 1){
                 it.success = 0
                 Toast.makeText(requireContext() ,getString(R.string.success_delete_flat), Toast.LENGTH_SHORT ).show()
+                appartmentListViewModel.getAppartmentsByUser()
             }
         }
     }
@@ -99,5 +100,19 @@ class AppartmentListFragment : BaseFragment()
             binding.noDataTitle.visibility = View.GONE
             binding.noDataSubtitle.visibility = View.GONE
         }
+    }
+
+    private fun showFinalScoreDialog(addressId :Int , address:String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.title_delete))
+            .setMessage(getString((R.string.desc_delete),address))
+            .setCancelable(true)
+            .setNegativeButton(getString(R.string.back)) { _, _ ->
+            }
+            .setIcon(R.drawable.ic_delete)
+            .setPositiveButton(getString(R.string.delete)) { _, _ ->
+                appartmentListViewModel.deleteFlat(addressId)
+            }
+            .show()
     }
 }

@@ -9,9 +9,8 @@ import com.yuzhny.mykis.presentation.appartment.family.FamilyListFragment
 
 class ChildFragmentStateAdapter(fragmentManager: FragmentManager , lifecycle: Lifecycle)
     :FragmentStateAdapter(fragmentManager, lifecycle){
-    override fun getItemCount(): Int {
-        return 2
-    }
+    override fun getItemCount(): Int  =  2
+
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {

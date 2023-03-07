@@ -35,4 +35,9 @@ class FamilyListViewModel @Inject constructor(
         }
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        getFamilyFromFlat.unsubscribe()
+    }
+
 }
