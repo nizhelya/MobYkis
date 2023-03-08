@@ -22,9 +22,10 @@ import com.yuzhny.mykis.presentation.appartment.add.adapter.StreetArrayAdapter
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
+//@AndroidEntryPoint
 class AddAppartmentFragment : BaseFragment()
 {
     private var _binding: FragmentAddAppartmentBinding? = null
@@ -47,8 +48,6 @@ class AddAppartmentFragment : BaseFragment()
 
     @Inject
     lateinit var flatAdapter: FlatArrayAdapter
-
-//    override fun getViewBinding(view: View): FragmentAddAppartmentBinding = FragmentAddAppartmentBinding.bind(view)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

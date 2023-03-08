@@ -5,7 +5,6 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
     app:strokeColor="@color/cardview_light_background"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
@@ -32,7 +31,9 @@
     <LinearLayout
         android:padding="8dp"
         android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
         android:layout_height="wrap_content"
+
         android:orientation="vertical">
         <LinearLayout
         android:layout_width="match_parent"
@@ -214,6 +215,7 @@
             />
 
       <com.google.android.material.card.MaterialCardView
+          android:id="@+id/card_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="8dp"

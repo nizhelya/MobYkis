@@ -1,7 +1,6 @@
 package com.yuzhny.mykis.data.cache.family
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import com.yuzhny.mykis.data.dao.FamilyDao
+import com.yuzhny.mykis.data.cache.dao.FamilyDao
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -12,7 +12,7 @@ import com.yuzhny.mykis.presentation.core.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class FamilyListFragment  : BaseFragment() {
 
     private val familyViewModel : FamilyListViewModel by activityViewModels()
@@ -21,8 +21,9 @@ class FamilyListFragment  : BaseFragment() {
     private var _binding : FragmentFamilyListBinding? = null
     private val binding get() = _binding!!
 
-//    @Inject
-    val familyAdapter: FamilyListAdapter = FamilyListAdapter()
+    @Inject
+    lateinit var familyAdapter: FamilyListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

@@ -1,7 +1,6 @@
 package com.yuzhny.mykis.data.cache.appartment
 
-import com.yuzhny.mykis.data.dao.AppartmentDao
-import com.yuzhny.mykis.data.remote.service.ApiService
+import com.yuzhny.mykis.data.cache.dao.AppartmentDao
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 //import java.util.concurrent.Flow
 import javax.inject.Inject
