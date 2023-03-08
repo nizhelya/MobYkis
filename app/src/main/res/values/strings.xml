@@ -46,7 +46,7 @@
     <string name="error_cant_send_email">Невозможно отправить на этот email</string>
 
 //success
-    <string name="success_delete_flat">Ви видалили квартиру</string>
+    <string name="success_delete_flat">Квартира успішно видалена</string>
     <string name="success_add_flat">Ви додали квартиру</string>
 
 

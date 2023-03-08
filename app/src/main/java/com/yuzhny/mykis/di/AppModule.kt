@@ -2,11 +2,9 @@ package com.yuzhny.mykis.di
 
 
 import android.content.Context
-import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import com.yuzhny.mykis.BuildConfig
 import com.yuzhny.mykis.data.AddressRepositoryImpl
 import com.yuzhny.mykis.data.AppartmentRepositoryImpl
 import com.yuzhny.mykis.data.FamilyRepositoryImpl
@@ -14,8 +12,8 @@ import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.database.AppDatabase
 import com.yuzhny.mykis.data.cache.family.FamilyCache
 import com.yuzhny.mykis.data.cache.user.UserCache
-import com.yuzhny.mykis.data.dao.AppartmentDao
-import com.yuzhny.mykis.data.dao.FamilyDao
+import com.yuzhny.mykis.data.cache.dao.AppartmentDao
+import com.yuzhny.mykis.data.cache.dao.FamilyDao
 import com.yuzhny.mykis.data.remote.address.AddressRemote
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.family.FamilyRemote
@@ -35,7 +33,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)

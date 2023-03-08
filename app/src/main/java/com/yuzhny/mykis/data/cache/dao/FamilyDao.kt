@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.data.dao
+package com.yuzhny.mykis.data.cache.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

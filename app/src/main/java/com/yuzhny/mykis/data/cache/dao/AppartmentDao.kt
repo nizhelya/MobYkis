@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.data.dao
+package com.yuzhny.mykis.data.cache.dao
 
 import androidx.room.*
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache

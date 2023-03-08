@@ -2,8 +2,8 @@ package com.yuzhny.mykis.data.cache.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.yuzhny.mykis.data.dao.AppartmentDao
-import com.yuzhny.mykis.data.dao.FamilyDao
+import com.yuzhny.mykis.data.cache.dao.AppartmentDao
+import com.yuzhny.mykis.data.cache.dao.FamilyDao
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
 
