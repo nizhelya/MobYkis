@@ -91,7 +91,7 @@ class AppartmentListFragment : BaseFragment()
         }
     }
     private fun checkIsEmptyRecycleView(addressEntity: List<AppartmentEntity>){
-        if(addressEntity.isNullOrEmpty()){
+        if(addressEntity.isEmpty()){
             binding.noDataImage.visibility = View.VISIBLE
             binding.noDataTitle.visibility = View.VISIBLE
             binding.noDataSubtitle.visibility = View.VISIBLE

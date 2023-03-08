@@ -66,6 +66,7 @@ class GeneralFunctionsClass
                 'paused' => $rowAppartment['paused'],
                 'osmd' => $rowAppartment['osmd'],
                 'osmd_id' => $rowAppartment['osmd_id'],
+                'osbb' => $rowAppartment['osbb'],
                 'what_change' => $rowAppartment['what_change'],
 
                 'data_change' => $rowAppartment['data_change'],
@@ -149,6 +150,7 @@ class GeneralFunctionsClass
                 'paused' => $rowAppartment['paused'],
                 'osmd' => $rowAppartment['osmd'],
                 'osmd_id' => $rowAppartment['osmd_id'],
+                'osbb' => $rowAppartment['osbb'],
                 'what_change' => $rowAppartment['what_change'],
 
                 'data_change' => $rowAppartment['data_change'],

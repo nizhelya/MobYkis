@@ -8,11 +8,12 @@ import android.widget.ArrayAdapter
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.domain.address.AddressEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.FragmentScoped
 import kotlinx.android.synthetic.main.drop_down_item.view.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+@FragmentScoped
 class HouseArrayAdapter @Inject constructor(@ApplicationContext context: Context, addressList:List<AddressEntity>)
     : ArrayAdapter<AddressEntity>(context , 0 , addressList) {
     val addressSelected = addressList

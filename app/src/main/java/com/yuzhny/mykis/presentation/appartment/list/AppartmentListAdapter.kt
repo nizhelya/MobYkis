@@ -13,7 +13,7 @@ import javax.inject.Inject
 @FragmentScoped
 class AppartmentListAdapter @Inject constructor(
     val appartmentShortListener: AppartmentShortListener ,
-    val appartmentLongListener: AppartmentLongListener):
+    val appartmentLongListener: AppartmentLongListener ):
     ListAdapter<AppartmentEntity , AppartmentListAdapter.AppartmentViewHolder>(DiffCallback) {
 
         class AppartmentViewHolder (var binding: ItemAppartmentListBinding)
