@@ -107,7 +107,7 @@ class AppartmentListFragment : BaseFragment()
             .setTitle(getString(R.string.title_delete))
             .setMessage(getString((R.string.desc_delete),address))
             .setCancelable(true)
-            .setNegativeButton(getString(R.string.back)) { _, _ ->
+            .setNegativeButton(getString(R.string.cancel)) { _, _ ->
             }
             .setIcon(R.drawable.ic_delete)
             .setPositiveButton(getString(R.string.delete)) { _, _ ->

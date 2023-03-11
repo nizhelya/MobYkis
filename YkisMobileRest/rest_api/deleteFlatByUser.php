@@ -13,10 +13,8 @@ if (isset($_POST['user_id']) &&
     $user_id = $_POST['user_id'];
     $token = $_POST['token'];
     $dbOperationsObject = new DBOperations();
-//     $generalFunctionsObject = new GeneralFunctionsClass();
 
         $result = $dbOperationsObject->deleteFlatByUser($address_id , $user_id);
-//         $results = $generalFunctionsObject->deleteFlatByUser($result);
         if(mysqli_affected_rows($result)>0){
         $response["success"] = 1;
         $response["message"] =  "Appartment deleted";

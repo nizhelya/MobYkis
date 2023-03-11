@@ -1,11 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".presentation.appartment.bti.BtiFragment">
+    android:padding="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            style="@style/ExtraText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/area" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_area"
+            style="@style/CardStyleSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linear_full"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/area_full" />
+
+                    <TextView
+                        android:id="@+id/full_area"
+                        style="@style/SecondText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="75.6" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_life"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/life_text"
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/area_life" />
+
+                    <TextView
+                        android:id="@+id/life_area"
+                        style="@style/SecondText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="49.5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_extra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/extra_text"
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/area_extra" />
+
+                    <TextView
+                        android:id="@+id/extra_area"
+                        style="@style/SecondText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="11.0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_balcony"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/balcony_text"
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/balcony_text" />
+
+                    <TextView
+                        android:id="@+id/balcony_area"
+                        style="@style/SecondText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_elevator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/elevator_text"
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/elevator_text" />
+
+                    <CheckBox
+                        android:id="@+id/elevator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:clickable="false" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/ExtraText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/appartment_info" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_employer"
+            style="@style/CardStyleSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linear_employer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/nanim_text"
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/nanim"
+                        app:layout_constraintBottom_toBottomOf="@id/nanim"
+                        android:text="@string/employer_text" />
+
+                    <TextView
+                        android:id="@+id/nanim"
+                        style="@style/SecondText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Настенко Володимір Віталійович"
+                        app:layout_constraintStart_toEndOf="@id/nanim_text"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linear_owner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/fio_text"
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/fio"
+                        app:layout_constraintBottom_toBottomOf="@id/fio"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/owner_text" />
+
+                    <TextView
+                        android:id="@+id/fio"
+                        style="@style/SecondText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/fio_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:text="Настенко Володимір Віталійович" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id='@+id/phone_text'
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/phone"
+                        app:layout_constraintBottom_toBottomOf="@id/phone"
+                        android:text="@string/phone" />
+
+                    <TextView
+                        android:id="@+id/phone"
+                        style="@style/SecondText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/phone_text"
+                        app:layout_constraintEnd_toStartOf="@id/edit_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="+3805465467 , +3804539545 , +380634745434535 " />
+                    <ImageView
+                        android:id="@+id/edit_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id='@+id/email_text'
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/email"
+                        app:layout_constraintBottom_toBottomOf="@id/email"
+                        android:text="@string/email_colon" />
+
+                    <TextView
+                        android:id="@+id/email"
+                        style="@style/SecondText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/email_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="rshulik74@gmail.com " />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <TextView
+            style="@style/ExtraText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_bti" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_bti"
+        style="@style/CardStyleSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/linear_private"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/private_text"
+                style="@style/FirstText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/private_text" />
+
+            <CheckBox
+                android:id="@+id/private_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:clickable="false" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/FirstText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_order" />
+
+            <TextView
+                android:id="@+id/data_order"
+                style="@style/SecondText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="2013-12-05" />
+        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/order_text"
+                style="@style/FirstText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/order"
+                app:layout_constraintBottom_toBottomOf="@id/order"/>
+
+            <TextView
+                android:id="@+id/order"
+                style="@style/SecondText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="св.№1136 43674"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/order_text"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+
+        </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</ScrollView>

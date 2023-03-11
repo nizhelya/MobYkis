@@ -84,43 +84,49 @@ class DBOperations {
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
   }
+public function updateBti($address_id , $phone , $email ,$user_id){
+    $com = new DbConnect();
 
+    $sql = 'UPDATE YIS.APPARTMENT as t1 SET t1.email = "'.$email.'" , t1.phone = "'.$phone.'" WHERE t1.address_id = '.$address_id.' ';
+    mysqli_query( $com->getDb(), $sql);
+    return $com->getDb();
+  }
    public function deleteFlatByUser($address_id , $user_id){
     $com = new DbConnect();
     $sql = 'DELETE FROM  YISGRAND.MYFLAT WHERE address_id = '.$address_id.'  and user_id = '.$user_id.' ';
     mysqli_query( $com->getDb(), $sql);
     return $com->getDb();
   }
-  public function getAccruedByFlat($address_id ,$usluga){
-    $com = new DbConnect();
-    switch($usluga)
-      case 1 :
-    $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
-					      IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
-
-					      IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
-					      IFNULL(t1.oplacheno ,0) + IFNULL(t2.oplacheno , 0) + IFNULL(t12.oplacheno,0) + IFNULL(t13.oplacheno , 0) as oplacheno,
-					      IFNULL(t1.dolg , 0) + IFNULL(t2.dolg  , 0)+ IFNULL(t12.dolg , 0) + IFNULL(t13.dolg , 0) as dolg
-					      FROM YIS.VODA as t1
-                          LEFT JOIN YIS.STOKI as t2 USING(address_id,data)
-                          LEFT JOIN YIS.AVODA as t12 USING(address_id , data)
-                          LEFT JOIN YIS.ASTOKI as t13 USING(address_id , data)
-					       WHERE t1.address_id = 8256 ORDER BY t1.data DESC LIMIT 12; ';
-    break;
-      case 2 :
-    $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period1, IFNULL(t1.zadol , 0) as zvoda, IFNULL(t2.zadol , 0 ) as zstoki, IFNULL(t12.zadol , 0) as zavoda , IFNULL(t13.zadol, 0) as zastoki,
-					      IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
-
-					      IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
-					      IFNULL(t1.oplacheno ,0) + IFNULL(t2.oplacheno , 0) + IFNULL(t12.oplacheno,0) + IFNULL(t13.oplacheno , 0) as oplacheno,
-					      IFNULL(t1.dolg , 0) + IFNULL(t2.dolg  , 0)+ IFNULL(t12.dolg , 0) + IFNULL(t13.dolg , 0) as dolg
-					      FROM YIS.VODA as t1
-                          LEFT JOIN YIS.STOKI as t2 USING(address_id,data)
-                          LEFT JOIN YIS.AVODA as t12 USING(address_id , data)
-                          LEFT JOIN YIS.ASTOKI as t13 USING(address_id , data)
-					       WHERE t1.address_id = 8256 ORDER BY t1.data DESC LIMIT 12;';
-    break;
-    $result = mysqli_query($com->getDb(), $sql);
-    return $result;
-  }
+//   public function getAccruedByFlat($address_id ,$usluga){
+//     $com = new DbConnect();
+//     switch($usluga)
+//       case 1 :
+//     $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+// 					      IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
+//
+// 					      IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
+// 					      IFNULL(t1.oplacheno ,0) + IFNULL(t2.oplacheno , 0) + IFNULL(t12.oplacheno,0) + IFNULL(t13.oplacheno , 0) as oplacheno,
+// 					      IFNULL(t1.dolg , 0) + IFNULL(t2.dolg  , 0)+ IFNULL(t12.dolg , 0) + IFNULL(t13.dolg , 0) as dolg
+// 					      FROM YIS.VODA as t1
+//                           LEFT JOIN YIS.STOKI as t2 USING(address_id,data)
+//                           LEFT JOIN YIS.AVODA as t12 USING(address_id , data)
+//                           LEFT JOIN YIS.ASTOKI as t13 USING(address_id , data)
+// 					       WHERE t1.address_id = 8256 ORDER BY t1.data DESC LIMIT 12; ';
+//     break;
+//       case 2 :
+//     $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period1, IFNULL(t1.zadol , 0) as zvoda, IFNULL(t2.zadol , 0 ) as zstoki, IFNULL(t12.zadol , 0) as zavoda , IFNULL(t13.zadol, 0) as zastoki,
+// 					      IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
+//
+// 					      IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
+// 					      IFNULL(t1.oplacheno ,0) + IFNULL(t2.oplacheno , 0) + IFNULL(t12.oplacheno,0) + IFNULL(t13.oplacheno , 0) as oplacheno,
+// 					      IFNULL(t1.dolg , 0) + IFNULL(t2.dolg  , 0)+ IFNULL(t12.dolg , 0) + IFNULL(t13.dolg , 0) as dolg
+// 					      FROM YIS.VODA as t1
+//                           LEFT JOIN YIS.STOKI as t2 USING(address_id,data)
+//                           LEFT JOIN YIS.AVODA as t12 USING(address_id , data)
+//                           LEFT JOIN YIS.ASTOKI as t13 USING(address_id , data)
+// 					       WHERE t1.address_id = 8256 ORDER BY t1.data DESC LIMIT 12;';
+//     break;
+//     $result = mysqli_query($com->getDb(), $sql);
+//     return $result;
+//   }
 }

@@ -8,6 +8,7 @@ import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.appartment.request.DeleteFlatByUser
 import com.yuzhny.mykis.domain.appartment.request.GetAppartments
+import com.yuzhny.mykis.domain.appartment.request.UpdateBti
 import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AppartmentListViewModel @Inject constructor(
     private val getAppartmentsUseCase: GetAppartments,
-    private val deleteFlatByUser: DeleteFlatByUser
+    private val deleteFlatByUser: DeleteFlatByUser,
+    private val updateBti:UpdateBti
 ) : BaseViewModel() {
 
     private val _appartment = MutableLiveData<AppartmentEntity>()
@@ -39,6 +41,7 @@ class AppartmentListViewModel @Inject constructor(
             }
         }
     }
+
     fun getAppartmentsByUser(needFetch: Boolean = false) {
         getAppartmentsUseCase(needFetch) { it ->
             it.either(::handleFailure) {
@@ -48,7 +51,15 @@ class AppartmentListViewModel @Inject constructor(
             }
         }
     }
-
+    fun updateBti(addressId:Int , phone:String , email:String){
+        updateBti(AppartmentEntity(addressId = addressId , phone = phone , email = email)){
+                it -> it.either(::handleFailure){
+            handleResultText(
+                it , _resultText
+                )
+            }
+        }
+    }
     fun getAppartment(appartmentEntity: AppartmentEntity){
         _appartment.value = appartmentEntity
     }

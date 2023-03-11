@@ -8,4 +8,5 @@ import com.yuzhny.mykis.domain.type.Failure
 interface AppartmentRemote {
     fun getAppartmentsByUser(userId:Int, token: String): Either<Failure, List<AppartmentEntity>>
     fun deleteFlatByUser( addressId:Int,userId:Int, token: String): Either<Failure, GetSimpleResponse>
+    fun updateBti( addressId:Int , phone:String , email:String , userId: Int ,  token: String): Either<Failure , GetSimpleResponse>
 }

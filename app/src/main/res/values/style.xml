@@ -12,4 +12,40 @@
         <item name="smsp_itemSize">14sp</item>
         <item name="smsp_hintSize">14sp</item>
     </style>
+    <style name="FirstText">
+        <item name="android:fontFamily">@font/signika_negative_light</item>
+        <item name="android:padding">8dp</item>
+
+    </style>
+    <style name="SecondText">
+        <item name="android:fontFamily">@font/nunito_bold</item>
+    </style>
+    <style name="ExtraText">
+        <item name="android:fontFamily">@font/exo_italic</item>
+    </style>
+    <style name="CardStyleFirst">
+        <item name="android:layout_margin">16dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="cardMaxElevation">8dp</item>
+        <item name="cardPreventCornerOverlap">true</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="strokeColor">@color/cardview_light_background</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    <style name="CardStyleSecond">
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="cardMaxElevation">8dp</item>
+        <item name="cardPreventCornerOverlap">true</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="strokeColor">@color/cardview_light_background</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+
 </resources>

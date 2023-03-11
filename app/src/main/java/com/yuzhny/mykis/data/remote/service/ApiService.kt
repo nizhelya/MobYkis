@@ -14,7 +14,7 @@ interface ApiService {
     companion object{
 //        const val SERVER_URL = "https://is.yuzhny.com/YkisMobileRest"
 //        const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
-        const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
+          const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
 
 //        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
 
@@ -24,6 +24,7 @@ interface ApiService {
         const val GET_APPARTMENTS = "getAppartmentsById.php"
         const val GET_MY_FLAT="getAppartmentsByUser.php"
         const val DELETE_FLAT = "deleteFlatByUser.php"
+        const val UPDATE_BTI = "updateBti.php"
         const val GET_BLOCKS="getBlocks.php"
         const val GET_STREETS="getStreetsFromBlock.php"
         const val GET_HOUSES="getHousesFromStreet.php"
@@ -37,6 +38,8 @@ interface ApiService {
         const val HOUSE_ID = "house_id"
         const val ADDRESS_ID = "address_id"
         const val KOD = "kod"
+        const val PHONE = "phone"
+        const val EMAIL = "email"
         const val BLOCK_ID = "raion_id"
         const val PARAM_TOKEN = "token"
 
@@ -71,4 +74,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(DELETE_FLAT)
     fun deleteFlatByUser(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
+    @FormUrlEncoded
+    @POST(DELETE_FLAT)
+    fun updateBti(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
 }

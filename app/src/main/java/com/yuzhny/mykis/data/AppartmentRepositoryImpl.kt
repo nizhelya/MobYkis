@@ -61,4 +61,12 @@ class AppartmentRepositoryImpl(
                 )
             }
     }
+    override fun updateBti(
+        addressId: Int,
+        phone: String,
+        email: String
+    ): Either<Failure, GetSimpleResponse> {
+        return userCache.getCurrentUser()
+            .flatMap { return@flatMap appartmentRemote.updateBti(addressId , phone , email , it.userId , it.token) }
+    }
 }

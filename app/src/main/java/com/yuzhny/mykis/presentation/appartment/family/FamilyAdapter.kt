@@ -3,14 +3,12 @@ package com.yuzhny.mykis.presentation.appartment.family
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.ItemFamilyListBinding
 import com.yuzhny.mykis.domain.family.FamilyEntity
-import com.yuzhny.mykis.presentation.appartment.list.AppartmentListAdapter
 import com.yuzhny.mykis.presentation.appartment.util.hideIfEmpty
 import com.yuzhny.mykis.presentation.appartment.util.trueOrFalse
 import dagger.hilt.android.scopes.FragmentScoped
@@ -30,9 +28,7 @@ class FamilyListAdapter @Inject constructor()  : ListAdapter<FamilyEntity, Famil
     override fun onBindViewHolder(holder: FamilyViewHolder, position: Int) {
         val family = getItem(position)
         holder.binding.apply {
-            surname.text = family.surname
-            fistname.text = family.fistname
-            lastname.text = family.lastname
+            fullfio.text = "${family.surname} ${family.fistname} ${family.lastname}"
             born.text = family.born
             relationship.text = family.rodstvo
             sex.text = family.sex
@@ -45,20 +41,17 @@ class FamilyListAdapter @Inject constructor()  : ListAdapter<FamilyEntity, Famil
             issued.text = family.organ
             subsidia.isChecked = trueOrFalse(family.subsidia)
             vkl.isChecked = trueOrFalse(family.vkl)
-            hideIfEmpty(family.sex , linearSex )
-            hideIfEmpty(family.rodstvo , linearRelationship)
-            hideIfEmpty(family.phone ,linearPhone)
-            hideIfEmpty(family.inn ,linearInn)
-            hideIfEmpty(family.document ,linearDoc)
-            hideIfEmpty(family.seria ,linearSeria)
-            hideIfEmpty(family.nomer ,linearNumber)
-            hideIfEmpty(family.datav , linearDate)
-            hideIfEmpty(family.organ ,linearIssued)
+//            hideIfEmpty(family.sex , linearSex )
+//            hideIfEmpty(family.rodstvo , linearRelationship)
+//            hideIfEmpty(family.phone ,linearPhone)
+//            hideIfEmpty(family.inn ,linearInn)
+//            hideIfEmpty(family.document ,linearDoc)
+//            hideIfEmpty(family.seria ,linearSeria)
+//            hideIfEmpty(family.nomer ,linearNumber)
+//            hideIfEmpty(family.datav , linearDate)
+//            hideIfEmpty(family.organ ,linearIssued)
         }
-
-
-
-            if (family.isExpandable) {
+        if (family.isExpandable) {
                 holder.binding.apply {
                     sex.visibility = View.VISIBLE
                     sexText.visibility = View.VISIBLE

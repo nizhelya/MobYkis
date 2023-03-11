@@ -31,10 +31,35 @@
     <string name="number_text">Номер:</string>
     <string name="date_issue_text">Дата видачі:</string>
     <string name="issued_text">Виданий:</string>
-    <string name="desc_delete">Ви дійсно бажаєте видалити\n %s зі списку ваших квартир? Додати її заново можно за допомогою секретного кода</string>
+    <string name="desc_delete">Ви дійсно бажаєте видалити\n %s зі списку ваших квартир? Додати її заново можно задопомогою секретного кода</string>
     <string name="title_delete">Видалити квартиру?</string>
-    <string name="back">Назад</string>
+    <string name="cancel">Відмінити</string>
     <string name="delete">Видалити</string>
+    <string name="area">Площа квартири(м^2)</string>
+    <string name="appartment_info">Дані власника</string>
+    <string name="area_full">Корисна:</string>
+    <string name="area_life">Житлова:</string>
+    <string name="area_extra">Додаткова:</string>
+    <string name="balcony_text">Балкон:</string>
+    <string name="elevator_text">Ліфт:</string>
+    <string name="rooms">Кімнат:</string>
+    <string name="data_bti">Дані БТІ</string>
+    <string name="private_text">Приват:</string>
+    <string name="data_order">Дата ордера:</string>
+    <string name="order_text">Ордер:</string>
+    <string name="edit">Оновити</string>
+    <string name="updated">Дані оновлено</string>
+    <string name="phone">Номер телефону</string>
+    <string name="email">Email</string>
+    <string name="dialog_edit_title">Оновити контактну інформацію</string>
+<!--    <string name="">Телефон:</string>-->
+    <string name="phone_colon">Телефон:</string>
+<!--    <string name="phone">Телефон:</string>-->
+    <string name="employer_text">Гл. наймач:</string>
+    <string name="owner_text">Власник:</string>
+    <string name="empty_phone">Додайте свій номер телефону</string>
+    <string name="empty_email">Додайте свою електронну адресу</string>
+    <string name="triple_string">%s %s %s</string>
     <string name="next">Продовжити</string>
 //error
     <string name="error_network">Немає доступу до Інтернету \n Перевірте підключення</string>
@@ -50,7 +75,6 @@
     <string name="success_add_flat">Ви додали квартиру</string>
 
 
-    <string name="email">Email</string>
     <string name="password">Пароль</string>
     <string name="confirm_password">Подтвердите пароль</string>
     <string name="name">Имя</string>

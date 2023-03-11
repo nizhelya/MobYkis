@@ -125,6 +125,8 @@ class AddressRemoteImpl @Inject constructor(
     }
 
 
+
+
     private fun createGetBlocksMap(userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
         map.put(ApiService.PARAM_USER_ID, userId.toString())
@@ -167,4 +169,5 @@ class AddressRemoteImpl @Inject constructor(
         map.put(ApiService.PARAM_TOKEN, token)
         return map
     }
+
 }
