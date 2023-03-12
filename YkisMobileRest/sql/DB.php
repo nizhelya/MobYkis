@@ -7,7 +7,6 @@ class DbConnect{
 	
 		public function __construct(){
 		
-		//$this->db = new mysqli('localhost', "cthubq" ,"hfljyt;crbq", 'YISGRAND');
 		$this->db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
             if ($this->db->connect_error) {
