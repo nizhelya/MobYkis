@@ -38,7 +38,7 @@ class AppartmentRemoteImpl @Inject constructor(
     ): Either<Failure, GetSimpleResponse> {
         return request.make(
             service.deleteFlatByUser(
-                createDeleteFlatByUserMap(
+                createRequestByAddressId(
                     addressId,
                     userId,
                     token
@@ -70,13 +70,31 @@ class AppartmentRemoteImpl @Inject constructor(
         }
     }
 
+    override fun getFlatById(
+        addressId: Int,
+        userId: Int,
+        token: String
+    ): Either<Failure,AppartmentEntity> {
+        return request.make(
+            service.getFlatById(
+                createRequestByAddressId(
+                    addressId,
+                    userId,
+                    token
+                )
+            )
+        ){
+            it.appartments[0]
+        }
+    }
+
     private fun createGetAppartmentsByUserMap(userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
         map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)
         return map
     }
-    private fun createDeleteFlatByUserMap(addressId:Int , userId: Int, token: String): Map<String, String> {
+    private fun createRequestByAddressId(addressId:Int , userId: Int, token: String): Map<String, String> {
         val map = HashMap<String, String>()
         map.put(ApiService.PARAM_ADDRESS_ID , addressId.toString())
         map.put(ApiService.PARAM_USER_ID, userId.toString())

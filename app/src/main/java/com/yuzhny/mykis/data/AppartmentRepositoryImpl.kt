@@ -5,6 +5,7 @@ import com.yuzhny.mykis.data.cache.family.FamilyCache
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
+import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import com.yuzhny.mykis.domain.type.*
@@ -68,5 +69,10 @@ class AppartmentRepositoryImpl(
     ): Either<Failure, GetSimpleResponse> {
         return userCache.getCurrentUser()
             .flatMap { return@flatMap appartmentRemote.updateBti(addressId , phone , email , it.userId , it.token) }
+    }
+
+    override fun getFlatById(addressId: Int): Either<Failure, AppartmentEntity> {
+        return userCache.getCurrentUser()
+            .flatMap { return@flatMap appartmentRemote.getFlatById(addressId , it.userId , it.token) }
     }
 }

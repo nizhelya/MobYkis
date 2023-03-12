@@ -36,7 +36,7 @@ class AppartmentListFragment : BaseFragment()
         savedInstanceState: Bundle?
     ): View{
         appartmentListViewModel.apply {
-            onSuccess(appartments, ::handleAppartment)
+            onSuccess(appartments, ::handleAppartments)
             onSuccess(resultText, ::handleResultText)
             onFailure(failureData, ::handleFailure)
         }
@@ -48,21 +48,10 @@ class AppartmentListFragment : BaseFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         appartmentListViewModel.getAppartmentsByUser()
-
-
-        appartmentListViewModel.appartments.observe(this.viewLifecycleOwner){i->
-            i?.let {
-                viewAdapter.submitList(it)
-                checkIsEmptyRecycleView(it)
-            }
-        }
-
-
-
         viewAdapter.appartmentShortListener.onItemClick = {
             appartmentListViewModel.getAppartment(it)
             findNavController().navigate(AppartmentListFragmentDirections
-                .actionAppartmentFragmentToViewPagerFragment(it.addressId))
+                .actionAppartmentFragmentToViewPagerFragment(addressId=it.addressId))
 
         }
         viewAdapter.appartmentLongListener.onItemLongClick= {
@@ -74,7 +63,7 @@ class AppartmentListFragment : BaseFragment()
         }
 
     }
-    private fun handleAppartment(appartmentEntity:  List<AppartmentEntity>?) {
+    private fun handleAppartments(appartmentEntity:  List<AppartmentEntity>?) {
         if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {
             viewAdapter.submitList(appartmentEntity)
             checkIsEmptyRecycleView(appartmentEntity)

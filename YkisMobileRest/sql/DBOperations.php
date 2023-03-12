@@ -7,7 +7,7 @@ class DBOperations {
   }
   
 //appartment
-  public function getAppartmentsById($address_id){
+  public function getFlatById($address_id){
     $com = new DbConnect();
     $sql = 'SELECT * FROM YIS.APPARTMENT as t1 WHERE t1.address_id= '.$address_id.'';
 
@@ -84,16 +84,15 @@ class DBOperations {
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
   }
-public function updateBti($address_id , $phone , $email ,$user_id){
-    $com = new DbConnect();
-
-    $sql = 'UPDATE YIS.APPARTMENT as t1 SET t1.email = "'.$email.'" , t1.phone = "'.$phone.'" WHERE t1.address_id = '.$address_id.' ';
-    mysqli_query( $com->getDb(), $sql);
-    return $com->getDb();
-  }
    public function deleteFlatByUser($address_id , $user_id){
     $com = new DbConnect();
     $sql = 'DELETE FROM  YISGRAND.MYFLAT WHERE address_id = '.$address_id.'  and user_id = '.$user_id.' ';
+    mysqli_query( $com->getDb(), $sql);
+    return $com->getDb();
+  }
+  public function updateBti($address_id , $phone , $email){
+    $com = new DbConnect();
+    $sql = 'UPDATE YIS.APPARTMENT as t1 SET t1.email = "'.$email.'" , t1.phone = "'.$phone.'" WHERE t1.address_id = '.$address_id.' ';
     mysqli_query( $com->getDb(), $sql);
     return $com->getDb();
   }

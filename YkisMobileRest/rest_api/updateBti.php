@@ -15,7 +15,7 @@ if (isset($_POST['address_id']) && !empty($_POST['address_id']) &&
     $token = $_POST['token'];
     $dbOperationsObject = new DBOperations();
 
-        $result = $dbOperationsObject->updateBti($address_id , $phone , $email , $user_id);
+        $result = $dbOperationsObject->updateBti($address_id , $phone , $email);
          if(mysqli_affected_rows($result)>0){
         $response["success"] = 1;
         $response["message"] =  "Contacts updated";

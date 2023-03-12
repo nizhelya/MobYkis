@@ -4,6 +4,7 @@ import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.data.remote.family.GetFamilyResponse
+import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import retrofit2.Call
 import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded
@@ -21,8 +22,8 @@ interface ApiService {
 //        const val SERVER_URL = "http://192.168.0.105/MobYkis/YkisMobileRest"
 
         const val BASE_URL = "$SERVER_URL/rest_api/"
-        const val GET_APPARTMENTS = "getAppartmentsById.php"
-        const val GET_MY_FLAT="getAppartmentsByUser.php"
+        const val GET_FLAT = "getFlatById.php"
+        const val GET_MY_FLATS="getAppartmentsByUser.php"
         const val DELETE_FLAT = "deleteFlatByUser.php"
         const val UPDATE_BTI = "updateBti.php"
         const val GET_BLOCKS="getBlocks.php"
@@ -48,7 +49,7 @@ interface ApiService {
     //appartment
 
     @FormUrlEncoded
-    @POST(GET_MY_FLAT)
+    @POST(GET_MY_FLATS)
     fun getAppartmentsByUser(@FieldMap params :Map<String , String> ):Call<GetAppartmentsResponse>
     @FormUrlEncoded
     @POST(GET_BLOCKS)
@@ -75,6 +76,9 @@ interface ApiService {
     @POST(DELETE_FLAT)
     fun deleteFlatByUser(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
     @FormUrlEncoded
-    @POST(DELETE_FLAT)
+    @POST(UPDATE_BTI)
     fun updateBti(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
+    @FormUrlEncoded
+    @POST(GET_FLAT)
+    fun getFlatById(@FieldMap params :Map<String , String> ):Call<GetAppartmentsResponse>
 }

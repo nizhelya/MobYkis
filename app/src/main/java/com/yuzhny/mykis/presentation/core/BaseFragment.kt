@@ -11,6 +11,7 @@ import com.yuzhny.mykis.domain.type.Failure
 abstract class BaseFragment : Fragment() {
  open fun handleFailure(failure: Failure?) {
   when (failure) {
+   is Failure.FailUpdateBti -> showMessage(getString(R.string.error_update))
    is Failure.MissingFields -> showMessage(getString(R.string.error_missing_fields))
    is Failure.FailDeleteFlat -> showMessage(getString(R.string.error_delete_flat))
    is Failure.IncorrectCode -> showMessage(getString(R.string.error_incorrect_code))
@@ -21,7 +22,7 @@ abstract class BaseFragment : Fragment() {
   }
  }
 
- fun showMessage(message: String) {
+ private fun showMessage(message: String) {
   Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
  }
 }

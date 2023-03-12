@@ -4,13 +4,18 @@ $response = array();
 include_once "GeneralFunctions.php";
 
 
-if (isset($_POST['address_id']) && !empty($_POST['address_id'])) {
+if (isset($_POST['address_id']) && !empty($_POST['address_id']) &&
+     isset($_POST['user_id']) && !empty($_POST['user_id']) &&
+    isset($_POST['token']) && !empty($_POST['token'])
+) {
     $address_id = $_POST['address_id'];
+    $user_id = $_POST['user_id'];
+    $token = $_POST['token'];
     $dbOperationsObject = new DBOperations();
     $generalFunctionsObject = new GeneralFunctionsClass();
 
-        $resultAppartments = $dbOperationsObject->getAppartmentsById($address_id);
-        $appartments = $generalFunctionsObject->getAppartmentsById($resultAppartments);
+        $resultAppartments = $dbOperationsObject->getFlatById($address_id);
+        $appartments = $generalFunctionsObject->getFlatById($resultAppartments);
 
         $response["success"] = 1;
         $response["message"] = "Успешно";

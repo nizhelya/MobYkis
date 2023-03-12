@@ -13,6 +13,7 @@ sealed class Failure {
     object IncorrectCode : Failure()
     object MissingFields : Failure()
     object FailDeleteFlat: Failure()
+    object FailUpdateBti: Failure()
 
     object NoSavedAccountsError : Failure()
 

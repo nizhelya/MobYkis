@@ -12,7 +12,7 @@ class GeneralFunctionsClass
 
 
     
-  public function getAppartmentsById($resultAppartments)
+  public function getFlatById($resultAppartments)
     {
         $dbOperationsObject = new DBOperations();
         $appartments = array();
@@ -86,7 +86,7 @@ class GeneralFunctionsClass
                 'dteplomer_id' => $rowAppartment['dteplomer_id'],
                 'data_in' => $rowAppartment['data_in'],
                 'operator' => $rowAppartment['operator'],
-                'kod' => $rowAppartment['kod']               
+                'kod' => $rowAppartment['kod']
             );
             
             array_push($appartments, $appartment);
