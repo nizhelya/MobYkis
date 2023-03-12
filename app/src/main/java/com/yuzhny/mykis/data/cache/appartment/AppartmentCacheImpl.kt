@@ -39,5 +39,9 @@ class AppartmentCacheImpl @Inject constructor(
         appartmentDao.deleteFlat(addressId)
     }
 
+    override fun getAppartmentById(addressId: Int): AppartmentEntity {
+        return appartmentDao.getFlatById(addressId)
+    }
+
 
 }

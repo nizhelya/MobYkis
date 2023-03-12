@@ -67,7 +67,7 @@ class AppartmentListFragment : BaseFragment()
         if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {
             viewAdapter.submitList(appartmentEntity)
             checkIsEmptyRecycleView(appartmentEntity)
-
+            appartmentListViewModel.getFlatFromCache(appartmentListViewModel.currentAddress)
         }
     }
     private fun handleResultText(getSimpleResponse: GetSimpleResponse?) {

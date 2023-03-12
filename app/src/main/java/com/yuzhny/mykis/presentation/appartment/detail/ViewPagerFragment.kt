@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentViewPagerBinding
@@ -19,6 +21,7 @@ class ViewPagerFragment : Fragment() {
     private val listViewModel by activityViewModels<AppartmentListViewModel>()
     private var _binding : FragmentViewPagerBinding? = null
     private val binding get() = _binding!!
+    private val args : ViewPagerFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -46,6 +49,7 @@ class ViewPagerFragment : Fragment() {
                 else -> getString(R.string.bti)
             }
         }.attach()
+        listViewModel.getAddressId(args.addressId)
     }
 
 }

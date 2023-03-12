@@ -8,4 +8,5 @@ interface AppartmentCache {
     fun getAppartmentsByUser():List<AppartmentEntity>
     fun deleteAllAppartments()
     fun deleteFlat(addressId: Int)
+    fun getAppartmentById(addressId: Int):AppartmentEntity
 }

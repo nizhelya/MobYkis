@@ -2,7 +2,9 @@ package com.yuzhny.mykis.presentation.appartment.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
+import com.yuzhny.mykis.data.cache.appartment.AppartmentCacheImpl
 import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
@@ -12,6 +14,7 @@ import com.yuzhny.mykis.domain.appartment.request.GetFlatById
 import com.yuzhny.mykis.domain.appartment.request.UpdateBti
 import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,7 +22,8 @@ class AppartmentListViewModel @Inject constructor(
     private val getAppartmentsUseCase: GetAppartments,
     private val deleteFlatByUser: DeleteFlatByUser,
     private val updateBtiUseCase:UpdateBti ,
-    private val getFlatByIdUseCase : GetFlatById
+    private val getFlatByIdUseCase : GetFlatById ,
+    private val appartmentCacheImpl: AppartmentCacheImpl
 ) : BaseViewModel() {
 
     private val _appartment = MutableLiveData<AppartmentEntity>()
@@ -34,6 +38,7 @@ class AppartmentListViewModel @Inject constructor(
     private val _resultText = MutableLiveData<GetSimpleResponse>()
     val resultText: LiveData<GetSimpleResponse> = _resultText
 
+    var currentAddress:Int = 0
     fun deleteFlat(addressId:Int){
         deleteFlatByUser(addressId){
             it -> it.either(::handleFailure){
@@ -62,6 +67,11 @@ class AppartmentListViewModel @Inject constructor(
             }
         }
     }
+    fun getFlatFromCache(addressId: Int){
+        viewModelScope.launch {
+            _appartment.value = appartmentCacheImpl.getAppartmentById(addressId)
+        }
+    }
     fun updateBti(addressId:Int , phone:String , email:String){
         updateBtiUseCase(AppartmentEntity(addressId = addressId , phone = phone , email = email)){
                 it -> it.either(::handleFailure){
@@ -87,6 +97,10 @@ class AppartmentListViewModel @Inject constructor(
     private fun handleResultText(result: GetSimpleResponse, liveData: MutableLiveData<GetSimpleResponse>){
         liveData.value = result
     }
+    fun getAddressId(addressId: Int){
+        currentAddress = addressId
+    }
+
     override fun onCleared() {
         super.onCleared()
         getAppartmentsUseCase.unsubscribe()

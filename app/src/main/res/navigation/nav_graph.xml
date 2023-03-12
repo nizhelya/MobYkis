@@ -32,7 +32,8 @@
         android:label="ViewPagerFragment" >
         <argument
             android:name="address_id"
-            app:argType="integer" />
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
 </navigation>

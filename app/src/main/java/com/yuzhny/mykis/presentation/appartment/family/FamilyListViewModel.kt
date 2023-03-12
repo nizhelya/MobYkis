@@ -2,6 +2,7 @@ package com.yuzhny.mykis.presentation.appartment.family
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
 import com.yuzhny.mykis.domain.family.request.GetFamilyFromFlat
@@ -39,5 +40,7 @@ class FamilyListViewModel @Inject constructor(
         super.onCleared()
         getFamilyFromFlat.unsubscribe()
     }
+
+
 
 }

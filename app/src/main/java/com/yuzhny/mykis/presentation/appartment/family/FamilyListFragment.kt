@@ -48,4 +48,8 @@ class FamilyListFragment  : BaseFragment() {
         }
         binding.recyclerView.adapter = familyAdapter
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }

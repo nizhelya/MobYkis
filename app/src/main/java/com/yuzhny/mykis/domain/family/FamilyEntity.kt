@@ -11,7 +11,7 @@ data class FamilyEntity(
     @PrimaryKey(autoGenerate = false)
     @Json(name = "rec_id")
     @ColumnInfo(name = "rec_id")
-    val recId :Int ,
+    val recId :Int = 0 ,
     @Json(name = "address_id")
     @ColumnInfo(name = "address_id")
     val addressId :Int = 0 ,

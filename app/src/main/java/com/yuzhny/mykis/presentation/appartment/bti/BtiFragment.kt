@@ -49,7 +49,7 @@ class BtiFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         appartmentListViewModel.apply {
             onSuccess(resultText, ::handleResultText)
-            onSuccess(appartment, ::handleAppartment)
+            onSuccess(appartments, ::handleAppartments)
             onFailure(failureData, ::handleFailure)
         }
         appartmentListViewModel.appartment.observe(this.viewLifecycleOwner){
@@ -113,5 +113,10 @@ class BtiFragment : BaseFragment() {
             }
             .setView(dialogLayout)
             .show()
+    }
+    private fun handleAppartments(appartmentEntity:  List<AppartmentEntity>?) {
+        if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {
+            appartmentListViewModel.getFlatFromCache(appartmentListViewModel.currentAddress)
+        }
     }
 }
