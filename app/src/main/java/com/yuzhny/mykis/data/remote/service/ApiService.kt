@@ -12,9 +12,7 @@ import retrofit2.http.POST
 
 interface ApiService {
     companion object{
-        const val SERVER_URL = "https://is.yuzhny.com/YkisMobileRest"
-//        const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
-//        const val SERVER_URL = "http://195.138.91.67/YkisMobileRest"
+       const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_APPARTMENTS = "getAppartmentsById.php"
         const val DELETE_APPARTMENT = "deleteAppartment.php"
