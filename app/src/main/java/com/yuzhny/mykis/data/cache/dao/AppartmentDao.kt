@@ -21,7 +21,7 @@ interface AppartmentDao {
     @Query("delete from appartment where address_id = :addressId")
     fun deleteFlat(addressId :Int)
     @Query("select * from appartment where address_id = :addressId")
-    fun getFlatById(addressId :Int) :AppartmentEntity
+    fun getFlatById(addressId :Int) : AppartmentEntity
 //
 //    @Query("select * from appartment where address_id= :addressId")
 //    fun getAppartment(addressId:Int): List<AppartmentEntity>

@@ -58,15 +58,6 @@ class AppartmentListViewModel @Inject constructor(
             }
         }
     }
-    fun getFlatById(addressId:Int) {
-        getFlatByIdUseCase(addressId) { it ->
-            it.either(::handleFailure) {
-                getAppartment(
-                   it
-                )
-            }
-        }
-    }
     fun getFlatFromCache(addressId: Int){
         viewModelScope.launch {
             _appartment.value = appartmentCacheImpl.getAppartmentById(addressId)

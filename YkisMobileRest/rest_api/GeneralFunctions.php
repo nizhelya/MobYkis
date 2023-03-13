@@ -305,4 +305,17 @@ class GeneralFunctionsClass
         }
         return $results;
     }
+    public function getFlatServices($resultServices)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        print_r($resultServices);
+        while ($row = mysqli_fetch_array($resultFamily)) {
+             $service = array(
+                 'period'=>$row['period'],
+                 'zadol1'=>$row['zadol1'],
+            array_push($families, $family);
+        }
+        return $results;
+    }
 }

@@ -15,6 +15,7 @@ import com.yuzhny.mykis.databinding.FragmentBtiBinding
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.appartment.util.hideIfEmpty
+import com.yuzhny.mykis.presentation.appartment.util.isEmptyFun
 import com.yuzhny.mykis.presentation.appartment.util.trueOrFalse
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
@@ -63,12 +64,14 @@ class BtiFragment : BaseFragment() {
                 fio.text = it.fio
 //                if(isEmptyFun(it.phone)){
 //                    phone.text = getString(R.string.empty_phone)
-//                }else
+//                }else {
                     phone.text = it.phone
+//                }
 //                if(isEmptyFun(it.email)){
 //                    email.text = getString(R.string.empty_email)
-//                }else
-                email.text = it.email
+//                }else {
+                    email.text = it.email
+//                }
                 privateCheck.isChecked = trueOrFalse(it.privat)
                 dataOrder.text = it.dataOrder
                 order.text = it.order
@@ -79,11 +82,6 @@ class BtiFragment : BaseFragment() {
                 showEditContactsDialog(it.addressId , it.phone , it.email)
             }
 
-        }
-    }
-    private fun handleAppartment(appartmentEntity: AppartmentEntity?){
-        appartmentEntity?.let {
-            appartmentListViewModel.getFlatById(it.addressId)
         }
     }
     private fun handleResultText(getSimpleResponse: GetSimpleResponse?) {

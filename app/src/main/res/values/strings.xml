@@ -35,7 +35,7 @@
     <string name="title_delete">Видалити квартиру?</string>
     <string name="cancel">Відмінити</string>
     <string name="delete">Видалити</string>
-    <string name="area">Площа квартири(м^2)</string>
+    <string name="area">Площа квартири(м²)</string>
     <string name="contacts">Контактні дані</string>
     <string name="PIB">ПІБ</string>
     <string name="area_full">Корисна:</string>
