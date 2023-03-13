@@ -4,7 +4,6 @@ import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.data.remote.family.GetFamilyResponse
-import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import retrofit2.Call
 import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded
@@ -15,9 +14,9 @@ interface ApiService {
     companion object{
 //        const val SERVER_URL = "https://is.yuzhny.com/YkisMobileRest"
 //        const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
-          const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
+//          const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
 
-//        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
+        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
 
 //        const val SERVER_URL = "http://192.168.0.105/MobYkis/YkisMobileRest"
 

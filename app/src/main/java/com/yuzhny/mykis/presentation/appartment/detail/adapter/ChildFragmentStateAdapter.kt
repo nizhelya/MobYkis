@@ -1,18 +1,18 @@
 package com.yuzhny.mykis.presentation.appartment.detail.adapter
 
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.yuzhny.mykis.presentation.appartment.bti.BtiFragment
 import com.yuzhny.mykis.presentation.appartment.family.FamilyListFragment
+import com.yuzhny.mykis.presentation.core.BaseFragment
 
 class ChildFragmentStateAdapter(fragmentManager: FragmentManager , lifecycle: Lifecycle)
     :FragmentStateAdapter(fragmentManager, lifecycle){
     override fun getItemCount(): Int  =  2
 
 
-    override fun createFragment(position: Int): Fragment {
+    override fun createFragment(position: Int): BaseFragment {
         return when (position) {
             0 -> FamilyListFragment()
             else -> BtiFragment()

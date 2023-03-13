@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.yuzhny.mykis.presentation.appartment.family.FamilyListViewModel" />
+
+    </data>
+
+<com.google.android.material.card.MaterialCardView
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/CardStyleFirst"
-    >
+    style="@style/CardStyleFirst">
 
 
     <LinearLayout
@@ -111,15 +119,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:id="@+id/phone_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/FirstText"
-            android:text="@string/phone_text"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/phone_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/FirstText"-->
+<!--            android:text="@string/phone_text"-->
+<!--            />-->
         <TextView
             android:id="@+id/phone"
+            android:text="@{@string/phone(viewModel.famaly.phone)}"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/SecondText"
@@ -329,3 +339,4 @@
         </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
+</layout>

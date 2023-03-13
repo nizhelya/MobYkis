@@ -20,7 +20,7 @@
     <string name="born_text">Дата народження:</string>
     <string name="relationship_text">Родинність:</string>
     <string name="sex_text">Стать:</string>
-    <string name="phone_text">Номер телефона:</string>
+    <string name="phone">Tелефон: %s</string>
     <string name="subsidia_text">Субсидія:</string>
     <string name="vkl_text">Прописаний:</string>
     <string name="ots_text">Відсутній:</string>
@@ -38,8 +38,9 @@
     <string name="area">Площа квартири(м^2)</string>
     <string name="contacts">Контактні дані</string>
     <string name="PIB">ПІБ</string>
-    <string name="area_full">Корисна:</string>
-    <string name="area_life">Житлова:</string>
+    <string name="area_full">Корисна: %s</string>
+    <string name="area_life">Житлова: %s</string>
+
     <string name="area_extra">Додаткова:</string>
     <string name="balcony_text">Балкон:</string>
     <string name="elevator_text">Ліфт:</string>
@@ -50,12 +51,10 @@
     <string name="order_text">Ордер:</string>
     <string name="edit">Оновити</string>
     <string name="updated">Дані оновлено</string>
-    <string name="phone">Номер телефону</string>
-    <string name="email">Email</string>
+    <string name="email">Email: %s</string>
     <string name="dialog_edit_title">Оновити контактну інформацію</string>
-<!--    <string name="">Телефон:</string>-->
+<!--    <string name="phone_text">Телефон:</string>-->
     <string name="phone_colon">Телефон:</string>
-<!--    <string name="phone">Телефон:</string>-->
     <string name="employer_text">Гл. наймач:</string>
     <string name="owner_text">Власник:</string>
     <string name="empty_phone">Додайте свій номер телефону</string>

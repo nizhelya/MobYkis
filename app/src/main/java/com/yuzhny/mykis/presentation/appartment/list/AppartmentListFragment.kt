@@ -37,7 +37,9 @@ class AppartmentListFragment : BaseFragment()
     ): View{
         appartmentListViewModel.apply {
             onSuccess(appartments, ::handleAppartments)
+//            onSuccess(appartment, ::handleAppartment)
             onSuccess(resultText, ::handleResultText)
+
             onFailure(failureData, ::handleFailure)
         }
        _binding = FragmentListAppartmentBinding.inflate(inflater,container,false)
@@ -49,7 +51,7 @@ class AppartmentListFragment : BaseFragment()
         super.onViewCreated(view, savedInstanceState)
         appartmentListViewModel.getAppartmentsByUser()
         viewAdapter.appartmentShortListener.onItemClick = {
-            appartmentListViewModel.getAppartment(it)
+            appartmentListViewModel.setAppartment(it)
             findNavController().navigate(AppartmentListFragmentDirections
                 .actionAppartmentFragmentToViewPagerFragment(addressId=it.addressId))
 
@@ -68,6 +70,11 @@ class AppartmentListFragment : BaseFragment()
             viewAdapter.submitList(appartmentEntity)
             checkIsEmptyRecycleView(appartmentEntity)
 
+        }
+    }
+    private fun handleAppartment(appartmentEntity: AppartmentEntity?) {
+        appartmentEntity?.let {
+            appartmentListViewModel.getFlatById(it.addressId)
         }
     }
     private fun handleResultText(getSimpleResponse: GetSimpleResponse?) {

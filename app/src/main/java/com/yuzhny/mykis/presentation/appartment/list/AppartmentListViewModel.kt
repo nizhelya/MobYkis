@@ -2,7 +2,6 @@ package com.yuzhny.mykis.presentation.appartment.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
@@ -56,7 +55,7 @@ class AppartmentListViewModel @Inject constructor(
     fun getFlatById(addressId:Int) {
         getFlatByIdUseCase(addressId) { it ->
             it.either(::handleFailure) {
-                getAppartment(
+                setAppartment(
                    it
                 )
             }
@@ -71,7 +70,7 @@ class AppartmentListViewModel @Inject constructor(
             }
         }
     }
-    fun getAppartment(appartmentEntity: AppartmentEntity){
+    fun setAppartment(appartmentEntity: AppartmentEntity){
         _appartment.value = appartmentEntity
     }
     private fun handleAppartments(appartments: List<AppartmentEntity>, fromCache: Boolean) {

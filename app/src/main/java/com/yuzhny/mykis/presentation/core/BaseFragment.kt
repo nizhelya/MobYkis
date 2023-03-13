@@ -1,10 +1,8 @@
 package com.yuzhny.mykis.presentation.core
 
-import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.yuzhny.mykis.R
-import com.yuzhny.mykis.databinding.ActivityMainBinding
 import com.yuzhny.mykis.domain.type.Failure
 
 

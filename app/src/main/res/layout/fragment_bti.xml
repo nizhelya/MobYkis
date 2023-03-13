@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel" />
+        <variable
+            name="btiFragment"
+            type="com.yuzhny.mykis.presentation.appartment.bti.BtiFragment" />
+
+    </data>
+
+<ScrollView
+      android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp">
 
@@ -37,17 +48,19 @@
                     android:layout_margin="4dp"
                     android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/FirstText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/area_full" />
+<!--                    <TextView-->
+<!--                        style="@style/FirstText"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/area_full"-->
+<!--                         />-->
 
                     <TextView
                         android:id="@+id/full_area"
                         style="@style/SecondText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@{@string/area_full(viewModel.appartment.areaFull)}"
                         tools:text="75.6" />
 
                 </LinearLayout>
@@ -59,18 +72,20 @@
                     android:orientation="horizontal"
                     android:padding="4dp">
 
-                    <TextView
-                        android:id="@+id/life_text"
-                        style="@style/FirstText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/area_life" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/life_text"-->
+<!--                        style="@style/FirstText"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/area_life" />-->
 
                     <TextView
-                        android:id="@+id/life_area"
+                        android:id="@+id/area_life"
                         style="@style/SecondText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@{@string/area_life(viewModel.appartment.areaLife)}"
+
                         tools:text="49.5" />
                 </LinearLayout>
 
@@ -317,11 +332,27 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-        <TextView
-            style="@style/ExtraText"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/linear_contact"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/contacts" />
+            android:orientation="horizontal">
+
+
+            <TextView
+                style="@style/ExtraText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contacts" />
+            <ImageView
+                android:id="@+id/edit_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_edit" />
+        </LinearLayout>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_contact"
         style="@style/CardStyleSecond"
@@ -338,34 +369,21 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-            android:id='@+id/phone_text'
-            style="@style/FirstText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/phone_colon"
-            app:layout_constraintBottom_toBottomOf="@id/phone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/phone" />
+
 
         <TextView
             android:id="@+id/phone"
             style="@style/SecondText"
+            android:text="@{@string/phone(viewModel.appartment.phone)}"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/edit_icon"
-            app:layout_constraintStart_toEndOf="@id/phone_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/edit_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:src="@drawable/ic_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -379,7 +397,7 @@
                 style="@style/FirstText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email_colon"
+                android:text="@{viewModel.appartment.email}"
                 app:layout_constraintBottom_toBottomOf="@id/email"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/email" />
@@ -399,3 +417,4 @@
 
     </LinearLayout>
 </ScrollView>
+</layout>

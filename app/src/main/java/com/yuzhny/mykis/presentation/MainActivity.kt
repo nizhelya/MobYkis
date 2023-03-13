@@ -10,9 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.yuzhny.mykis.R
-import com.yuzhny.mykis.data.cache.database.AppDatabase
-import com.yuzhny.mykis.databinding.ActivityMainBinding
-import com.yuzhny.mykis.databinding.FragmentFamilyListBinding
+
 import com.yuzhny.mykis.presentation.core.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
