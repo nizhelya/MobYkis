@@ -9,7 +9,7 @@ import javax.inject.Singleton
 class FamilyCacheImpl @Inject constructor(
     private val familyDao: FamilyDao
 ) :FamilyCache {
-    override fun addAppartmentByUser(family : List<FamilyEntity>) {
+    override fun addFamilyByUser(family : List<FamilyEntity>) {
         familyDao.insertFamily(family)
     }
 

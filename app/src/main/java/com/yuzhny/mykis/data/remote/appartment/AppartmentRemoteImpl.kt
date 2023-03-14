@@ -2,7 +2,7 @@ package com.yuzhny.mykis.data.remote.appartment
 
 import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.core.Request
-import com.yuzhny.mykis.data.remote.service.ApiService
+import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @Singleton
 class AppartmentRemoteImpl @Inject constructor(
     private val request: Request,
-    private val service: ApiService
+    private val apiService: ApiService
 ) : AppartmentRemote {
 
     override fun getAppartmentsByUser(
@@ -20,7 +20,7 @@ class AppartmentRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure, List<AppartmentEntity>> {
         return request.make(
-            service.getAppartmentsByUser(
+            apiService.getAppartmentsByUser(
                 createGetAppartmentsByUserMap(
                     userId,
                     token
@@ -37,7 +37,7 @@ class AppartmentRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure, GetSimpleResponse> {
         return request.make(
-            service.deleteFlatByUser(
+            apiService.deleteFlatByUser(
                 createRequestByAddressId(
                     addressId,
                     userId,
@@ -56,7 +56,7 @@ class AppartmentRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure, GetSimpleResponse> {
         return  request.make(
-            service.updateBti(
+            apiService.updateBti(
                 createUpdateBti(
                     addressId,
                     phone,
@@ -76,7 +76,7 @@ class AppartmentRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure,AppartmentEntity> {
         return request.make(
-            service.getFlatById(
+            apiService.getFlatById(
                 createRequestByAddressId(
                     addressId,
                     userId,

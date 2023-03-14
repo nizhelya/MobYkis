@@ -1,4 +1,4 @@
- <?php
+   <?php
 $response = array();
 
 include_once "GeneralFunctions.php";
@@ -18,10 +18,10 @@ if (isset($_POST['address_id']) && !empty($_POST['address_id']) &&
     $dbOperationsObject = new DBOperations();
     $generalFunctionsObject = new GeneralFunctionsClass();
         $resultServices = $dbOperationsObject->getFlatServices($address_id , $house_id , $service , $qty);
-        $services = $generalFunctionsObject->getFlatServices($resulServices);
+        $services = $generalFunctionsObject->getFlatServices($resultServices);
         $response["success"] = 1;
         $response["message"] = "Success!";
-        $response["services"] = array();
+        $response["services"] = $services;
         echo json_encode($response);
 } else {
     $response["success"] = 0;

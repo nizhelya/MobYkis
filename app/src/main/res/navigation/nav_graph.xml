@@ -34,6 +34,10 @@
             android:name="address_id"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="house_id"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
 </navigation>

@@ -23,8 +23,12 @@ class FamilyRepositoryImpl (
                     )
                 }
             }
-            .map { it.sortedBy { it.lastname } }
-            .onNext { it.map { familyCache.addAppartmentByUser(listOf(it)) } }
+            .map { it.sortedBy {
+                it.lastname }
+            }
+            .onNext { it.map {
+                familyCache.addFamilyByUser(listOf(it))
+            } }
     }
 
 }

@@ -48,10 +48,14 @@ class AppartmentListFragment : BaseFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         appartmentListViewModel.getAppartmentsByUser()
+        appartmentListViewModel.appartments.observe(this.viewLifecycleOwner){
+            viewAdapter.submitList(it)
+            checkIsEmptyRecycleView(it)
+        }
         viewAdapter.appartmentShortListener.onItemClick = {
             appartmentListViewModel.getAppartment(it)
             findNavController().navigate(AppartmentListFragmentDirections
-                .actionAppartmentFragmentToViewPagerFragment(addressId=it.addressId))
+                .actionAppartmentFragmentToViewPagerFragment(addressId=it.addressId , houseId = it.houseId))
 
         }
         viewAdapter.appartmentLongListener.onItemLongClick= {
@@ -65,8 +69,6 @@ class AppartmentListFragment : BaseFragment()
     }
     private fun handleAppartments(appartmentEntity:  List<AppartmentEntity>?) {
         if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {
-            viewAdapter.submitList(appartmentEntity)
-            checkIsEmptyRecycleView(appartmentEntity)
             appartmentListViewModel.getFlatFromCache(appartmentListViewModel.currentAddress)
         }
     }

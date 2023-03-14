@@ -2,8 +2,7 @@ package com.yuzhny.mykis.data.remote.address
 
 import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.core.Request
-import com.yuzhny.mykis.data.remote.service.ApiService
-import com.yuzhny.mykis.data.remote.service.ApiService.Companion.KOD
+import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
@@ -13,7 +12,7 @@ import javax.inject.Singleton
 @Singleton
 class AddressRemoteImpl @Inject constructor(
     private val request: Request,
-    private val service: ApiService
+    private val apiService: ApiService
 ) : AddressRemote {
 
     override fun getBlocks(
@@ -21,7 +20,7 @@ class AddressRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure, List<AddressEntity>> {
         return request.make(
-            service.getBlocks(
+            apiService.getBlocks(
                 createGetBlocksMap(
                     userId,
                     token
@@ -38,7 +37,7 @@ class AddressRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure, List<AddressEntity>> {
         return request.make(
-            service.getStreetsFromBlock(
+            apiService.getStreetsFromBlock(
                 createGetStreetsMap(
                     blockId,
                     userId,
@@ -57,7 +56,7 @@ class AddressRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure, List<AddressEntity>> {
         return request.make(
-            service.getHousesFromStreet(
+            apiService.getHousesFromStreet(
                 createGetHousesMap(
                     streetId,
                     blockId,
@@ -76,7 +75,7 @@ class AddressRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure, List<AddressEntity>> {
         return request.make(
-            service.getFlatsFromHouse(
+            apiService.getFlatsFromHouse(
                 createGetFlatsMap(
                     houseId,
                     userId,
@@ -90,7 +89,7 @@ class AddressRemoteImpl @Inject constructor(
 
     override fun addFlatsByUser(addressId: Int, userId: Int, token: String) :Either<Failure , GetSimpleResponse>{
         return request.make(
-            service.addFlatsByUser(
+            apiService.addFlatsByUser(
                 createAddFlatsMap(
                     addressId,
                     userId,
@@ -111,7 +110,7 @@ class AddressRemoteImpl @Inject constructor(
         token: String
     ): Either<Failure, GetSimpleResponse> {
         return  request.make(
-            service.checkCode(
+            apiService.checkCode(
                 createCheckCodeMap(
                     kod,
                     addressId,

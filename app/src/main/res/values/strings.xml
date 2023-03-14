@@ -53,16 +53,19 @@
     <string name="phone">Номер телефону</string>
     <string name="email">Email</string>
     <string name="dialog_edit_title">Оновити контактну інформацію</string>
-<!--    <string name="">Телефон:</string>-->
+    <!--    <string name="">Телефон:</string>-->
     <string name="phone_colon">Телефон:</string>
-<!--    <string name="phone">Телефон:</string>-->
+    <!--    <string name="phone">Телефон:</string>-->
     <string name="employer_text">Гл. наймач:</string>
     <string name="owner_text">Власник:</string>
     <string name="empty_phone">Додайте свій номер телефону</string>
     <string name="empty_email">Додайте свою електронну адресу</string>
-    <string name="triple_string">%s %s %s</string>
+    <string name="vodokanal">КП "ЮЖВОДОКАНАЛ"</string>
+    <string name="ytke">КП ТМ "ЮЖТЕПЛОКОМУНЕНЕРГО"</string>
+    <string name="yzhtrans">ЮМКП "ЮЖТРАНС" </string>
+    <string name="accrued">Нарахування</string>
     <string name="next">Продовжити</string>
-//error
+    //error
     <string name="error_network">Немає доступу до Інтернету \n Перевірте підключення</string>
     <string name="error_update">Невдалося оновити</string>
     <string name="error_delete_flat">Невдалося видалити квартиру</string>
@@ -72,7 +75,7 @@
     <string name="error_server">Помилка сервера</string>
     <string name="error_cant_send_email">Невозможно отправить на этот email</string>
 
-//success
+    //success
     <string name="success_delete_flat">Квартира успішно видалена</string>
     <string name="success_add_flat">Ви додали квартиру</string>
 

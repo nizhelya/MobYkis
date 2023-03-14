@@ -39,6 +39,7 @@ class AppartmentListViewModel @Inject constructor(
     val resultText: LiveData<GetSimpleResponse> = _resultText
 
     var currentAddress:Int = 0
+    var currentHouse:Int = 0
     fun deleteFlat(addressId:Int){
         deleteFlatByUser(addressId){
             it -> it.either(::handleFailure){
@@ -87,9 +88,6 @@ class AppartmentListViewModel @Inject constructor(
 
     private fun handleResultText(result: GetSimpleResponse, liveData: MutableLiveData<GetSimpleResponse>){
         liveData.value = result
-    }
-    fun getAddressId(addressId: Int){
-        currentAddress = addressId
     }
 
     override fun onCleared() {

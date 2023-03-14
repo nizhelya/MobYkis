@@ -305,16 +305,40 @@ class GeneralFunctionsClass
         }
         return $results;
     }
-    public function getFlatServices($resultServices)
-    {
+
+  public function getFlatServices($resultServices)
+     {
         $dbOperationsObject = new DBOperations();
         $results = array();
-        print_r($resultServices);
-        while ($row = mysqli_fetch_array($resultFamily)) {
+        while ($row = mysqli_fetch_array($resultServices)) {
              $service = array(
+                 'address_id'=>$row['address_id'],
+                 'service'=>$row['service'],
                  'period'=>$row['period'],
+                 'zadol'=>$row['zadol'],
                  'zadol1'=>$row['zadol1'],
-            array_push($families, $family);
+                 'zadol2'=>$row['zadol2'],
+                 'zadol3'=>$row['zadol3'],
+                 'zadol4'=>$row['zadol4'],
+                 'nachisleno'=>$row['nachisleno'],
+                 'nachisleno1'=>$row['nachisleno1'],
+                 'nachisleno2'=>$row['nachisleno2'],
+                 'nachisleno3'=>$row['nachisleno3'],
+                 'nachisleno4'=>$row['nachisleno4'],
+                 'oplacheno'=>$row['oplacheno'],
+                 'oplacheno1'=>$row['oplacheno1'],
+                 'oplacheno2'=>$row['oplacheno2'],
+                 'oplacheno3'=>$row['oplacheno3'],
+                 'oplacheno4'=>$row['oplacheno4'],
+                 'dolg'=>$row['dolg'],
+                 'dolg1'=>$row['dolg1'],
+                 'dolg2'=>$row['dolg2'],
+                 'dolg3'=>$row['dolg3'],
+                 'dolg4'=>$row['dolg4'],
+
+            );
+
+            array_push($results, $service);
         }
         return $results;
     }

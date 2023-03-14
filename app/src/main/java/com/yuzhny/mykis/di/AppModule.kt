@@ -8,20 +8,25 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.yuzhny.mykis.data.AddressRepositoryImpl
 import com.yuzhny.mykis.data.AppartmentRepositoryImpl
 import com.yuzhny.mykis.data.FamilyRepositoryImpl
+import com.yuzhny.mykis.data.ServiceRepositoryImpl
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.database.AppDatabase
 import com.yuzhny.mykis.data.cache.family.FamilyCache
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.cache.dao.AppartmentDao
 import com.yuzhny.mykis.data.cache.dao.FamilyDao
+import com.yuzhny.mykis.data.cache.dao.ServiceDao
+import com.yuzhny.mykis.data.cache.service.ServiceCache
 import com.yuzhny.mykis.data.remote.address.AddressRemote
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.family.FamilyRemote
-import com.yuzhny.mykis.data.remote.service.ApiService
-import com.yuzhny.mykis.data.remote.service.ApiService.Companion.BASE_URL
+import com.yuzhny.mykis.data.remote.api.ApiService
+import com.yuzhny.mykis.data.remote.api.ApiService.Companion.BASE_URL
+import com.yuzhny.mykis.data.remote.service.ServiceRemote
 import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import com.yuzhny.mykis.domain.family.FamilyRepository
+import com.yuzhny.mykis.domain.service.ServiceRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -99,6 +104,11 @@ object AppModule {
         return db.familyDao()
     }
 
+    @Provides
+    fun provideServiceDao(db: AppDatabase): ServiceDao {
+        return db.serviceDao()
+    }
+
     @Singleton
     @Provides
     fun provideAppartmentRepository(
@@ -128,6 +138,15 @@ object AppModule {
         return FamilyRepositoryImpl(familyCache , familyRemote, userCache )
     }
 
+    @Singleton
+    @Provides
+    fun provideServiceRepository(
+        serviceCache: ServiceCache,
+        serviceRemote: ServiceRemote,
+        userCache: UserCache
+    ): ServiceRepository {
+        return ServiceRepositoryImpl(serviceCache , serviceRemote, userCache )
+    }
 
 
 }

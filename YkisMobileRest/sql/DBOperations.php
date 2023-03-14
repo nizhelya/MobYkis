@@ -106,7 +106,7 @@ class DBOperations {
     }
     switch($service){
       case 1 :
-    $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+    $sql = 'SELECT "voda" as service ,  t1.address_id ,  CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
     IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t2.nachisleno , 0 ) as nachisleno2, IFNULL(t12.nachisleno, 0) as nachisleno3 , IFNULL(t13.nachisleno, 0) as nachisleno4,
     IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
@@ -121,7 +121,7 @@ class DBOperations {
     WHERE t1.address_id = '.$address_id.' ORDER BY t1.data DESC '.$limit.' ';
     break;
       case 2 :
-    $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+    $sql = 'SELECT "teplo" as service , t1.address_id , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
     IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t2.nachisleno , 0 ) as nachisleno2, IFNULL(t12.nachisleno, 0) as nachisleno3 , IFNULL(t13.nachisleno, 0) as nachisleno4,
     IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
@@ -136,7 +136,7 @@ class DBOperations {
     WHERE t1.address_id = '.$address_id.' ORDER BY t1.data DESC '.$limit.' ';
     break;
       case 3 :
-    $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period ,
+    $sql = 'SELECT "tbo" as service , t1.address_id , CONCAT_WS(" ",t1.mec,t1.god) as period ,
     IFNULL(t1.zadol , 0) as zadol ,
     IFNULL(t1.nachisleno, 0) as nachisleno ,
     IFNULL(t1.oplacheno ,0) as oplacheno ,
@@ -146,7 +146,7 @@ class DBOperations {
     break;
       case 4 :
         if($house_id == 22){
-           $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t3.zadol , 0 ) as zadol2 ,
+           $sql = 'SELECT "kv" as service, t1.address_id , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t3.zadol , 0 ) as zadol2 ,
     IFNULL(t1.zadol , 0) + IFNULL(t3.zadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t3.nachisleno , 0 ) as nachisleno2 ,
     IFNULL(t1.nachisleno , 0) + IFNULL(t3.nachisleno ,0) as nachisleno,
@@ -158,7 +158,7 @@ class DBOperations {
     LEFT JOIN OSBB.RFOND as t3 using(address_id , data)
     WHERE t1.address_id = '.$address_id.' ORDER BY t1.data DESC LIMIT '.$limit.' ';
         } else {
-    $sql = 'SELECT CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t1.rzadol , 0 ) as zadol2 ,
+    $sql = 'SELECT "kv" as service ,t1.address_id , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t1.rzadol , 0 ) as zadol2 ,
     IFNULL(t1.zadol , 0) + IFNULL(t1.rzadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t1.remont , 0 ) as nachisleno2 ,
     IFNULL(t1.nachisleno , 0) + IFNULL(t1.remont,0) as nachisleno,
@@ -171,7 +171,7 @@ class DBOperations {
     }
     break;
     }
-    print_r($sql);
+//print_r($sql);
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
   }

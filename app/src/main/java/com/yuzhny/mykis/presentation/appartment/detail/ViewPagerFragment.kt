@@ -46,10 +46,12 @@ class ViewPagerFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> getString(R.string.list_family)
-                else -> getString(R.string.bti)
+                1 -> getString(R.string.bti)
+                else -> getString(R.string.accrued)
             }
         }.attach()
-        listViewModel.getAddressId(args.addressId)
+        listViewModel.currentAddress = args.addressId
+        listViewModel.currentHouse = args.houseId
     }
 
 }
