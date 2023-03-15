@@ -19,16 +19,16 @@ class ServiceViewModel @Inject constructor(
     private val _serviceFlat = MutableLiveData<List<ServiceEntity>>()
     val serviceFlat : LiveData<List<ServiceEntity>> = _serviceFlat
 
-    fun getFlatService(addressId:Int , houseId :Int , service:Byte , qty:Byte , needFetch: Boolean = false) {
+    fun getFlatService(params:ServiceParams) {
         getFlatServiceUseCase(ServiceParams(
-            addressId = addressId ,
-            houseId = houseId ,
-            service = service,
-            qty = qty,
-            needFetch = needFetch)) { it ->
+            addressId = params.addressId ,
+            houseId = params.houseId ,
+            service = params.service,
+            qty = params.qty,
+            needFetch = params.needFetch)) { it ->
             it.either(::handleFailure) {
                 handleService(
-                    it, addressId , houseId ,service ,qty , !needFetch
+                    it, params.addressId , params.houseId , params.service , params.qty , !params.needFetch
                 )
             }
         }
@@ -45,7 +45,7 @@ class ServiceViewModel @Inject constructor(
 
         if (fromCache) {
             updateProgress(true)
-            getFlatService(addressId, houseId , service, qty, true)
+            getFlatService(ServiceParams(addressId, houseId , service, qty, true))
         }
     }
 }

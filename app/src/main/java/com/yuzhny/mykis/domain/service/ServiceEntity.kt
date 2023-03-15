@@ -7,8 +7,8 @@ import com.squareup.moshi.Json
 
 @Entity(tableName = "service")
 data class ServiceEntity (
-
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
+    val id:Int = 0,
     @Json(name = "address_id")
     @ColumnInfo(name = "address_id")
     val addressId: Int = 0,

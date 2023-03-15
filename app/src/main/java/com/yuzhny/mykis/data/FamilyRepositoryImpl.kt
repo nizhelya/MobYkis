@@ -8,27 +8,32 @@ import com.yuzhny.mykis.domain.family.FamilyRepository
 import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
 import com.yuzhny.mykis.domain.type.*
 
-class FamilyRepositoryImpl (
-    private val familyCache:FamilyCache,
+class FamilyRepositoryImpl(
+    private val familyCache: FamilyCache,
     private val familyRemote: FamilyRemote,
     private val userCache: UserCache
-) :FamilyRepository   {
+) : FamilyRepository {
     override fun getFamilyFromFlat(params: FamilyBooleanInt): Either<Failure, List<FamilyEntity>> {
-        return  userCache.getCurrentUser()
-            .flatMap { return@flatMap if (params.needFetch){
-                    familyRemote.getFamilyFromFlat(params.addressId , it.userId , it.token)
-                }else {
+        return userCache.getCurrentUser()
+            .flatMap {
+                return@flatMap if (params.needFetch) {
+                    familyRemote.getFamilyFromFlat(params.addressId, it.userId, it.token)
+                } else {
                     Either.Right(
                         familyCache.getFamilyFromFlat(params.addressId)
                     )
                 }
             }
-            .map { it.sortedBy {
-                it.lastname }
+            .map {
+                it.sortedBy {
+                    it.lastname
+                }
             }
-            .onNext { it.map {
-                familyCache.addFamilyByUser(listOf(it))
-            } }
+            .onNext {
+                it.map {
+                    familyCache.addFamilyByUser(listOf(it))
+                }
+            }
     }
 
 }

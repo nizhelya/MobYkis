@@ -12,7 +12,7 @@ import com.yuzhny.mykis.domain.service.ServiceEntity
 @Dao
 interface ServiceDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertService(appartment:List<ServiceEntity>)
+    fun insertService(service:List<ServiceEntity>)
     @Query("select * from service where address_id = :addressId")
     fun getFamilyFromFlat(addressId:Int): List<ServiceEntity>
     @Query("delete from service where address_id not in (:addressId)")

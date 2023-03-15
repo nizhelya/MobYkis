@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentListAppartmentBinding
 import com.yuzhny.mykis.databinding.FragmentServiceListBinding
+import com.yuzhny.mykis.domain.service.request.ServiceParams
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,12 +38,13 @@ class ServiceListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.button2.setOnClickListener{
-            serviceViewModel.getFlatService(
+            serviceViewModel.getFlatService(ServiceParams(
                 listViewModel.currentAddress,
                 listViewModel.currentHouse,
                 1,
-                1,
+                1
                 )
+            )
         }
     }
 

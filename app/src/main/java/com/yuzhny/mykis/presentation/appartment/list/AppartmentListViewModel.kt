@@ -94,5 +94,6 @@ class AppartmentListViewModel @Inject constructor(
         super.onCleared()
         getAppartmentsUseCase.unsubscribe()
         deleteFlatByUser.unsubscribe()
+        updateBtiUseCase.unsubscribe()
     }
 }

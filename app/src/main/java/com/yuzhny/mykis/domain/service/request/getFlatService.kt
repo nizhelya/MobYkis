@@ -16,5 +16,5 @@ data class ServiceParams(
     val houseId:Int ,
     val service:Byte ,
     val qty :Byte ,
-    var needFetch:Boolean
+    var needFetch:Boolean = false
 )
