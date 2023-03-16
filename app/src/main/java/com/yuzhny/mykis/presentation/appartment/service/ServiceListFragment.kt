@@ -37,15 +37,35 @@ class ServiceListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.button2.setOnClickListener{
-            serviceViewModel.getFlatService(ServiceParams(
-                listViewModel.currentAddress,
-                listViewModel.currentHouse,
-                1,
-                1
+        binding.buttonVodokanal.setOnClickListener {
+            serviceViewModel.getFlatService(
+                ServiceParams(
+                    listViewModel.currentAddress,
+                    listViewModel.currentHouse,
+                    1,
+                    1
                 )
             )
+            binding.buttonYtke.setOnClickListener {
+                serviceViewModel.getFlatService(
+                    ServiceParams(
+                        listViewModel.currentAddress,
+                        listViewModel.currentHouse,
+                        2,
+                        1
+                    )
+                )
+            }
+            binding.buttonYzhtrans.setOnClickListener {
+                serviceViewModel.getFlatService(
+                    ServiceParams(
+                        listViewModel.currentAddress,
+                        listViewModel.currentHouse,
+                        3,
+                        1
+                    )
+                )
+            }
         }
     }
-
 }

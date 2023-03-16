@@ -9,7 +9,7 @@ import com.yuzhny.mykis.domain.family.FamilyEntity
 
 @Dao
 interface FamilyDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertFamily(appartment:List<FamilyEntity>)
     @Query("select * from family where address_id = :addressId")
     fun getFamilyFromFlat(addressId:Int): List<FamilyEntity>

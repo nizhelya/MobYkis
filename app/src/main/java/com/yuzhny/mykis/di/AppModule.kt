@@ -115,9 +115,10 @@ object AppModule {
         appartmentRemote: AppartmentRemote,
         userCache: UserCache,
         familyCache: FamilyCache,
+        serviceCache: ServiceCache,
         appartmentCache: AppartmentCache
     ): AppartmentRepository {
-        return AppartmentRepositoryImpl(appartmentRemote,appartmentCache,familyCache,userCache)
+        return AppartmentRepositoryImpl(appartmentRemote,appartmentCache,familyCache,serviceCache,userCache)
     }
 
     @Singleton
