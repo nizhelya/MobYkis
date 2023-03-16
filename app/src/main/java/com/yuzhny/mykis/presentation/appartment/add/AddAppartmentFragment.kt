@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.presentation.appartment.add
 
+import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -169,6 +170,13 @@ class AddAppartmentFragment : BaseFragment()
         addressEntity?.let {
             blockAdapter = BlockArrayAdapter(requireContext(), it)
             binding.blockSpinner.adapter = blockAdapter
+            if(it.isNotEmpty()){
+                binding.loadingView.visibility = View.GONE
+                binding.mainLayout.visibility = View.VISIBLE
+            }else {
+                binding.loadingView.visibility = View.VISIBLE
+                binding.mainLayout.visibility = View.GONE
+            }
         }
     }
     private fun handleStreets(addressEntity: List<AddressEntity>?){

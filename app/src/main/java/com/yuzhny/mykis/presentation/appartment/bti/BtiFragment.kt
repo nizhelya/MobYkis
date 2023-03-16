@@ -75,6 +75,10 @@ class BtiFragment : BaseFragment() {
                 privateCheck.isChecked = trueOrFalse(it.privat)
                 dataOrder.text = it.dataOrder
                 order.text = it.order
+                tenant.text = it.tenant.toString()
+                podnan.text = it.podnan.toString()
+                absent.text = it.absent.toString()
+                subsidia.isChecked = trueOrFalse(it.subsidia)
                 hideIfEmpty(it.fio , linearOwner)
             }
 

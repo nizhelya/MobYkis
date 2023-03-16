@@ -37,6 +37,9 @@ class ServiceListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        listViewModel.appartment.observe(this.viewLifecycleOwner){
+            binding.buttonTbo.text = it.osbb
+        }
         binding.buttonVodokanal.setOnClickListener {
             serviceViewModel.getFlatService(
                 ServiceParams(
@@ -62,6 +65,16 @@ class ServiceListFragment : Fragment() {
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
                         3,
+                        1
+                    )
+                )
+            }
+            binding.buttonTbo.setOnClickListener {
+                serviceViewModel.getFlatService(
+                    ServiceParams(
+                        listViewModel.currentAddress,
+                        listViewModel.currentHouse,
+                        4,
                         1
                     )
                 )

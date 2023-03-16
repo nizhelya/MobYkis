@@ -65,6 +65,11 @@
     <string name="yzhtrans">ЮМКП "ЮЖТРАНС"</string>
     <string name="organ">Організація</string>
     <string name="borg_text">Борг</string>
+    <string name="compound_text">Склад(людина)</string>
+    <string name="tenant_text">Прописано:</string>
+    <string name="podnan_text">Піднаймач:</string>
+    <string name="absent_text">Відсутні:</string>
+    <string name="total_debt_text">Сумарний борг: %2f ₴</string>
     <string name="accrued">Нарахування</string>
     <string name="next">Продовжити</string>
     //error

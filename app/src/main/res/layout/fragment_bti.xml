@@ -225,7 +225,106 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+        <TextView
+            style="@style/ExtraText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/compound_text" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_compound"
+            style="@style/CardStyleSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            >
+            <TextView
+                android:id="@+id/tenant_text"
+                style="@style/FirstText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tenant_text"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
+            <TextView
+                android:id="@+id/tenant"
+                style="@style/SecondText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="4"
+                app:layout_constraintStart_toEndOf="@id/tenant_text"
+                app:layout_constraintTop_toTopOf="@id/tenant_text"
+                app:layout_constraintBottom_toBottomOf="@id/tenant_text"/>
+
+            <TextView
+                android:id="@+id/podnan_text"
+                style="@style/FirstText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/podnan_text"
+                app:layout_constraintStart_toEndOf="@id/tenant"
+                app:layout_constraintTop_toTopOf="@id/tenant"
+                app:layout_constraintBottom_toBottomOf="@id/tenant"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:id="@+id/podnan"
+                style="@style/SecondText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="0"
+                app:layout_constraintStart_toEndOf="@id/podnan_text"
+                app:layout_constraintTop_toTopOf="@id/podnan_text"
+                app:layout_constraintBottom_toBottomOf="@id/podnan_text"/>
+
+
+            <TextView
+                android:id="@+id/absent_text"
+                style="@style/FirstText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/absent_text"
+                app:layout_constraintStart_toEndOf="@id/podnan"
+                app:layout_constraintTop_toTopOf="@id/podnan"
+                app:layout_constraintBottom_toBottomOf="@id/podnan"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:id="@+id/absent"
+                style="@style/SecondText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="0"
+                app:layout_constraintStart_toEndOf="@id/absent_text"
+                app:layout_constraintTop_toTopOf="@id/absent_text"
+                app:layout_constraintBottom_toBottomOf="@id/absent_text"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/subsidia_text"
+                style="@style/FirstText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/absent_text"
+                app:layout_constraintStart_toStartOf="@id/tenant_text"
+                app:layout_constraintTop_toBottomOf="@id/tenant_text" />
+
+            <CheckBox
+                android:id="@+id/subsidia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:layout_constraintStart_toEndOf="@id/subsidia_text"
+                app:layout_constraintTop_toTopOf="@id/subsidia_text"
+                app:layout_constraintBottom_toBottomOf="@id/subsidia_text"
+                android:clickable="false" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
         <TextView
             style="@style/ExtraText"
             android:layout_width="wrap_content"
