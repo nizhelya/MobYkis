@@ -220,46 +220,4 @@ class DBOperations {
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
   }
-
-
-  public function getTotalDebt($address_id , $house_id ){
-    $com = new DbConnect();
-        if($house_id == 22){
-           $sql = 'SELECT t1.address_id , "total" as service , CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01") as data ,  t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg +
-           t9.dolg as dolg2 , t10.dolg as dolg3 , t11.dolg + t12.dolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t12.dolg as dolg
-    FROM YIS.ADDRESS as t1
-    LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.STOKI as t3 on t1.address_id = t3.address_id and t3.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.AVODA as t4 on t1.address_id = t4.address_id and t4.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.ASTOKI as t5 on t1.address_id = t5.address_id and t5.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.OTOPLENIE as t6 on t1.address_id = t6.address_id and t6.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.ATEPLO as t7 on t1.address_id = t7.address_id and t7.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.PTN as t8 on t1.address_id = t8.address_id and t8.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.PODOGREV as t9 on t1.address_id = t9.address_id and t9.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.TBO as t10 on t1.address_id = t10.address_id and t10.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN OSBB.KVARTPLATA as t11 on t1.address_id = t11.address_id and t11.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN OSBB.RFOND as t12 on t1.address_id = t12.address_id and t12.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    WHERE t1.address_id = '.$address_id.' ';
-        } else {
-           $sql = 'SELECT t1.address_id , "total" as service , CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01") as data , t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg + t9.dolg as dolg2 ,
-           t10.dolg as dolg3 , t11.dolg + t11.rdolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t11.rdolg as dolg
-    FROM YIS.ADDRESS as t1
-    LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.STOKI as t3 on t1.address_id = t3.address_id and t3.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.AVODA as t4 on t1.address_id = t4.address_id and t4.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.ASTOKI as t5 on t1.address_id = t5.address_id and t5.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.OTOPLENIE as t6 on t1.address_id = t6.address_id and t6.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.ATEPLO as t7 on t1.address_id = t7.address_id and t7.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.PTN as t8 on t1.address_id = t8.address_id and t8.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.PODOGREV as t9 on t1.address_id = t9.address_id and t9.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.TBO as t10 on t1.address_id = t10.address_id and t10.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    LEFT JOIN YIS.KVARTPLATA as t11 on t1.address_id = t11.address_id and t11.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
-    WHERE t1.address_id = '.$address_id.' ';
-    }
-//print_r($sql);
-    $result = mysqli_query($com->getDb(), $sql);
-    return $result;
-  }
-
-
 }

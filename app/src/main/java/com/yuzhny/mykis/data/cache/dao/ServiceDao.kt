@@ -8,7 +8,7 @@ import androidx.room.Query
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
-
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ServiceDao {
@@ -18,6 +18,6 @@ interface ServiceDao {
     fun getServiceFromFlat(addressId:Int): List<ServiceEntity>
     @Query("delete from service where address_id not in (:addressId)")
     fun deleteServiceFromFlat(addressId: List<Int>)
-    @Query("select * from service where address_id = :addressId and service = \"total\"")
+    @Query("select * from service where address_id = :addressId and service = 'total' ")
     fun getTotalDebt(addressId:Int):ServiceEntity
 }

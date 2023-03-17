@@ -15,11 +15,11 @@ interface ApiService {
     companion object{
 //        const val SERVER_URL = "https://is.yuzhny.com/YkisMobileRest"
 //        const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
-          const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
+//          const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
 
 //        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
 
-//        const val SERVER_URL = "http://192.168.0.105/MobYkis/YkisMobileRest"
+        const val SERVER_URL = "http://192.168.0.105/MobYkis/YkisMobileRest"
 
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_FLAT = "getFlatById.php"
@@ -89,7 +89,4 @@ interface ApiService {
     @FormUrlEncoded
     @POST(GET_SERVICE_FLAT)
     fun getFlatService(@FieldMap params :Map<String , String> ):Call<GetServiceResponse>
-    @FormUrlEncoded
-    @POST(GET_SERVICE_FLAT)
-    fun getTotalDebt(@FieldMap params :Map<String , String> ):Call<GetServiceResponse>
 }

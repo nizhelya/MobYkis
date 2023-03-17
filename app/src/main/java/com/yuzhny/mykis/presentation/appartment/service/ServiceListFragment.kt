@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.viewModelScope
 import com.yuzhny.mykis.R
@@ -39,7 +41,7 @@ class ServiceListFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         serviceViewModel.apply {
-            onSuccess(servicesFlat, ::handleTotalDebt)
+            onSuccess(servicesFlat , ::handleService)
             onFailure(failureData, ::handleFailure)
         }
         // Inflate the layout for this fragment
@@ -51,22 +53,24 @@ class ServiceListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         serviceViewModel.getFlatService(
-            ServiceParams(
                 listViewModel.currentAddress,
                 listViewModel.currentHouse,
                 0,
                 1,
-                0
-            )
+                1
         )
+        serviceViewModel.getDebtFromCache(listViewModel.currentAddress)
         serviceViewModel.totalDebt.observe(this.viewLifecycleOwner){
-            binding.apply {
-                dolg1.text = it.dolg1.toString()
-                dolg2.text = it.dolg2.toString()
-                dolg3.text = it.dolg3.toString()
-                dolg4.text = it.dolg4.toString()
-                dolg.text = it.dolg.toString()
+            it?.let {
+                binding.apply {
+                    dolg1.text = it.dolg1.toString()
+                    dolg2.text = it.dolg2.toString()
+                    dolg3.text = it.dolg3.toString()
+                    dolg4.text = it.dolg4.toString()
+                    dolg.text = it.dolg.toString()
+                }
             }
+
         }
         listViewModel.appartment.observe(this.viewLifecycleOwner) {
             binding.buttonTbo.text = it.osbb
@@ -74,52 +78,43 @@ class ServiceListFragment : BaseFragment() {
 
         binding.buttonVodokanal.setOnClickListener {
             serviceViewModel.getFlatService(
-                ServiceParams(
                     listViewModel.currentAddress,
                     listViewModel.currentHouse,
                     1,
                     0,
                     1
-                )
             )
             binding.buttonYtke.setOnClickListener {
                 serviceViewModel.getFlatService(
-                    ServiceParams(
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
                         2,
                         0,
-                        1
-                    )
+                        1,
                 )
             }
             binding.buttonYzhtrans.setOnClickListener {
                 serviceViewModel.getFlatService(
-                    ServiceParams(
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
                         3,
                         0,
-                        1
-                    )
+                        1,
                 )
             }
             binding.buttonTbo.setOnClickListener {
                 serviceViewModel.getFlatService(
-                    ServiceParams(
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
                         4,
                         0,
-                        1
-                    )
+                        1,
                 )
             }
         }
     }
-
-    private fun handleTotalDebt(serviceEntity: List<ServiceEntity>?) {
-        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
+    private fun handleService(appartmentEntity:  List<ServiceEntity>?) {
+        if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {
             serviceViewModel.getDebtFromCache(listViewModel.currentAddress)
         }
     }

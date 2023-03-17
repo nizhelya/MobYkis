@@ -21,22 +21,22 @@ class ServiceViewModel @Inject constructor(
 ):BaseViewModel(){
 
     private val _servicesFlat = MutableLiveData<List<ServiceEntity>>()
-    val servicesFlat : LiveData<List<ServiceEntity>> = _servicesFlat
+    val servicesFlat : LiveData<List<ServiceEntity>> get() = _servicesFlat
 
     private val _totalDebt = MutableLiveData<ServiceEntity>()
-    val totalDebt : LiveData<ServiceEntity> = _totalDebt
+    val totalDebt : LiveData<ServiceEntity> get() = _totalDebt
 
-    fun getFlatService(params:ServiceParams) {
+    fun getFlatService(addressId: Int , houseId: Int , service:Byte ,total:Byte ,qty:Byte , needFetch:Boolean = false) {
         getFlatServiceUseCase(ServiceParams(
-            addressId = params.addressId ,
-            houseId = params.houseId ,
-            service = params.service,
-            total = params.total,
-            qty = params.qty,
-            needFetch = params.needFetch)) { it ->
+            addressId = addressId ,
+            houseId = houseId ,
+            service = service,
+            total = total,
+            qty = qty,
+            needFetch = needFetch)) { it ->
             it.either(::handleFailure) {
                 handleService(
-                    it, params.addressId , params.houseId , params.service , params.total , params.qty , !params.needFetch
+                    it, addressId , houseId , service , total , qty , !needFetch
                 )
             }
         }
@@ -54,12 +54,12 @@ class ServiceViewModel @Inject constructor(
 
         if (fromCache) {
             updateProgress(true)
-            getFlatService(ServiceParams(addressId, houseId , service,total, qty, true))
+            getFlatService(addressId, houseId , service,total, qty, true)
         }
     }
     fun getDebtFromCache(addressId: Int){
         viewModelScope.launch {
-            _servicesFlat.value = serviceCacheImpl.getServiceFromFlat(addressId)
+            _totalDebt.value = serviceCacheImpl.getTotalDebt(addressId)
         }
     }
 }
