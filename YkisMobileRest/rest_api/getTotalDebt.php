@@ -17,7 +17,7 @@ if (isset($_POST['address_id']) && !empty($_POST['address_id']) &&
         $services = $generalFunctionsObject->getTotalDebt($resultServices);
         $response["success"] = 1;
         $response["message"] = "Success!";
-        $response["services"] = array();
+        $response["services"] = $services;
         echo json_encode($response);
 } else {
     $response["success"] = 0;

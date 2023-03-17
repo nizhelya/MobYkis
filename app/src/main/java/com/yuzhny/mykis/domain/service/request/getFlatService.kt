@@ -14,7 +14,8 @@ class getFlatService @Inject constructor(
 data class ServiceParams(
     val addressId:Int,
     val houseId:Int ,
-    val service:Byte ,
+    val service:Byte = 0 ,
+    val total:Byte,
     val qty :Byte ,
     var needFetch:Boolean = false
 )

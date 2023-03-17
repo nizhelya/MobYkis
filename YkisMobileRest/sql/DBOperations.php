@@ -96,17 +96,25 @@ class DBOperations {
     mysqli_query( $com->getDb(), $sql);
     return $com->getDb();
   }
-  public function getFlatServices($address_id ,$house_id , $service , $qty){
+
+
+    public function getFlatServices($address_id ,$house_id , $service ,$total , $qty){
     $com = new DbConnect();
-    switch ($qty) {
-      case 1 : $limit = 'LIMIT 12' ;
-        break ;
-    case 0 : $limit = '' ;
-      break;
-    }
-    switch($service){
-      case 1 :
-    $sql = 'SELECT "voda" as service ,  t1.address_id ,  CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+    $sql = "";
+    if($total == false) {
+        switch ($qty) {
+            case 1 :
+                $limit = 'LIMIT 12';
+                break;
+            case 0 :
+                $limit = '';
+                break;
+        }
+
+        switch ($service) {
+
+            case 1 :
+                $sql = 'SELECT "voda" as service ,  t1.address_id , t1.data  , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
     IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t2.nachisleno , 0 ) as nachisleno2, IFNULL(t12.nachisleno, 0) as nachisleno3 , IFNULL(t13.nachisleno, 0) as nachisleno4,
     IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
@@ -118,10 +126,11 @@ class DBOperations {
     LEFT JOIN YIS.STOKI as t2 USING(address_id,data)
     LEFT JOIN YIS.AVODA as t12 USING(address_id , data)
     LEFT JOIN YIS.ASTOKI as t13 USING(address_id , data)
-    WHERE t1.address_id = '.$address_id.' ORDER BY t1.data DESC '.$limit.' ';
-    break;
-      case 2 :
-    $sql = 'SELECT "teplo" as service , t1.address_id , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+    WHERE t1.address_id = ' . $address_id . ' ORDER BY t1.data DESC ' . $limit . ' ';
+                break;
+
+            case 2 :
+                $sql = 'SELECT "teplo" as service , t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
     IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t2.nachisleno , 0 ) as nachisleno2, IFNULL(t12.nachisleno, 0) as nachisleno3 , IFNULL(t13.nachisleno, 0) as nachisleno4,
     IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
@@ -129,24 +138,26 @@ class DBOperations {
     IFNULL(t1.oplacheno ,0) + IFNULL(t2.oplacheno , 0) + IFNULL(t12.oplacheno,0) + IFNULL(t13.oplacheno , 0) as oplacheno,
     IFNULL(t1.dolg, 0) as dolg1, IFNULL(t2.dolg , 0 ) as dolg2, IFNULL(t12.dolg, 0) as dolg3 , IFNULL(t13.dolg, 0) as dolg4,
     IFNULL(t1.dolg , 0) + IFNULL(t2.dolg  , 0)+ IFNULL(t12.dolg , 0) + IFNULL(t13.dolg , 0) as dolg
-    FROM YIS.VODA as t1
+    FROM YIS.OTOPLENIE as t1
     LEFT JOIN YIS.ATEPLO as t2 USING(address_id,data)
     LEFT JOIN YIS.PTN as t12 USING(address_id , data)
     LEFT JOIN YIS.PODOGREV as t13 USING(address_id , data)
-    WHERE t1.address_id = '.$address_id.' ORDER BY t1.data DESC '.$limit.' ';
-    break;
-      case 3 :
-    $sql = 'SELECT "tbo" as service , t1.address_id , CONCAT_WS(" ",t1.mec,t1.god) as period ,
+    WHERE t1.address_id = ' . $address_id . ' ORDER BY t1.data DESC ' . $limit . ' ';
+                break;
+
+            case 3 :
+                $sql = 'SELECT "tbo" as service , t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period ,
     IFNULL(t1.zadol , 0) as zadol ,
     IFNULL(t1.nachisleno, 0) as nachisleno ,
     IFNULL(t1.oplacheno ,0) as oplacheno ,
     IFNULL(t1.dolg , 0) as dolg
     FROM YIS.TBO as t1
-    WHERE t1.address_id = '.$address_id.' ORDER BY t1.data DESC '.$limit.' ';
-    break;
-      case 4 :
-        if($house_id == 22){
-           $sql = 'SELECT "kv" as service, t1.address_id , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t3.zadol , 0 ) as zadol2 ,
+    WHERE t1.address_id = ' . $address_id . ' ORDER BY t1.data DESC ' . $limit . ' ';
+                break;
+
+            case 4 :
+                if ($house_id == 22) {
+                    $sql = 'SELECT "kv" as service, t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t3.zadol , 0 ) as zadol2 ,
     IFNULL(t1.zadol , 0) + IFNULL(t3.zadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t3.nachisleno , 0 ) as nachisleno2 ,
     IFNULL(t1.nachisleno , 0) + IFNULL(t3.nachisleno ,0) as nachisleno,
@@ -156,9 +167,9 @@ class DBOperations {
     IFNULL(t1.dolg , 0) + IFNULL(t3.dolg  , 0) as dolg
     FROM OSBB.KVARTPLATA as t1
     LEFT JOIN OSBB.RFOND as t3 using(address_id , data)
-    WHERE t1.address_id = '.$address_id.' ORDER BY t1.data DESC LIMIT '.$limit.' ';
-        } else {
-    $sql = 'SELECT "kv" as service ,t1.address_id , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t1.rzadol , 0 ) as zadol2 ,
+    WHERE t1.address_id = ' . $address_id . ' ORDER BY t1.data DESC LIMIT ' . $limit . ' ';
+                } else {
+                    $sql = 'SELECT "kv" as service ,t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t1.rzadol , 0 ) as zadol2 ,
     IFNULL(t1.zadol , 0) + IFNULL(t1.rzadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t1.remont , 0 ) as nachisleno2 ,
     IFNULL(t1.nachisleno , 0) + IFNULL(t1.remont,0) as nachisleno,
@@ -167,47 +178,88 @@ class DBOperations {
     IFNULL(t1.dolg, 0) as dolg1, IFNULL(t1.rdolg , 0 ) as dolg2 ,
     IFNULL(t1.dolg , 0) + IFNULL(t1.rdolg  , 0) as dolg
     FROM YIS.KVARTPLATA as t1
-    WHERE t1.address_id = '.$address_id.' ORDER BY t1.data DESC  '.$limit.' ';
+    WHERE t1.address_id = ' . $address_id . ' ORDER BY t1.data DESC  ' . $limit . ' ';
+                }
+                break;
+        }
+    }else{
+        if($house_id == 22){
+            $sql = 'SELECT t1.address_id , "total" as service , CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01") as data ,  t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg +
+           t9.dolg as dolg2 , t10.dolg as dolg3 , t11.dolg + t12.dolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t12.dolg as dolg
+    FROM YIS.ADDRESS as t1
+    LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.STOKI as t3 on t1.address_id = t3.address_id and t3.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.AVODA as t4 on t1.address_id = t4.address_id and t4.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.ASTOKI as t5 on t1.address_id = t5.address_id and t5.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.OTOPLENIE as t6 on t1.address_id = t6.address_id and t6.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.ATEPLO as t7 on t1.address_id = t7.address_id and t7.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.PTN as t8 on t1.address_id = t8.address_id and t8.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.PODOGREV as t9 on t1.address_id = t9.address_id and t9.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.TBO as t10 on t1.address_id = t10.address_id and t10.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN OSBB.KVARTPLATA as t11 on t1.address_id = t11.address_id and t11.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN OSBB.RFOND as t12 on t1.address_id = t12.address_id and t12.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    WHERE t1.address_id = '.$address_id.' ';
+        } else {
+            $sql = 'SELECT t1.address_id , "total" as service , CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01") as data , t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg + t9.dolg as dolg2 ,
+           t10.dolg as dolg3 , t11.dolg + t11.rdolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t11.rdolg as dolg
+    FROM YIS.ADDRESS as t1
+    LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.STOKI as t3 on t1.address_id = t3.address_id and t3.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.AVODA as t4 on t1.address_id = t4.address_id and t4.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.ASTOKI as t5 on t1.address_id = t5.address_id and t5.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.OTOPLENIE as t6 on t1.address_id = t6.address_id and t6.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.ATEPLO as t7 on t1.address_id = t7.address_id and t7.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.PTN as t8 on t1.address_id = t8.address_id and t8.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.PODOGREV as t9 on t1.address_id = t9.address_id and t9.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.TBO as t10 on t1.address_id = t10.address_id and t10.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.KVARTPLATA as t11 on t1.address_id = t11.address_id and t11.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    WHERE t1.address_id = '.$address_id.' ';
+        }
     }
-    break;
+   // print_r($sql);
+    $result = mysqli_query($com->getDb(), $sql);
+    return $result;
+  }
+
+
+  public function getTotalDebt($address_id , $house_id ){
+    $com = new DbConnect();
+        if($house_id == 22){
+           $sql = 'SELECT t1.address_id , "total" as service , CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01") as data ,  t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg +
+           t9.dolg as dolg2 , t10.dolg as dolg3 , t11.dolg + t12.dolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t12.dolg as dolg
+    FROM YIS.ADDRESS as t1
+    LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.STOKI as t3 on t1.address_id = t3.address_id and t3.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.AVODA as t4 on t1.address_id = t4.address_id and t4.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.ASTOKI as t5 on t1.address_id = t5.address_id and t5.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.OTOPLENIE as t6 on t1.address_id = t6.address_id and t6.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.ATEPLO as t7 on t1.address_id = t7.address_id and t7.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.PTN as t8 on t1.address_id = t8.address_id and t8.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.PODOGREV as t9 on t1.address_id = t9.address_id and t9.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.TBO as t10 on t1.address_id = t10.address_id and t10.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN OSBB.KVARTPLATA as t11 on t1.address_id = t11.address_id and t11.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN OSBB.RFOND as t12 on t1.address_id = t12.address_id and t12.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    WHERE t1.address_id = '.$address_id.' ';
+        } else {
+           $sql = 'SELECT t1.address_id , "total" as service , CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01") as data , t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg + t9.dolg as dolg2 ,
+           t10.dolg as dolg3 , t11.dolg + t11.rdolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t11.rdolg as dolg
+    FROM YIS.ADDRESS as t1
+    LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.STOKI as t3 on t1.address_id = t3.address_id and t3.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.AVODA as t4 on t1.address_id = t4.address_id and t4.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.ASTOKI as t5 on t1.address_id = t5.address_id and t5.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.OTOPLENIE as t6 on t1.address_id = t6.address_id and t6.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.ATEPLO as t7 on t1.address_id = t7.address_id and t7.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.PTN as t8 on t1.address_id = t8.address_id and t8.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.PODOGREV as t9 on t1.address_id = t9.address_id and t9.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.TBO as t10 on t1.address_id = t10.address_id and t10.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    LEFT JOIN YIS.KVARTPLATA as t11 on t1.address_id = t11.address_id and t11.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
+    WHERE t1.address_id = '.$address_id.' ';
     }
 //print_r($sql);
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
   }
-//   public function getTotalDebt($address_id , $house_id ){
-//     $com = new DbConnect();
-//         if($house_id == 22){
-//            $sql = 'SELECT t1.address_id , t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg + t9.dolg as dolg2 , t10.dolg as dolg3 , t11.dolg + t12.dolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t12.dolg as dolg
-//     FROM YIS.ADDRESS as t1
-//     LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.STOKI as t3 on t1.address_id = t3.address_id and t3.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.AVODA as t4 on t1.address_id = t4.address_id and t4.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.ASTOKI as t5 on t1.address_id = t5.address_id and t5.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.OTOPLENIE as t6 on t1.address_id = t6.address_id and t6.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.ATEPLO as t7 on t1.address_id = t7.address_id and t7.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.PTN as t8 on t1.address_id = t8.address_id and t8.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.PODOGREV as t9 on t1.address_id = t9.address_id and t9.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.TBO as t10 on t1.address_id = t10.address_id and t10.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN OSBB.KVARTPLATA as t11 on t1.address_id = t11.address_id and t11.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN OSBB.RFOND as t12 on t1.address_id = t12.address_id and t12.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     WHERE t1.address_id = '.$address_id.' ';
-//         } else {
-//            $sql = 'SELECT t1.address_id , t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg + t9.dolg as dolg2 , t10.dolg as dolg3 , t11.dolg + t11.rdolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t11.rdolg as dolg
-//     FROM YIS.ADDRESS as t1
-//     LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.STOKI as t3 on t1.address_id = t3.address_id and t3.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.AVODA as t4 on t1.address_id = t4.address_id and t4.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.ASTOKI as t5 on t1.address_id = t5.address_id and t5.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.OTOPLENIE as t6 on t1.address_id = t6.address_id and t6.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.ATEPLO as t7 on t1.address_id = t7.address_id and t7.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.PTN as t8 on t1.address_id = t8.address_id and t8.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.PODOGREV as t9 on t1.address_id = t9.address_id and t9.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.TBO as t10 on t1.address_id = t10.address_id and t10.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     LEFT JOIN YIS.KVARTPLATA as t11 on t1.address_id = t11.address_id and t11.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),'01')
-//     WHERE t1.address_id = '.$address_id.' ';
-//     }
-//     $result = mysqli_query($com->getDb(), $sql);
-//     return $result;
-//   }
+
+
 }

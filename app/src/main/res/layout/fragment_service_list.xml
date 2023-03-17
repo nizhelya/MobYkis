@@ -54,6 +54,17 @@
         app:layout_constraintEnd_toEndOf="@id/button_ytke"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="24dp"/>
+        <TextView
+            android:id="@+id/dolg1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            tools:text="250.00 "
+            style="@style/SecondText"
+            app:layout_constraintTop_toBottomOf="@id/borg_text"
+            app:layout_constraintStart_toEndOf="@id/button_yzhtrans"
+            app:layout_constraintBottom_toTopOf="@id/divider_vodokanal"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider_vodokanal"
@@ -72,6 +83,17 @@
         android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@id/button_vodokanal"
         app:layout_constraintStart_toStartOf="@id/button_vodokanal"/>
+        <TextView
+            android:id="@+id/dolg2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            tools:text="00.00 "
+            style="@style/SecondText"
+            app:layout_constraintTop_toBottomOf="@id/divider_vodokanal"
+            app:layout_constraintStart_toEndOf="@id/button_ytke"
+            app:layout_constraintBottom_toTopOf="@id/divider_ytke"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider_ytke"
         android:layout_width="wrap_content"
@@ -89,6 +111,17 @@
         app:layout_constraintTop_toBottomOf="@id/button_ytke"
         app:layout_constraintEnd_toEndOf="@id/button_ytke"
         app:layout_constraintStart_toStartOf="@id/button_ytke"/>
+        <TextView
+            android:id="@+id/dolg3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            tools:text="1780.00 "
+            style="@style/SecondText"
+            app:layout_constraintTop_toBottomOf="@id/divider_ytke"
+            app:layout_constraintStart_toEndOf="@id/button_yzhtrans"
+            app:layout_constraintBottom_toTopOf="@id/divider_yzhtrans"
+            app:layout_constraintEnd_toEndOf="parent"/>
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider_yzhtrans"
             android:layout_width="wrap_content"
@@ -101,9 +134,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            tools:text="ОСББ ХІМІКІВ 14"
             app:layout_constraintTop_toBottomOf="@id/button_yzhtrans"
             app:layout_constraintEnd_toEndOf="@id/button_ytke"
             app:layout_constraintStart_toStartOf="@id/button_yzhtrans"/>
+        <TextView
+            android:id="@+id/dolg4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            tools:text="1780.00 "
+            style="@style/SecondText"
+            app:layout_constraintTop_toBottomOf="@id/divider_yzhtrans"
+            app:layout_constraintStart_toEndOf="@id/button_tbo"
+            app:layout_constraintBottom_toTopOf="@id/divider_tbo"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider_tbo"
         android:layout_width="wrap_content"
@@ -111,12 +156,26 @@
         app:layout_constraintTop_toBottomOf="@id/button_tbo"
         app:layout_constraintStart_toStartOf="parent"/>
         <TextView
+            android:id="@+id/dolg_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/total_debt_text"
+            style="@style/SecondLargeText"
+            tools:text="Сумарний борг : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dolg"
+            app:layout_constraintTop_toBottomOf="@id/divider_tbo" />
+        <TextView
+            android:id="@+id/dolg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/total_debt_text"
+            android:gravity="center"
             style="@style/SecondText"
+            tools:text="2500"
             app:layout_constraintStart_toEndOf="@id/button_yzhtrans"
             app:layout_constraintTop_toBottomOf="@id/divider_tbo"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

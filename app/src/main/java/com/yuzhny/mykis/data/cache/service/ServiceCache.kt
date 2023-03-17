@@ -7,4 +7,5 @@ interface ServiceCache {
     fun addService(service:List<ServiceEntity>)
     fun getServiceFromFlat(addressId:Int):List<ServiceEntity>
     fun deleteServiceFromFlat(addressId:List<Int>)
+    fun getTotalDebt(addressId: Int):ServiceEntity
 }

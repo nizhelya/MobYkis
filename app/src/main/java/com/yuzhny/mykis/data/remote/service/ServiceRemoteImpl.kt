@@ -19,6 +19,7 @@ class ServiceRemoteImpl @Inject constructor(
         houseId: Int,
         qty: Byte,
         service: Byte,
+        total:Byte,
         userId: Int,
         token: String
     ): Either<Failure, List<ServiceEntity>> {
@@ -29,6 +30,7 @@ class ServiceRemoteImpl @Inject constructor(
                 houseId,
                 qty ,
                 service ,
+                total,
                 userId ,
                 token
                 )
@@ -38,13 +40,12 @@ class ServiceRemoteImpl @Inject constructor(
            it.services
         }
     }
-
-
     private fun createGetFlatServiceMap(
         addressId: Int,
         houseId:Int,
         qty:Byte,
         service:Byte,
+        total: Byte,
         userId: Int,
         token: String
     ): Map<String, String> {
@@ -53,8 +54,10 @@ class ServiceRemoteImpl @Inject constructor(
         map.put(ApiService.HOUSE_ID, houseId.toString())
         map.put(ApiService.QTY, qty.toString())
         map.put(ApiService.SERVICE, service.toString())
+        map.put(ApiService.TOTAL, total.toString())
         map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)
         return map
     }
+
 }

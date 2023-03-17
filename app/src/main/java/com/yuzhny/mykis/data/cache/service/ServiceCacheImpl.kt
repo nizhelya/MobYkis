@@ -13,12 +13,16 @@ class ServiceCacheImpl @Inject constructor(
         serviceDao.insertService(service)
     }
 
-    override fun getServiceFromFlat(addressId: Int): List<ServiceEntity> {
-        return serviceDao.getFamilyFromFlat(addressId)
+    override fun getServiceFromFlat(addressId: Int ): List<ServiceEntity> {
+        return serviceDao.getServiceFromFlat(addressId )
     }
 
     override fun deleteServiceFromFlat(addressId: List<Int>) {
         serviceDao.deleteServiceFromFlat(addressId)
+    }
+
+    override fun getTotalDebt(addressId: Int):ServiceEntity {
+        return serviceDao.getTotalDebt(addressId)
     }
 
 }

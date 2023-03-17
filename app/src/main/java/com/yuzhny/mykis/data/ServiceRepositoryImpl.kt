@@ -24,6 +24,7 @@ class ServiceRepositoryImpl @Inject constructor(
                         params.houseId,
                         params.qty,
                         params.service,
+                        params.total,
                         it.userId,
                         it.token
                     )

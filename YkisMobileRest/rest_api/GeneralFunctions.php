@@ -314,6 +314,7 @@ class GeneralFunctionsClass
              $service = array(
                  'address_id'=>$row['address_id'],
                  'service'=>$row['service'],
+                 'data'=>$row['data'],
                  'period'=>$row['period'],
                  'zadol'=>$row['zadol'],
                  'zadol1'=>$row['zadol1'],
@@ -334,14 +335,15 @@ class GeneralFunctionsClass
                  'dolg1'=>$row['dolg1'],
                  'dolg2'=>$row['dolg2'],
                  'dolg3'=>$row['dolg3'],
-                 'dolg4'=>$row['dolg4'],
-
+                 'dolg4'=>$row['dolg4']
             );
 
             array_push($results, $service);
         }
         return $results;
     }
+
+
     public function getTotalDebt($resultTotal)
      {
         $dbOperationsObject = new DBOperations();
@@ -349,6 +351,8 @@ class GeneralFunctionsClass
         while ($row = mysqli_fetch_array($resultTotal)) {
              $service = array(
                  'address_id'=>$row['address_id'],
+                 'data'=>$row['data'],
+                 'service'=>$row['address_id'] ,
                  'dolg'=>$row['dolg'],
                  'dolg1'=>$row['dolg1'],
                  'dolg2'=>$row['dolg2'],
@@ -360,4 +364,5 @@ class GeneralFunctionsClass
         }
         return $results;
     }
+
 }

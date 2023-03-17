@@ -12,13 +12,19 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentViewPagerBinding
+import com.yuzhny.mykis.domain.service.ServiceEntity
+import com.yuzhny.mykis.domain.service.request.ServiceParams
 import com.yuzhny.mykis.presentation.MainActivity
 import com.yuzhny.mykis.presentation.appartment.detail.adapter.ChildFragmentStateAdapter
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
+import com.yuzhny.mykis.presentation.appartment.service.ServiceViewModel
+import com.yuzhny.mykis.presentation.core.ext.onSuccess
 
 
 class ViewPagerFragment : Fragment() {
     private val listViewModel by activityViewModels<AppartmentListViewModel>()
+    private val serviceViewModel : ServiceViewModel by activityViewModels()
+
     private var _binding : FragmentViewPagerBinding? = null
     private val binding get() = _binding!!
     private val args : ViewPagerFragmentArgs by navArgs()
@@ -53,5 +59,6 @@ class ViewPagerFragment : Fragment() {
         listViewModel.currentAddress = args.addressId
         listViewModel.currentHouse = args.houseId
     }
+
 
 }
