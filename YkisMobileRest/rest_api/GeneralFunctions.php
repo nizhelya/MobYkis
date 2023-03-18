@@ -342,4 +342,31 @@ class GeneralFunctionsClass
         }
         return $results;
     }
+    public function getFlatPayments($resultPayments)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        while ($row = mysqli_fetch_array($resultPayments)) {
+            $service = array(
+                'rec_id'=>$row['rec_id'],
+                'address_id'=>$row['address_id'],
+                'address'=>$row['address'],
+                'year'=>$row['god'],
+                'data'=>$row['data'],
+                'kvartplata'=>$row['kvartplata'],
+                'remont'=>$row['remont'],
+                'otoplenie'=>$row['otoplenie'],
+                'voda'=>$row['voda'],
+                'tbo'=>$row['tbo'],
+                'summa'=>$row['summa'],
+                'prixod'=>$row['prixod'],
+                'kassa'=>$row['kassa'],
+                'nomer'=>$row['operator'],
+                'data_in'=>$row['data_in']
+            );
+
+            array_push($results, $service);
+        }
+        return $results;
+    }
 }

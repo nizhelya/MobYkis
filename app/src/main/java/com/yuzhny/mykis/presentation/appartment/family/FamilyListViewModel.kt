@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
-import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
+import com.yuzhny.mykis.domain.family.request.BooleanInt
 import com.yuzhny.mykis.domain.family.request.GetFamilyFromFlat
 import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +18,7 @@ class FamilyListViewModel @Inject constructor(
     val family : LiveData<List<FamilyEntity>> = _family
 
     fun getFamily(addressId:Int , needFetch: Boolean = false) {
-        getFamilyFromFlat(FamilyBooleanInt(addressId = addressId , needFetch = needFetch)) { it ->
+        getFamilyFromFlat(BooleanInt(addressId = addressId , needFetch = needFetch)) { it ->
             it.either(::handleFailure) {
                 handleFamily(
                     it, !needFetch ,addressId

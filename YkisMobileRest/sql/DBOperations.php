@@ -220,4 +220,14 @@ class DBOperations {
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
   }
+
+    public function getFlatPayments($address_id)
+    {
+        $com = new DbConnect();
+    $sql = 'SELECT `rec_id`,`address_id`,`address`, `god`, `data`,`kvartplata`,`remont`,(`ateplo`+`otoplenie`+`podogrev`+`ptn`) as otoplenie, 
+(`voda` + `stoki` +`avoda` + `astoki`) as voda,`tbo`,`summa`,`prixod`,`kassa`,`nomer`,`operator`,`data_in` FROM YIS.OPLATA  WHERE YIS.OPLATA.address_id= '.$address_id.'  ORDER BY YIS.OPLATA.rec_id ;';
+
+    $result = mysqli_query($com->getDb(), $sql);
+    return $result;
+    }
 }

@@ -30,20 +30,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/borg_text"
-        style="@style/SecondLargeText"
+        style="@style/SecondText"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="@id/organ_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/organ_text"
         app:layout_constraintStart_toEndOf="@id/button_vodokanal"
         android:layout_marginBottom="12dp"/>
-<!--    <com.google.android.material.divider.MaterialDivider-->
-<!--        android:id="@+id/divider"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/borg_text"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/button_vodokanal"-->
-<!--        app:layout_constraintStart_toStartOf="parent"/>-->
 
     <Button
         android:id="@+id/button_vodokanal"
@@ -162,6 +155,7 @@
             android:text="@string/total_debt_text"
             style="@style/SecondLargeText"
             tools:text="Сумарний борг : "
+            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/dolg"
             app:layout_constraintTop_toBottomOf="@id/divider_tbo" />
@@ -178,4 +172,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

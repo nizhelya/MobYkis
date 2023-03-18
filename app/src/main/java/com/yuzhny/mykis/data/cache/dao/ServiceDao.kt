@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ServiceDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertService(service:List<ServiceEntity>)
     @Query("select * from service where address_id = :addressId")
     fun getServiceFromFlat(addressId:Int): List<ServiceEntity>

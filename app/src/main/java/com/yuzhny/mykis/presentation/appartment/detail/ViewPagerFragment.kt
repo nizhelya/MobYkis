@@ -53,7 +53,8 @@ class ViewPagerFragment : Fragment() {
             tab.text = when (position) {
                 0 -> getString(R.string.list_family)
                 1 -> getString(R.string.bti)
-                else -> getString(R.string.accrued)
+                2 -> getString(R.string.accrued)
+                else -> getString(R.string.payment_list)
             }
         }.attach()
         listViewModel.currentAddress = args.addressId

@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.yuzhny.mykis.data.cache.service.ServiceCacheImpl
-import com.yuzhny.mykis.domain.family.FamilyEntity
-import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.domain.service.request.ServiceParams
 import com.yuzhny.mykis.domain.service.request.getFlatService

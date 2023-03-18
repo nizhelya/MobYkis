@@ -6,18 +6,20 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.yuzhny.mykis.presentation.appartment.bti.BtiFragment
 import com.yuzhny.mykis.presentation.appartment.family.FamilyListFragment
+import com.yuzhny.mykis.presentation.appartment.payment.PaymentFlatListFragment
 import com.yuzhny.mykis.presentation.appartment.service.ServiceListFragment
 
 class ChildFragmentStateAdapter(fragmentManager: FragmentManager , lifecycle: Lifecycle)
     :FragmentStateAdapter(fragmentManager, lifecycle){
-    override fun getItemCount(): Int  =  3
+    override fun getItemCount(): Int  =  4
 
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> FamilyListFragment()
             1-> BtiFragment()
-            else -> ServiceListFragment()
+            2 -> ServiceListFragment()
+            else -> PaymentFlatListFragment()
         }
     }
 }

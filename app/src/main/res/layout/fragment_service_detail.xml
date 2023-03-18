@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".presentation.appartment.service.ServiceDetailFragment">
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recyclerView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

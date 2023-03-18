@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 class GetFamilyFromFlat @Inject constructor(
     private val familyRepository:FamilyRepository
-) : UseCase<List<FamilyEntity>, FamilyBooleanInt>() {
+) : UseCase<List<FamilyEntity>, BooleanInt>() {
 
-    override suspend fun run(params:FamilyBooleanInt) = familyRepository.getFamilyFromFlat(params)
+    override suspend fun run(params:BooleanInt) = familyRepository.getFamilyFromFlat(params)
 }
-data class FamilyBooleanInt(
+data class BooleanInt(
     val addressId:Int,
     val needFetch:Boolean
 )

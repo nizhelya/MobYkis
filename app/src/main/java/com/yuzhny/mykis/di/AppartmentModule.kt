@@ -6,6 +6,8 @@ import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCacheImpl
 import com.yuzhny.mykis.data.cache.family.FamilyCache
 import com.yuzhny.mykis.data.cache.family.FamilyCacheImpl
+import com.yuzhny.mykis.data.cache.payment.PaymentCache
+import com.yuzhny.mykis.data.cache.payment.PaymentCacheImpl
 import com.yuzhny.mykis.data.cache.service.ServiceCache
 import com.yuzhny.mykis.data.cache.service.ServiceCacheImpl
 import com.yuzhny.mykis.data.cache.user.UserCache
@@ -16,6 +18,8 @@ import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemoteImpl
 import com.yuzhny.mykis.data.remote.family.FamilyRemote
 import com.yuzhny.mykis.data.remote.family.FamilyRemoteImpl
+import com.yuzhny.mykis.data.remote.payment.PaymentRemote
+import com.yuzhny.mykis.data.remote.payment.PaymentRemoteImpl
 import com.yuzhny.mykis.data.remote.service.ServiceRemote
 import com.yuzhny.mykis.data.remote.service.ServiceRemoteImpl
 import com.yuzhny.mykis.domain.address.AddressRepository
@@ -61,5 +65,13 @@ abstract class AppartmentModule {
     @Singleton
     @Binds
     abstract fun bindServiceRemote(impl: ServiceRemoteImpl): ServiceRemote
+
+    @Singleton
+    @Binds
+    abstract fun bindPaymentCache(impl: PaymentCacheImpl): PaymentCache
+
+    @Singleton
+    @Binds
+    abstract fun bindPaymentRemote(impl: PaymentRemoteImpl): PaymentRemote
 
   }

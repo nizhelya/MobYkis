@@ -5,7 +5,7 @@ import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.remote.family.FamilyRemote
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.family.FamilyRepository
-import com.yuzhny.mykis.domain.family.request.FamilyBooleanInt
+import com.yuzhny.mykis.domain.family.request.BooleanInt
 import com.yuzhny.mykis.domain.type.*
 
 class FamilyRepositoryImpl(
@@ -13,7 +13,7 @@ class FamilyRepositoryImpl(
     private val familyRemote: FamilyRemote,
     private val userCache: UserCache
 ) : FamilyRepository {
-    override fun getFamilyFromFlat(params: FamilyBooleanInt): Either<Failure, List<FamilyEntity>> {
+    override fun getFamilyFromFlat(params: BooleanInt): Either<Failure, List<FamilyEntity>> {
         return userCache.getCurrentUser()
             .flatMap {
                 return@flatMap if (params.needFetch) {

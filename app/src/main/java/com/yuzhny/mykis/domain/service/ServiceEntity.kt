@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
-@Entity(primaryKeys = [ "address_id" , "service" , "data" ] , tableName = "service")
+@Entity(primaryKeys = [ "address_id" , "data" ,  "service" ] , tableName = "service")
 data class ServiceEntity (
 
     @Json(name = "address_id")

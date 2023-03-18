@@ -4,6 +4,7 @@ import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.data.remote.family.GetFamilyResponse
+import com.yuzhny.mykis.data.remote.payment.GetPaymentResponse
 import com.yuzhny.mykis.data.remote.service.GetServiceResponse
 import retrofit2.Call
 import retrofit2.http.FieldMap
@@ -15,16 +16,16 @@ interface ApiService {
     companion object{
 //        const val SERVER_URL = "https://is.yuzhny.com/YkisMobileRest"
 //        const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
-//          const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
+          const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
 
 //        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
 
-        const val SERVER_URL = "http://192.168.0.105/MobYkis/YkisMobileRest"
+//        const val SERVER_URL = "http://192.168.0.105/MobYkis/YkisMobileRest"
 
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_FLAT = "getFlatById.php"
         const val GET_SERVICE_FLAT = "getFlatServices.php"
-        const val GET_TOTAL_DEBT = "getTotalDebt.php"
+        const val GET_FLAT_PAYMENT = "getFlatPayments.php"
         const val GET_MY_FLATS="getAppartmentsByUser.php"
         const val DELETE_FLAT = "deleteFlatByUser.php"
         const val UPDATE_BTI = "updateBti.php"
@@ -89,4 +90,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(GET_SERVICE_FLAT)
     fun getFlatService(@FieldMap params :Map<String , String> ):Call<GetServiceResponse>
+    @FormUrlEncoded
+    @POST(GET_FLAT_PAYMENT)
+    fun getFlatPayment(@FieldMap params :Map<String , String> ):Call<GetPaymentResponse>
 }
