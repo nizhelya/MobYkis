@@ -9,14 +9,22 @@ import androidx.fragment.app.activityViewModels
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentPaymentFlatListBinding
 import com.yuzhny.mykis.databinding.FragmentServiceListBinding
+import com.yuzhny.mykis.domain.appartment.AppartmentEntity
+import com.yuzhny.mykis.domain.payment.PaymentEntity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
+import com.yuzhny.mykis.presentation.core.ext.onSuccess
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PaymentFlatListFragment : BaseFragment() {
     private val listViewModel: AppartmentListViewModel by activityViewModels()
     private val paymentListViewModel : PaymentListViewModel by activityViewModels()
     private var _binding: FragmentPaymentFlatListBinding? = null
     private val binding get() = _binding!!
+    @Inject
+    lateinit var adapter :PaymentListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,6 +34,9 @@ class PaymentFlatListFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        paymentListViewModel.apply {
+            onSuccess(paymentsFlat ,::handlePayments)
+        }
         _binding = FragmentPaymentFlatListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -33,6 +44,18 @@ class PaymentFlatListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         paymentListViewModel.getFlatPayments(listViewModel.currentAddress)
+        paymentListViewModel.years.observe(this.viewLifecycleOwner){
+            i -> i?.let {
+                adapter.submitList(it)
+            }
+        }
+        binding.recyclerView.adapter = adapter
+
+    }
+    private fun handlePayments(paymentEntity:  List<PaymentEntity>?) {
+        if (paymentEntity != null && paymentEntity.isNotEmpty()) {
+            paymentListViewModel.getYearsFromFlat(listViewModel.currentAddress)
+        }
     }
 
 }

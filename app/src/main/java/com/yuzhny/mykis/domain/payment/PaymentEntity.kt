@@ -31,5 +31,6 @@ data class PaymentEntity(
 
     @Json(name = "data_in")
     @ColumnInfo(name = "data_in")
-    val dataIn: String="Unknown"
+    val dataIn: String="Unknown" ,
+    var isExpandable : Boolean = false,
 )

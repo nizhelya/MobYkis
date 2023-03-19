@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/drawable/ic_no_wifi.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.261" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3151041666666667" />
+        <entry key="app/src/main/res/layout/child_payment_list.xml" value="0.536" />
         <entry key="app/src/main/res/layout/drop_down_item.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/edit_dialog_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_add_appartment.xml" value="0.5242214532871973" />
@@ -30,11 +31,13 @@
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.3614457831325301" />
         <entry key="app/src/main/res/layout/fragment_family_list.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/fragment_list_appartment.xml" value="0.3151041666666667" />
+        <entry key="app/src/main/res/layout/fragment_payment_flat_list.xml" value="0.536" />
         <entry key="app/src/main/res/layout/fragment_service_detail.xml" value="0.3067708333333333" />
         <entry key="app/src/main/res/layout/fragment_service_list.xml" value="0.4" />
         <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/item_appartment_list.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/item_family_list.xml" value="0.536" />
+        <entry key="app/src/main/res/layout/item_payment_list.xml" value="0.4" />
         <entry key="app/src/main/res/layout/layout_parent.xml" value="0.3151041666666667" />
       </map>
     </option>

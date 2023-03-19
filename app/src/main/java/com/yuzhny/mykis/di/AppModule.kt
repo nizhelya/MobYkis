@@ -15,6 +15,7 @@ import com.yuzhny.mykis.data.cache.dao.FamilyDao
 import com.yuzhny.mykis.data.cache.dao.PaymentDao
 import com.yuzhny.mykis.data.cache.dao.ServiceDao
 import com.yuzhny.mykis.data.cache.payment.PaymentCache
+import com.yuzhny.mykis.data.cache.payment.PaymentCacheImpl
 import com.yuzhny.mykis.data.cache.service.ServiceCache
 import com.yuzhny.mykis.data.remote.address.AddressRemote
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
@@ -26,8 +27,10 @@ import com.yuzhny.mykis.data.remote.service.ServiceRemote
 import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import com.yuzhny.mykis.domain.family.FamilyRepository
+import com.yuzhny.mykis.domain.payment.PaymentEntity
 import com.yuzhny.mykis.domain.payment.PaymentRepository
 import com.yuzhny.mykis.domain.service.ServiceRepository
+import com.yuzhny.mykis.presentation.appartment.payment.PaymentListAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -163,6 +166,4 @@ object AppModule {
     ): PaymentRepository {
         return PaymentRepositoryImpl(paymentCache , paymentRemote, userCache )
     }
-
-
 }

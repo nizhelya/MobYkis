@@ -60,7 +60,8 @@
     <string name="owner_text">Власник:</string>
     <string name="empty_phone">Додайте свій номер телефону</string>
     <string name="empty_email">Додайте свою електронну адресу</string>
-    <string name="vodokanal">КП " ЮЖВОДОКАНАЛ "</string>
+    <string name="vodokanal">КП "ЮЖВОДОКАНАЛ"</string>
+    <string name="vodokanal1">КП ЮЖВОДОКАНАЛ:</string>
     <string name="ytke">КП ТМ " ЮЖТЕПЛОКОМУНЕНЕРГО "</string>
     <string name="yzhtrans">ЮМКП " ЮЖТРАНС "</string>
     <string name="organ">Організація</string>
@@ -72,6 +73,14 @@
     <string name="total_debt_text">Сумарний борг:</string>
     <string name="accrued">Нарахування</string>
     <string name="payment_list">Платежі</string>
+    <string name="kvartplata_text">Внески:</string>
+    <string name="remont">Р.Фонд:</string>
+    <string name="summary">Сума:</string>
+    <string name="date">Дата:</string>
+    <string name="otoplenie">Кп тм "Ютке":</string>
+    <string name="tbo">ТПВ:</string>
+    <string name="prixod">Приход:</string>
+    <string name="operator">Оператор:</string>
     <string name="next">Продовжити</string>
     //error
     <string name="error_network">Немає доступу до Інтернету \n Перевірте підключення</string>
