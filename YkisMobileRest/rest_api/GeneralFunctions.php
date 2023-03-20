@@ -369,4 +369,85 @@ class GeneralFunctionsClass
         }
         return $results;
     }
+
+    public function getWaterMeter($resultWater)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        while ($row = mysqli_fetch_array($resultWater)) {
+            $waterMeter = array(
+                'vodomer_id'=>$row['vodomer_id'],
+                'dvodomer_id'=>$row['dvodomer_id'],
+                'address_id'=>$row['address_id'],
+                'house_id'=>$row['house_id'],
+                'address'=>$row['address'],
+                'nomer'=>$row['nomer'],
+                'model_id'=>$row['model_id'],
+                'model'=>$row['model'],
+                'st'=>$row['st'],
+                'voda'=>$row['voda'],
+                'place'=>$row['place'],
+                'position'=>$row['position'],
+                'obr'=>$row['obr'],
+                'joint'=>$row['joint'],
+                'sdate'=>$row['sdate'],
+                'fpdate'=>$row['fpdate'],
+                'pdate'=>$row['pdate'],
+                'pp'=>$row['pp'],
+                'zdate'=>$row['zdate'],
+                'avg'=>$row['avg'],
+                'date_ar'=>$row['date_ar'],
+                'date_ao'=>$row['date_ao'],
+                'out'=>$row['out'],
+                'spisan'=>$row['spisan'],
+                'paused'=>$row['paused'],
+                'data_st'=>$row['data_st'],
+                'data_fin'=>$row['data_fin'],
+                'norma'=>$row['norma'],
+                'data_spis'=>$row['data_spis'],
+                'operator'=>$row['operator']
+            );
+
+            array_push($results, $waterMeter);
+        }
+        return $results;
+    }
+
+    public function getWaterReadings($resultWater)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        while ($row = mysqli_fetch_array($resultWater)) {
+            $waterReadings = array(
+                'pok_id'=>$row['pok_id'],
+                'vodomer_id'=>$row['vodomer_id'],
+//                'address_id'=>$row['address_id'],
+                'date_readings'=>$row['data'],
+                'date_ot'=>$row['date_ot'],
+                'date_do'=>$row['date_do'],
+                'days'=>$row['days'],
+                'last'=>$row['pred'],
+                'currant'=>$row['tek'],
+                'kub'=>$row['kub'],
+                'avg'=>$row['avg'],
+                'tarif_xv'=>$row['tarif_xv'],
+                'xvoda'=>$row['xvoda'],
+                'tarif_st'=>$row['tarif_st'],
+                'stoki'=>$row['stoki'],
+                'date_st'=>$row['date_st'],
+                'date_fin'=>$row['date_fin'],
+                'pok_ot'=>$row['pok_ot'],
+                'pok_do'=>$row['pok_do'],
+                'rday'=>$row['rday'],
+                'mday'=>$row['mday'],
+                'kub_day'=>$row['kub_day'],
+                'qty_kub'=>$row['qty_kub'],
+                'data_in'=>$row['data_in'],
+                'operator'=>$row['operator']
+            );
+
+            array_push($results, $waterReadings);
+        }
+        return $results;
+    }
 }

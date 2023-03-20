@@ -230,4 +230,20 @@ class DBOperations {
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
     }
+
+    public function getWaterMeter($address_id)
+    {
+        $com = new DbConnect();
+        $sql = 'Select t1.* from YIS.VODOMER as t1 where t1.address_id = '.$address_id.' ';
+        $result = mysqli_query($com->getDb(), $sql);
+        return $result;
+    }
+
+    public function getWaterReadings($vodomer_id)
+    {
+        $com = new DbConnect();
+        $sql = 'Select t1.* from YIS.WATER as t1 where t1.vodomer_id = '.$vodomer_id.' ';
+        $result = mysqli_query($com->getDb(), $sql);
+        return $result;
+    }
 }

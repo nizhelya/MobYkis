@@ -23,7 +23,7 @@ class PaymentCacheImpl @Inject constructor(
     }
 
     override fun getYearsFromFlat(addressId: Int):List<PaymentEntity> {
-        return paymentDao.getYearsByFlat()
+        return paymentDao.getYearsByFlat(addressId)
     }
 
     override fun getPaymentFromYearFlat(addressId: Int, year:Short): List<PaymentEntity> {

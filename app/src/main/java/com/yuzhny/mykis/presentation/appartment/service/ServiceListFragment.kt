@@ -70,7 +70,7 @@ class ServiceListFragment : BaseFragment() {
                     dolg2.text =  it.dolg2.toString()
                     dolg3.text =  it.dolg3.toString()
                     dolg4.text =  it.dolg4.toString()
-                    dolg.text =   it.dolg.toString()
+                    dolg.text =   "${it.dolg.toString()}₴"
                     borgText.text = getString(R.string.borg_text,
                         SimpleDateFormat("dd/MM/yyy").format(Date(dateUnix.time)))
                 }

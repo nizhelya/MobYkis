@@ -23,8 +23,9 @@ class PaymentFlatListFragment : BaseFragment() {
     private val paymentListViewModel : PaymentListViewModel by activityViewModels()
     private var _binding: FragmentPaymentFlatListBinding? = null
     private val binding get() = _binding!!
+
     @Inject
-    lateinit var adapter :PaymentListAdapter
+    lateinit var paymentListAdapter : PaymentListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,11 +47,10 @@ class PaymentFlatListFragment : BaseFragment() {
         paymentListViewModel.getFlatPayments(listViewModel.currentAddress)
         paymentListViewModel.years.observe(this.viewLifecycleOwner){
             i -> i?.let {
-                adapter.submitList(it)
+                paymentListAdapter.submitList(it)
             }
         }
-        binding.recyclerView.adapter = adapter
-
+        binding.recyclerView.adapter = paymentListAdapter
     }
     private fun handlePayments(paymentEntity:  List<PaymentEntity>?) {
         if (paymentEntity != null && paymentEntity.isNotEmpty()) {

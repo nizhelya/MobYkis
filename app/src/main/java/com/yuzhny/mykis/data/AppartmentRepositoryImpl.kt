@@ -2,6 +2,7 @@ package com.yuzhny.mykis.data
 
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.family.FamilyCache
+import com.yuzhny.mykis.data.cache.payment.PaymentCache
 import com.yuzhny.mykis.data.cache.service.ServiceCache
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.remote.GetSimpleResponse
@@ -18,6 +19,7 @@ class AppartmentRepositoryImpl(
     private val appartmentCache: AppartmentCache,
     private val familyCache: FamilyCache,
     private val serviceCache: ServiceCache,
+    private val paymentCache: PaymentCache,
     private val userCache: UserCache
 ) : AppartmentRepository {
     val addressIdList = mutableListOf<Int>()
@@ -44,6 +46,7 @@ class AppartmentRepositoryImpl(
                 }
                 familyCache.deleteFamilyFromFlat(addressIdList)
                 serviceCache.deleteServiceFromFlat(addressIdList)
+                paymentCache.deletePaymentFromFlat(addressIdList)
                 addressIdList.clear()
             }
             .onNext {

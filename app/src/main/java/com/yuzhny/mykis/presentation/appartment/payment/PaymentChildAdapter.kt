@@ -42,7 +42,7 @@ class PaymentChildAdapter @Inject constructor(
     override fun onBindViewHolder(holder: PaymentChildViewHolder, position: Int) {
         val paymentChild = getItem(position)
         holder.binding.apply {
-            dateText.text = paymentChild.data
+            date.text = paymentChild.data
             kv.text = paymentChild.kvartplata.toString()
             remont.text = paymentChild.remont.toString()
             otoplenie.text = paymentChild.otoplenie.toString()

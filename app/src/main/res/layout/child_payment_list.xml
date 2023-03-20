@@ -22,11 +22,11 @@
         app:layout_constraintStart_toStartOf="parent"
         />
     <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="2023-01-05"
         android:layout_marginStart="8dp"
-        style="@style/SecondText"
         app:layout_constraintTop_toTopOf="@id/date_text"
         app:layout_constraintBottom_toBottomOf="@id/date_text"
         app:layout_constraintStart_toEndOf="@id/date_text"/>
@@ -154,6 +154,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/first_layout"
         app:layout_constraintTop_toTopOf="@id/first_layout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/first_layout"
         android:layout_marginStart="16dp">
         <TextView
@@ -163,43 +164,44 @@
             android:text="@string/prixod"
             style="@style/ChildText"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/prixod"
+            app:layout_constraintBottom_toBottomOf="@id/prixod"
             />
+
         <TextView
             android:id="@+id/prixod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="maktenar"
-            android:layout_marginStart="8dp"
             style="@style/SecondText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/prixod_text"
-            app:layout_constraintTop_toTopOf="@id/prixod_text"
-            app:layout_constraintBottom_toBottomOf="@id/prixod_text"/>
+            tools:text="maktenar" />
         <TextView
             android:id="@+id/operator_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/operator"
             style="@style/ChildText"
-            app:layout_constraintTop_toBottomOf="@id/prixod_text"
-            app:layout_constraintStart_toStartOf="@id/prixod_text"
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/operator"
+            app:layout_constraintBottom_toBottomOf="@id/operator"
             />
         <TextView
             android:id="@+id/operator"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="Emmanuel Macron"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/operator_text"
-            app:layout_constraintTop_toTopOf="@id/operator_text"
-            app:layout_constraintBottom_toBottomOf="@id/operator_text"
+            app:layout_constraintTop_toBottomOf="@id/prixod"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/operator_text"
             style="@style/SecondText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="2dp"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/first_layout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
