@@ -5,9 +5,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.yuzhny.mykis.R
+import com.yuzhny.mykis.databinding.FragmentServiceDetailBinding
+import com.yuzhny.mykis.domain.appartment.AppartmentEntity
+import com.yuzhny.mykis.domain.service.ServiceEntity
+import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
+import com.yuzhny.mykis.presentation.core.BaseFragment
+import com.yuzhny.mykis.presentation.core.ext.onFailure
+import com.yuzhny.mykis.presentation.core.ext.onSuccess
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class ServiceDetailFragment : Fragment() {
+@AndroidEntryPoint
+class ServiceDetailFragment @Inject constructor() : BaseFragment() {
+
+    private val serviceViewModel: ServiceViewModel by activityViewModels()
+    private val listViewModel: AppartmentListViewModel by activityViewModels()
+
+    private var _binding: FragmentServiceDetailBinding? = null
+    private val binding get() = _binding!!
+
+    @Inject
+    lateinit var serviceAdapter: ServiceDetailListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +38,41 @@ class ServiceDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_service_detail, container, false)
+        serviceViewModel.apply {
+            onSuccess(servicesFlat , ::handleServices)
+        }
+        _binding = FragmentServiceDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        serviceViewModel.servicesDetail.observe(this.viewLifecycleOwner) { i ->
+            i?.let {
+                serviceAdapter.submitList(it)
 
+            }
+        }
+        binding.recyclerView.adapter = serviceAdapter
+
+//        binding.recyclerView.isNestedScrollingEnabled = false;
+        binding.showAll.setOnClickListener {
+            getMoreServices()
+        }
+    }
+
+    private fun handleServices(serviceEntity:  List<ServiceEntity>?) {
+        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
+        }
+    }
+
+    fun getMoreServices(){
+        serviceViewModel.getFlatService(
+            listViewModel.currentAddress ,
+            listViewModel.currentHouse ,
+            serviceViewModel.currentService,
+            0,
+            0,
+        )
+    }
 }

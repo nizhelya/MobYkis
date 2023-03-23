@@ -17,27 +17,40 @@ class ServiceRepositoryImpl @Inject constructor(
 ) : ServiceRepository {
     override fun getFlatService(params: ServiceParams): Either<Failure, List<ServiceEntity>> {
         return userCache.getCurrentUser()
-            .flatMap {
-                return@flatMap if (params.needFetch) {
-                    serviceRemote.getFlatServices(
-                        params.addressId,
-                        params.houseId,
-                        params.qty,
-                        params.service,
-                        params.total,
-                        it.userId,
-                        it.token
-                    )
-                } else {
-                    Either.Right(
-                        serviceCache.getServiceFromFlat(params.addressId)
-                    )
+                .flatMap {
+                    return@flatMap if (params.needFetch) {
+                        serviceRemote.getFlatServices(
+                            params.addressId,
+                            params.houseId,
+                            params.qty,
+                            params.service,
+                            params.total,
+                            it.userId,
+                            it.token
+                        )
+                    } else {
+                        Either.Right(
+                            serviceCache.getServiceFromFlat(params.addressId)
+                        )
+                    }
                 }
-            }
-            .onNext {
-                it.map {
-                    serviceCache.addService(listOf(it))
+                .onNext {
+                    it.map {
+                        serviceCache.addService(listOf(it))
+                    }
                 }
-            }
-    }
+        }
+//    else{
+//            userCache.getCurrentUser()
+//                .flatMap { return@flatMap serviceRemote.getFlatServices(
+//                    params.addressId ,
+//                    params.houseId,
+//                    params.qty,
+//                    params.service,
+//                    params.total,
+//                    it.userId,
+//                    it.token
+//                ) }
+//        }
+
 }

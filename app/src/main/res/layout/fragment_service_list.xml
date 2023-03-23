@@ -60,7 +60,7 @@
             android:gravity="center"
             app:layout_constraintBottom_toTopOf="@id/divider_vodokanal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_yzhtrans"
+            app:layout_constraintStart_toEndOf="@id/button_tbo"
             app:layout_constraintTop_toBottomOf="@id/borg_text"
             tools:text="250.00 " />
 
@@ -98,12 +98,12 @@
             android:id="@+id/divider_ytke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/button_yzhtrans"
+            app:layout_constraintBottom_toTopOf="@id/button_tbo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_ytke" />
 
         <Button
-            android:id="@+id/button_yzhtrans"
+            android:id="@+id/button_tbo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -120,7 +120,7 @@
             android:gravity="center"
             app:layout_constraintBottom_toTopOf="@id/divider_yzhtrans"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_yzhtrans"
+            app:layout_constraintStart_toEndOf="@id/button_tbo"
             app:layout_constraintTop_toBottomOf="@id/divider_ytke"
             tools:text="1780.00 " />
 
@@ -128,18 +128,18 @@
             android:id="@+id/divider_yzhtrans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/button_tbo"
+            app:layout_constraintBottom_toTopOf="@id/button_kv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_yzhtrans" />
+            app:layout_constraintTop_toBottomOf="@id/button_tbo" />
 
         <Button
-            android:id="@+id/button_tbo"
+            android:id="@+id/button_kv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="@id/button_ytke"
-            app:layout_constraintStart_toStartOf="@id/button_yzhtrans"
-            app:layout_constraintTop_toBottomOf="@id/button_yzhtrans"
+            app:layout_constraintStart_toStartOf="@id/button_tbo"
+            app:layout_constraintTop_toBottomOf="@id/button_tbo"
             tools:text="ОСББ ХІМІКІВ 14" />
 
         <TextView
@@ -150,7 +150,7 @@
             android:gravity="center"
             app:layout_constraintBottom_toTopOf="@id/divider_tbo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_tbo"
+            app:layout_constraintStart_toEndOf="@id/button_kv"
             app:layout_constraintTop_toBottomOf="@id/divider_yzhtrans"
             tools:text="1780.00 " />
 
@@ -159,7 +159,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_tbo" />
+            app:layout_constraintTop_toBottomOf="@id/button_kv" />
 
         <TextView
             android:id="@+id/dolg_text"
@@ -182,7 +182,7 @@
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_yzhtrans"
+            app:layout_constraintStart_toEndOf="@id/button_tbo"
             app:layout_constraintTop_toBottomOf="@id/divider_tbo"
             tools:text="250.00₴" />
     </androidx.constraintlayout.widget.ConstraintLayout>

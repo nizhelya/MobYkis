@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentServiceListBinding
 import com.yuzhny.mykis.domain.service.ServiceEntity
@@ -22,6 +23,7 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ServiceListFragment : BaseFragment() {
@@ -31,6 +33,7 @@ class ServiceListFragment : BaseFragment() {
 
     private var _binding: FragmentServiceListBinding? = null
     private val binding get() = _binding!!
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +64,9 @@ class ServiceListFragment : BaseFragment() {
                 1,
                 1
         )
+        listViewModel.appartment.observe(this.viewLifecycleOwner){
+            binding.buttonKv.text = it.osbb
+        }
         serviceViewModel.getDebtFromCache(listViewModel.currentAddress)
         serviceViewModel.totalDebt.observe(this.viewLifecycleOwner){
             it?.let {
@@ -77,18 +83,18 @@ class ServiceListFragment : BaseFragment() {
             }
 
         }
-        listViewModel.appartment.observe(this.viewLifecycleOwner) {
-            binding.buttonTbo.text = it.osbb
-        }
-
         binding.buttonVodokanal.setOnClickListener {
             serviceViewModel.getFlatService(
-                    listViewModel.currentAddress,
-                    listViewModel.currentHouse,
-                    1,
-                    0,
-                    1
+                listViewModel.currentAddress,
+                listViewModel.currentHouse,
+                1,
+                0,
+                1
             )
+            serviceViewModel.currentService = 1
+            serviceViewModel.getDetailService(listViewModel.currentAddress , "voda")
+            findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
+        }
             binding.buttonYtke.setOnClickListener {
                 serviceViewModel.getFlatService(
                         listViewModel.currentAddress,
@@ -97,8 +103,11 @@ class ServiceListFragment : BaseFragment() {
                         0,
                         1,
                 )
+                serviceViewModel.currentService = 2
+                serviceViewModel.getDetailService(listViewModel.currentAddress , "teplo")
+                findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }
-            binding.buttonYzhtrans.setOnClickListener {
+            binding.buttonTbo.setOnClickListener {
                 serviceViewModel.getFlatService(
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
@@ -106,8 +115,11 @@ class ServiceListFragment : BaseFragment() {
                         0,
                         1,
                 )
+                serviceViewModel.currentService = 3
+                serviceViewModel.getDetailService(listViewModel.currentAddress , "tbo")
+                findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }
-            binding.buttonTbo.setOnClickListener {
+            binding.buttonKv.setOnClickListener {
                 serviceViewModel.getFlatService(
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
@@ -115,8 +127,11 @@ class ServiceListFragment : BaseFragment() {
                         0,
                         1,
                 )
+                serviceViewModel.currentService = 4
+                serviceViewModel.getDetailService(listViewModel.currentAddress , "kv")
+                findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }
-        }
+
     }
     private fun handleService(appartmentEntity:  List<ServiceEntity>?) {
         if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {

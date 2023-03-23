@@ -12,11 +12,14 @@ import javax.inject.Inject
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.satoshun.coroutine.autodispose.view.autoDispose
+import com.github.satoshun.coroutine.autodispose.view.autoDisposeScope
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.data.cache.dao.PaymentDao
 import com.yuzhny.mykis.data.cache.payment.PaymentCacheImpl
 import com.yuzhny.mykis.databinding.ChildPaymentListBinding
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import java.time.Year
 
 @FragmentScoped
@@ -38,25 +41,25 @@ class PaymentListAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: PaymentViewHolder, position: Int) {
         val payment = getItem(position)
-        holder.binding.apply {
-            yearText.text = payment.year.toString()
-            if (payment.isExpandable) {
-                recyclerView.visibility = View.VISIBLE
-                childAdapter.submitList(
-                    paymentCacheImpl.getPaymentFromYearFlat(payment.addressID , payment.year)
-                )
-                recyclerView.adapter = childAdapter
-                viewOpen.setImageResource(R.drawable.ic_expand_less)
-            } else {
-                recyclerView.visibility = View.GONE
-                viewOpen.setImageResource(R.drawable.ic_expand_more)
-            }
-            cardView.setOnClickListener {
-                isAnyItemExpanded(position)
-                payment.isExpandable = !payment.isExpandable
-                notifyItemChanged(position, Unit)
-            }
+
+        holder.itemView.autoDisposeScope.launch {
+            childAdapter.submitList(
+                paymentCacheImpl.getPaymentFromYearFlat(payment.addressID, payment.year)
+            )
+
         }
+        var isExp = payment.isExpandable
+        holder.binding.recyclerView.setHasFixedSize(true)
+        holder.binding.recyclerView.visibility = if (isExp) View.VISIBLE else View.GONE
+
+        holder.binding.recyclerView.adapter = childAdapter
+        holder.binding.yearText.text = payment.year.toString()
+        holder.binding.cardView.setOnClickListener {
+            isAnyItemExpanded(position)
+            payment.isExpandable = !payment.isExpandable
+            notifyItemChanged(position, Unit)
+            }
+
     }
     private fun isAnyItemExpanded(position: Int) {
         val temp = currentList.indexOfFirst {

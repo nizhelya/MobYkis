@@ -12,6 +12,10 @@ data class ServiceEntity (
     @ColumnInfo(name = "address_id")
     val addressId: Int = 0,
     val service : String = "Unknown",
+    val service1 : String = "Unknown",
+    val service2 : String = "Unknown",
+    val service3 : String = "Unknown",
+    val service4 : String = "Unknown",
     val data: String = "Unknown",
     val period : String? = "Unknown",
     val zadol  : Double? = 0.0,

@@ -24,4 +24,8 @@ class ServiceCacheImpl @Inject constructor(
     override fun getTotalDebt(addressId: Int):ServiceEntity {
         return serviceDao.getTotalDebt(addressId)
     }
+
+    override suspend fun getServiceDetail(addressId: Int, service: String): List<ServiceEntity> {
+        return serviceDao.getDetailService(addressId , service)
+    }
 }

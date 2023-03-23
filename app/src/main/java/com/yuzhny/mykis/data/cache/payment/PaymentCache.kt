@@ -9,5 +9,5 @@ interface PaymentCache {
     fun getPaymentsFromFlat(addressId:Int):List<PaymentEntity>
     fun deletePaymentFromFlat(addressId:List<Int>)
     fun getYearsFromFlat(addressId: Int):List<PaymentEntity>
-    fun getPaymentFromYearFlat(addressId: Int , year:Short):List<PaymentEntity>
+    suspend fun getPaymentFromYearFlat(addressId: Int , year:Short):List<PaymentEntity>
 }

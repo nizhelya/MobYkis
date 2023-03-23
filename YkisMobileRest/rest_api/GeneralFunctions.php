@@ -314,6 +314,10 @@ class GeneralFunctionsClass
              $service = array(
                  'address_id'=>$row['address_id'],
                  'service'=>$row['service'],
+                 'service1'=>$row['service1'],
+                 'service2'=>$row['service2'],
+                 'service3'=>$row['service3'],
+                 'service4'=>$row['service4'],
                  'data'=>$row['data'],
                  'period'=>$row['period'],
                  'zadol'=>$row['zadol'],

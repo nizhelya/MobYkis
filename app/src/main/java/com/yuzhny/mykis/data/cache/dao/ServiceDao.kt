@@ -20,4 +20,6 @@ interface ServiceDao {
     fun deleteServiceFromFlat(addressId: List<Int>)
     @Query("select * from service where address_id = :addressId and service = 'total' ")
     fun getTotalDebt(addressId:Int):ServiceEntity
+    @Query("select * from service where address_id = :addressId and service = :service  ORDER by data DESC ")
+    suspend fun getDetailService(addressId: Int , service: String):List<ServiceEntity>
 }

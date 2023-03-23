@@ -55,7 +55,4 @@ class PaymentListViewModel @Inject constructor(
     fun getYearsFromFlat(addressId:Int){
        _years.value = paymentCacheImpl.getYearsFromFlat(addressId)
     }
-    fun getPaymentsFromYear(addressId:Int , year : Short){
-        _payments.value = paymentCacheImpl.getPaymentFromYearFlat(addressId , year)
-    }
 }

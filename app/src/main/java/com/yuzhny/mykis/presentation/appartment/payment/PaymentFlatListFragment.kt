@@ -13,6 +13,7 @@ import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.payment.PaymentEntity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
+import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -37,6 +38,7 @@ class PaymentFlatListFragment : BaseFragment() {
     ): View? {
         paymentListViewModel.apply {
             onSuccess(paymentsFlat ,::handlePayments)
+            onFailure(failureData, ::handleFailure)
         }
         _binding = FragmentPaymentFlatListBinding.inflate(inflater, container, false)
         return binding.root

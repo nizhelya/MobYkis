@@ -8,4 +8,5 @@ interface ServiceCache {
     fun getServiceFromFlat(addressId:Int):List<ServiceEntity>
     fun deleteServiceFromFlat(addressId:List<Int>)
     fun getTotalDebt(addressId: Int):ServiceEntity
+    suspend fun getServiceDetail(addressId: Int , service:String):List<ServiceEntity>
 }
