@@ -34,11 +34,12 @@ class ServiceDetailListAdapter @Inject constructor() :ListAdapter <ServiceEntity
         val dateUnix = SimpleDateFormat("yyyy-MM-dd").parse(service.data)
         holder.binding.apply {
 
-            dateText.text = SimpleDateFormat("LLLL yyyy", Locale("ua" , "UA")).format(Date(dateUnix.time)  )
+            dateText.text = SimpleDateFormat("LLLL yyyy", Locale("uk")).format(Date(dateUnix.time)  )
             zadol1.text = service.zadol1.toString()
             zadol2.text = service.zadol2.toString()
             zadol3.text = service.zadol3.toString()
             zadol4.text = service.zadol4.toString()
+            zadol.text = service.zadol.toString()
             service1.text = service.service1
             service2.text = service.service2
             service3.text = service.service3
@@ -47,14 +48,17 @@ class ServiceDetailListAdapter @Inject constructor() :ListAdapter <ServiceEntity
             nachisleno2.text = service.nachisleno2.toString()
             nachisleno3.text = service.nachisleno3.toString()
             nachisleno4.text = service.nachisleno4.toString()
+            nachisleno.text = service.nachisleno.toString()
             oplacheno1.text = service.oplacheno1.toString()
             oplacheno2.text = service.oplacheno2.toString()
             oplacheno3.text = service.oplacheno3.toString()
             oplacheno4.text = service.oplacheno4.toString()
+            oplacheno.text = service.oplacheno.toString()
             dolg1.text = service.dolg1.toString()
             dolg2.text = service.dolg2.toString()
             dolg3.text = service.dolg3.toString()
             dolg4.text = service.dolg4.toString()
+            dolg.text = service.dolg.toString()
             if(!isEmptyFun(service.service2)){
                 zadol2.visibility = View.GONE
                 nachisleno2.visibility = View.GONE

@@ -28,6 +28,8 @@ class ServiceViewModel @Inject constructor(
     val totalDebt : LiveData<ServiceEntity> get() = _totalDebt
 
     var currentService :Byte = 0
+    var currentServiceTitle :String = ""
+
     fun getFlatService(addressId: Int , houseId: Int , service:Byte ,total:Byte ,qty:Byte , needFetch:Boolean = false) {
         getFlatServiceUseCase(ServiceParams(
             addressId = addressId ,

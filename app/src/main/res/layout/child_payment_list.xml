@@ -8,15 +8,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/first_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
     <TextView
-        android:id="@+id/date_text"
+        android:id="@+id/payment_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/date"
+        android:text="@string/payment_text"
         style="@style/ChildText"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,38 +27,39 @@
         android:layout_height="wrap_content"
         tools:text="2023-01-05"
         android:layout_marginStart="8dp"
-        app:layout_constraintTop_toTopOf="@id/date_text"
-        app:layout_constraintBottom_toBottomOf="@id/date_text"
-        app:layout_constraintStart_toEndOf="@id/date_text"/>
+        app:layout_constraintTop_toTopOf="@id/payment_text"
+        app:layout_constraintBottom_toBottomOf="@id/payment_text"
+        app:layout_constraintStart_toEndOf="@id/payment_text"/>
         <TextView
         android:id="@+id/prixod"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/date"
+            app:layout_constraintBottom_toBottomOf="@id/date"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="ПриватБанк"
         app:layout_constraintStart_toEndOf="@id/date"/>
     <TextView
         android:id="@+id/kv_text"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/kvartplata_text"
-        style="@style/ChildText"
-
-        app:layout_constraintTop_toBottomOf="@id/date_text"
-        app:layout_constraintStart_toStartOf="@id/date_text"
-    />
-    <TextView
-        android:id="@+id/kv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="500.00"
-        android:layout_marginStart="8dp"
-        style="@style/SecondText"
-        app:layout_constraintTop_toTopOf="@id/kv_text"
-        app:layout_constraintBottom_toBottomOf="@id/kv_text"
-        app:layout_constraintStart_toEndOf="@id/kv_text"/>
+        android:text="@string/kvartplata_text"
+        style="@style/ChildText"
+        app:layout_constraintTop_toBottomOf="@id/payment_text"
+        app:layout_constraintStart_toStartOf="@id/payment_text"
+    />
+
+        <TextView
+            android:id="@+id/kv"
+            style="@style/SecondText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="@id/kv_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/kv_text"
+            tools:text="500.00" />
 
     <TextView
         android:id="@+id/otoplenie_text"
@@ -68,18 +69,17 @@
         style="@style/ChildText"
 
         app:layout_constraintTop_toBottomOf="@id/kv_text"
-        app:layout_constraintStart_toStartOf="@id/date_text"
+        app:layout_constraintStart_toStartOf="@id/payment_text"
         />
     <TextView
         android:id="@+id/otoplenie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="0.00"
-        android:layout_marginStart="8dp"
         style="@style/SecondText"
         app:layout_constraintTop_toTopOf="@id/otoplenie_text"
         app:layout_constraintBottom_toBottomOf="@id/otoplenie_text"
-        app:layout_constraintStart_toEndOf="@id/otoplenie_text"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
         android:id="@+id/vodokanal_text"
         android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
         android:text="@string/vodokanal_colon"
         style="@style/ChildText"
         app:layout_constraintTop_toBottomOf="@id/otoplenie_text"
-        app:layout_constraintStart_toStartOf="@id/date_text"
+        app:layout_constraintStart_toStartOf="@id/payment_text"
 
         />
     <TextView
@@ -95,18 +95,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="0.00"
-        android:layout_marginStart="8dp"
         style="@style/SecondText"
         app:layout_constraintTop_toTopOf="@id/vodokanal_text"
         app:layout_constraintBottom_toBottomOf="@id/vodokanal_text"
-        app:layout_constraintStart_toEndOf="@id/vodokanal_text"/>
+
+        app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
     android:id="@+id/tbo_text"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/tbo"
+    android:text="@string/yzhtrans_colon"
     style="@style/ChildText"
-    app:layout_constraintStart_toStartOf="@id/date_text"
+    app:layout_constraintStart_toStartOf="@id/payment_text"
     app:layout_constraintTop_toBottomOf="@id/vodokanal_text"
     />
     <TextView
@@ -114,18 +114,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="0.00"
-        android:layout_marginStart="8dp"
         style="@style/SecondText"
         app:layout_constraintTop_toTopOf="@id/tbo_text"
         app:layout_constraintBottom_toBottomOf="@id/tbo_text"
-        app:layout_constraintStart_toEndOf="@id/tbo_text"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
         android:id="@+id/summary_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/summary"
         style="@style/ChildText"
-        app:layout_constraintStart_toStartOf="@id/date_text"
+        app:layout_constraintStart_toStartOf="@id/payment_text"
         app:layout_constraintTop_toBottomOf="@id/tbo_text"
         />
     <TextView
@@ -133,11 +132,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="500.00"
-        android:layout_marginStart="8dp"
         style="@style/SecondText"
         app:layout_constraintTop_toTopOf="@id/summary_text"
         app:layout_constraintBottom_toBottomOf="@id/summary_text"
-        app:layout_constraintStart_toEndOf="@id/summary_text"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.divider.MaterialDivider

@@ -44,13 +44,11 @@ class PaymentChildAdapter @Inject constructor(
         holder.binding.apply {
             date.text = paymentChild.data
             kv.text = paymentChild.kvartplata.toString()
-            remont.text = paymentChild.remont.toString()
             otoplenie.text = paymentChild.otoplenie.toString()
             vodokanal.text = paymentChild.voda.toString()
             tbo.text = paymentChild.tbo.toString()
             summary.text = paymentChild.summa.toString()
             prixod.text = paymentChild.prixod
-            operator.text = paymentChild.nomer
         }
     }
 }

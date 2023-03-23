@@ -15,7 +15,10 @@
     <style name="FirstText">
         <item name="android:fontFamily">@font/signika_negative_light</item>
         <item name="android:padding">8dp</item>
-
+    </style>
+    <style name="FirstTextWithoutPadding">
+        <item name="android:fontFamily">@font/signika_negative_light</item>
+        <item name="android:paddingTop">8dp</item>
 
     </style>
     <style name="FirstCenterText">
@@ -41,7 +44,7 @@
     <style name="ThirdCenterText">
         <item name="android:fontFamily">@font/exo_bold</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_margin">4dp</item>
         <item name="android:layout_marginStart">2dp</item>
         <item name="android:layout_marginEnd">2dp</item>
     </style>

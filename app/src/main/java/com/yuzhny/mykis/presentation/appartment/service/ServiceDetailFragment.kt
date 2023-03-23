@@ -10,6 +10,7 @@ import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentServiceDetailBinding
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
+import com.yuzhny.mykis.presentation.MainActivity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
@@ -38,9 +39,9 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        serviceViewModel.apply {
-            onSuccess(servicesFlat , ::handleServices)
-        }
+//        serviceViewModel.apply {
+//            onSuccess(servicesFlat , ::handleServices)
+//        }
         _binding = FragmentServiceDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -53,26 +54,29 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
 
             }
         }
+        val actionBar = (activity as MainActivity).supportActionBar
+        actionBar!!.setDisplayShowTitleEnabled(true)
+        actionBar.title = serviceViewModel.currentServiceTitle
         binding.recyclerView.adapter = serviceAdapter
 
 //        binding.recyclerView.isNestedScrollingEnabled = false;
-        binding.showAll.setOnClickListener {
-            getMoreServices()
-        }
+//        binding.showAll.setOnClickListener {
+//            getMoreServices()
+//        }
     }
 
-    private fun handleServices(serviceEntity:  List<ServiceEntity>?) {
-        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
-        }
-    }
-
-    fun getMoreServices(){
-        serviceViewModel.getFlatService(
-            listViewModel.currentAddress ,
-            listViewModel.currentHouse ,
-            serviceViewModel.currentService,
-            0,
-            0,
-        )
-    }
+//    private fun handleServices(serviceEntity:  List<ServiceEntity>?) {
+//        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
+//        }
+//    }
+//
+//    fun getMoreServices(){
+//        serviceViewModel.getFlatService(
+//            listViewModel.currentAddress ,
+//            listViewModel.currentHouse ,
+//            serviceViewModel.currentService,
+//            0,
+//            0,
+//        )
+//    }
 }

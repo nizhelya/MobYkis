@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/linear_services"
                     app:layout_constraintTop_toTopOf="parent"
                     >
 
@@ -80,6 +80,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service" />
+                    <TextView
+                        android:id="@+id/zadol"
+                        style="@style/SecondText"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="service 1 service" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -87,8 +94,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toEndOf="@id/linear_zadol"
-                    app:layout_constraintTop_toTopOf="@id/linear_zadol"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/linear_zadol"
                     >
 
                     <TextView
@@ -104,26 +112,32 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstText"/>
                     <TextView
                         android:id="@+id/service2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstText"/>
 
                     <TextView
                         android:id="@+id/service3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstText"/>
                     <TextView
                         android:id="@+id/service4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
                         style="@style/FirstCenterText"/>
+                    <TextView
+                        android:id="@+id/service"
+                        style="@style/SecondText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/summary" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -131,8 +145,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toEndOf="@id/linear_services"
-                    app:layout_constraintTop_toTopOf="@id/linear_services"
+                    app:layout_constraintStart_toEndOf="@id/linear_zadol"
+                    app:layout_constraintBottom_toBottomOf="@id/linear_services"
                    >
 
                     <TextView
@@ -168,6 +182,14 @@
                         style="@style/FirstCenterText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        tools:text="service 1 service" />
+                    <TextView
+                        android:id="@+id/nachisleno"
+                        style="@style/SecondText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+
                         tools:text="service 1 service" />
 
                 </LinearLayout>
@@ -257,6 +279,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service" />
+                    <TextView
+                        android:id="@+id/oplacheno"
+                        style="@style/SecondText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+
+                        tools:text="service 1 service" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -300,7 +330,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service" />
-
+                    <TextView
+                        android:id="@+id/dolg"
+                        style="@style/SecondText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        tools:text="serv" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>

@@ -92,6 +92,7 @@ class ServiceListFragment : BaseFragment() {
                 1
             )
             serviceViewModel.currentService = 1
+            serviceViewModel.currentServiceTitle = getString(R.string.vodokanal)
             serviceViewModel.getDetailService(listViewModel.currentAddress , "voda")
             findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
         }
@@ -104,6 +105,7 @@ class ServiceListFragment : BaseFragment() {
                         1,
                 )
                 serviceViewModel.currentService = 2
+                serviceViewModel.currentServiceTitle = getString(R.string.ytke)
                 serviceViewModel.getDetailService(listViewModel.currentAddress , "teplo")
                 findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }
@@ -116,6 +118,7 @@ class ServiceListFragment : BaseFragment() {
                         1,
                 )
                 serviceViewModel.currentService = 3
+                serviceViewModel.currentServiceTitle = getString(R.string.yzhtrans)
                 serviceViewModel.getDetailService(listViewModel.currentAddress , "tbo")
                 findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }

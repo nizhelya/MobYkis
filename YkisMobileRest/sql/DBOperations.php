@@ -114,7 +114,7 @@ class DBOperations {
         switch ($service) {
 
             case 1 :
-                $sql = 'SELECT "voda" as service , "Водопостачання" as service1 , "Водовідведення" as service2 , "Абонплата вода" as service3 , "Абонплата стоки" as service4 ,  t1.address_id , t1.data  , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+                $sql = 'SELECT "voda" as service , "Водопост-ня" as service1 , "Водовід-ня" as service2 , "Аб.водопост." as service3 , "Аб.водовід." as service4 ,  t1.address_id , t1.data  , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
     IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t2.nachisleno , 0 ) as nachisleno2, IFNULL(t12.nachisleno, 0) as nachisleno3 , IFNULL(t13.nachisleno, 0) as nachisleno4,
     IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
@@ -130,7 +130,7 @@ class DBOperations {
                 break;
 
             case 2 :
-                $sql = 'SELECT "teplo" as service ,"Теплова енергія" as service1 , "Абонплата теп.ен." as service2 , " " as service3 , " " as service4 , t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+                $sql = 'SELECT "teplo" as service ,"Тепл.енергія" as service1 , "Аб.тепл.енергія" as service2 , "ПТН" as service3 , "Підігрів" as service4 , t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
     IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t2.nachisleno , 0 ) as nachisleno2, IFNULL(t12.nachisleno, 0) as nachisleno3 , IFNULL(t13.nachisleno, 0) as nachisleno4,
     IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
@@ -146,10 +146,15 @@ class DBOperations {
                 break;
 
             case 3 :
-                $sql = 'SELECT "tbo" as service , "Вивіз ТПВ" as service1 , " " as service2 , " "   as service3 , " " as service4 , t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period ,
-    IFNULL(t1.zadol , 0) as zadol ,
+                $sql = 'SELECT "tbo" as service , "Вивіз ТПВ" as service1 , " " as service2 , " "   as service3 , " " as service4 , 
+       t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period ,
+    IFNULL(t1.zadol , 0) as zadol1 ,
+    IFNULL(t1.zadol , 0) as zadol,
+    IFNULL(t1.nachisleno, 0) as nachisleno1 ,
     IFNULL(t1.nachisleno, 0) as nachisleno ,
+    IFNULL(t1.oplacheno ,0) as oplacheno1 ,
     IFNULL(t1.oplacheno ,0) as oplacheno ,
+    IFNULL(t1.dolg , 0) as dolg1,
     IFNULL(t1.dolg , 0) as dolg
     FROM YIS.TBO as t1
     WHERE t1.address_id = ' . $address_id . ' ORDER BY t1.data DESC '. $limit . ' ';
@@ -225,7 +230,7 @@ class DBOperations {
     {
         $com = new DbConnect();
     $sql = 'SELECT `rec_id`,`address_id`,`address`, `god`, `data`,`kvartplata`,`remont`,(`ateplo`+`otoplenie`+`podogrev`+`ptn`) as otoplenie, 
-(`voda` + `stoki` +`avoda` + `astoki`) as voda,`tbo`,`summa`,`prixod`,`kassa`,`nomer`,`operator`,`data_in` FROM YIS.OPLATA  WHERE YIS.OPLATA.address_id= '.$address_id.'  ORDER BY YIS.OPLATA.rec_id ;';
+(`voda` + `stoki` +`avoda` + `astoki`) as voda,`tbo`,`summa`,`prixod`,`kassa`,`nomer`,`operator`,`data_in` FROM YIS.OPLATA  WHERE YIS.OPLATA.address_id= '.$address_id.' and YIS.OPLATA.data > "20161231" ORDER BY YIS.OPLATA.rec_id ;';
 
     $result = mysqli_query($com->getDb(), $sql);
     return $result;
