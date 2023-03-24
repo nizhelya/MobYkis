@@ -53,65 +53,65 @@ class FamilyListAdapter @Inject constructor()  : ListAdapter<FamilyEntity, Famil
 //            hideIfEmpty(family.organ ,linearIssued)
         }
         if (family.isExpandable) {
-                holder.binding.apply {
-                    sex.visibility = View.VISIBLE
-                    sexText.visibility = View.VISIBLE
-                    born.visibility = View.VISIBLE
-                    bornText.visibility = View.VISIBLE
-                    relationship.visibility = View.VISIBLE
-                    relationshipText.visibility = View.VISIBLE
-                    phone.visibility = View.VISIBLE
-                    phoneText.visibility = View.VISIBLE
-                    subsidia.visibility = View.VISIBLE
-                    subsidiaText.visibility = View.VISIBLE
-                    vkl.visibility = View.VISIBLE
-                    vklText.visibility = View.VISIBLE
-                    cardText.visibility = View.VISIBLE
-                    innText.visibility = View.VISIBLE
-                    inn.visibility = View.VISIBLE
-                    docText.visibility = View.VISIBLE
-                    doc.visibility = View.VISIBLE
-                    seriaText.visibility = View.VISIBLE
-                    seria.visibility = View.VISIBLE
-                    number.visibility = View.VISIBLE
-                    numberText.visibility = View.VISIBLE
-                    dateText.visibility = View.VISIBLE
-                    dateIssued.visibility = View.VISIBLE
-                    issuedText.visibility = View.VISIBLE
-                    issued.visibility = View.VISIBLE
-                    cardId.visibility = View.VISIBLE
-                    viewOpen.setImageResource(R.drawable.ic_expand_less)
-                }
-            } else {
-                holder.binding.apply {
-                    sex.visibility = View.GONE
-                    sexText.visibility = View.GONE
-                    born.visibility = View.GONE
-                    bornText.visibility = View.GONE
-                    relationship.visibility = View.GONE
-                    relationshipText.visibility = View.GONE
-                    phone.visibility = View.GONE
-                    phoneText.visibility = View.GONE
-                    subsidia.visibility = View.GONE
-                    subsidiaText.visibility = View.GONE
-                    vklText.visibility = View.GONE
-                    vkl.visibility = View.GONE
-                    cardText.visibility = View.GONE
-                    innText.visibility = View.GONE
-                    inn.visibility = View.GONE
-                    docText.visibility = View.GONE
-                    doc.visibility = View.GONE
-                    seriaText.visibility = View.GONE
-                    seria.visibility = View.GONE
-                    number.visibility = View.GONE
-                    numberText.visibility = View.GONE
-                    dateText.visibility = View.GONE
-                    dateIssued.visibility = View.GONE
-                    issuedText.visibility = View.GONE
-                    issued.visibility = View.GONE
-                    cardId.visibility = View.GONE
-                    viewOpen.setImageResource(R.drawable.ic_expand_more)
-                }
+            holder.binding.apply {
+                sex.visibility = View.VISIBLE
+                sexText.visibility = View.VISIBLE
+                born.visibility = View.VISIBLE
+                bornText.visibility = View.VISIBLE
+                relationship.visibility = View.VISIBLE
+                relationshipText.visibility = View.VISIBLE
+                phone.visibility = View.VISIBLE
+                phoneText.visibility = View.VISIBLE
+                subsidia.visibility = View.VISIBLE
+                subsidiaText.visibility = View.VISIBLE
+                vkl.visibility = View.VISIBLE
+                vklText.visibility = View.VISIBLE
+                cardText.visibility = View.VISIBLE
+                innText.visibility = View.VISIBLE
+                inn.visibility = View.VISIBLE
+                docText.visibility = View.VISIBLE
+                doc.visibility = View.VISIBLE
+                seriaText.visibility = View.VISIBLE
+                seria.visibility = View.VISIBLE
+                number.visibility = View.VISIBLE
+                numberText.visibility = View.VISIBLE
+                dateText.visibility = View.VISIBLE
+                dateIssued.visibility = View.VISIBLE
+                issuedText.visibility = View.VISIBLE
+                issued.visibility = View.VISIBLE
+                cardId.visibility = View.VISIBLE
+                viewOpen.setImageResource(R.drawable.ic_expand_less)
+            }
+        } else {
+            holder.binding.apply {
+                sex.visibility = View.GONE
+                sexText.visibility = View.GONE
+                born.visibility = View.GONE
+                bornText.visibility = View.GONE
+                relationship.visibility = View.GONE
+                relationshipText.visibility = View.GONE
+                phone.visibility = View.GONE
+                phoneText.visibility = View.GONE
+                subsidia.visibility = View.GONE
+                subsidiaText.visibility = View.GONE
+                vklText.visibility = View.GONE
+                vkl.visibility = View.GONE
+                cardText.visibility = View.GONE
+                innText.visibility = View.GONE
+                inn.visibility = View.GONE
+                docText.visibility = View.GONE
+                doc.visibility = View.GONE
+                seriaText.visibility = View.GONE
+                seria.visibility = View.GONE
+                number.visibility = View.GONE
+                numberText.visibility = View.GONE
+                dateText.visibility = View.GONE
+                dateIssued.visibility = View.GONE
+                issuedText.visibility = View.GONE
+                issued.visibility = View.GONE
+                cardId.visibility = View.GONE
+                viewOpen.setImageResource(R.drawable.ic_expand_more)
+            }
 
         }
         holder.binding.cardView.setOnClickListener {
@@ -120,20 +120,18 @@ class FamilyListAdapter @Inject constructor()  : ListAdapter<FamilyEntity, Famil
         }
     }
 
-        class FamilyViewHolder(var binding: ItemFamilyListBinding) :
-            RecyclerView.ViewHolder(binding.root) {
-        }
-
-        companion object DiffCallback : DiffUtil.ItemCallback<FamilyEntity>() {
-            override fun areItemsTheSame(oldItem: FamilyEntity, newItem: FamilyEntity): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(oldItem: FamilyEntity, newItem: FamilyEntity): Boolean {
-                return oldItem == newItem
-            }
-
-        }
+    class FamilyViewHolder(var binding: ItemFamilyListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
     }
 
+    companion object DiffCallback : DiffUtil.ItemCallback<FamilyEntity>() {
+        override fun areItemsTheSame(oldItem: FamilyEntity, newItem: FamilyEntity): Boolean {
+            return oldItem == newItem
+        }
 
+        override fun areContentsTheSame(oldItem: FamilyEntity, newItem: FamilyEntity): Boolean {
+            return oldItem == newItem
+        }
+
+    }
+}

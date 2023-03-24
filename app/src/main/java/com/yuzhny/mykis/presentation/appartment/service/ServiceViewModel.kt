@@ -29,6 +29,7 @@ class ServiceViewModel @Inject constructor(
 
     var currentService :Byte = 0
     var currentServiceTitle :String = ""
+    var currentServiceAbbr :String = ""
 
     fun getFlatService(addressId: Int , houseId: Int , service:Byte ,total:Byte ,qty:Byte , needFetch:Boolean = false) {
         getFlatServiceUseCase(ServiceParams(

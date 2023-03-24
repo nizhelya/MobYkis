@@ -51,14 +51,12 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
         serviceViewModel.servicesDetail.observe(this.viewLifecycleOwner) { i ->
             i?.let {
                 serviceAdapter.submitList(it)
-
             }
         }
         val actionBar = (activity as MainActivity).supportActionBar
         actionBar!!.setDisplayShowTitleEnabled(true)
         actionBar.title = serviceViewModel.currentServiceTitle
         binding.recyclerView.adapter = serviceAdapter
-
 //        binding.recyclerView.isNestedScrollingEnabled = false;
 //        binding.showAll.setOnClickListener {
 //            getMoreServices()

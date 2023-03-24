@@ -114,7 +114,7 @@ class DBOperations {
         switch ($service) {
 
             case 1 :
-                $sql = 'SELECT "voda" as service , "Водопост-ня" as service1 , "Водовід-ня" as service2 , "Аб.водопост." as service3 , "Аб.водовід." as service4 ,  t1.address_id , t1.data  , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+                $sql = 'SELECT "voda" as service , "Водопост-ня" as service1 , "Водовід-ня" as service2 , "Аб.водопост." as service3 , "Аб.водовід." as service4 ,  t1.address_id , t1.data  , IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
     IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t2.nachisleno , 0 ) as nachisleno2, IFNULL(t12.nachisleno, 0) as nachisleno3 , IFNULL(t13.nachisleno, 0) as nachisleno4,
     IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
@@ -130,7 +130,7 @@ class DBOperations {
                 break;
 
             case 2 :
-                $sql = 'SELECT "teplo" as service ,"Тепл.енергія" as service1 , "Аб.тепл.енергія" as service2 , "ПТН" as service3 , "Підігрів" as service4 , t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
+                $sql = 'SELECT "teplo" as service ,"Тепл.енергія" as service1 , "Аб.тепл.енергія" as service2 , "ПТН" as service3 , "Підігрів" as service4 , t1.address_id , t1.data ,  IFNULL(t1.zadol , 0) as zadol1, IFNULL(t2.zadol , 0 ) as zadol2, IFNULL(t12.zadol , 0) as zadol3 , IFNULL(t13.zadol, 0) as zadol4,
     IFNULL(t1.zadol , 0) + IFNULL(t2.zadol , 0) + IFNULL(t12.zadol , 0 ) + IFNULL(t13.zadol ,0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t2.nachisleno , 0 ) as nachisleno2, IFNULL(t12.nachisleno, 0) as nachisleno3 , IFNULL(t13.nachisleno, 0) as nachisleno4,
     IFNULL(t1.nachisleno , 0) + IFNULL(t2.nachisleno,0) + IFNULL(t12.nachisleno , 0) + IFNULL(t13.nachisleno ,0) as nachisleno,
@@ -147,7 +147,7 @@ class DBOperations {
 
             case 3 :
                 $sql = 'SELECT "tbo" as service , "Вивіз ТПВ" as service1 , " " as service2 , " "   as service3 , " " as service4 , 
-       t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period ,
+       t1.address_id , t1.data , 
     IFNULL(t1.zadol , 0) as zadol1 ,
     IFNULL(t1.zadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1 ,
@@ -162,7 +162,7 @@ class DBOperations {
 
             case 4 :
                 if ($house_id == 22) {
-                    $sql = 'SELECT "kv" as service,  "Внески жит.фонд" as service1 , "Ремонтний фонд" as service2 , " " as service3 , " " as service4 , t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t3.zadol , 0 ) as zadol2 ,
+                    $sql = 'SELECT "kv" as service,  "Внески жит.фонд" as service1 , "Ремонтний фонд" as service2 , " " as service3 , " " as service4 , t1.address_id , t1.data , IFNULL(t1.zadol , 0) as zadol1, IFNULL(t3.zadol , 0 ) as zadol2 ,
     IFNULL(t1.zadol , 0) + IFNULL(t3.zadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t3.nachisleno , 0 ) as nachisleno2 ,
     IFNULL(t1.nachisleno , 0) + IFNULL(t3.nachisleno ,0) as nachisleno,
@@ -174,7 +174,7 @@ class DBOperations {
     LEFT JOIN OSBB.RFOND as t3 using(address_id , data)
     WHERE t1.address_id = ' . $address_id . ' ORDER BY t1.data DESC '. $limit . ' ';
                 } else {
-                    $sql = 'SELECT "kv" as service ,"Внески жит.фонд" as service1 , "Ремонтний фонд" as service2 , " " as service3 , " " as service4 , t1.address_id , t1.data , CONCAT_WS(" ",t1.mec,t1.god) as period, IFNULL(t1.zadol , 0) as zadol1, IFNULL(t1.rzadol , 0 ) as zadol2 ,
+                    $sql = 'SELECT "kv" as service ,"Внески жит.фонд" as service1 , "Ремонтний фонд" as service2 , " " as service3 , " " as service4 , t1.address_id , t1.data ,IFNULL(t1.zadol , 0) as zadol1, IFNULL(t1.rzadol , 0 ) as zadol2 ,
     IFNULL(t1.zadol , 0) + IFNULL(t1.rzadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t1.remont , 0 ) as nachisleno2 ,
     IFNULL(t1.nachisleno , 0) + IFNULL(t1.remont,0) as nachisleno,
@@ -251,4 +251,16 @@ class DBOperations {
         $result = mysqli_query($com->getDb(), $sql);
         return $result;
     }
+
+    public function addCurrentWaterReading($vodomer_id, $current_value,  $new_value, $date)
+    {
+        $com = new DbConnect();
+
+        $sql = 'CALL YISGRAND.input_new_pokaz_avodomer('.$vodomer_id.' , "'.$current_value.'" ,"'.$new_value.'" ,"'.$date.'" , @success , @msg);';
+        mysqli_query( $com->getDb(), $sql);
+        $sqlCallBack = 'SELECT @success , @msg ';
+        $result = mysqli_query( $com->getDb(), $sqlCallBack);
+        return $result;
+    }
+
 }

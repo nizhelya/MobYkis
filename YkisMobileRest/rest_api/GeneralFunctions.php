@@ -454,4 +454,21 @@ class GeneralFunctionsClass
         }
         return $results;
     }
+
+    public function addCurrentWaterReading($result)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        //print_r($resultFlats);
+        while ($rowFlats = mysqli_fetch_array($result)) {
+            $flat = array(
+                'success'=>$rowFlats[0],
+                'message'=>$rowFlats[1]
+            );
+
+            array_push($results, $flat);
+//             print_r($flat);
+        }
+        return $results;
+    }
 }

@@ -1,13 +1,9 @@
 package com.yuzhny.mykis.presentation.appartment.service
 
-import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
@@ -18,12 +14,9 @@ import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_service_list.*
+import kotlinx.android.synthetic.main.item_service.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ServiceListFragment : BaseFragment() {
@@ -71,19 +64,20 @@ class ServiceListFragment : BaseFragment() {
         serviceViewModel.totalDebt.observe(this.viewLifecycleOwner){
             it?.let {
                 binding.apply {
-                    val dateUnix = SimpleDateFormat("yyyyMMdd").parse(it.data)
                     dolg1.text =  it.dolg1.toString()
                     dolg2.text =  it.dolg2.toString()
                     dolg3.text =  it.dolg3.toString()
                     dolg4.text =  it.dolg4.toString()
                     dolg.text =   "${it.dolg.toString()}₴"
                     borgText.text = getString(R.string.borg_text,
-                        SimpleDateFormat("dd/MM/yyy").format(Date(dateUnix.time)))
+                        SimpleDateFormat("dd/MM/yyy").format(Date())
+                    )
                 }
             }
 
         }
         binding.buttonVodokanal.setOnClickListener {
+            serviceViewModel.currentServiceAbbr = "voda"
             serviceViewModel.getFlatService(
                 listViewModel.currentAddress,
                 listViewModel.currentHouse,
@@ -93,10 +87,12 @@ class ServiceListFragment : BaseFragment() {
             )
             serviceViewModel.currentService = 1
             serviceViewModel.currentServiceTitle = getString(R.string.vodokanal)
-            serviceViewModel.getDetailService(listViewModel.currentAddress , "voda")
+
+//            serviceViewModel.getDetailService(listViewModel.currentAddress ,"voda")
             findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
         }
             binding.buttonYtke.setOnClickListener {
+                serviceViewModel.currentServiceAbbr = "teplo"
                 serviceViewModel.getFlatService(
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
@@ -106,10 +102,12 @@ class ServiceListFragment : BaseFragment() {
                 )
                 serviceViewModel.currentService = 2
                 serviceViewModel.currentServiceTitle = getString(R.string.ytke)
-                serviceViewModel.getDetailService(listViewModel.currentAddress , "teplo")
+
+//                serviceViewModel.getDetailService(listViewModel.currentAddress ,"teplo")
                 findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }
             binding.buttonTbo.setOnClickListener {
+                serviceViewModel.currentServiceAbbr = "tbo"
                 serviceViewModel.getFlatService(
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
@@ -119,10 +117,12 @@ class ServiceListFragment : BaseFragment() {
                 )
                 serviceViewModel.currentService = 3
                 serviceViewModel.currentServiceTitle = getString(R.string.yzhtrans)
-                serviceViewModel.getDetailService(listViewModel.currentAddress , "tbo")
+
+//                serviceViewModel.getDetailService(listViewModel.currentAddress ,"tbo")
                 findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }
             binding.buttonKv.setOnClickListener {
+                serviceViewModel.currentServiceAbbr ="kv"
                 serviceViewModel.getFlatService(
                         listViewModel.currentAddress,
                         listViewModel.currentHouse,
@@ -131,14 +131,16 @@ class ServiceListFragment : BaseFragment() {
                         1,
                 )
                 serviceViewModel.currentService = 4
-                serviceViewModel.getDetailService(listViewModel.currentAddress , "kv")
+
+//                serviceViewModel.getDetailService(listViewModel.currentAddress ,"kv")
                 findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }
 
     }
-    private fun handleService(appartmentEntity:  List<ServiceEntity>?) {
-        if (appartmentEntity != null && appartmentEntity.isNotEmpty()) {
+    private fun handleService(serviceEntity:  List<ServiceEntity>?) {
+        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
             serviceViewModel.getDebtFromCache(listViewModel.currentAddress)
+            serviceViewModel.getDetailService(listViewModel.currentAddress , serviceViewModel.currentServiceAbbr)
         }
     }
 }

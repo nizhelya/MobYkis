@@ -17,7 +17,6 @@ data class ServiceEntity (
     val service3 : String = "Unknown",
     val service4 : String = "Unknown",
     val data: String = "Unknown",
-    val period : String? = "Unknown",
     val zadol  : Double? = 0.0,
     val zadol1 : Double? = 0.0,
     val zadol2 : Double? = 0.0,
