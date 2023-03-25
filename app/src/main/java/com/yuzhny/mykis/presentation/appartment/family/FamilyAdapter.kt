@@ -16,9 +16,10 @@ import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 
 @FragmentScoped
-class FamilyListAdapter @Inject constructor()  : ListAdapter<FamilyEntity, FamilyListAdapter.FamilyViewHolder>(
-    DiffCallback
-) {
+class FamilyListAdapter @Inject constructor() :
+    ListAdapter<FamilyEntity, FamilyListAdapter.FamilyViewHolder>(
+        DiffCallback
+    ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FamilyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return FamilyListAdapter.FamilyViewHolder(
@@ -42,16 +43,14 @@ class FamilyListAdapter @Inject constructor()  : ListAdapter<FamilyEntity, Famil
             issued.text = family.organ
             subsidia.isChecked = trueOrFalse(family.subsidia)
             vkl.isChecked = trueOrFalse(family.vkl)
-//            hideIfEmpty(family.sex , linearSex )
-//            hideIfEmpty(family.rodstvo , linearRelationship)
-//            hideIfEmpty(family.phone ,linearPhone)
-//            hideIfEmpty(family.inn ,linearInn)
-//            hideIfEmpty(family.document ,linearDoc)
-//            hideIfEmpty(family.seria ,linearSeria)
-//            hideIfEmpty(family.nomer ,linearNumber)
-//            hideIfEmpty(family.datav , linearDate)
-//            hideIfEmpty(family.organ ,linearIssued)
+            expandItem(family , holder)
         }
+        holder.binding.cardView.setOnClickListener {
+            family.isExpandable = !family.isExpandable
+            notifyItemChanged(position, Unit)
+        }
+    }
+    fun expandItem(family: FamilyEntity, holder: FamilyViewHolder) {
         if (family.isExpandable) {
             holder.binding.apply {
                 sex.visibility = View.VISIBLE
@@ -112,13 +111,10 @@ class FamilyListAdapter @Inject constructor()  : ListAdapter<FamilyEntity, Famil
                 cardId.visibility = View.GONE
                 viewOpen.setImageResource(R.drawable.ic_expand_more)
             }
+        }
+}
 
-        }
-        holder.binding.cardView.setOnClickListener {
-            family.isExpandable = !family.isExpandable
-            notifyItemChanged(position , Unit)
-        }
-    }
+
 
     class FamilyViewHolder(var binding: ItemFamilyListBinding) :
         RecyclerView.ViewHolder(binding.root) {

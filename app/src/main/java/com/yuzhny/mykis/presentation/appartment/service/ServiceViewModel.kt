@@ -24,12 +24,11 @@ class ServiceViewModel @Inject constructor(
     private val _servicesDetail = MutableLiveData<List<ServiceEntity>>()
     val servicesDetail : LiveData<List<ServiceEntity>> get() = _servicesDetail
 
-    private val _totalDebt = MutableLiveData<ServiceEntity>()
-    val totalDebt : LiveData<ServiceEntity> get() = _totalDebt
+    private val _totalDebt = MutableLiveData<List<ServiceEntity>>()
+    val totalDebt : LiveData<List<ServiceEntity>> get() = _totalDebt
 
     var currentService :Byte = 0
     var currentServiceTitle :String = ""
-    var currentServiceAbbr :String = ""
 
     fun getFlatService(addressId: Int , houseId: Int , service:Byte ,total:Byte ,qty:Byte , needFetch:Boolean = false) {
         getFlatServiceUseCase(ServiceParams(
@@ -62,14 +61,35 @@ class ServiceViewModel @Inject constructor(
             getFlatService(addressId, houseId , service,total, qty, true)
         }
     }
-    fun getDebtFromCache(addressId: Int){
-        viewModelScope.launch {
-            _totalDebt.value = serviceCacheImpl.getTotalDebt(addressId)
-        }
-    }
-    fun getDetailService(addressId: Int , service: String){
-        viewModelScope.launch {
-            _servicesDetail.value = serviceCacheImpl.getServiceDetail(addressId , service)
-        }
-    }
+//    fun getFlatServiceTotal(addressId: Int , houseId: Int , service:Byte ,total:Byte ,qty:Byte , needFetch:Boolean = false) {
+//        getFlatServiceUseCase(ServiceParams(
+//            addressId = addressId ,
+//            houseId = houseId ,
+//            service = service,
+//            total = total,
+//            qty = qty,
+//            needFetch = needFetch)) { it ->
+//            it.either(::handleFailure) {
+//                handleServiceTotal(
+//                    it, addressId , houseId , service , total , qty , !needFetch
+//                )
+//            }
+//        }
+//    }
+//    private fun handleServiceTotal(services: List<ServiceEntity>,
+//                              addressId: Int,
+//                              houseId: Int,
+//                              service:Byte,
+//                              total:Byte,
+//                              qty:Byte,
+//                              fromCache: Boolean,
+//    ) {
+//        _totalDebt.value = services
+//        updateProgress(false)
+//
+//        if (fromCache) {
+//            updateProgress(true)
+//            getFlatService(addressId, houseId , service,total, qty, true)
+//        }
+//    }
 }

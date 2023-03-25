@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.yuzhny.mykis.domain.payment.PaymentEntity
+import com.yuzhny.mykis.domain.payment.PaymentItemEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import java.time.Year
 

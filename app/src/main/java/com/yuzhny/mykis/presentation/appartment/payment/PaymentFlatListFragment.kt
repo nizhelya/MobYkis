@@ -57,6 +57,7 @@ class PaymentFlatListFragment : BaseFragment() {
     private fun handlePayments(paymentEntity:  List<PaymentEntity>?) {
         if (paymentEntity != null && paymentEntity.isNotEmpty()) {
             paymentListViewModel.getYearsFromFlat(listViewModel.currentAddress)
+
         }
     }
 

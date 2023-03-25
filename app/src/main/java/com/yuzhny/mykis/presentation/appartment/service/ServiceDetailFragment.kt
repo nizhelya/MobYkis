@@ -48,7 +48,14 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        serviceViewModel.servicesDetail.observe(this.viewLifecycleOwner) { i ->
+        serviceViewModel.getFlatService(
+            listViewModel.currentAddress,
+            listViewModel.currentHouse,
+            serviceViewModel.currentService,
+            0,
+            1,
+        )
+        serviceViewModel.servicesFlat.observe(this.viewLifecycleOwner) { i ->
             i?.let {
                 serviceAdapter.submitList(it)
             }
@@ -57,24 +64,12 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
         actionBar!!.setDisplayShowTitleEnabled(true)
         actionBar.title = serviceViewModel.currentServiceTitle
         binding.recyclerView.adapter = serviceAdapter
-//        binding.recyclerView.isNestedScrollingEnabled = false;
-//        binding.showAll.setOnClickListener {
-//            getMoreServices()
-//        }
     }
 
-//    private fun handleServices(serviceEntity:  List<ServiceEntity>?) {
+//    private fun handleService(serviceEntity:  List<ServiceEntity>?) {
 //        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
+//            serviceAdapter.submitList(serviceEntity)
 //        }
 //    }
 //
-//    fun getMoreServices(){
-//        serviceViewModel.getFlatService(
-//            listViewModel.currentAddress ,
-//            listViewModel.currentHouse ,
-//            serviceViewModel.currentService,
-//            0,
-//            0,
-//        )
-//    }
 }

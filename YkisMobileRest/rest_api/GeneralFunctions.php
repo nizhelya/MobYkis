@@ -12,12 +12,12 @@ class GeneralFunctionsClass
 
 
 
-  public function getFlatById($resultAppartments)
+    public function getFlatById($resultAppartments)
     {
         $dbOperationsObject = new DBOperations();
         $appartments = array();
         while ($rowAppartment = mysqli_fetch_array($resultAppartments)) {
-             $appartment = array(
+            $appartment = array(
                 'address_id' => $rowAppartment['address_id'],
                 'address' => $rowAppartment['address'],
                 'nanim' => $rowAppartment['nanim'],
@@ -99,9 +99,9 @@ class GeneralFunctionsClass
         $dbOperationsObject = new DBOperations();
         $appartments = array();
         while ($rowAppartment = mysqli_fetch_array($resultAppartmentsMyflat)) {
-             $appartment = array(
-                 'id'=>$rowAppartment['id'],
-                 'user_id'=>$rowAppartment['user_id'],
+            $appartment = array(
+                'id'=>$rowAppartment['id'],
+                'user_id'=>$rowAppartment['user_id'],
                 'address_id' => $rowAppartment['address_id'],
                 'address' => $rowAppartment['address'],
                 'nanim' => $rowAppartment['nanim'],
@@ -177,14 +177,14 @@ class GeneralFunctionsClass
         }
         return $appartments;
     }
-   public function getBlocks($resultBlocks)
+    public function getBlocks($resultBlocks)
     {
         $dbOperationsObject = new DBOperations();
         $blocks = array();
         while ($rowBlocks = mysqli_fetch_array($resultBlocks)) {
-             $block = array(
-                 'raion_id'=>$rowBlocks['raion_id'],
-                 'raion'=>$rowBlocks['raion']
+            $block = array(
+                'raion_id'=>$rowBlocks['raion_id'],
+                'raion'=>$rowBlocks['raion']
             );
 
             array_push($blocks, $block);
@@ -196,9 +196,9 @@ class GeneralFunctionsClass
         $dbOperationsObject = new DBOperations();
         $streets = array();
         while ($rowStreets = mysqli_fetch_array($resultStreets)) {
-             $street = array(
-                 'street_id'=>$rowStreets['street_id'],
-                 'street'=>$rowStreets['street']
+            $street = array(
+                'street_id'=>$rowStreets['street_id'],
+                'street'=>$rowStreets['street']
             );
 
             array_push($streets, $street);
@@ -210,11 +210,11 @@ class GeneralFunctionsClass
     {
         $dbOperationsObject = new DBOperations();
         $houses = array();
-       // print_r($resultHouses);
+        // print_r($resultHouses);
         while ($rowHouses = mysqli_fetch_array($resultHouses)) {
-             $house = array(
-                 'house_id'=>$rowHouses['house_id'],
-                 'house'=>$rowHouses['house']
+            $house = array(
+                'house_id'=>$rowHouses['house_id'],
+                'house'=>$rowHouses['house']
             );
 
             array_push($houses, $house);
@@ -227,10 +227,10 @@ class GeneralFunctionsClass
         $dbOperationsObject = new DBOperations();
         $flats = array();
         while ($rowFlats = mysqli_fetch_array($resultFlats)) {
-             $flat = array(
-                 'address_id'=>$rowFlats['address_id'],
-                 'address'=>$rowFlats['address'],
-                 'kod'=>$rowFlats['kod']
+            $flat = array(
+                'address_id'=>$rowFlats['address_id'],
+                'address'=>$rowFlats['address'],
+                'kod'=>$rowFlats['kod']
             );
 
             array_push($flats, $flat);
@@ -243,10 +243,10 @@ class GeneralFunctionsClass
         $results = array();
         //print_r($resultFlats);
         while ($rowFlats = mysqli_fetch_array($resultFlats)) {
-             $flat = array(
-                 'success'=>$rowFlats[0],
-                 'message'=>$rowFlats[1],
-                 'address'=>array()
+            $flat = array(
+                'success'=>$rowFlats[0],
+                'message'=>$rowFlats[1],
+                'address'=>array()
             );
 
             array_push($results, $flat);
@@ -259,45 +259,45 @@ class GeneralFunctionsClass
         $dbOperationsObject = new DBOperations();
         $families = array();
         while ($row = mysqli_fetch_array($resultFamily)) {
-             $family = array(
-                 'rec_id'=>$row['rec_id'],
-                 'address_id'=>$row['address_id'],
-                 'address'=>$row['address'],
-                 'rodstvo'=>$row['rodstvo'],
-                 'firstname'=>$row['firstname'],
-                 'surname'=>$row['surname'],
-                 'lastname'=>$row['lastname'],
-                 'born'=>$row['born'],
-                 'sex'=>$row['sex'],
-                 'phone'=>$row['phone'],
-                 'subsidia'=>$row['subsidia'],
-                 'vkl'=>$row['vkl'],
-                 'inn'=>$row['inn'],
-                 'document'=>$row['document'],
-                 'seria'=>$row['seria'],
-                 'nomer'=>$row['nomer'],
-                 'datav'=>$row['datav'],
-                 'organ'=>$row['organ']
+            $family = array(
+                'rec_id'=>$row['rec_id'],
+                'address_id'=>$row['address_id'],
+                'address'=>$row['address'],
+                'rodstvo'=>$row['rodstvo'],
+                'firstname'=>$row['firstname'],
+                'surname'=>$row['surname'],
+                'lastname'=>$row['lastname'],
+                'born'=>$row['born'],
+                'sex'=>$row['sex'],
+                'phone'=>$row['phone'],
+                'subsidia'=>$row['subsidia'],
+                'vkl'=>$row['vkl'],
+                'inn'=>$row['inn'],
+                'document'=>$row['document'],
+                'seria'=>$row['seria'],
+                'nomer'=>$row['nomer'],
+                'datav'=>$row['datav'],
+                'organ'=>$row['organ']
             );
 
             array_push($families, $family);
         }
         return $families;
     }
-     public function checkAddFlat($resultCheck)
+    public function checkAddFlat($resultCheck)
     {
         $dbOperationsObject = new DBOperations();
         $results = array();
         //print_r($resultFlats);
         while ($row = mysqli_fetch_array($resultCheck)) {
             if($row['success'] == 0){
-               $mes = "Incorrect code";
+                $mes = "Incorrect code";
             } else {
                 $mes = "Success";
             }
-             $result = array(
-                 'success'=>$row['success'],
-                 'message'=>$mes
+            $result = array(
+                'success'=>$row['success'],
+                'message'=>$mes
             );
 
             array_push($results, $result);
@@ -306,40 +306,40 @@ class GeneralFunctionsClass
         return $results;
     }
 
-  public function getFlatServices($resultServices)
-     {
+    public function getFlatServices($resultServices)
+    {
         $dbOperationsObject = new DBOperations();
         $results = array();
         while ($row = mysqli_fetch_array($resultServices)) {
-             $service = array(
-                 'address_id'=>$row['address_id'],
-                 'service'=>$row['service'],
-                 'service1'=>$row['service1'],
-                 'service2'=>$row['service2'],
-                 'service3'=>$row['service3'],
-                 'service4'=>$row['service4'],
-                 'data'=>$row['data'],
-                 'period'=>$row['period'],
-                 'zadol'=>$row['zadol'],
-                 'zadol1'=>$row['zadol1'],
-                 'zadol2'=>$row['zadol2'],
-                 'zadol3'=>$row['zadol3'],
-                 'zadol4'=>$row['zadol4'],
-                 'nachisleno'=>$row['nachisleno'],
-                 'nachisleno1'=>$row['nachisleno1'],
-                 'nachisleno2'=>$row['nachisleno2'],
-                 'nachisleno3'=>$row['nachisleno3'],
-                 'nachisleno4'=>$row['nachisleno4'],
-                 'oplacheno'=>$row['oplacheno'],
-                 'oplacheno1'=>$row['oplacheno1'],
-                 'oplacheno2'=>$row['oplacheno2'],
-                 'oplacheno3'=>$row['oplacheno3'],
-                 'oplacheno4'=>$row['oplacheno4'],
-                 'dolg'=>$row['dolg'],
-                 'dolg1'=>$row['dolg1'],
-                 'dolg2'=>$row['dolg2'],
-                 'dolg3'=>$row['dolg3'],
-                 'dolg4'=>$row['dolg4']
+            $service = array(
+                'address_id'=>$row['address_id'],
+                'service'=>$row['service'],
+                'service1'=>$row['service1'],
+                'service2'=>$row['service2'],
+                'service3'=>$row['service3'],
+                'service4'=>$row['service4'],
+                'data'=>$row['data'],
+                'period'=>$row['period'],
+                'zadol'=>$row['zadol'],
+                'zadol1'=>$row['zadol1'],
+                'zadol2'=>$row['zadol2'],
+                'zadol3'=>$row['zadol3'],
+                'zadol4'=>$row['zadol4'],
+                'nachisleno'=>$row['nachisleno'],
+                'nachisleno1'=>$row['nachisleno1'],
+                'nachisleno2'=>$row['nachisleno2'],
+                'nachisleno3'=>$row['nachisleno3'],
+                'nachisleno4'=>$row['nachisleno4'],
+                'oplacheno'=>$row['oplacheno'],
+                'oplacheno1'=>$row['oplacheno1'],
+                'oplacheno2'=>$row['oplacheno2'],
+                'oplacheno3'=>$row['oplacheno3'],
+                'oplacheno4'=>$row['oplacheno4'],
+                'dolg'=>$row['dolg'],
+                'dolg1'=>$row['dolg1'],
+                'dolg2'=>$row['dolg2'],
+                'dolg3'=>$row['dolg3'],
+                'dolg4'=>$row['dolg4']
             );
 
             array_push($results, $service);

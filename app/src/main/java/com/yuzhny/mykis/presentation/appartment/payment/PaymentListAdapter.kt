@@ -48,10 +48,7 @@ class PaymentListAdapter @Inject constructor(
             )
 
         }
-        var isExp = payment.isExpandable
-        holder.binding.recyclerView.setHasFixedSize(true)
-        holder.binding.recyclerView.visibility = if (isExp) View.VISIBLE else View.GONE
-
+        expandItem(payment, holder)
         holder.binding.recyclerView.adapter = childAdapter
         holder.binding.yearText.text = payment.year.toString()
         holder.binding.cardView.setOnClickListener {
@@ -60,6 +57,15 @@ class PaymentListAdapter @Inject constructor(
             notifyItemChanged(position, Unit)
             }
 
+    }
+    private fun expandItem(payment:PaymentEntity, holder:PaymentViewHolder){
+      if(payment.isExpandable){
+          holder.binding.recyclerView.visibility = View.VISIBLE
+          holder.binding.viewOpen.setImageResource(R.drawable.ic_expand_less)
+      }else{
+          holder.binding.recyclerView.visibility = View.GONE
+          holder.binding.viewOpen.setImageResource(R.drawable.ic_expand_more)
+      }
     }
     private fun isAnyItemExpanded(position: Int) {
         val temp = currentList.indexOfFirst {

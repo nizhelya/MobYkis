@@ -1,3 +1,4 @@
+
 <?php
 $response = array();
 
@@ -18,15 +19,17 @@ if (isset($_POST['vodomer_id']) &&
     $new_value = $_POST['new_value'];
     $user_id = $_POST['user_id'];
     $token = $_POST['token'];
-    $date = Date("Ydm");
+    $date = Date("Ymd");
     $dbOperationsObject = new DBOperations();
     $generalFunctionsObject = new GeneralFunctionsClass();
 
-        $result = $dbOperationsObject->addCurrentWaterReading($vodomer_id , $current_value , $new_value ,$date);
-        $results = $generalFunctionsObject->addCurrentWaterReading($result);
-        $response["success"] = $results[0]["success"];
-        $response["message"] = $results[0]["message"];
-        echo json_encode($response);
+    $result = $dbOperationsObject->addCurrentWaterReading($vodomer_id , $current_value , $new_value ,$date);
+    $results = $generalFunctionsObject->addCurrentWaterReading($result);
+    if($results[0]["success"]==1){
+        $response["message"] = "Readings added successful";
+    }else $response["message"] = "Failed to add readings" ;
+    $response["success"] = $results[0]["success"];
+    echo json_encode($response);
 } else {
     $response["success"] = 0;
     $response["message"] = "Required field(s) is missing";

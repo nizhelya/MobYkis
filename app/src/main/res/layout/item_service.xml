@@ -20,6 +20,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Март 2023"
+            android:textColor="?colorPrimary"
             />
         <ImageView
             android:id="@+id/view_open"
@@ -83,6 +84,7 @@
                     <TextView
                         android:id="@+id/zadol"
                         style="@style/SecondText"
+                        android:padding="8dp"
                         android:gravity="center_horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -131,12 +133,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstText"/>
                     <TextView
                         android:id="@+id/service"
                         style="@style/SecondText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="8dp"
                         android:text="@string/summary" />
 
                 </LinearLayout>
@@ -189,6 +192,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:padding="8dp"
 
                         tools:text="service 1 service" />
 
@@ -285,7 +289,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-
+                        android:padding="8dp"
                         tools:text="service 1 service" />
 
                 </LinearLayout>
@@ -336,6 +340,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:padding="8dp"
                         tools:text="serv" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
