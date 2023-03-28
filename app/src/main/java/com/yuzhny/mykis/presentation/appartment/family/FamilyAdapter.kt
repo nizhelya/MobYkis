@@ -114,11 +114,6 @@ class FamilyListAdapter @Inject constructor() :
         }
 
 }
-
-
-    fun clearList(){
-        currentList.clear()
-    }
     class FamilyViewHolder(var binding: ItemFamilyListBinding) :
         RecyclerView.ViewHolder(binding.root) {
     }

@@ -30,13 +30,12 @@ class ServiceRepositoryImpl @Inject constructor(
                         )
                     } else {
                         Either.Right(
-
                             serviceCache.getServiceFromFlat(
                                 params.addressId,
-                                when(params.service){
-                                    1.toByte()->"voda"
-                                    2.toByte()->"teplo"
-                                    3.toByte()->"tbo"
+                                when (params.service) {
+                                    1.toByte() -> "voda"
+                                    2.toByte() -> "teplo"
+                                    3.toByte() -> "tbo"
                                     else -> "kv"
                                 }
                             )
@@ -45,21 +44,11 @@ class ServiceRepositoryImpl @Inject constructor(
                 }
                 .onNext {
                     it.map {
-                        serviceCache.addService(listOf(it))
+                        if(params.qty == 1.toByte()) {
+                            serviceCache.addService(listOf(it))
+                        }
                     }
                 }
-        }
-//    else{
-//            userCache.getCurrentUser()
-//                .flatMap { return@flatMap serviceRemote.getFlatServices(
-//                    params.addressId ,
-//                    params.houseId,
-//                    params.qty,
-//                    params.service,
-//                    params.total,
-//                    it.userId,
-//                    it.token
-//                ) }
-//        }
 
-}
+        }
+    }

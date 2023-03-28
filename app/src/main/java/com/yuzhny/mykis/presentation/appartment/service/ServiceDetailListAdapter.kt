@@ -11,6 +11,7 @@ import com.yuzhny.mykis.databinding.ItemServiceBinding
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.presentation.appartment.family.FamilyListAdapter
+import com.yuzhny.mykis.presentation.appartment.util.hideIfEmpty
 import com.yuzhny.mykis.presentation.appartment.util.isEmptyFun
 import dagger.hilt.android.scopes.FragmentScoped
 import java.text.ParsePosition
@@ -59,29 +60,36 @@ class ServiceDetailListAdapter @Inject constructor() :ListAdapter <ServiceEntity
             dolg3.text = service.dolg3.toString()
             dolg4.text = service.dolg4.toString()
             dolg.text = service.dolg.toString()
-//            if(isEmptyFun(service.service2.toString())){
-//                zadol2.visibility = View.GONE
-//                nachisleno2.visibility = View.GONE
-//                oplacheno2.visibility = View.GONE
-//                dolg2.visibility = View.GONE
-//                service2.visibility = View.GONE
-//            }
-//            if(service.service3=="none"){
-//                zadol3.visibility = View.GONE
-//                nachisleno3.visibility = View.GONE
-//                oplacheno3.visibility = View.GONE
-//                dolg3.visibility = View.GONE
-//                service3.visibility = View.GONE
-//            }
-//            if(service.service4=="none"){
-//                zadol4.visibility = View.GONE
-//                nachisleno4.visibility = View.GONE
-//                oplacheno4.visibility = View.GONE
-//                dolg4.visibility = View.GONE
-//                service4.visibility = View.GONE
-//            }
+//            hideIfNone(holder, position)
         }
-    }
+
+        }
+//    private fun hideIfNone(holder: ServiceViewHolder, position: Int){
+//            val service = getItem(position)
+//            holder.binding.apply {
+//                if (service.service2 == "none") {
+//                    zadol2.visibility = View.GONE
+//                    nachisleno2.visibility = View.GONE
+//                    oplacheno2.visibility = View.GONE
+//                    dolg2.visibility = View.GONE
+//                    service2.visibility = View.GONE
+//                }
+//                if (service.service3 == "none") {
+//                    zadol3.visibility = View.GONE
+//                    nachisleno3.visibility = View.GONE
+//                    oplacheno3.visibility = View.GONE
+//                    dolg3.visibility = View.GONE
+//                    service3.visibility = View.GONE
+//                }
+//                if (service.service4 == "none") {
+//                    zadol4.visibility = View.GONE
+//                    nachisleno4.visibility = View.GONE
+//                    oplacheno4.visibility = View.GONE
+//                    dolg4.visibility = View.GONE
+//                    service4.visibility = View.GONE
+//                }
+//            }
+//    }
 
 
     class ServiceViewHolder(var binding: ItemServiceBinding) :

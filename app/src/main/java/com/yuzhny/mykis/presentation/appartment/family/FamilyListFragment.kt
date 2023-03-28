@@ -57,7 +57,6 @@ class FamilyListFragment  : BaseFragment() {
                 override fun onAnimationFinished(viewHolder: RecyclerView.ViewHolder) {
                     super.onAnimationFinished(viewHolder)
                     Log.d("family_fragment" , "onAnimationFinished")
-                    scrollToPosition(0)
                     binding.loadingView.visibility = View.GONE
                     binding.recyclerView.visibility = View.VISIBLE
                 }

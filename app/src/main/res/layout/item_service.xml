@@ -60,24 +60,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
                     <TextView
                         android:id="@+id/zadol2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
 
                     <TextView
                         android:id="@+id/zadol3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
 
                     <TextView
                         android:id="@+id/zadol4"
-                        style="@style/FirstCenterText"
+                        style="@style/FirstEndText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service" />
@@ -85,7 +85,7 @@
                         android:id="@+id/zadol"
                         style="@style/SecondText"
                         android:padding="8dp"
-                        android:gravity="center_horizontal"
+                        android:gravity="end"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service" />
@@ -150,7 +150,7 @@
                     android:orientation="vertical"
                     app:layout_constraintStart_toEndOf="@id/linear_zadol"
                     app:layout_constraintBottom_toBottomOf="@id/linear_services"
-                   >
+                    >
 
                     <TextView
                         android:id="@+id/accured_text"
@@ -165,24 +165,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
                     <TextView
                         android:id="@+id/nachisleno2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
 
                     <TextView
                         android:id="@+id/nachisleno3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
 
                     <TextView
                         android:id="@+id/nachisleno4"
-                        style="@style/FirstCenterText"
+                        style="@style/FirstEndText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service" />
@@ -191,56 +191,12 @@
                         style="@style/SecondText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
+                        android:gravity="end"
                         android:padding="8dp"
 
                         tools:text="service 1 service" />
 
                 </LinearLayout>
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/linear_refund"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    app:layout_constraintStart_toEndOf="@id/linear_nachisleno"-->
-<!--                    app:layout_constraintTop_toTopOf="@id/linear_nachisleno"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@id/linear_nachisleno">-->
-<!--                    <TextView-->
-<!--                        android:id="@+id/refund_text"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/refund"-->
-<!--                        style="@style/ThirdCenterText"-->
-
-<!--                        />-->
-<!--                    <TextView-->
-<!--                        android:id="@+id/refund1"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        tools:text="service 1 service"-->
-<!--                        style="@style/FirstCenterText"/>-->
-<!--                    <TextView-->
-<!--                        android:id="@+id/refund2"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        tools:text="service 1 service"-->
-<!--                        style="@style/FirstCenterText"/>-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/refund3"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        tools:text="service 1 service"-->
-<!--                        style="@style/FirstCenterText"/>-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/refund4"-->
-<!--                        style="@style/FirstCenterText"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        tools:text="service 1 service" />-->
-
-<!--                </LinearLayout>-->
                 <LinearLayout
                     android:id="@+id/linear_oplacheno"
                     android:layout_width="wrap_content"
@@ -262,24 +218,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
                     <TextView
                         android:id="@+id/oplacheno2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
 
                     <TextView
                         android:id="@+id/oplacheno3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
 
                     <TextView
                         android:id="@+id/oplacheno4"
-                        style="@style/FirstCenterText"
+                        style="@style/FirstEndText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service" />
@@ -288,7 +244,7 @@
                         style="@style/SecondText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
+                        android:gravity="end"
                         android:padding="8dp"
                         tools:text="service 1 service" />
 
@@ -300,7 +256,7 @@
                     android:orientation="vertical"
                     app:layout_constraintTop_toTopOf="@id/linear_oplacheno"
                     app:layout_constraintStart_toEndOf="@id/linear_oplacheno"
-                 >
+                    >
                     <TextView
                         android:id="@+id/end_debt_text"
                         android:layout_width="match_parent"
@@ -313,24 +269,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
                     <TextView
                         android:id="@+id/dolg2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
 
                     <TextView
                         android:id="@+id/dolg3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service"
-                        style="@style/FirstCenterText"/>
+                        style="@style/FirstEndText"/>
 
                     <TextView
                         android:id="@+id/dolg4"
-                        style="@style/FirstCenterText"
+                        style="@style/FirstEndText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="service 1 service" />
@@ -339,7 +295,7 @@
                         style="@style/SecondText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
+                        android:gravity="end"
                         android:padding="8dp"
                         tools:text="serv" />
                 </LinearLayout>

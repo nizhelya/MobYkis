@@ -30,7 +30,7 @@ class ServiceListFragment : BaseFragment() {
     private var _binding: FragmentServiceListBinding? = null
     private val binding get() = _binding!!
 
-
+    private var osbb :String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,8 @@ class ServiceListFragment : BaseFragment() {
                 1
         )
         listViewModel.appartment.observe(this.viewLifecycleOwner){
-            binding.buttonKv.text = it.osbb
+            osbb = it.osbb
+            binding.buttonKv.text = osbb
         }
         serviceViewModel.totalDebt.observe(this.viewLifecycleOwner){
             it?.let {
@@ -94,6 +95,7 @@ class ServiceListFragment : BaseFragment() {
             }
             binding.buttonKv.setOnClickListener {
                 serviceViewModel.currentService = 4
+                serviceViewModel.currentServiceTitle = osbb
                 findNavController().navigate(R.id.action_viewPagerFragment_to_serviceDetailFragment)
             }
 
@@ -101,8 +103,8 @@ class ServiceListFragment : BaseFragment() {
     private fun handleService(serviceEntity: List<ServiceEntity>?){
         if (serviceEntity != null && serviceEntity.isNotEmpty()) {
             serviceViewModel.getTotalService(listViewModel.currentAddress)
-//            binding.loadingView.visibility = View.GONE
-//            binding.mainConstraint.visibility = View.VISIBLE
+            binding.loadingView.visibility = View.GONE
+            binding.mainConstraint.visibility = View.VISIBLE
         }
     }
 }

@@ -65,6 +65,7 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
         actionBar!!.setDisplayShowTitleEnabled(true)
         actionBar.title = serviceViewModel.currentServiceTitle
         binding.recyclerView.apply {
+            isVerticalScrollBarEnabled = true
             itemAnimator = object : DefaultItemAnimator() {
                 override fun onAnimationFinished(viewHolder: RecyclerView.ViewHolder) {
                     super.onAnimationFinished(viewHolder)
@@ -73,8 +74,22 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
                     visibility = View.VISIBLE
                     Log.d("service_fragment" , "onAnimationFinished")
                 }
+
             }
             adapter = serviceAdapter
+        }
+        binding.showAll.setOnClickListener {
+            binding.loadingView.visibility = View.VISIBLE
+            binding.recyclerView.visibility = View.INVISIBLE
+            serviceViewModel.getDetailService(
+                listViewModel.currentAddress,
+                listViewModel.currentHouse,
+                serviceViewModel.currentService,
+                0,
+                0,
+            )
+            binding.showAll.visibility = View.GONE
+
         }
     }
     private fun handleServices(serviceEntity: List<ServiceEntity>?){
