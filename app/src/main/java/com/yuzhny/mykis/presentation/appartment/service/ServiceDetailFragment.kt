@@ -1,19 +1,22 @@
 package com.yuzhny.mykis.presentation.appartment.service
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.yuzhny.mykis.R
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemAnimator.ItemAnimatorFinishedListener
 import com.yuzhny.mykis.databinding.FragmentServiceDetailBinding
-import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.presentation.MainActivity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
-import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -39,37 +42,47 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        serviceViewModel.apply {
-//            onSuccess(servicesFlat , ::handleServices)
-//        }
+
+        serviceViewModel.apply {
+            onSuccess(serviceDetail , ::handleServices)
+        }
         _binding = FragmentServiceDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        serviceViewModel.getFlatService(
+        binding.loadingView.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.INVISIBLE
+        serviceViewModel.getDetailService(
             listViewModel.currentAddress,
             listViewModel.currentHouse,
             serviceViewModel.currentService,
             0,
             1,
         )
-        serviceViewModel.servicesFlat.observe(this.viewLifecycleOwner) { i ->
-            i?.let {
-                serviceAdapter.submitList(it)
-            }
-        }
         val actionBar = (activity as MainActivity).supportActionBar
         actionBar!!.setDisplayShowTitleEnabled(true)
         actionBar.title = serviceViewModel.currentServiceTitle
-        binding.recyclerView.adapter = serviceAdapter
+        binding.recyclerView.apply {
+            itemAnimator = object : DefaultItemAnimator() {
+                override fun onAnimationFinished(viewHolder: RecyclerView.ViewHolder) {
+                    super.onAnimationFinished(viewHolder)
+                    scrollToPosition(0)
+                    binding.loadingView.visibility = View.GONE
+                    visibility = View.VISIBLE
+                    Log.d("service_fragment" , "onAnimationFinished")
+                }
+            }
+            adapter = serviceAdapter
+        }
     }
-
-//    private fun handleService(serviceEntity:  List<ServiceEntity>?) {
-//        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
-//            serviceAdapter.submitList(serviceEntity)
-//        }
-//    }
-//
+    private fun handleServices(serviceEntity: List<ServiceEntity>?){
+        if(serviceAdapter.currentList == serviceEntity){
+            binding.loadingView.visibility = View.GONE
+            binding.recyclerView.visibility = View.VISIBLE
+        }else{
+            serviceAdapter.submitList(serviceEntity)
+        }
+    }
 }

@@ -11,4 +11,4 @@ fun hideIfEmpty(text:String?, firstView: View){
         firstView.visibility = View.VISIBLE
     }
 }
-fun isEmptyFun(text:String?):Boolean = !(text.isNullOrEmpty() || text == """""" || text =="\"\"" || text == " ")
+fun isEmptyFun(text:String?):Boolean = !(text.isNullOrEmpty() || text == """""" || text =="\"\"" || text == " " || text == "none")

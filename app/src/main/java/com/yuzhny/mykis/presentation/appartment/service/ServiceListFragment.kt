@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentServiceListBinding
+import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
+import com.yuzhny.mykis.presentation.appartment.add.adapter.StreetArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
@@ -39,7 +42,7 @@ class ServiceListFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         serviceViewModel.apply {
-//            onSuccess(servicesFlat , ::handleService)
+            onSuccess(servicesFlat , ::handleService)
             onFailure(failureData, ::handleFailure)
         }
         // Inflate the layout for this fragment
@@ -49,31 +52,31 @@ class ServiceListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        serviceViewModel.getFlatServiceTotal(
-//                listViewModel.currentAddress,
-//                listViewModel.currentHouse,
-//                0,
-//                1,
-//                1
-//        )
+        serviceViewModel.getFlatService(
+                listViewModel.currentAddress,
+                listViewModel.currentHouse,
+                0,
+                1,
+                1
+        )
         listViewModel.appartment.observe(this.viewLifecycleOwner){
             binding.buttonKv.text = it.osbb
         }
-//        serviceViewModel.totalDebt.observe(this.viewLifecycleOwner){
-//            it?.let {
-//                binding.apply {
-//                    dolg1.text =  it.dolg1.toString()
-//                    dolg2.text =  it.dolg2.toString()
-//                    dolg3.text =  it.dolg3.toString()
-//                    dolg4.text =  it.dolg4.toString()
-//                    dolg.text =   "${it.dolg.toString()}₴"
-//                    borgText.text = getString(R.string.borg_text,
-//                        SimpleDateFormat("dd/MM/yyy").format(Date())
-//                    )
-//                }
-//            }
-//
-//        }
+        serviceViewModel.totalDebt.observe(this.viewLifecycleOwner){
+            it?.let {
+                binding.apply {
+                    dolg1.text =  it.dolg1.toString()
+                    dolg2.text =  it.dolg2.toString()
+                    dolg3.text =  it.dolg3.toString()
+                    dolg4.text =  it.dolg4.toString()
+                    dolg.text =   "${it.dolg.toString()}₴"
+                    borgText.text = getString(R.string.borg_text,
+                        SimpleDateFormat("dd/MM/yyy").format(Date())
+                    )
+                }
+            }
+
+        }
         binding.buttonVodokanal.setOnClickListener {
             serviceViewModel.currentService = 1
             serviceViewModel.currentServiceTitle = getString(R.string.vodokanal)
@@ -95,8 +98,11 @@ class ServiceListFragment : BaseFragment() {
             }
 
     }
-//    private fun handleService(serviceEntity:  List<ServiceEntity>?) {
-//        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
-//        }
-//    }
+    private fun handleService(serviceEntity: List<ServiceEntity>?){
+        if (serviceEntity != null && serviceEntity.isNotEmpty()) {
+            serviceViewModel.getTotalService(listViewModel.currentAddress)
+//            binding.loadingView.visibility = View.GONE
+//            binding.mainConstraint.visibility = View.VISIBLE
+        }
+    }
 }

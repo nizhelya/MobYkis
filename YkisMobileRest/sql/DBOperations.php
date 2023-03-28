@@ -146,7 +146,7 @@ class DBOperations {
                     break;
 
                 case 3 :
-                    $sql = 'SELECT "tbo" as service , "Вивіз ТПВ" as service1 , " " as service2 , " "   as service3 , " " as service4 , 
+                    $sql = 'SELECT "tbo" as service , "Вивіз ТПВ" as service1 , "none" as service2 , "none"   as service3 , "none" as service4 , 
        t1.address_id , t1.data , 
     IFNULL(t1.zadol , 0) as zadol1 ,
     IFNULL(t1.zadol , 0) as zadol,
@@ -162,7 +162,7 @@ class DBOperations {
 
                 case 4 :
                     if ($house_id == 22) {
-                        $sql = 'SELECT "kv" as service,  "Внески жит.фонд" as service1 , "Ремонтний фонд" as service2 , " " as service3 , " " as service4 , t1.address_id , t1.data , IFNULL(t1.zadol , 0) as zadol1, IFNULL(t3.zadol , 0 ) as zadol2 ,
+                        $sql = 'SELECT "kv" as service,  "Внески жит.фонд" as service1 , "Ремонтний фонд" as service2 , "none" as service3 , "none" as service4 , t1.address_id , t1.data , IFNULL(t1.zadol , 0) as zadol1, IFNULL(t3.zadol , 0 ) as zadol2 ,
     IFNULL(t1.zadol , 0) + IFNULL(t3.zadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t3.nachisleno , 0 ) as nachisleno2 ,
     IFNULL(t1.nachisleno , 0) + IFNULL(t3.nachisleno ,0) as nachisleno,
@@ -174,7 +174,7 @@ class DBOperations {
     LEFT JOIN OSBB.RFOND as t3 using(address_id , data)
     WHERE t1.address_id = ' . $address_id . ' ORDER BY t1.data DESC '. $limit . ' ';
                     } else {
-                        $sql = 'SELECT "kv" as service ,"Внески жит.фонд" as service1 , "Ремонтний фонд" as service2 , " " as service3 , " " as service4 , t1.address_id , t1.data ,IFNULL(t1.zadol , 0) as zadol1, IFNULL(t1.rzadol , 0 ) as zadol2 ,
+                        $sql = 'SELECT "kv" as service ,"Внески жит.фонд" as service1 , "Ремонтний фонд" as service2 , "none" as service3 , "none" as service4 , t1.address_id , t1.data ,IFNULL(t1.zadol , 0) as zadol1, IFNULL(t1.rzadol , 0 ) as zadol2 ,
     IFNULL(t1.zadol , 0) + IFNULL(t1.rzadol , 0) as zadol,
     IFNULL(t1.nachisleno, 0) as nachisleno1, IFNULL(t1.remont , 0 ) as nachisleno2 ,
     IFNULL(t1.nachisleno , 0) + IFNULL(t1.remont,0) as nachisleno,
@@ -189,7 +189,7 @@ class DBOperations {
             }
         }else{
             if($house_id == 22){
-                $sql = 'SELECT t1.address_id , "total" as service , " " as service1 , " " as service2 , " " as service3 , " " as service4,  CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01") as data ,  t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg +
+                $sql = 'SELECT t1.address_id , "total" as service , "none" as service1 , "none" as service2 , "none" as service3 , "none" as service4,  CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01") as data ,  t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg +
            t9.dolg as dolg2 , t10.dolg as dolg3 , t11.dolg + t12.dolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t12.dolg as dolg
     FROM YIS.ADDRESS as t1
     LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
@@ -205,7 +205,8 @@ class DBOperations {
     LEFT JOIN OSBB.RFOND as t12 on t1.address_id = t12.address_id and t12.data = CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")
     WHERE t1.address_id = '.$address_id.' ';
             } else {
-                $sql = 'SELECT t1.address_id , "total" as service ," " as service1 , " " as service2, " " as service3 , " " as service4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg + t9.dolg as dolg2 ,
+                $sql = 'SELECT t1.address_id , "total" as service ,"none" as service1 , "none" as service2, "none" as service3 , "none" as service4 ,
+       "2000-01-01" as data ,t2.dolg + t3.dolg + t4.dolg + t5.dolg as dolg1  , t6.dolg + t7.dolg + t8.dolg + t9.dolg as dolg2 ,
            t10.dolg as dolg3 , t11.dolg + t11.rdolg as dolg4 , t2.dolg + t3.dolg + t4.dolg + t5.dolg + t6.dolg + t7.dolg + t8.dolg + t9.dolg + t10.dolg + t11.dolg + t11.rdolg as dolg
     FROM YIS.ADDRESS as t1
     LEFT JOIN YIS.VODA as t2 on t1.address_id = t2.address_id and t2.data =CONCAT(EXTRACT(YEAR_MONTH FROM CURDATE()),"01")

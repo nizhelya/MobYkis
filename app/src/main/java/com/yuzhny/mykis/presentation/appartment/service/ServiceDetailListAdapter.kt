@@ -59,27 +59,27 @@ class ServiceDetailListAdapter @Inject constructor() :ListAdapter <ServiceEntity
             dolg3.text = service.dolg3.toString()
             dolg4.text = service.dolg4.toString()
             dolg.text = service.dolg.toString()
-            if(!isEmptyFun(service.service2)){
-                zadol2.visibility = View.GONE
-                nachisleno2.visibility = View.GONE
-                oplacheno2.visibility = View.GONE
-                dolg2.visibility = View.GONE
-                service2.visibility = View.GONE
-            }
-            if(!isEmptyFun(service.service3)){
-                zadol3.visibility = View.GONE
-                nachisleno3.visibility = View.GONE
-                oplacheno3.visibility = View.GONE
-                dolg3.visibility = View.GONE
-                service3.visibility = View.GONE
-            }
-            if(!isEmptyFun(service.service4)){
-                zadol4.visibility = View.GONE
-                nachisleno4.visibility = View.GONE
-                oplacheno4.visibility = View.GONE
-                dolg4.visibility = View.GONE
-                service4.visibility = View.GONE
-            }
+//            if(isEmptyFun(service.service2.toString())){
+//                zadol2.visibility = View.GONE
+//                nachisleno2.visibility = View.GONE
+//                oplacheno2.visibility = View.GONE
+//                dolg2.visibility = View.GONE
+//                service2.visibility = View.GONE
+//            }
+//            if(service.service3=="none"){
+//                zadol3.visibility = View.GONE
+//                nachisleno3.visibility = View.GONE
+//                oplacheno3.visibility = View.GONE
+//                dolg3.visibility = View.GONE
+//                service3.visibility = View.GONE
+//            }
+//            if(service.service4=="none"){
+//                zadol4.visibility = View.GONE
+//                nachisleno4.visibility = View.GONE
+//                oplacheno4.visibility = View.GONE
+//                dolg4.visibility = View.GONE
+//                service4.visibility = View.GONE
+//            }
         }
     }
 

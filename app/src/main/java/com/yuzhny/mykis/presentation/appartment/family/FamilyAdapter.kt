@@ -112,10 +112,13 @@ class FamilyListAdapter @Inject constructor() :
                 viewOpen.setImageResource(R.drawable.ic_expand_more)
             }
         }
+
 }
 
 
-
+    fun clearList(){
+        currentList.clear()
+    }
     class FamilyViewHolder(var binding: ItemFamilyListBinding) :
         RecyclerView.ViewHolder(binding.root) {
     }

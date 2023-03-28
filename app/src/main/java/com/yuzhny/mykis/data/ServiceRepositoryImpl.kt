@@ -30,7 +30,16 @@ class ServiceRepositoryImpl @Inject constructor(
                         )
                     } else {
                         Either.Right(
-                            serviceCache.getServiceFromFlat(params.addressId)
+
+                            serviceCache.getServiceFromFlat(
+                                params.addressId,
+                                when(params.service){
+                                    1.toByte()->"voda"
+                                    2.toByte()->"teplo"
+                                    3.toByte()->"tbo"
+                                    else -> "kv"
+                                }
+                            )
                         )
                     }
                 }
