@@ -4,18 +4,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.yuzhny.mykis.data.cache.service.ServiceCacheImpl
+import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.domain.service.request.ServiceParams
 import com.yuzhny.mykis.domain.service.request.getFlatService
+import com.yuzhny.mykis.domain.service.request.getTotalDebtService
 import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.security.Provider.Service
 import javax.inject.Inject
 
 @HiltViewModel
 class ServiceViewModel @Inject constructor(
     private val getFlatServiceUseCase: getFlatService ,
-    private val serviceCacheImpl: ServiceCacheImpl
+    private val getTotalDebtServiceUseCase : getTotalDebtService
 ):BaseViewModel(){
 
     private val _servicesFlat = MutableLiveData<List<ServiceEntity>>()
@@ -25,8 +28,8 @@ class ServiceViewModel @Inject constructor(
     private val _serviceDetail = MutableLiveData<List<ServiceEntity>>()
     val serviceDetail : LiveData<List<ServiceEntity>> get() = _serviceDetail
 
-    private val _totalDebt = MutableLiveData<ServiceEntity>()
-    val totalDebt : LiveData<ServiceEntity> get() = _totalDebt
+    private val _totalDebt = MutableLiveData<ServiceEntity?>()
+    val totalDebt : LiveData<ServiceEntity?> get() = _totalDebt
 
     var currentService :Byte = 0
     var currentServiceTitle :String = ""
@@ -94,8 +97,18 @@ class ServiceViewModel @Inject constructor(
         }
     }
     fun getTotalService(addressId: Int){
-        viewModelScope.launch {
-        _totalDebt.value = serviceCacheImpl.getTotalDebt(addressId)
+        getTotalDebtServiceUseCase(addressId) { it ->
+            it.either(::handleFailure) {
+                handle(
+                    it,_totalDebt
+                )
+            }
         }
+    }
+    private fun handle(address: ServiceEntity?, liveData : MutableLiveData<ServiceEntity?> ){
+        liveData.value = address
+    }
+    fun clearTotal(){
+        _totalDebt.value = null
     }
 }

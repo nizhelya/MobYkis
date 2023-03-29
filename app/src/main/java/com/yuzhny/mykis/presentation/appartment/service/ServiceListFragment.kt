@@ -43,6 +43,7 @@ class ServiceListFragment : BaseFragment() {
     ): View? {
         serviceViewModel.apply {
             onSuccess(servicesFlat , ::handleService)
+            onSuccess(totalDebt , ::handleTotalDebt)
             onFailure(failureData, ::handleFailure)
         }
         // Inflate the layout for this fragment
@@ -52,6 +53,8 @@ class ServiceListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.loadingView.visibility = View.VISIBLE
+        binding.mainConstraint.visibility = View.GONE
         serviceViewModel.getFlatService(
                 listViewModel.currentAddress,
                 listViewModel.currentHouse,
@@ -100,9 +103,18 @@ class ServiceListFragment : BaseFragment() {
             }
 
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        serviceViewModel.clearTotal()
+    }
     private fun handleService(serviceEntity: List<ServiceEntity>?){
         if (serviceEntity != null && serviceEntity.isNotEmpty()) {
             serviceViewModel.getTotalService(listViewModel.currentAddress)
+        }
+    }
+    private fun handleTotalDebt(serviceEntity: ServiceEntity?){
+        if(serviceEntity!==null){
             binding.loadingView.visibility = View.GONE
             binding.mainConstraint.visibility = View.VISIBLE
         }

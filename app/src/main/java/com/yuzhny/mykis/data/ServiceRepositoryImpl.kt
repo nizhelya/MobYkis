@@ -51,4 +51,8 @@ class ServiceRepositoryImpl @Inject constructor(
                 }
 
         }
+
+    override fun getTotalFlatService(addressId:Int):Either<Failure, ServiceEntity?> {
+        return Either.Right(serviceCache.getTotalDebt(addressId))
     }
+}
