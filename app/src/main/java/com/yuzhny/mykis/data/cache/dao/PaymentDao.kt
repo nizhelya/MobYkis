@@ -17,8 +17,8 @@ interface PaymentDao {
     fun getPaymentFromFlat(addressId:Int): List<PaymentEntity>
     @Query("delete from payment where address_id not in (:addressId)")
     fun deletePaymentFromFlat(addressId: List<Int>)
-    @Query("select *  from payment where address_id=:addressId group by address_id,year order by year DESC")
-    fun getYearsByFlat(addressId: Int):List<PaymentEntity>
+    @Query("select year  from payment where address_id= :addressId group by year order by year DESC")
+    fun getYearsByFlat(addressId: Int):List<Int>
     @Query("select * from payment where address_id = :addressId and year = :year ORDER BY data DESC")
-    fun getPaymentsFromYearsFlat(addressId: Int , year: Short):List<PaymentEntity>
+    fun getPaymentsFromYearsFlat(addressId: Int , year: Int):List<PaymentEntity>
 }

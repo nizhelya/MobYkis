@@ -50,5 +50,6 @@ class PaymentChildAdapter @Inject constructor(
             summary.text = paymentChild.summa.toString()
             prixod.text = paymentChild.prixod
         }
+
     }
 }

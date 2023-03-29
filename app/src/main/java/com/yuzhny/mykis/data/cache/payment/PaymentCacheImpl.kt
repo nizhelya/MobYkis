@@ -22,11 +22,11 @@ class PaymentCacheImpl @Inject constructor(
         paymentDao.deletePaymentFromFlat(addressId)
     }
 
-    override fun getYearsFromFlat(addressId: Int):List<PaymentEntity> {
+    override fun getYearsFromFlat(addressId: Int):List<Int> {
         return paymentDao.getYearsByFlat(addressId)
     }
 
-    override suspend fun getPaymentFromYearFlat(addressId: Int, year:Short): List<PaymentEntity> {
+    override suspend fun getPaymentFromYearFlat(addressId: Int, year:Int): List<PaymentEntity> {
         return paymentDao.getPaymentsFromYearsFlat(addressId , year)
     }
 }

@@ -1,11 +1,14 @@
 package com.yuzhny.mykis.presentation.appartment.payment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.RecyclerView
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentPaymentFlatListBinding
 import com.yuzhny.mykis.databinding.FragmentServiceListBinding
@@ -46,18 +49,24 @@ class PaymentFlatListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.loadingView.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.GONE
         paymentListViewModel.getFlatPayments(listViewModel.currentAddress)
-        paymentListViewModel.years.observe(this.viewLifecycleOwner){
+        paymentListViewModel.paymentItem.observe(this.viewLifecycleOwner){
             i -> i?.let {
                 paymentListAdapter.submitList(it)
             }
         }
         binding.recyclerView.adapter = paymentListAdapter
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        paymentListViewModel.clearPaymentList()
+    }
     private fun handlePayments(paymentEntity:  List<PaymentEntity>?) {
         if (paymentEntity != null && paymentEntity.isNotEmpty()) {
-            paymentListViewModel.getYearsFromFlat(listViewModel.currentAddress)
-
+           paymentListViewModel.getPaymentItem(listViewModel.currentAddress , binding.loadingView , binding.recyclerView)
         }
     }
 

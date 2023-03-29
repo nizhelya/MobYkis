@@ -18,20 +18,19 @@ import com.yuzhny.mykis.R
 import com.yuzhny.mykis.data.cache.dao.PaymentDao
 import com.yuzhny.mykis.data.cache.payment.PaymentCacheImpl
 import com.yuzhny.mykis.databinding.ChildPaymentListBinding
+import com.yuzhny.mykis.domain.payment.PaymentItemEntity
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import java.time.Year
 
 @FragmentScoped
 class PaymentListAdapter @Inject constructor(
-    private val paymentCacheImpl: PaymentCacheImpl
 ) : ListAdapter<
-        PaymentEntity,
+        PaymentItemEntity,
         PaymentListAdapter.PaymentViewHolder
         >(
     DiffCallback
 ) {
-    private val childAdapter = PaymentChildAdapter()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return PaymentListAdapter.PaymentViewHolder(
@@ -41,16 +40,15 @@ class PaymentListAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: PaymentViewHolder, position: Int) {
         val payment = getItem(position)
-
-        holder.itemView.autoDisposeScope.launch {
-            childAdapter.submitList(
-                paymentCacheImpl.getPaymentFromYearFlat(payment.addressID, payment.year)
-            )
+        expandItem(payment, holder)
+        val childAdapter = PaymentChildAdapter()
+        holder.binding.apply {
+            childAdapter.submitList(payment.paymentsList)
+            recyclerView.adapter = childAdapter
+            yearText.text = payment.year.toString()
+            recyclerView.setHasFixedSize(true)
 
         }
-        expandItem(payment, holder)
-        holder.binding.recyclerView.adapter = childAdapter
-        holder.binding.yearText.text = payment.year.toString()
         holder.binding.cardView.setOnClickListener {
             isAnyItemExpanded(position)
             payment.isExpandable = !payment.isExpandable
@@ -58,7 +56,7 @@ class PaymentListAdapter @Inject constructor(
             }
 
     }
-    private fun expandItem(payment:PaymentEntity, holder:PaymentViewHolder){
+    private fun expandItem(payment:PaymentItemEntity, holder:PaymentViewHolder){
       if(payment.isExpandable){
           holder.binding.recyclerView.visibility = View.VISIBLE
           holder.binding.viewOpen.setImageResource(R.drawable.ic_expand_less)
@@ -82,12 +80,12 @@ class PaymentListAdapter @Inject constructor(
         RecyclerView.ViewHolder(binding.root) {
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<PaymentEntity>() {
-        override fun areItemsTheSame(oldItem: PaymentEntity, newItem: PaymentEntity): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<PaymentItemEntity>() {
+        override fun areItemsTheSame(oldItem: PaymentItemEntity, newItem: PaymentItemEntity): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: PaymentEntity, newItem: PaymentEntity): Boolean {
+        override fun areContentsTheSame(oldItem: PaymentItemEntity, newItem: PaymentItemEntity): Boolean {
             return oldItem == newItem
         }
 
