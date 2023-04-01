@@ -26,7 +26,7 @@ import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class AddAppartmentFragment : BaseFragment()
 {
     private var _binding: FragmentAddAppartmentBinding? = null
@@ -38,18 +38,14 @@ class AddAppartmentFragment : BaseFragment()
     private var chooseHouseId: Int = 0
     private var selectedFlat: Int = 0
 
-    @Inject
+
     lateinit var blockAdapter: BlockArrayAdapter
 
-    @Inject
     lateinit var streetAdapter: StreetArrayAdapter
 
-    @Inject
     lateinit var houseAdapter: HouseArrayAdapter
 
-    @Inject
     lateinit var flatAdapter: FlatArrayAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

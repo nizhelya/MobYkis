@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.item_appartment_list.view.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@FragmentScoped
-class BlockArrayAdapter @Inject constructor(@ApplicationContext context: Context, addressList:List<AddressEntity>)
+
+class BlockArrayAdapter (context: Context, addressList:List<AddressEntity>)
     :ArrayAdapter<AddressEntity>(context , 0 , addressList) {
     val addressSelected = addressList
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

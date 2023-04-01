@@ -111,4 +111,7 @@ class ServiceViewModel @Inject constructor(
     fun clearTotal(){
         _totalDebt.value = null
     }
+    fun clearService(){
+        _serviceDetail.value = listOf()
+    }
 }

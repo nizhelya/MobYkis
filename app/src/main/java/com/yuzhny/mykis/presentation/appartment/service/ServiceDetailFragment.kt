@@ -52,15 +52,27 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.loadingView.visibility = View.VISIBLE
-        binding.recyclerView.visibility = View.INVISIBLE
-        serviceViewModel.getDetailService(
-            listViewModel.currentAddress,
-            listViewModel.currentHouse,
-            serviceViewModel.currentService,
-            0,
-            1,
-        )
+        serviceViewModel.serviceDetail.observe(this.viewLifecycleOwner){
+            if(it.isEmpty()){
+                binding.loadingView.visibility = View.VISIBLE
+                binding.recyclerView.visibility = View.INVISIBLE
+                serviceViewModel.getDetailService(
+                    listViewModel.currentAddress,
+                    listViewModel.currentHouse,
+                    serviceViewModel.currentService,
+                    0,
+                    1,
+                )
+            }else if(it.size==12){
+                binding.loadingView.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+            }else{
+                binding.loadingView.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.loadingView.visibility = View.VISIBLE
+                binding.showAll.visibility = View.GONE
+            }
+        }
         val actionBar = (activity as MainActivity).supportActionBar
         actionBar!!.setDisplayShowTitleEnabled(true)
         actionBar.title = serviceViewModel.currentServiceTitle
@@ -71,6 +83,7 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
                     super.onAnimationFinished(viewHolder)
                     scrollToPosition(0)
                     binding.loadingView.visibility = View.GONE
+                    binding.showAll.visibility = View.VISIBLE
                     visibility = View.VISIBLE
                     Log.d("service_fragment" , "onAnimationFinished")
                 }
@@ -93,10 +106,7 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
         }
     }
     private fun handleServices(serviceEntity: List<ServiceEntity>?){
-        if(serviceAdapter.currentList == serviceEntity){
-            binding.loadingView.visibility = View.GONE
-            binding.recyclerView.visibility = View.VISIBLE
-        }else{
+        if(serviceAdapter.currentList !== serviceEntity){
             serviceAdapter.submitList(serviceEntity)
         }
     }

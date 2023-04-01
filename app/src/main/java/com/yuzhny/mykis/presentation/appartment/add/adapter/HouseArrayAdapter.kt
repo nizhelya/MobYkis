@@ -13,8 +13,8 @@ import kotlinx.android.synthetic.main.drop_down_item.view.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@FragmentScoped
-class HouseArrayAdapter @Inject constructor(@ApplicationContext context: Context, addressList:List<AddressEntity>)
+
+class HouseArrayAdapter ( context: Context, addressList:List<AddressEntity>)
     : ArrayAdapter<AddressEntity>(context , 0 , addressList) {
     val addressSelected = addressList
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

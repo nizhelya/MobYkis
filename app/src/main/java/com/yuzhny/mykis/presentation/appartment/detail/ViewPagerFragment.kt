@@ -59,6 +59,7 @@ class ViewPagerFragment : Fragment() {
         }.attach()
         listViewModel.currentAddress = args.addressId
         listViewModel.currentHouse = args.houseId
+        serviceViewModel.clearService()
     }
 
 
