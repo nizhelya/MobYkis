@@ -16,6 +16,7 @@ import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
+import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.internal.notifyAll
@@ -43,6 +44,7 @@ class FamilyListFragment  : BaseFragment() {
     ): View? {
         familyViewModel.apply {
             onSuccess(family , ::handleFamily)
+            onFailure(failureData, ::handleFailure)
         }
         _binding = FragmentFamilyListBinding.inflate(inflater,container,false)
         return binding.root

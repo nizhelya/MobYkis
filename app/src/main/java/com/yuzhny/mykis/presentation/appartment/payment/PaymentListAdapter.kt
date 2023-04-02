@@ -40,7 +40,7 @@ class PaymentListAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: PaymentViewHolder, position: Int) {
         val payment = getItem(position)
-        expandItem(payment, holder)
+        expandItem(payment, holder , position)
         val childAdapter = PaymentChildAdapter()
         holder.binding.apply {
             childAdapter.submitList(payment.paymentsList)
@@ -56,7 +56,7 @@ class PaymentListAdapter @Inject constructor(
             }
 
     }
-    private fun expandItem(payment:PaymentItemEntity, holder:PaymentViewHolder){
+    private fun expandItem(payment:PaymentItemEntity, holder:PaymentViewHolder , position: Int){
       if(payment.isExpandable){
           holder.binding.recyclerView.visibility = View.VISIBLE
           holder.binding.viewOpen.setImageResource(R.drawable.ic_expand_less)
@@ -70,8 +70,10 @@ class PaymentListAdapter @Inject constructor(
             it.isExpandable
         }
         if(temp >= 0 && temp != position){
+
             currentList[temp].isExpandable = false
             notifyItemChanged(temp)
+
         }
     }
 

@@ -6,6 +6,7 @@ import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.data.remote.family.GetFamilyResponse
 import com.yuzhny.mykis.data.remote.payment.GetPaymentResponse
 import com.yuzhny.mykis.data.remote.service.GetServiceResponse
+import com.yuzhny.mykis.data.remote.water.GetWaterMeterResponse
 import retrofit2.Call
 import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded
@@ -16,11 +17,11 @@ interface ApiService {
     companion object{
 //        const val SERVER_URL = "https://is.yuzhny.com/YkisMobileRest"
 //        const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
-//          const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
+        const val SERVER_URL = "http://192.168.88.243/MobYkis/YkisMobileRest"
 
 //        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
 
-        const val SERVER_URL = "http://192.168.0.106/MobYkis/YkisMobileRest"
+//        const val SERVER_URL = "http://192.168.0.106/MobYkis/YkisMobileRest"
 
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_FLAT = "getFlatById.php"
@@ -35,6 +36,7 @@ interface ApiService {
         const val GET_FLATS="getFlatsFromHouse.php"
         const val ADD_FLAT_BY_USER="addMyFlatByUser.php"
         const val GET_FAMILY="getFamilyFromFlat.php"
+        const val GET_WATER_METER="getWaterMeter.php"
         const val CHECK_ADD_FLAT="checkAddFlat.php"
         const val PARAM_ADDRESS_ID = "address_id"
         const val PARAM_USER_ID = "user_id"
@@ -93,4 +95,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(GET_FLAT_PAYMENT)
     fun getFlatPayment(@FieldMap params :Map<String , String> ):Call<GetPaymentResponse>
+    @FormUrlEncoded
+    @POST(GET_WATER_METER)
+    fun getWaterMeter(@FieldMap params :Map<String , String> ):Call<GetWaterMeterResponse>
 }

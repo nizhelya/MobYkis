@@ -9,8 +9,9 @@ import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
 import com.yuzhny.mykis.domain.type.flatMap
+import javax.inject.Inject
 
-class AddressRepositoryImpl(
+class AddressRepositoryImpl @Inject constructor(
     private val remote: AddressRemote,
     private val userCache: UserCache
 ) :AddressRepository{

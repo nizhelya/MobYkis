@@ -7,8 +7,9 @@ import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.family.FamilyRepository
 import com.yuzhny.mykis.domain.family.request.BooleanInt
 import com.yuzhny.mykis.domain.type.*
+import javax.inject.Inject
 
-class FamilyRepositoryImpl(
+class FamilyRepositoryImpl @Inject constructor(
     private val familyCache: FamilyCache,
     private val familyRemote: FamilyRemote,
     private val userCache: UserCache

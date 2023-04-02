@@ -12,9 +12,10 @@ import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import com.yuzhny.mykis.domain.type.*
 import io.reactivex.rxjava3.internal.util.HalfSerializer.onNext
+import javax.inject.Inject
 
 
-class AppartmentRepositoryImpl(
+class AppartmentRepositoryImpl @Inject constructor(
     private val appartmentRemote: AppartmentRemote,
     private val appartmentCache: AppartmentCache,
     private val familyCache: FamilyCache,

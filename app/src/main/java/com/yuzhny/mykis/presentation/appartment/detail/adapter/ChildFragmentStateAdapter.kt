@@ -8,6 +8,7 @@ import com.yuzhny.mykis.presentation.appartment.bti.BtiFragment
 import com.yuzhny.mykis.presentation.appartment.family.FamilyListFragment
 import com.yuzhny.mykis.presentation.appartment.payment.PaymentFlatListFragment
 import com.yuzhny.mykis.presentation.appartment.service.ServiceListFragment
+import com.yuzhny.mykis.presentation.appartment.water.WaterListFragment
 
 class ChildFragmentStateAdapter(fragmentManager: FragmentManager , lifecycle: Lifecycle)
     :FragmentStateAdapter(fragmentManager, lifecycle){

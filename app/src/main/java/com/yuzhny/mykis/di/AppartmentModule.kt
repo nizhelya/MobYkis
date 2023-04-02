@@ -12,6 +12,8 @@ import com.yuzhny.mykis.data.cache.service.ServiceCache
 import com.yuzhny.mykis.data.cache.service.ServiceCacheImpl
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.cache.user.UserCacheImpl
+import com.yuzhny.mykis.data.cache.water.WaterMeterCache
+import com.yuzhny.mykis.data.cache.water.WaterMeterCacheImpl
 import com.yuzhny.mykis.data.remote.address.AddressRemote
 import com.yuzhny.mykis.data.remote.address.AddressRemoteImpl
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
@@ -22,6 +24,8 @@ import com.yuzhny.mykis.data.remote.payment.PaymentRemote
 import com.yuzhny.mykis.data.remote.payment.PaymentRemoteImpl
 import com.yuzhny.mykis.data.remote.service.ServiceRemote
 import com.yuzhny.mykis.data.remote.service.ServiceRemoteImpl
+import com.yuzhny.mykis.data.remote.water.WaterMeterRemote
+import com.yuzhny.mykis.data.remote.water.WaterMeterRemoteImpl
 import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import dagger.Binds
@@ -74,4 +78,11 @@ abstract class AppartmentModule {
     @Binds
     abstract fun bindPaymentRemote(impl: PaymentRemoteImpl): PaymentRemote
 
+    @Singleton
+    @Binds
+    abstract fun bindWaterMeterCache(impl: WaterMeterCacheImpl): WaterMeterCache
+
+    @Singleton
+    @Binds
+    abstract fun bindWaterMeterRemote(impl: WaterMeterRemoteImpl): WaterMeterRemote
   }
