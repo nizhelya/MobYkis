@@ -86,9 +86,26 @@
     <string name="paid">Спла-\nчено</string>
     <string name="tbo">ТПВ:</string>
     <string name="prixod">Приход:</string>
+
     <string name="operator">Оператор:</string>
     <string name="show_more">Подивитися більше</string>
     <string name="next">Продовжити</string>
+    //WaterMeter
+    <string name="water_detail_text">Технічна характеристика</string>
+    <string name="wt">Технічна характеристика</string>
+    <string name="number_colon">Номер:</string>
+    <string name="place_colon">Місце:</string>
+    <string name="model_colon">Модель:</string>
+    <string name="position_colon">Позиція:</string>
+    <string name="sdate_colon">Дата введення:</string>
+    <string name="fdate_colon">Наступна:</string>
+    <string name="pdate_colon">Попередня:</string>
+    <string name="check_water_meter">Перевірка</string>
+    <string name="zdate_colon">Дата випуску:</string>
+    <string name="stoki_colon">Стоки:</string>
+    <string name="general_colon">Спільний:</string>
+    <string name="stop_colon">Призупинено:</string>
+    <string name="water_history_colon">Історія показань приладів обліку води:</string>
     //error
     <string name="error_network">Немає доступу до Інтернету \n Перевірте підключення</string>
     <string name="error_update">Невдалося оновити</string>

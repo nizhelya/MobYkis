@@ -30,6 +30,7 @@ data class WaterMeterEntity(
     val zdate      : String = "Unknown",
     val avg        : Byte = 0,
     val spisan     : Byte = 0 ,
+    val out        : Byte = 0 ,
     val paused     : Byte = 0,
     @ColumnInfo(name = "data_spis")
     @Json(name = "data_spis")

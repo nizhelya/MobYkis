@@ -13,14 +13,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.ItemFamilyListBinding
 import com.yuzhny.mykis.databinding.ItemWaterMeterBinding
+import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.water.WaterMeterEntity
 import com.yuzhny.mykis.presentation.appartment.family.FamilyListAdapter
+import com.yuzhny.mykis.presentation.appartment.list.AppartmentShortListener
 import com.yuzhny.mykis.presentation.appartment.util.trueOrFalse
 import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
-
-class WaterMeterListAdapter() :ListAdapter<WaterMeterEntity,WaterMeterListAdapter.WaterMeterViewHolder >(DiffCallback) {
+@FragmentScoped
+class WaterMeterListAdapter @Inject constructor(val waterMeterShortListener: WaterMeterShortListener) :ListAdapter<WaterMeterEntity,WaterMeterListAdapter.WaterMeterViewHolder >(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WaterMeterViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -33,13 +35,23 @@ class WaterMeterListAdapter() :ListAdapter<WaterMeterEntity,WaterMeterListAdapte
         val meter = getItem(position)
         holder.binding.apply {
             waterMeterText.text = meter.model
-            if(trueOrFalse(meter.spisan)){
-                firstLayout.setBackgroundColor(Color.parseColor("#999999"))
-                firstLayout.alpha = .4f
-                spisanText.text = "Списаний"
+            if(trueOrFalse(meter.spisan) || trueOrFalse(meter.out) || trueOrFalse(meter.paused)){
+                firstLayout.alpha = .5f
+                if(meter.spisan==1.toByte()){
+                    dopText.text = "Списан"
+                }else if(meter.out == 1.toByte()){
+                    dopText.text = "На перевірці"
+                }else {
+                    dopText.text = "Призупинен"
+                }
             }else{
-                spisanText.visibility = View.GONE
+                dopText.visibility = View.GONE
             }
+            typeVoda.text = meter.voda
+            number.text = meter.nomer
+            place.text = meter.place
+            data = meter
+            clickShortListener = waterMeterShortListener
         }
     }
 
@@ -63,3 +75,14 @@ class WaterMeterListAdapter() :ListAdapter<WaterMeterEntity,WaterMeterListAdapte
 
 
 }
+class WaterMeterShortListener @Inject constructor(){
+
+    var onItemClick: ((WaterMeterEntity) -> Unit)? = null
+
+    fun onClick(data: WaterMeterEntity) {
+        onItemClick?.invoke(data)
+    }
+
+
+}
+

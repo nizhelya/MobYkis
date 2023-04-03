@@ -15,9 +15,13 @@ import javax.inject.Inject
 class WaterViewModel @Inject constructor(
     private val getWaterMeterUseCase : GetWaterMeter
 ):BaseViewModel() {
+
     private val _waterMeters = MutableLiveData<List<WaterMeterEntity>>()
     val waterMeters :LiveData<List<WaterMeterEntity>> get() = _waterMeters
 
+    private val _waterMeter = MutableLiveData<WaterMeterEntity>()
+    val waterMeter :LiveData<WaterMeterEntity> get() = _waterMeter
+    var currentVodomerId:Int = 0
     fun getWaterMeters(addressId:Int, needFetch: Boolean = false) {
         getWaterMeterUseCase(BooleanInt(addressId = addressId , needFetch = needFetch)) { it ->
             it.either(::handleFailure) {
@@ -35,5 +39,8 @@ class WaterViewModel @Inject constructor(
             updateProgress(true)
             getWaterMeters(addressId, true)
         }
+    }
+    fun getWaterMeter(waterMeter:WaterMeterEntity){
+        _waterMeter.value = waterMeter
     }
 }

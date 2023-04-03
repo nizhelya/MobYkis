@@ -230,8 +230,10 @@ class DBOperations {
     public function getFlatPayments($address_id)
     {
         $com = new DbConnect();
-        $sql = 'SELECT `rec_id`,`address_id`,`address`, `god`, `data`,`kvartplata`,`remont`,(`ateplo`+`otoplenie`+`podogrev`+`ptn`) as otoplenie, 
-(`voda` + `stoki` +`avoda` + `astoki`) as voda,`tbo`,`summa`,`prixod`,`kassa`,`nomer`,`operator`,`data_in` FROM YIS.OPLATA  WHERE YIS.OPLATA.address_id= '.$address_id.' and YIS.OPLATA.data > "20161231" ORDER BY YIS.OPLATA.rec_id ;';
+        $sql = '
+SELECT t1.`rec_id` , t1.`address_id`,t1.`address`, t1.`god`, t1.`data`,sum(t1.`kvartplata`) as kvartplata,sum(t1.`remont`) as remont ,sum(t1.`ateplo`+t1.`otoplenie`+t1.`podogrev`+t1.`ptn`) as otoplenie, 
+        sum(t1.`voda` + t1.`stoki` +t1.`avoda` + t1.`astoki`) as voda,sum(t1.`tbo`) as tbo ,sum(t1.`summa`) as summa,t1.`prixod`,t1.`kassa`,t1.`nomer`,t1.`operator`,t1.`data_in` FROM YIS.OPLATA as t1 
+        WHERE t1.address_id= '.$address_id.' and t1.data > "20161231" GROUP BY t1.`address_id` , t1.`data` ,t1.`prixod` order by  t1.data DESC;';
 
         $result = mysqli_query($com->getDb(), $sql);
         return $result;
@@ -240,7 +242,7 @@ class DBOperations {
     public function getWaterMeter($address_id)
     {
         $com = new DbConnect();
-        $sql = 'Select t1.* from YIS.VODOMER as t1 where t1.address_id = '.$address_id.' ';
+        $sql = 'Select t1.* , t1.paused+t1.spisan+t1.out as ord from YIS.VODOMER as t1 where t1.address_id = '.$address_id.' order by ord ';
         $result = mysqli_query($com->getDb(), $sql);
         return $result;
     }
@@ -258,6 +260,17 @@ class DBOperations {
         $com = new DbConnect();
 
         $sql = 'CALL YISGRAND.input_new_pokaz_avodomer('.$vodomer_id.' , "'.$current_value.'" ,"'.$new_value.'" ,"'.$date.'" , @success , @msg);';
+//        print_r($sql);
+        mysqli_query( $com->getDb(), $sql);
+        $sqlCallBack = 'SELECT @success , @msg ';
+        $result = mysqli_query( $com->getDb(), $sqlCallBack);
+        return $result;
+    }
+
+    public function deleteCurrentWaterReading($pok_id , $address_id)
+    {
+        $com = new DbConnect();
+        $sql = 'CALL YISGRAND.delete_pokaz_avodomera('.$pok_id.' , '.$address_id.' , @success , @msg);';
 //        print_r($sql);
         mysqli_query( $com->getDb(), $sql);
         $sqlCallBack = 'SELECT @success , @msg ';

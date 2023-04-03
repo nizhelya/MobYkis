@@ -1,48 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/main_constraint"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.yuzhny.mykis.domain.water.WaterMeterEntity" />
+        <variable
+            name="clickShortListener"
+            type="com.yuzhny.mykis.presentation.appartment.water.WaterMeterShortListener" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/first_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:paddingTop="2dp"
-        android:paddingBottom="12dp">
-    <ImageView
-        android:id="@+id/image_water_meter"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_water_meter"
-        app:layout_constraintTop_toTopOf="@id/water_meter_text"
-        app:layout_constraintBottom_toBottomOf="@id/spisan_text"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/water_meter_text"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:textAppearance="?attr/textAppearanceHeadline6"
-        android:textSize="24sp"
-        tools:text="GSD 8 METERS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image_water_meter"/>
-        <TextView
-            android:id="@+id/spisan_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            style="@style/SecondText"
-            tools:text="зписан"
-            app:layout_constraintStart_toStartOf="@id/water_meter_text"
-            app:layout_constraintTop_toBottomOf="@id/water_meter_text"/>
+        android:onClick="@{() -> clickShortListener.onClick(data)}"
+        android:id="@+id/main_constraint">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/first_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="2dp"
+            android:paddingBottom="12dp">
+
+            <ImageView
+                android:id="@+id/image_water_meter"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_water_meter"
+                app:layout_constraintTop_toTopOf="@id/water_meter_text"
+                app:layout_constraintBottom_toBottomOf="@id/dop_text"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/water_meter_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="24sp"
+                tools:text="GSD 8 METERS"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/type_voda" />
+
+            <TextView
+                android:id="@+id/type_voda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Хвода"
+                style="@style/SecondText"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="@id/image_water_meter"
+                app:layout_constraintTop_toTopOf="@id/image_water_meter"
+                app:layout_constraintStart_toEndOf="@id/image_water_meter" />
+
+            <TextView
+                android:id="@+id/dop_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                style="@style/SecondText"
+                tools:text="Cписан"
+                app:layout_constraintStart_toStartOf="@id/water_meter_text"
+                app:layout_constraintTop_toBottomOf="@id/place_text" />
+
+            <TextView
+                android:id="@+id/number_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/exo_italic"
+                android:text="@string/number_colon"
+                app:layout_constraintStart_toStartOf="@id/water_meter_text"
+                app:layout_constraintTop_toBottomOf="@id/water_meter_text" />
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/SecondText"
+                tools:text="3324435435434"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@id/number_text"
+                app:layout_constraintTop_toTopOf="@id/number_text"
+                app:layout_constraintBottom_toBottomOf="@id/number_text" />
+
+            <TextView
+                android:id="@+id/place_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/exo_italic"
+                android:text="@string/place_colon"
+                app:layout_constraintStart_toStartOf="@id/water_meter_text"
+                app:layout_constraintTop_toBottomOf="@id/number_text" />
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/SecondText"
+                tools:text="санвузол"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@id/place_text"
+                app:layout_constraintTop_toTopOf="@id/place_text"
+                app:layout_constraintBottom_toBottomOf="@id/place_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/first_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/first_layout"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

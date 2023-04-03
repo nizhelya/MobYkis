@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            style="@style/ExtraText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/water_detail_text" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_water_meter"
+            style="@style/CardStyleSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/linear_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/FirstText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/model_colon" />
+
+                <TextView
+                    android:id="@+id/model"
+                    style="@style/SecondText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="TK_15304" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/FirstText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/number_colon" />
+
+                <TextView
+                    android:id="@+id/number"
+                    style="@style/SecondText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="445464453" />
+
+            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/place_colon" />
+
+                    <TextView
+                        android:id="@+id/place"
+                        style="@style/SecondText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="САНВУЗОЛ" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_position"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/position_colon" />
+
+                    <TextView
+                        android:id="@+id/position"
+                        style="@style/SecondText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Гориз" />
+                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linear_stoki"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/stoki_text"
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stoki_colon" />
+
+                    <CheckBox
+                        android:id="@+id/stoki"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:clickable="false" />
+                    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_general"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/general_colon"/>
+
+                    <CheckBox
+                        android:id="@+id/general"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:clickable="false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_zdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zdate_colon" />
+
+                    <TextView
+                        android:id="@+id/zdate"
+                        style="@style/SecondText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="20-05-2015" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_sdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/FirstText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sdate_colon" />
+
+                    <TextView
+                        android:id="@+id/sdate"
+                        style="@style/SecondText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="20-06-2015" />
+                </LinearLayout>
+                <TextView
+                    style="@style/ExtraText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/check_water_meter"
+                    android:paddingStart="4dp"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_check"
+                    style="@style/CardStyleSecond"
+                    android:layout_width="match_parent"
+                    android:padding="8dp"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/linear_pdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/FirstText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pdate_colon" />
+
+                        <TextView
+                            android:id="@+id/pdate"
+                            style="@style/SecondText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="20-06-2015" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linear_fdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/FirstText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sdate_colon" />
+
+                        <TextView
+                            android:id="@+id/fdate"
+                            style="@style/SecondText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="20-06-2015" />
+                    </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/linear_spon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                style="@style/FirstText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/stop_colon"/>
+
+                            <CheckBox
+                                android:id="@+id/stop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:clickable="false" />
+                        </LinearLayout>
+                </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/first_layout" />
+        <TextView
+            style="@style/ExtraText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/water_history_colon"
+            android:paddingStart="4dp"/>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            />-->
+    </LinearLayout>
+</ScrollView>

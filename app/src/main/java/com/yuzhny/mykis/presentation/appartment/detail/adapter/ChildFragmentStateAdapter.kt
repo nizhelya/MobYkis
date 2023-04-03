@@ -20,7 +20,7 @@ class ChildFragmentStateAdapter(fragmentManager: FragmentManager , lifecycle: Li
             0 -> FamilyListFragment()
             1-> BtiFragment()
             2 -> ServiceListFragment()
-            else -> PaymentFlatListFragment()
+            else -> WaterListFragment()
         }
     }
 }

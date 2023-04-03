@@ -27,10 +27,8 @@ class WaterMeterRepositoryImpl @Inject constructor(
                 )
             }
         }
-            .map { it.sortedBy { it.spisan } }
             .onNext {
                 it.map {
-                    Log.d("water", it.toString())
                    waterMeterCache.insertWaterMeter(listOf(it))
                 }
             }

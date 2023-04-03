@@ -41,11 +41,23 @@
         <action
             android:id="@+id/action_viewPagerFragment_to_serviceDetailFragment"
             app:destination="@id/serviceDetailFragment" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_waterMeterDetailFragment"
+            app:destination="@id/waterMeterDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/serviceDetailFragment"
         android:name="com.yuzhny.mykis.presentation.appartment.service.ServiceDetailFragment"
         android:label="fragment_service_detail"
         tools:layout="@layout/fragment_service_detail" />
+    <fragment
+        android:id="@+id/waterMeterDetailFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.water.WaterMeterDetailFragment"
+        android:label="fragment_water_meter_detail"
+        tools:layout="@layout/fragment_water_meter_detail" >
+        <argument
+            android:name="vodomer_id"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
