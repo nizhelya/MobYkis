@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="com.yuzhny.mykis.domain.water.WaterMeterEntity" />
+            type="com.yuzhny.mykis.domain.water.meter.WaterMeterEntity" />
         <variable
             name="clickShortListener"
             type="com.yuzhny.mykis.presentation.appartment.water.WaterMeterShortListener" />

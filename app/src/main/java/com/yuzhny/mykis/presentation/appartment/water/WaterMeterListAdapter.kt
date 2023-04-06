@@ -1,23 +1,13 @@
 package com.yuzhny.mykis.presentation.appartment.water
 
-import android.content.Context
-import android.graphics.Color
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.yuzhny.mykis.R
-import com.yuzhny.mykis.databinding.ItemFamilyListBinding
 import com.yuzhny.mykis.databinding.ItemWaterMeterBinding
-import com.yuzhny.mykis.domain.appartment.AppartmentEntity
-import com.yuzhny.mykis.domain.family.FamilyEntity
-import com.yuzhny.mykis.domain.water.WaterMeterEntity
-import com.yuzhny.mykis.presentation.appartment.family.FamilyListAdapter
-import com.yuzhny.mykis.presentation.appartment.list.AppartmentShortListener
+import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity
 import com.yuzhny.mykis.presentation.appartment.util.trueOrFalse
 import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject

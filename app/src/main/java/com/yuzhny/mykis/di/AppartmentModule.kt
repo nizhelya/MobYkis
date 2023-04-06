@@ -1,7 +1,5 @@
 package com.yuzhny.mykis.di
 
-import com.yuzhny.mykis.data.AddressRepositoryImpl
-import com.yuzhny.mykis.data.AppartmentRepositoryImpl
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCacheImpl
 import com.yuzhny.mykis.data.cache.family.FamilyCache
@@ -12,8 +10,10 @@ import com.yuzhny.mykis.data.cache.service.ServiceCache
 import com.yuzhny.mykis.data.cache.service.ServiceCacheImpl
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.cache.user.UserCacheImpl
-import com.yuzhny.mykis.data.cache.water.WaterMeterCache
-import com.yuzhny.mykis.data.cache.water.WaterMeterCacheImpl
+import com.yuzhny.mykis.data.cache.water.meter.WaterMeterCache
+import com.yuzhny.mykis.data.cache.water.meter.WaterMeterCacheImpl
+import com.yuzhny.mykis.data.cache.water.reading.WaterReadingCache
+import com.yuzhny.mykis.data.cache.water.reading.WaterReadingCacheImpl
 import com.yuzhny.mykis.data.remote.address.AddressRemote
 import com.yuzhny.mykis.data.remote.address.AddressRemoteImpl
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
@@ -24,10 +24,10 @@ import com.yuzhny.mykis.data.remote.payment.PaymentRemote
 import com.yuzhny.mykis.data.remote.payment.PaymentRemoteImpl
 import com.yuzhny.mykis.data.remote.service.ServiceRemote
 import com.yuzhny.mykis.data.remote.service.ServiceRemoteImpl
-import com.yuzhny.mykis.data.remote.water.WaterMeterRemote
-import com.yuzhny.mykis.data.remote.water.WaterMeterRemoteImpl
-import com.yuzhny.mykis.domain.address.AddressRepository
-import com.yuzhny.mykis.domain.appartment.AppartmentRepository
+import com.yuzhny.mykis.data.remote.water.meter.WaterMeterRemote
+import com.yuzhny.mykis.data.remote.water.meter.WaterMeterRemoteImpl
+import com.yuzhny.mykis.data.remote.water.reading.WaterReadingRemote
+import com.yuzhny.mykis.data.remote.water.reading.WaterReadingRemoteImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -85,4 +85,12 @@ abstract class AppartmentModule {
     @Singleton
     @Binds
     abstract fun bindWaterMeterRemote(impl: WaterMeterRemoteImpl): WaterMeterRemote
+
+    @Singleton
+    @Binds
+    abstract fun bindWaterReadingCache(impl: WaterReadingCacheImpl): WaterReadingCache
+
+    @Singleton
+    @Binds
+    abstract fun bindWaterReadingRemote(impl: WaterReadingRemoteImpl): WaterReadingRemote
   }

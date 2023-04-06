@@ -4,20 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentServiceListBinding
-import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
-import com.yuzhny.mykis.presentation.appartment.add.adapter.StreetArrayAdapter
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.item_service.*
 import java.text.SimpleDateFormat
 import java.util.*
 

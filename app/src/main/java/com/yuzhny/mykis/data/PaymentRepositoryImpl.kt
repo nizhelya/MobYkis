@@ -19,13 +19,13 @@ class PaymentRepositoryImpl @Inject constructor(
             .flatMap {
                 return@flatMap if (params.needFetch) {
                     paymentRemote.getFlatPayments(
-                        params.addressId,
+                        params.int,
                         it.userId,
                         it.token
                     )
                 } else {
                     Either.Right(
-                        paymentCache.getPaymentsFromFlat(params.addressId)
+                        paymentCache.getPaymentsFromFlat(params.int)
                     )
                 }
             }

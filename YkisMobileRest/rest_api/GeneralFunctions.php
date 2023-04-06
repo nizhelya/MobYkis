@@ -409,7 +409,8 @@ class GeneralFunctionsClass
                 'data_fin'=>$row['data_fin'],
                 'norma'=>$row['norma'],
                 'data_spis'=>$row['data_spis'],
-                'operator'=>$row['operator']
+                'operator'=>$row['operator'],
+                'work'=>$row['work']
             );
 
             array_push($results, $waterMeter);

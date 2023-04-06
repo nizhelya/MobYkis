@@ -106,6 +106,13 @@
     <string name="general_colon">Спільний:</string>
     <string name="stop_colon">Призупинено:</string>
     <string name="water_history_colon">Історія показань приладів обліку води:</string>
+    //WaterReading
+    <string name="date_ot_colon">Дата попереднього:</string>
+    <string name="date_do_colon">Дата поточного:</string>
+    <string name="days_colon">Днів:</string>
+    <string name="last_colon">Попереднє показання:</string>
+    <string name="current_colon">Поточне показання:</string>
+    <string name="cubs_colon">Кубів:</string>
     //error
     <string name="error_network">Немає доступу до Інтернету \n Перевірте підключення</string>
     <string name="error_update">Невдалося оновити</string>

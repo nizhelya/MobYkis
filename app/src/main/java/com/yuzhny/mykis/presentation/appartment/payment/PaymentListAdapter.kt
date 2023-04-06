@@ -12,8 +12,6 @@ import javax.inject.Inject
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.github.satoshun.coroutine.autodispose.view.autoDispose
-import com.github.satoshun.coroutine.autodispose.view.autoDisposeScope
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.data.cache.dao.PaymentDao
 import com.yuzhny.mykis.data.cache.payment.PaymentCacheImpl

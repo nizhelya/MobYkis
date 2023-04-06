@@ -18,7 +18,7 @@ class FamilyListViewModel @Inject constructor(
     val family : LiveData<List<FamilyEntity>> = _family
 
     fun getFamily(addressId:Int , needFetch: Boolean = false) {
-        getFamilyFromFlat(BooleanInt(addressId = addressId , needFetch = needFetch)) { it ->
+        getFamilyFromFlat(BooleanInt(int = addressId , needFetch = needFetch)) { it ->
             it.either(::handleFailure) {
                 handleFamily(
                     it, !needFetch ,addressId

@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.domain.water
+package com.yuzhny.mykis.domain.water.meter
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -34,5 +34,6 @@ data class WaterMeterEntity(
     val paused     : Byte = 0,
     @ColumnInfo(name = "data_spis")
     @Json(name = "data_spis")
-    val dataSpis   : String = "Unknown"
+    val dataSpis   : String = "Unknown",
+    val work : Byte = 0
 )

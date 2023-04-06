@@ -7,20 +7,23 @@ import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.payment.PaymentEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
-import com.yuzhny.mykis.domain.water.WaterMeterEntity
+import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity
+import com.yuzhny.mykis.domain.water.reading.WaterReadingEntity
 
 @Database(entities = [
     AppartmentEntity::class ,
     FamilyEntity::class ,
     ServiceEntity::class ,
-    PaymentEntity::class,
-    WaterMeterEntity::class] , version = 3 ,exportSchema = false)
+    PaymentEntity::class ,
+    WaterMeterEntity::class ,
+    WaterReadingEntity::class] , version = 3 ,exportSchema = false)
 abstract class AppDatabase:RoomDatabase() {
     abstract fun appartmentDao(): AppartmentDao
     abstract fun familyDao(): FamilyDao
     abstract fun serviceDao(): ServiceDao
     abstract fun paymentDao(): PaymentDao
     abstract fun waterMeterDao(): WaterMeterDao
+    abstract fun waterReadingDao(): WaterReadingDao
 
         companion object{
            val DATABASE_NAME:String = "mykis_db"

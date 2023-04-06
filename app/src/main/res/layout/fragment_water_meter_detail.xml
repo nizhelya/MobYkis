@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="8dp">
 
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="@string/water_detail_text" />
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view_water_meter"
             style="@style/CardStyleSecond"
             android:layout_width="match_parent"
@@ -195,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/check_water_meter"
                     android:paddingStart="4dp"/>
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_view_check"
                     style="@style/CardStyleSecond"
                     android:layout_width="match_parent"
@@ -266,10 +267,10 @@
                         </LinearLayout>
                 </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
@@ -281,11 +282,11 @@
             android:layout_height="wrap_content"
             android:text="@string/water_history_colon"
             android:paddingStart="4dp"/>
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/recyclerView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--            />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

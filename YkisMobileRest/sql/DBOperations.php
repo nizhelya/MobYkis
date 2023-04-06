@@ -242,7 +242,7 @@ SELECT t1.`rec_id` , t1.`address_id`,t1.`address`, t1.`god`, t1.`data`,sum(t1.`k
     public function getWaterMeter($address_id)
     {
         $com = new DbConnect();
-        $sql = 'Select t1.* , t1.paused+t1.spisan+t1.out as ord from YIS.VODOMER as t1 where t1.address_id = '.$address_id.' order by ord ';
+        $sql = 'Select t1.* , t1.paused+t1.spisan+t1.out as work from YIS.VODOMER as t1 where t1.address_id = '.$address_id.' order by work ';
         $result = mysqli_query($com->getDb(), $sql);
         return $result;
     }

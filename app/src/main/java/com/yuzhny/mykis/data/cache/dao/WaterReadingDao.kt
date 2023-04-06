@@ -1,0 +1,15 @@
+package com.yuzhny.mykis.data.cache.dao
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.yuzhny.mykis.domain.water.reading.WaterReadingEntity
+
+@Dao
+interface WaterReadingDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertWaterReading(waterMeter:List<WaterReadingEntity>)
+    @Query("select * from water_reading where vodomer_id = :vodomerId")
+    fun getWaterReading(vodomerId:Int): List<WaterReadingEntity>
+}

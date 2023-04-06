@@ -1,24 +1,19 @@
 package com.yuzhny.mykis.presentation.appartment.water
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.yuzhny.mykis.R
-import com.yuzhny.mykis.databinding.FragmentFamilyListBinding
 import com.yuzhny.mykis.databinding.FragmentWaterListBinding
-import com.yuzhny.mykis.domain.water.WaterMeterEntity
+import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity
 import com.yuzhny.mykis.presentation.appartment.detail.ViewPagerFragmentDirections
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
 
 @AndroidEntryPoint

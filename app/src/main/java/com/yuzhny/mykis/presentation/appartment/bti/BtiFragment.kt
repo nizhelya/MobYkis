@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yuzhny.mykis.R
@@ -15,13 +14,11 @@ import com.yuzhny.mykis.databinding.FragmentBtiBinding
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.appartment.util.hideIfEmpty
-import com.yuzhny.mykis.presentation.appartment.util.isEmptyFun
 import com.yuzhny.mykis.presentation.appartment.util.trueOrFalse
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_bti.*
 
 @AndroidEntryPoint
 class BtiFragment : BaseFragment() {

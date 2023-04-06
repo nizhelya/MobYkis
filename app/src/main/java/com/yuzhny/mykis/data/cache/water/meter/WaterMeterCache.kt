@@ -1,6 +1,6 @@
-package com.yuzhny.mykis.data.cache.water
+package com.yuzhny.mykis.data.cache.water.meter
 
-import com.yuzhny.mykis.domain.water.WaterMeterEntity
+import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity
 
 interface WaterMeterCache {
     fun insertWaterMeter(waterMeters:List<WaterMeterEntity>)

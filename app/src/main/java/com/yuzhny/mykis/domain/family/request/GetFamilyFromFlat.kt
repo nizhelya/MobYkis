@@ -12,6 +12,6 @@ class GetFamilyFromFlat @Inject constructor(
     override suspend fun run(params:BooleanInt) = familyRepository.getFamilyFromFlat(params)
 }
 data class BooleanInt(
-    val addressId:Int,
+    val int:Int,
     val needFetch:Boolean
 )

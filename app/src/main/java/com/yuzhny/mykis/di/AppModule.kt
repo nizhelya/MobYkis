@@ -12,9 +12,9 @@ import com.yuzhny.mykis.data.cache.database.AppDatabase
 import com.yuzhny.mykis.data.cache.family.FamilyCache
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.cache.payment.PaymentCache
-import com.yuzhny.mykis.data.cache.payment.PaymentCacheImpl
 import com.yuzhny.mykis.data.cache.service.ServiceCache
-import com.yuzhny.mykis.data.cache.water.WaterMeterCache
+import com.yuzhny.mykis.data.cache.water.meter.WaterMeterCache
+import com.yuzhny.mykis.data.cache.water.reading.WaterReadingCache
 import com.yuzhny.mykis.data.remote.address.AddressRemote
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.family.FamilyRemote
@@ -22,15 +22,15 @@ import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.data.remote.api.ApiService.Companion.BASE_URL
 import com.yuzhny.mykis.data.remote.payment.PaymentRemote
 import com.yuzhny.mykis.data.remote.service.ServiceRemote
-import com.yuzhny.mykis.data.remote.water.WaterMeterRemote
+import com.yuzhny.mykis.data.remote.water.meter.WaterMeterRemote
+import com.yuzhny.mykis.data.remote.water.reading.WaterReadingRemote
 import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import com.yuzhny.mykis.domain.family.FamilyRepository
-import com.yuzhny.mykis.domain.payment.PaymentEntity
 import com.yuzhny.mykis.domain.payment.PaymentRepository
 import com.yuzhny.mykis.domain.service.ServiceRepository
-import com.yuzhny.mykis.domain.water.WaterMeterRepository
-import com.yuzhny.mykis.presentation.appartment.payment.PaymentListAdapter
+import com.yuzhny.mykis.domain.water.meter.WaterMeterRepository
+import com.yuzhny.mykis.domain.water.reading.WaterReadingRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -120,6 +120,10 @@ object AppModule {
     fun provideWaterMeterDao(db: AppDatabase):WaterMeterDao{
         return  db.waterMeterDao()
     }
+    @Provides
+    fun provideWaterReadingDao(db: AppDatabase):WaterReadingDao{
+        return  db.waterReadingDao()
+    }
 
     @Singleton
     @Provides
@@ -174,10 +178,19 @@ object AppModule {
     @Singleton
     @Provides
     fun provideWaterMeterRepository(
-        waterMeterCache:WaterMeterCache,
+        waterMeterCache: WaterMeterCache,
         waterMeterRemote: WaterMeterRemote,
         userCache: UserCache
-    ): WaterMeterRepository{
+    ): WaterMeterRepository {
         return  WaterMeterRepositoryImpl(waterMeterCache ,waterMeterRemote , userCache)
+    }
+    @Singleton
+    @Provides
+    fun provideWaterReadingRepository(
+        waterReadingCache :WaterReadingCache,
+        waterReadingRemote: WaterReadingRemote,
+        userCache: UserCache
+    ): WaterReadingRepository {
+        return  WaterReadingRepositoryImpl(waterReadingCache ,waterReadingRemote , userCache)
     }
 }
