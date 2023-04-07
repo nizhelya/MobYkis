@@ -89,6 +89,7 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
                 }
 
             }
+            isNestedScrollingEnabled = false
             adapter = serviceAdapter
         }
         binding.showAll.setOnClickListener {

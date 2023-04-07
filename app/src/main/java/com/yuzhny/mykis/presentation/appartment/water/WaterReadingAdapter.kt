@@ -31,6 +31,11 @@ class WaterReadingAdapter @Inject constructor() :ListAdapter<WaterReadingEntity 
             cubs.text = reading.kub.toString()
             last.text = reading.last.toString()
             current.text = reading.currant.toString()
+            pokOt.text = reading.pokOt.toString()
+            pokDo.text = reading.pokDo.toString()
+            cubeDayCube.text = reading.kubDay.toString()
+            qtyCube.text =reading.qtyKub.toString()
+            rday.text = reading.rday.toString()
         }
     }
 

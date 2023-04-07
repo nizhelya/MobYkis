@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.data.remote.water.meter
 
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
 import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity

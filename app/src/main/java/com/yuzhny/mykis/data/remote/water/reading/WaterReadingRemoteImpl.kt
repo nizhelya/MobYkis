@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.data.remote.water.reading
 
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.data.remote.core.Request
 import com.yuzhny.mykis.domain.type.Either
@@ -29,7 +30,28 @@ class WaterReadingRemoteImpl  @Inject constructor(private val request: Request,
             it.waterReadings
         }
     }
-
+    override fun addNewWaterReading(
+        vodomerId: Int,
+        newValue: Int,
+        currentValue: Int,
+        userId: Int,
+        token: String
+    ): Either<Failure, GetSimpleResponse> {
+        return request.make(
+            apiService.addNewWaterReading(
+                createAddNewReadingMap(
+                    vodomerId,
+                    newValue,
+                    currentValue,
+                    userId ,
+                    token
+                )
+            )
+        )
+        {
+            it
+        }
+    }
     private fun createGetWaterReadingMap(
         vodomerId: Int,
         userId: Int,
@@ -37,6 +59,21 @@ class WaterReadingRemoteImpl  @Inject constructor(private val request: Request,
     ): Map<String, String> {
         val map = HashMap<String, String>()
         map.put(ApiService.VODOMER_ID, vodomerId.toString())
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
+        map.put(ApiService.PARAM_TOKEN, token)
+        return map
+    }
+    private fun createAddNewReadingMap(
+        vodomerId: Int,
+        newValue: Int,
+        currentValue: Int,
+        userId: Int,
+        token: String
+    ): Map<String, String> {
+        val map = HashMap<String, String>()
+        map.put(ApiService.VODOMER_ID, vodomerId.toString())
+        map.put(ApiService.NEW_VALUE, newValue.toString())
+        map.put(ApiService.CURRENT_VALUE, currentValue.toString())
         map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)
         return map

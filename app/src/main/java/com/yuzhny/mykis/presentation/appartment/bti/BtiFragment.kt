@@ -98,7 +98,9 @@ class BtiFragment : BaseFragment() {
         val dialogLayout  = layoutInflater.inflate(R.layout.edit_dialog_layout , null)
         val editPhone :TextView = dialogLayout.findViewById(R.id.edit_phone_number)
         val editEmail :TextView = dialogLayout.findViewById(R.id.edit_email)
+        editPhone.visibility = View.VISIBLE
         editPhone.text = phoneText
+        editEmail.visibility = View.VISIBLE
         editEmail.text = emailText
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.dialog_edit_title))

@@ -18,11 +18,11 @@ interface ApiService {
     companion object{
 //        const val SERVER_URL = "https://is.yuzhny.com/YkisMobileRest"
 //        const val SERVER_URL = "http://10.0.2.2/YkisMobileRest"
-        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
+//        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
 
 //        const val SERVER_URL = "http://192.168.0.177/MobYkis/YkisMobileRest"
 
-//        const val SERVER_URL = "http://192.168.0.106/MobYkis/YkisMobileRest"
+        const val SERVER_URL = "http://192.168.0.106/MobYkis/YkisMobileRest"
 
         const val BASE_URL = "$SERVER_URL/rest_api/"
         const val GET_FLAT = "getFlatById.php"
@@ -40,12 +40,15 @@ interface ApiService {
         const val GET_WATER_METER="getWaterMeter.php"
         const val GET_WATER_READINGS="getWaterReadings.php"
         const val CHECK_ADD_FLAT="checkAddFlat.php"
+        const val ADD_NEW_READING="addCurrentWaterReading.php"
         const val PARAM_ADDRESS_ID = "address_id"
         const val PARAM_USER_ID = "user_id"
         const val STREET_ID = "street_id"
         const val HOUSE_ID = "house_id"
         const val ADDRESS_ID = "address_id"
         const val VODOMER_ID = "vodomer_id"
+        const val NEW_VALUE = "new_value"
+        const val CURRENT_VALUE = "current_value"
         const val KOD = "kod"
         const val QTY = "qty"
         const val SERVICE = "service"
@@ -104,4 +107,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(GET_WATER_READINGS)
     fun getWaterReadings(@FieldMap params :Map<String , String> ):Call<GetWaterReadingResponse>
+    @FormUrlEncoded
+    @POST(ADD_NEW_READING)
+    fun addNewWaterReading(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
 }

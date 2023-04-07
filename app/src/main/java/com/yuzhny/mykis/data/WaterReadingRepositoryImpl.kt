@@ -2,11 +2,13 @@ package com.yuzhny.mykis.data
 
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.cache.water.reading.WaterReadingCache
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.water.reading.WaterReadingRemote
 import com.yuzhny.mykis.domain.family.request.BooleanInt
 import com.yuzhny.mykis.domain.type.*
 import com.yuzhny.mykis.domain.water.reading.WaterReadingEntity
 import com.yuzhny.mykis.domain.water.reading.WaterReadingRepository
+import com.yuzhny.mykis.domain.water.reading.request.AddReadingParams
 import io.reactivex.rxjava3.internal.util.HalfSerializer.onNext
 import javax.inject.Inject
 
@@ -33,6 +35,19 @@ class WaterReadingRepositoryImpl @Inject constructor(
                 it.map {
                     waterReadingCache.insertWaterReading(listOf(it))
                 }
+            }
+    }
+
+    override fun addNewWaterReading(params: AddReadingParams): Either<Failure, GetSimpleResponse> {
+        return  userCache.getCurrentUser()
+            .flatMap {
+                return@flatMap waterReadingRemote.addNewWaterReading(
+                    params.meterId,
+                    params.newValue,
+                    params.currentValue,
+                    it.userId,
+                    it.token
+                )
             }
     }
 }

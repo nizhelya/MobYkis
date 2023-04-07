@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.data.remote.water.meter
 
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.data.remote.core.Request
 import com.yuzhny.mykis.domain.type.Either
@@ -32,6 +33,8 @@ class WaterMeterRemoteImpl @Inject constructor(private val request: Request,
     }
 
 
+
+
     private fun createGetWaterMeterMap(
         addressId: Int,
         userId: Int,
@@ -43,5 +46,6 @@ class WaterMeterRemoteImpl @Inject constructor(private val request: Request,
         map.put(ApiService.PARAM_TOKEN, token)
         return map
     }
+
 
 }
