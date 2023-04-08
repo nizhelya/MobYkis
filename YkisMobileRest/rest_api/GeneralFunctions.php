@@ -487,4 +487,46 @@ class GeneralFunctionsClass
         }
         return $results;
     }
+
+    public function getHeatMeter($resultHeat)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        while ($row = mysqli_fetch_array($resultHeat)) {
+            $heatMeter = array(
+                'teplomer_id'=>$row['teplomer_id'],
+//                'dteplomer_id'=>$row['dteplomer_id'],
+//                'address'=>$row['address'],
+                'nomer'=>$row['nomer'],
+                'model_id'=>$row['model_id'],
+                'model'=>$row['model'],
+                'edizm'=>$row['edizm'],
+                'koef'=>$row['koef'],
+                'area'=>$row['area'],
+                //Дата випуску
+                'sdate'=>$row['sdate'],
+                //Наступна перевірка
+                'fpdate'=>$row['fpdate'],
+                //Попередня перевірка
+                'pdate'=>$row['pdate'],
+//                'pp'=>$row['pp'],
+                //Дата встановки пломби
+//                'zdate'=>$row['zdate'],
+            //в перевірці чи в ремонті
+                'out'=>$row['out'],
+                'spisan'=>$row['spisan'],
+
+                'data_st'=>$row['data_st'],
+
+                'data_fin'=>$row['data_fin'],
+                //Дата списанія
+                'data_spis'=>$row['data_spis'],
+//                'operator'=>$row['operator'],
+                'work'=>$row['work']
+            );
+
+            array_push($results, $heatMeter);
+        }
+        return $results;
+    }
 }

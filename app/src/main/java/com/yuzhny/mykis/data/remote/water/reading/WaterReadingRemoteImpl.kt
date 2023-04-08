@@ -52,6 +52,15 @@ class WaterReadingRemoteImpl  @Inject constructor(private val request: Request,
             it
         }
     }
+
+    override fun deleteCurrentWaterReading(
+        pokId: Int,
+        userId: Int,
+        token: String
+    ): Either<Failure, GetSimpleResponse> {
+        TODO("Not yet implemented")
+    }
+
     private fun createGetWaterReadingMap(
         vodomerId: Int,
         userId: Int,
@@ -74,6 +83,17 @@ class WaterReadingRemoteImpl  @Inject constructor(private val request: Request,
         map.put(ApiService.VODOMER_ID, vodomerId.toString())
         map.put(ApiService.NEW_VALUE, newValue.toString())
         map.put(ApiService.CURRENT_VALUE, currentValue.toString())
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
+        map.put(ApiService.PARAM_TOKEN, token)
+        return map
+    }
+    private fun createDeleteWaterReadingMap(
+        pokId: Int,
+        userId: Int,
+        token: String
+    ): Map<String, String> {
+        val map = HashMap<String, String>()
+        map.put(ApiService.POK_ID  , pokId.toString())
         map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)
         return map

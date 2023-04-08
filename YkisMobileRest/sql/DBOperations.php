@@ -259,7 +259,7 @@ SELECT t1.`rec_id` , t1.`address_id`,t1.`address`, t1.`god`, t1.`data`,sum(t1.`k
     {
         $com = new DbConnect();
 
-        $sql = 'CALL YISGRAND.input_new_pokaz_avodomer('.$vodomer_id.' , "'.$current_value.'" ,"'.$new_value.'" ,"'.$date.'" , @success , @msg);';
+        $sql = 'CALL YISGRAND.input_new_pokaz_avodomer_mob('.$vodomer_id.' , "'.$current_value.'" ,"'.$new_value.'" ,"'.$date.'" , @success , @msg);';
 //        print_r($sql);
         mysqli_query( $com->getDb(), $sql);
         $sqlCallBack = 'SELECT @success , @msg ';
@@ -267,14 +267,22 @@ SELECT t1.`rec_id` , t1.`address_id`,t1.`address`, t1.`god`, t1.`data`,sum(t1.`k
         return $result;
     }
 
-    public function deleteCurrentWaterReading($pok_id , $address_id)
+    public function deleteCurrentWaterReading($pok_id )
     {
         $com = new DbConnect();
-        $sql = 'CALL YISGRAND.delete_pokaz_avodomera('.$pok_id.' , '.$address_id.' , @success , @msg);';
+        $sql = 'CALL YISGRAND.delete_pokaz_avodomera_mob('.$pok_id.' , @success , @msg);';
 //        print_r($sql);
         mysqli_query( $com->getDb(), $sql);
         $sqlCallBack = 'SELECT @success , @msg ';
         $result = mysqli_query( $com->getDb(), $sqlCallBack);
+        return $result;
+    }
+
+    public function getHeatMeter($address_id)
+    {
+        $com = new DbConnect();
+        $sql = 'Select t1.*  ,t1.spisan+t1.out as work from YIS.TEPLOMER as t1 where t1.address_id = '.$address_id.' order by work';
+        $result = mysqli_query($com->getDb(), $sql);
         return $result;
     }
 

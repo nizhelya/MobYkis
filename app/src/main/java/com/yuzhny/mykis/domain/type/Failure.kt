@@ -14,6 +14,8 @@ sealed class Failure {
     object MissingFields : Failure()
     object FailDeleteFlat: Failure()
     object FailUpdateBti: Failure()
+    object FailAddReading: Failure()
+    object FailIncorrectReading: Failure()
 
     object NoSavedAccountsError : Failure()
 

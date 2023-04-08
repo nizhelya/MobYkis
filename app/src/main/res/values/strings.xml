@@ -135,6 +135,8 @@
     <string name="error_incorrect_code">Неправильний код</string>
     <string name="error_server">Помилка сервера</string>
     <string name="error_cant_send_email">Невозможно отправить на этот email</string>
+    <string name="error_add_reading">Невдалося додати показання</string>
+    <string name="error_incorrect_reading">Помилка вводу даних.\n Перевірте показання</string>
 
     //success
     <string name="success_delete_flat">Квартира успішно видалена</string>

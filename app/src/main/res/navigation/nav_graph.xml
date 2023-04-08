@@ -72,5 +72,9 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/paymentFlatListFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.payment.PaymentFlatListFragment"
+        android:label="PaymentFlatListFragment" />
 
 </navigation>

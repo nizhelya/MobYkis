@@ -6,8 +6,6 @@ include_once "GeneralFunctions.php";
 
 if (isset($_POST['pok_id']) &&
     !empty($_POST['pok_id'])  &&
-    isset($_POST['address_id']) &&
-    !empty($_POST['address_id'])  &&
     isset($_POST['user_id']) &&
     !empty($_POST['user_id'])&&
     isset($_POST['token']) &&
@@ -20,7 +18,7 @@ if (isset($_POST['pok_id']) &&
     $dbOperationsObject = new DBOperations();
     $generalFunctionsObject = new GeneralFunctionsClass();
 
-    $result = $dbOperationsObject->deleteCurrentWaterReading($pok_id , $address_id);
+    $result = $dbOperationsObject->deleteCurrentWaterReading($pok_id);
     $results = $generalFunctionsObject->deleteCurrentWaterReading($result);
     if($results[0]["success"]==1){
         $response["message"] = "Readings deleted successful";

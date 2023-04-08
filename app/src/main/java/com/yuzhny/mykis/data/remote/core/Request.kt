@@ -37,6 +37,8 @@ fun <T : BaseResponse> Response<T>.isSucceed(): Boolean {
 fun <T : BaseResponse> Response<T>.parseError(): Failure {
     val message = (body() as BaseResponse).message
     return when (message) {
+        "Incorrect reading"->Failure.FailIncorrectReading
+        "Reading did not add"->Failure.FailAddReading
         "Failed to update contacts" -> Failure.FailUpdateBti
         "Failed to delete apartment" -> Failure.FailDeleteFlat
         "You have already added this apartment" -> Failure.FlatAlreadyInDataBase

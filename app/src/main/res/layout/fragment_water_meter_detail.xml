@@ -350,7 +350,7 @@
                             style="@style/FirstText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/sdate_colon" />
+                            android:text="@string/fdate_colon" />
 
                         <TextView
                             android:id="@+id/fdate"

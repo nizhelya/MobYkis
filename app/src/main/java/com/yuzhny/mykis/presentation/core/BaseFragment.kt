@@ -12,6 +12,8 @@ abstract class BaseFragment : Fragment() {
  open fun handleFailure(failure: Failure?) {
   when (failure) {
    is Failure.FailUpdateBti -> showMessage(getString(R.string.error_update))
+   is Failure.FailAddReading -> showMessage(getString(R.string.error_add_reading))
+   is Failure.FailIncorrectReading -> showMessage(getString(R.string.error_incorrect_reading))
    is Failure.MissingFields -> showMessage(getString(R.string.error_missing_fields))
    is Failure.FailDeleteFlat -> showMessage(getString(R.string.error_delete_flat))
    is Failure.IncorrectCode -> showMessage(getString(R.string.error_incorrect_code))

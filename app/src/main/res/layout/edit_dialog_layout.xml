@@ -51,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
+                android:inputType="number"
                 android:id="@+id/add_reading" />
 
         </com.google.android.material.textfield.TextInputLayout>

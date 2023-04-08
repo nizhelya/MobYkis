@@ -25,10 +25,8 @@ if (isset($_POST['vodomer_id']) &&
 
     $result = $dbOperationsObject->addCurrentWaterReading($vodomer_id , $current_value , $new_value ,$date);
     $results = $generalFunctionsObject->addCurrentWaterReading($result);
-    if($results[0]["success"]==1){
-        $response["message"] = "Readings added successful";
-    }else $response["message"] = "Failed to add readings" ;
     $response["success"] = $results[0]["success"];
+    $response["message"] = $results[0]["message"];
     echo json_encode($response);
 } else {
     $response["success"] = 0;
