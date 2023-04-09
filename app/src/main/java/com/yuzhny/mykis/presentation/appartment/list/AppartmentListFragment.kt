@@ -59,7 +59,7 @@ class AppartmentListFragment : BaseFragment()
 
         }
         viewAdapter.appartmentLongListener.onItemLongClick= {
-            showFinalScoreDialog(it.addressId , it.address)
+            showDeleteFlatDialog(it.addressId , it.address)
         }
         binding.recyclerView.adapter = viewAdapter
         binding.addPlantFab.setOnClickListener {
@@ -93,7 +93,7 @@ class AppartmentListFragment : BaseFragment()
         }
     }
 
-    private fun showFinalScoreDialog(addressId :Int , address:String) {
+    private fun showDeleteFlatDialog(addressId :Int , address:String) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.title_delete))
             .setMessage(getString((R.string.desc_delete),address))

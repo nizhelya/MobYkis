@@ -53,6 +53,10 @@ class WaterMeterDetailFragment : BaseFragment() {
                 last.text = it.last.toString()
                 cur.text = it.currant.toString()
                 cubs.text = it.kub.toString()
+                date.text = it.dateDo
+                if(it.dateDo == SimpleDateFormat("yyy-MM-dd").format(Date())){
+                    deleteReadingButton.visibility = View.VISIBLE
+                }else deleteReadingButton.visibility = View.GONE
             }
         }
         waterViewModel.waterMeter.observe(this.viewLifecycleOwner){
@@ -68,20 +72,25 @@ class WaterMeterDetailFragment : BaseFragment() {
                 pdate.text = it.pdate
                 fdate.text = it.fpdate
                 stop.isChecked = trueOrFalse(it.spisan)
+                if(trueOrFalse(it.work)){
+                    cardViewWaterReading.visibility = View.GONE
+                    readingTitle.visibility = View.GONE
+                }
             }
         }
         binding.apply {
-            recyclerView.isNestedScrollingEnabled = false
             recyclerView.adapter = waterReadingAdapter
-            date.text = SimpleDateFormat("dd-MM-yyy").format(Date())
             addReadingButton.setOnClickListener{
                 showAddNewReading()
+            }
+            deleteReadingButton.setOnClickListener {
+                showDeleteReadingDialog()
             }
         }
     }
     private fun handleReadings(readingEntity: List<WaterReadingEntity>?){
         if(readingEntity!!.isNotEmpty()){
-//        waterReadingAdapter.submitList(readingEntity)
+        waterReadingAdapter.submitList(readingEntity)
         waterViewModel.getWaterReading(readingEntity[0])
         }
     }
@@ -89,9 +98,12 @@ class WaterMeterDetailFragment : BaseFragment() {
 
         val dialogLayout  = layoutInflater.inflate(R.layout.edit_dialog_layout , null)
         val addReading = dialogLayout.findViewById<TextView>(R.id.add_reading)
+        val currentReading = dialogLayout.findViewById<TextView>(R.id.current_reading)
         addReading.visibility = View.VISIBLE
+        currentReading.visibility = View.VISIBLE
+        currentReading.text = waterViewModel.currentReading.toString()
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle(getString(R.string.add_reading_title))
+            .setTitle(getString(R.string.add_reading))
             .setCancelable(true)
             .setIcon(R.drawable.ic_add)
             .setNegativeButton(getString(R.string.cancel)) { _, _ ->
@@ -107,9 +119,23 @@ class WaterMeterDetailFragment : BaseFragment() {
         getSimpleResponse?.let {
             if(it.success == 1){
                 it.success = 0
-                Toast.makeText(requireContext() ,getString(R.string.reading_added), Toast.LENGTH_SHORT ).show()
+                Toast.makeText(requireContext() ,it.message, Toast.LENGTH_SHORT ).show()
                 waterViewModel.getWaterReadings(waterViewModel.currentVodomerId)
             }
         }
+    }
+    private fun showDeleteReadingDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.delete_reading_title))
+//            .setMessage(getString((R.string.desc_delete),address))
+            .setCancelable(true)
+            .setNegativeButton(getString(R.string.cancel)) { _, _ ->
+            }
+            .setIcon(R.drawable.ic_delete)
+            .setPositiveButton(getString(R.string.delete)) { _, _ ->
+                waterViewModel.deleteCurrentWaterReading()
+
+            }
+            .show()
     }
 }

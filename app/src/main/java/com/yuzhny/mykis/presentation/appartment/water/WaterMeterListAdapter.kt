@@ -42,6 +42,7 @@ class WaterMeterListAdapter @Inject constructor(val waterMeterShortListener: Wat
             place.text = meter.place
             data = meter
             clickShortListener = waterMeterShortListener
+
         }
     }
 

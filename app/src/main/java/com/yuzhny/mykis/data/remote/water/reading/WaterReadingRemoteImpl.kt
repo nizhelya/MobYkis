@@ -58,7 +58,18 @@ class WaterReadingRemoteImpl  @Inject constructor(private val request: Request,
         userId: Int,
         token: String
     ): Either<Failure, GetSimpleResponse> {
-        TODO("Not yet implemented")
+        return request.make(
+            apiService.deleteCurrentWaterReading(
+                createDeleteWaterReadingMap(
+                    pokId,
+                    userId ,
+                    token
+                )
+            )
+        )
+        {
+            it
+        }
     }
 
     private fun createGetWaterReadingMap(

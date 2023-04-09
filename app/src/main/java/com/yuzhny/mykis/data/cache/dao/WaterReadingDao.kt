@@ -12,4 +12,6 @@ interface WaterReadingDao {
     fun insertWaterReading(waterMeter:List<WaterReadingEntity>)
     @Query("select * from water_reading where vodomer_id = :vodomerId")
     fun getWaterReading(vodomerId:Int): List<WaterReadingEntity>
+    @Query("delete from water_reading")
+    fun deleteAllReadings()
 }

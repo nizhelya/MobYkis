@@ -10,4 +10,5 @@ import com.yuzhny.mykis.domain.water.reading.request.AddReadingParams
 interface WaterReadingRepository {
     fun getWaterReading(params: BooleanInt): Either<Failure, List<WaterReadingEntity>>
     fun addNewWaterReading(params:AddReadingParams): Either<Failure, GetSimpleResponse>
+    fun deleteCurrentWaterReading(params:Int): Either<Failure, GetSimpleResponse>
 }

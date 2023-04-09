@@ -1,6 +1,7 @@
 package com.yuzhny.mykis.presentation.appartment.water
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,6 +10,7 @@ import com.yuzhny.mykis.databinding.ItemWaterMeterBinding
 import com.yuzhny.mykis.databinding.ItemWaterReadingBinding
 import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity
 import com.yuzhny.mykis.domain.water.reading.WaterReadingEntity
+import com.yuzhny.mykis.presentation.appartment.util.trueOrFalse
 import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 
@@ -36,6 +38,10 @@ class WaterReadingAdapter @Inject constructor() :ListAdapter<WaterReadingEntity 
             cubeDayCube.text = reading.kubDay.toString()
             qtyCube.text =reading.qtyKub.toString()
             rday.text = reading.rday.toString()
+            if(!trueOrFalse(reading.avg)){
+                cardAvg.visibility = View.GONE
+                avgText.visibility = View.GONE
+            }
         }
     }
 

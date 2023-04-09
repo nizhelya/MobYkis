@@ -28,6 +28,9 @@ class WaterReadingRepositoryImpl @Inject constructor(
                     )
                 }
             }
+            .onNext {
+                waterReadingCache.deleteAllReading()
+            }
             .map {
                 it.sortedByDescending { it.pokId }
             }
@@ -47,6 +50,15 @@ class WaterReadingRepositoryImpl @Inject constructor(
                     params.currentValue,
                     it.userId,
                     it.token
+                )
+            }
+    }
+
+    override fun deleteCurrentWaterReading(params: Int): Either<Failure, GetSimpleResponse> {
+        return  userCache.getCurrentUser()
+            .flatMap {
+                return@flatMap waterReadingRemote.deleteCurrentWaterReading(
+                    params , it.userId , it.token
                 )
             }
     }

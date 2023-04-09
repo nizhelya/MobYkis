@@ -121,11 +121,14 @@
     <string name="last_readings">Останні показання</string>
     <string name="last_colon">Попереднє :</string>
     <string name="current_colon">Поточне :</string>
-    <string name="add_new_reading">Додати нове показання</string>
     <string name="cubs_colon">Кубів:</string>
     //addReadingDialog
     <string name="new_reading">Нове показання</string>
-    <string name="add_reading_title">Додати нове показання</string>
+    <string name="current_reading">Поточне показання</string>
+    <string name="add_reading">Додати нове показання</string>
+    <string name="delete_reading">Видалити показання</string>
+    //deleteReadingDialog
+    <string name="delete_reading_title">Видалити останнє показання?</string>
     //error
     <string name="error_network">Немає доступу до Інтернету \n Перевірте підключення</string>
     <string name="error_update">Невдалося оновити</string>
