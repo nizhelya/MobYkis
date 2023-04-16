@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home"
-        android:title="Загальна інформація" />
+        android:id="@+id/infoViewPagerFragmen"
+        android:icon="@drawable/ic_home_outlined"
+
+        android:title="@string/info" />
 
     <item
-        android:id="@+id/navigation_meter"
+        android:id="@+id/meterViewPagerFragment"
         android:icon="@drawable/ic_water_meter"
-        android:title="Лічільники" />
-
+        android:title="@string/meters" />
+    <item
+        android:id="@+id/paymentViewPagerFragment"
+        android:icon = "@drawable/ic_payments"
+        android:title="@string/payment_list"
+        />
 </menu>

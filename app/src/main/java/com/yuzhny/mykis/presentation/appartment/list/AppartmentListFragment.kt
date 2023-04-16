@@ -54,8 +54,10 @@ class AppartmentListFragment : BaseFragment()
         }
         viewAdapter.appartmentShortListener.onItemClick = {
             appartmentListViewModel.getAppartment(it)
+            appartmentListViewModel.currentAddress = it.addressId
+            appartmentListViewModel.currentHouse = it.houseId
             findNavController().navigate(AppartmentListFragmentDirections
-                .actionAppartmentFragmentToViewPagerFragment(addressId=it.addressId , houseId = it.houseId))
+                .actionAppartmentFragmentToBottomNavigationFragment(addressId=it.addressId , houseId = it.houseId))
 
         }
         viewAdapter.appartmentLongListener.onItemLongClick= {

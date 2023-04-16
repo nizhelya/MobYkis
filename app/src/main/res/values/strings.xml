@@ -88,6 +88,13 @@
     <string name="prixod">Приход:</string>
     <string name="add">Додати</string>
 
+    //FragmentLabel
+    <string name="water_meter">Водяний</string>
+    <string name="heat_meter">Тепловий</string>
+    <string name="info">Інфо</string>
+    <string name="meters">Лічільники</string>
+
+
     <string name="operator">Оператор:</string>
     <string name="show_more">Подивитися більше</string>
     <string name="date_colon">Дата:</string>

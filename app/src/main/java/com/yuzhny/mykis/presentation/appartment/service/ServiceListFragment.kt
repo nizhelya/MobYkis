@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentServiceListBinding
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
@@ -81,22 +82,22 @@ class ServiceListFragment : BaseFragment() {
         binding.buttonVodokanal.setOnClickListener {
             serviceViewModel.currentService = 1
             serviceViewModel.currentServiceTitle = getString(com.yuzhny.mykis.R.string.vodokanal)
-            findNavController().navigate(com.yuzhny.mykis.R.id.action_viewPagerFragment_to_serviceDetailFragment)
+            findNavController().navigate(R.id.action_bottomNavigationFragment_to_serviceDetailFragment)
         }
             binding.buttonYtke.setOnClickListener {
                 serviceViewModel.currentService = 2
                 serviceViewModel.currentServiceTitle = getString(com.yuzhny.mykis.R.string.ytke)
-                findNavController().navigate(com.yuzhny.mykis.R.id.action_viewPagerFragment_to_serviceDetailFragment)
+                findNavController().navigate(R.id.action_bottomNavigationFragment_to_serviceDetailFragment)
             }
             binding.buttonTbo.setOnClickListener {
                 serviceViewModel.currentService = 3
                 serviceViewModel.currentServiceTitle = getString(com.yuzhny.mykis.R.string.yzhtrans)
-                findNavController().navigate(com.yuzhny.mykis.R.id.action_viewPagerFragment_to_serviceDetailFragment)
+                findNavController().navigate(R.id.action_bottomNavigationFragment_to_serviceDetailFragment)
             }
             binding.buttonKv.setOnClickListener {
                 serviceViewModel.currentService = 4
                 serviceViewModel.currentServiceTitle = osbb
-                findNavController().navigate(com.yuzhny.mykis.R.id.action_viewPagerFragment_to_serviceDetailFragment)
+                findNavController().navigate(R.id.action_bottomNavigationFragment_to_serviceDetailFragment)
             }
             binding.constraint.layoutTransition.setAnimateParentHierarchy(false)
     }

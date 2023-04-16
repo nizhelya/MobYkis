@@ -4,6 +4,7 @@ import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.data.remote.family.GetFamilyResponse
+import com.yuzhny.mykis.data.remote.heat.GetHeatMeterResponse
 import com.yuzhny.mykis.data.remote.payment.GetPaymentResponse
 import com.yuzhny.mykis.data.remote.service.GetServiceResponse
 import com.yuzhny.mykis.data.remote.water.meter.GetWaterMeterResponse
@@ -38,6 +39,7 @@ interface ApiService {
         const val ADD_FLAT_BY_USER="addMyFlatByUser.php"
         const val GET_FAMILY="getFamilyFromFlat.php"
         const val GET_WATER_METER="getWaterMeter.php"
+        const val GET_HEAT_METER="getHeatMeter.php"
         const val GET_WATER_READINGS="getWaterReadings.php"
         const val CHECK_ADD_FLAT="checkAddFlat.php"
         const val ADD_NEW_READING="addCurrentWaterReading.php"
@@ -115,4 +117,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST(DELETE_CURRENT_WATER_READING)
     fun deleteCurrentWaterReading(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
+    @FormUrlEncoded
+    @POST(GET_HEAT_METER)
+    fun getHeatMeter(@FieldMap params :Map<String , String> ):Call<GetHeatMeterResponse>
 }

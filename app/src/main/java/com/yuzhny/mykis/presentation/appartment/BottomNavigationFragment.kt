@@ -6,22 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentBottomNavigationBinding
+import com.yuzhny.mykis.presentation.MainActivity
+import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 
 
 class BottomNavigationFragment   : Fragment() {
-
+    private val listViewModel by activityViewModels<AppartmentListViewModel>()
     private var _binding : FragmentBottomNavigationBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -34,24 +35,19 @@ class BottomNavigationFragment   : Fragment() {
         // Inflate the layout for this fragment
         _binding =  FragmentBottomNavigationBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val appCompat = requireActivity() as AppCompatActivity
-        val appCompat = requireActivity() as AppCompatActivity
-
-        val navHostFragment = appCompat.supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
-        val navController = navHostFragment.findNavController()
-
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.viewPagerFragment , R.id.paymentFlatListFragment
-            )
-        )
-        appCompat.setupActionBarWithNavController(navController , appBarConfiguration)
-        binding.navView.setupWithNavController(navController)
-
+        val actionBar = (activity as MainActivity).supportActionBar
+        actionBar!!.setDisplayShowTitleEnabled(true)
+        listViewModel.appartment.observe(this.viewLifecycleOwner) {
+            actionBar.title = it.address
+        }
+        val navHostFragment = childFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_bottom) as NavHostFragment
+        navController = navHostFragment.navController
+        NavigationUI.setupWithNavController(binding.navView , navController)
     }
-
 }

@@ -281,7 +281,7 @@ SELECT t1.`rec_id` , t1.`address_id`,t1.`address`, t1.`god`, t1.`data`,sum(t1.`k
     public function getHeatMeter($address_id)
     {
         $com = new DbConnect();
-        $sql = 'Select t1.*  ,t1.spisan+t1.out as work from YIS.TEPLOMER as t1 where t1.address_id = '.$address_id.' order by work';
+        $sql = 'Select t1.*  ,t1.spisan+t1.out as work , '.$address_id.' as address_id from YIS.TEPLOMER as t1 where t1.address_id = '.$address_id.' order by work';
         $result = mysqli_query($com->getDb(), $sql);
         return $result;
     }

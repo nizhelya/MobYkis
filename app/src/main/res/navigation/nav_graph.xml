@@ -14,8 +14,8 @@
             android:id="@+id/action_appartmentFragment_to_addAppartmentFragment"
             app:destination="@id/addAppartmentFragment" />
         <action
-            android:id="@+id/action_appartmentFragment_to_viewPagerFragment"
-            app:destination="@id/viewPagerFragment" />
+            android:id="@+id/action_appartmentFragment_to_bottomNavigationFragment"
+            app:destination="@id/bottomNavigationFragment" />
     </fragment>
     <fragment
         android:id="@+id/addAppartmentFragment"
@@ -27,25 +27,6 @@
             app:destination="@id/appartmentFragment" />
     </fragment>
     <fragment
-        android:id="@+id/viewPagerFragment"
-        android:name="com.yuzhny.mykis.presentation.appartment.detail.ViewPagerFragment"
-        android:label="ViewPagerFragment" >
-        <argument
-            android:name="address_id"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="house_id"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <action
-            android:id="@+id/action_viewPagerFragment_to_serviceDetailFragment"
-            app:destination="@id/serviceDetailFragment" />
-        <action
-            android:id="@+id/action_viewPagerFragment_to_waterMeterDetailFragment"
-            app:destination="@id/waterMeterDetailFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/serviceDetailFragment"
         android:name="com.yuzhny.mykis.presentation.appartment.service.ServiceDetailFragment"
         android:label="fragment_service_detail"
@@ -55,9 +36,6 @@
         android:name="com.yuzhny.mykis.presentation.appartment.water.WaterMeterDetailFragment"
         android:label="fragment_water_meter_detail"
         tools:layout="@layout/fragment_water_meter_detail" >
-        <argument
-            android:name="vodomer_id"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/bottomNavigationFragment"
@@ -71,10 +49,12 @@
             android:name="house_id"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_bottomNavigationFragment_to_serviceDetailFragment"
+            app:destination="@id/serviceDetailFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationFragment_to_waterMeterDetailFragment"
+            app:destination="@id/waterMeterDetailFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/paymentFlatListFragment"
-        android:name="com.yuzhny.mykis.presentation.appartment.payment.PaymentFlatListFragment"
-        android:label="PaymentFlatListFragment" />
 
 </navigation>

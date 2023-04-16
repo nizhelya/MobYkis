@@ -35,7 +35,7 @@ class WaterMeterListAdapter @Inject constructor(val waterMeterShortListener: Wat
                     dopText.text = "Призупинен"
                 }
             }else{
-                dopText.visibility = View.GONE
+                dopText.text = "Працює"
             }
             typeVoda.text = meter.voda
             number.text = meter.nomer

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/infoViewPagerFragment">
+
+
+    <fragment
+        android:id="@+id/infoViewPagerFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.detail.InfoViewPagerFragment"
+        android:label="ViewPagerFragment" />
+    <fragment
+        android:id="@+id/meterViewPagerFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.detail.MeterViewPagerFragment"
+        android:label="MeterViewPagerFragment" />
+    <fragment
+        android:id="@+id/paymentViewPagerFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.detail.PaymentViewPagerFragment"
+        android:label="PaymentViewPagerFragment" />
+</navigation>

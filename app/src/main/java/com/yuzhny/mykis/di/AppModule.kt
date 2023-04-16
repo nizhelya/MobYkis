@@ -10,6 +10,7 @@ import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.dao.*
 import com.yuzhny.mykis.data.cache.database.AppDatabase
 import com.yuzhny.mykis.data.cache.family.FamilyCache
+import com.yuzhny.mykis.data.cache.heat.HeatMeterCache
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.cache.payment.PaymentCache
 import com.yuzhny.mykis.data.cache.service.ServiceCache
@@ -20,6 +21,7 @@ import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.family.FamilyRemote
 import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.data.remote.api.ApiService.Companion.BASE_URL
+import com.yuzhny.mykis.data.remote.heat.HeatMeterRemote
 import com.yuzhny.mykis.data.remote.payment.PaymentRemote
 import com.yuzhny.mykis.data.remote.service.ServiceRemote
 import com.yuzhny.mykis.data.remote.water.meter.WaterMeterRemote
@@ -27,6 +29,7 @@ import com.yuzhny.mykis.data.remote.water.reading.WaterReadingRemote
 import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import com.yuzhny.mykis.domain.family.FamilyRepository
+import com.yuzhny.mykis.domain.heat.meter.HeatMeterRepository
 import com.yuzhny.mykis.domain.payment.PaymentRepository
 import com.yuzhny.mykis.domain.service.ServiceRepository
 import com.yuzhny.mykis.domain.water.meter.WaterMeterRepository
@@ -124,7 +127,10 @@ object AppModule {
     fun provideWaterReadingDao(db: AppDatabase):WaterReadingDao{
         return  db.waterReadingDao()
     }
-
+    @Provides
+    fun provideHeatMeterDao(db: AppDatabase):HeatMeterDao{
+        return  db.heatMeterDao()
+    }
     @Singleton
     @Provides
     fun provideAppartmentRepository(
@@ -192,5 +198,14 @@ object AppModule {
         userCache: UserCache
     ): WaterReadingRepository {
         return  WaterReadingRepositoryImpl(waterReadingCache ,waterReadingRemote , userCache)
+    }
+    @Singleton
+    @Provides
+    fun provideHeatMeterRepository(
+        heatMeterCache: HeatMeterCache,
+        heatMeterRemote: HeatMeterRemote,
+        userCache: UserCache
+    ): HeatMeterRepository {
+        return  HeatMeterRepositoryImpl(heatMeterCache ,heatMeterRemote , userCache)
     }
 }
