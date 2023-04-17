@@ -286,4 +286,34 @@ SELECT t1.`rec_id` , t1.`address_id`,t1.`address`, t1.`god`, t1.`data`,sum(t1.`k
         return $result;
     }
 
+    public function getHeatReadings($teplomer_id)
+    {
+        $com = new DbConnect();
+        $sql = 'Select t1.* from YIS.PTEPLOMER as t1 where t1.teplomer_id = '.$teplomer_id.' ';
+        $result = mysqli_query($com->getDb(), $sql);
+        return $result;
+    }
+
+    public function addCurrentHeatReading( $teplomer_id,  $current_value, $new_value,  $date)
+    {
+        $com = new DbConnect();
+
+        $sql = 'CALL YISGRAND.input_new_pokaz_ateplomera_mob('.$teplomer_id.' , "'.$current_value.'" ,"'.$new_value.'" ,"'.$date.'" , @success , @msg);';
+        mysqli_query( $com->getDb(), $sql);
+        $sqlCallBack = 'SELECT @success , @msg ';
+        $result = mysqli_query( $com->getDb(), $sqlCallBack);
+        return $result;
+    }
+
+    public function deleteCurrentHeatReading( $pok_id)
+    {
+        $com = new DbConnect();
+        $sql = 'CALL YISGRAND.delete_pokaz_ateplomera_mob('.$pok_id.' , @success , @msg);';
+//        print_r($sql);
+        mysqli_query( $com->getDb(), $sql);
+        $sqlCallBack = 'SELECT @success , @msg ';
+        $result = mysqli_query( $com->getDb(), $sqlCallBack);
+        return $result;
+    }
+
 }

@@ -19,7 +19,7 @@ if (isset($_POST['pok_id']) &&
     $generalFunctionsObject = new GeneralFunctionsClass();
 
     $result = $dbOperationsObject->deleteCurrentWaterReading($pok_id);
-    $results = $generalFunctionsObject->deleteCurrentWaterReading($result);
+    $results = $generalFunctionsObject->deleteCurrentReading($result);
     if($results[0]["success"]==1){
         $response["message"] = "Readings deleted successful";
     }else $response["message"] = "Failed to delete readings" ;

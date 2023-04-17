@@ -456,7 +456,7 @@ class GeneralFunctionsClass
         return $results;
     }
 
-    public function addCurrentWaterReading($result)
+    public function addCurrentReading($result)
     {
         $dbOperationsObject = new DBOperations();
         $results = array();
@@ -473,7 +473,7 @@ class GeneralFunctionsClass
         return $results;
     }
 
-    public function deleteCurrentWaterReading($result)
+    public function deleteCurrentReading($result)
     {
         $dbOperationsObject = new DBOperations();
         $results = array();
@@ -526,6 +526,44 @@ class GeneralFunctionsClass
             );
 
             array_push($results, $heatMeter);
+        }
+        return $results;
+    }
+
+    public function getHeatReadings( $result)
+    {
+        $dbOperationsObject = new DBOperations();
+        $results = array();
+        while ($row = mysqli_fetch_array($result)) {
+            $heatReadings = array(
+                'pok_id'=>$row['pok_id'],
+                'teplomer_id'=>$row['teplomer_id'],
+//                'address_id'=>$row['address_id'],
+                'date_readings'=>$row['data'],
+                'date_ot'=>$row['date_ot'],
+                'date_do'=>$row['date_do'],
+                'edizm'=>$row['edizm'],
+                'koef'=>$row['koef'],
+                'days'=>$row['days'],
+                'last'=>$row['pred'],
+                'currant'=>$row['tek'],
+                'gkal'=>$row['gkal'],
+                'avg'=>$row['avg'],
+                'tarif'=>$row['tarif'],
+                'area'=>$row['area'],
+                'gkm2'=>$row['gkm2'],
+                'otoplenie'=>$row['otoplenie'],
+                'pok_ot'=>$row['pok_ot'],
+                'pok_do'=>$row['pok_do'],
+                'gkal_rasch'=>$row['gkal_rasch'],
+                'gkal_day'=>$row['gkal_day'],
+                'qty_day'=>$row['qty_day'],
+                'day_avg'=>$row['day_avg'],
+                'data_in'=>$row['data_in'],
+                'operator'=>$row['operator']
+            );
+
+            array_push($results, $heatReadings);
         }
         return $results;
     }

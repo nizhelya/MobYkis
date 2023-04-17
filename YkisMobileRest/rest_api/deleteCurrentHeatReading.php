@@ -4,29 +4,25 @@ $response = array();
 
 include_once "GeneralFunctions.php";
 
-if (isset($_POST['vodomer_id']) &&
-    !empty($_POST['vodomer_id'])  &&
-    isset($_POST['current_value']) &&
-    !empty($_POST['current_value']) &&
-    isset($_POST['new_value']) &&
-    !empty($_POST['new_value']) &&
+if (isset($_POST['pok_id']) &&
+    !empty($_POST['pok_id'])  &&
     isset($_POST['user_id']) &&
     !empty($_POST['user_id'])&&
     isset($_POST['token']) &&
     !empty($_POST['token']))   {
-    $vodomer_id = $_POST['vodomer_id'];
-    $current_value = $_POST['current_value'];
-    $new_value = $_POST['new_value'];
+    $pok_id = $_POST['pok_id'];
     $user_id = $_POST['user_id'];
     $token = $_POST['token'];
     $date = Date("Ymd");
     $dbOperationsObject = new DBOperations();
     $generalFunctionsObject = new GeneralFunctionsClass();
 
-    $result = $dbOperationsObject->addCurrentWaterReading($vodomer_id , $current_value , $new_value ,$date);
-    $results = $generalFunctionsObject->addCurrentReading($result);
+    $result = $dbOperationsObject->deleteCurrentHeatReading($pok_id);
+    $results = $generalFunctionsObject->deleteCurrentReading($result);
+    if($results[0]["success"]==1){
+        $response["message"] = "Readings deleted successful";
+    }else $response["message"] = "Failed to delete readings" ;
     $response["success"] = $results[0]["success"];
-    $response["message"] = $results[0]["message"];
     echo json_encode($response);
 } else {
     $response["success"] = 0;

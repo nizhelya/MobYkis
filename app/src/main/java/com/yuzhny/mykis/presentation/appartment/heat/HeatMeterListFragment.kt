@@ -52,7 +52,7 @@ class HeatMeterListFragment : BaseFragment() {
         heatViewModel.getHeatMeters(listViewModel.currentAddress)
         binding.recyclerView.adapter = heatAdapter
         heatAdapter.heatMeterShortListener.onItemClick = {
-            Toast.makeText(requireContext() , it.model , Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext() , it.teplomerId.toString() , Toast.LENGTH_SHORT).show()
         }
     }
 

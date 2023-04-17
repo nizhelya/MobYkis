@@ -4,8 +4,8 @@ $response = array();
 
 include_once "GeneralFunctions.php";
 
-if (isset($_POST['vodomer_id']) &&
-    !empty($_POST['vodomer_id'])  &&
+if (isset($_POST['teplomer_id']) &&
+    !empty($_POST['teplomer_id'])  &&
     isset($_POST['current_value']) &&
     !empty($_POST['current_value']) &&
     isset($_POST['new_value']) &&
@@ -14,7 +14,7 @@ if (isset($_POST['vodomer_id']) &&
     !empty($_POST['user_id'])&&
     isset($_POST['token']) &&
     !empty($_POST['token']))   {
-    $vodomer_id = $_POST['vodomer_id'];
+    $teplomer_id = $_POST['teplomer_id'];
     $current_value = $_POST['current_value'];
     $new_value = $_POST['new_value'];
     $user_id = $_POST['user_id'];
@@ -23,7 +23,7 @@ if (isset($_POST['vodomer_id']) &&
     $dbOperationsObject = new DBOperations();
     $generalFunctionsObject = new GeneralFunctionsClass();
 
-    $result = $dbOperationsObject->addCurrentWaterReading($vodomer_id , $current_value , $new_value ,$date);
+    $result = $dbOperationsObject->addCurrentHeatReading($teplomer_id , $current_value , $new_value ,$date);
     $results = $generalFunctionsObject->addCurrentReading($result);
     $response["success"] = $results[0]["success"];
     $response["message"] = $results[0]["message"];
