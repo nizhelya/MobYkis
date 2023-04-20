@@ -6,6 +6,7 @@ import com.yuzhny.mykis.data.cache.dao.*
 import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.family.FamilyEntity
 import com.yuzhny.mykis.domain.heat.meter.HeatMeterEntity
+import com.yuzhny.mykis.domain.heat.reading.HeatReadingEntity
 import com.yuzhny.mykis.domain.payment.PaymentEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity
@@ -18,7 +19,8 @@ import com.yuzhny.mykis.domain.water.reading.WaterReadingEntity
     PaymentEntity::class ,
     WaterMeterEntity::class ,
     WaterReadingEntity::class ,
-    HeatMeterEntity::class] , version = 3 ,exportSchema = false)
+    HeatMeterEntity::class ,
+    HeatReadingEntity::class] , version = 3 ,exportSchema = false)
 abstract class AppDatabase:RoomDatabase() {
     abstract fun appartmentDao(): AppartmentDao
     abstract fun familyDao(): FamilyDao
@@ -27,6 +29,7 @@ abstract class AppDatabase:RoomDatabase() {
     abstract fun waterMeterDao(): WaterMeterDao
     abstract fun waterReadingDao(): WaterReadingDao
     abstract fun heatMeterDao(): HeatMeterDao
+    abstract fun heatReadingDao() :HeatReadingDao
 
         companion object{
            val DATABASE_NAME:String = "mykis_db"

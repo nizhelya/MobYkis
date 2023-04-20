@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentHeatMeterBinding
 import com.yuzhny.mykis.databinding.FragmentWaterListBinding
@@ -52,7 +53,9 @@ class HeatMeterListFragment : BaseFragment() {
         heatViewModel.getHeatMeters(listViewModel.currentAddress)
         binding.recyclerView.adapter = heatAdapter
         heatAdapter.heatMeterShortListener.onItemClick = {
-            Toast.makeText(requireContext() , it.teplomerId.toString() , Toast.LENGTH_SHORT).show()
+            heatViewModel.getHeatMeter(it)
+            heatViewModel.currentTeplomerId = it.teplomerId
+            findNavController().navigate(R.id.action_heatMeterListFragment_to_heatMeterDetailFragment)
         }
     }
 

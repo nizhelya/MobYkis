@@ -14,8 +14,8 @@
             android:id="@+id/action_appartmentFragment_to_addAppartmentFragment"
             app:destination="@id/addAppartmentFragment" />
         <action
-            android:id="@+id/action_appartmentFragment_to_bottomNavigationFragment"
-            app:destination="@id/bottomNavigationFragment" />
+            android:id="@+id/action_appartmentFragment_to_heatMeterListFragment"
+            app:destination="@id/heatMeterListFragment" />
     </fragment>
     <fragment
         android:id="@+id/addAppartmentFragment"
@@ -56,5 +56,18 @@
             android:id="@+id/action_bottomNavigationFragment_to_waterMeterDetailFragment"
             app:destination="@id/waterMeterDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/heatMeterListFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.heat.HeatMeterListFragment"
+        android:label="fragment_heat_meter"
+        tools:layout="@layout/fragment_heat_meter" >
+        <action
+            android:id="@+id/action_heatMeterListFragment_to_heatMeterDetailFragment"
+            app:destination="@id/heatMeterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heatMeterDetailFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.heat.HeatMeterDetailFragment"
+        android:label="HeatMeterDetailFragment" />
 
 </navigation>

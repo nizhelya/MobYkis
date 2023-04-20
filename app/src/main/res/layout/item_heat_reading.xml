@@ -126,15 +126,64 @@
                 app:layout_constraintTop_toBottomOf="@id/last_colon_text"
                 app:layout_constraintStart_toStartOf="@id/last_colon_text"
                 />
+
             <TextView
-                android:id="@+id/cubs_text"
+                android:id="@+id/rate_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cubs_colon"
+                android:text="@string/rate_colon"
                 style="@style/ChildText"
                 app:layout_constraintTop_toBottomOf="@id/current_text"
                 app:layout_constraintStart_toStartOf="@id/current_text"
                 />
+            <TextView
+                android:id="@+id/edizm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edizm_colon"
+                style="@style/ChildText"
+                app:layout_constraintTop_toBottomOf="@id/rate_text"
+                app:layout_constraintStart_toStartOf="@id/rate_text"
+                />
+            <TextView
+                android:id="@+id/area_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/area_colon"
+                style="@style/ChildText"
+                app:layout_constraintTop_toBottomOf="@id/edizm_text"
+                app:layout_constraintStart_toStartOf="@id/edizm_text"
+                />
+            <TextView
+                android:id="@+id/area"
+                style="@style/SecondText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/area_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/area_text"
+                tools:text="500.00" />
+            <TextView
+                android:id="@+id/rate"
+                style="@style/SecondText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/rate_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/rate_text"
+                tools:text="500.00" />
+            <TextView
+                android:id="@+id/edizm"
+                style="@style/SecondText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/edizm_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/edizm_text"
+                tools:text="500.00" />
             <TextView
                 android:id="@+id/last"
                 style="@style/SecondText"
@@ -156,16 +205,8 @@
                 app:layout_constraintTop_toTopOf="@id/current_text"
                 tools:text="500.00" />
 
-            <TextView
-                android:id="@+id/cubs"
-                style="@style/SecondText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                app:layout_constraintBottom_toBottomOf="@id/cubs_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cubs_text"
-                tools:text="500.00" /></androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/avg_text"
@@ -209,10 +250,10 @@
                 app:layout_constraintStart_toStartOf="@id/pok_do_text"
                 />
             <TextView
-                android:id="@+id/qty_cube_text"
+                android:id="@+id/gkal_rasch_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/qty_cube_colon"
+                android:text="@string/gkal_rasch_colon"
                 style="@style/ChildText"
                 app:layout_constraintTop_toBottomOf="@id/pok_do_text"
                 app:layout_constraintStart_toStartOf="@id/pok_do_text"
@@ -239,14 +280,14 @@
                 tools:text="500.00" />
 
             <TextView
-                android:id="@+id/qty_cube"
+                android:id="@+id/gkal_rasch"
                 style="@style/SecondText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                app:layout_constraintBottom_toBottomOf="@id/qty_cube_text"
+                app:layout_constraintBottom_toBottomOf="@id/gkal_rasch_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/qty_cube_text"
+                app:layout_constraintTop_toTopOf="@id/gkal_rasch_text"
                 tools:text="500.00" />
 
             <TextView
@@ -255,11 +296,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/days_colon"
                 style="@style/ChildText"
-                app:layout_constraintTop_toBottomOf="@id/qty_cube_text"
-                app:layout_constraintStart_toStartOf="@id/qty_cube_text"
+                app:layout_constraintTop_toBottomOf="@id/gkal_rasch_text"
+                app:layout_constraintStart_toStartOf="@id/gkal_rasch_text"
                 />
             <TextView
-                android:id="@+id/rday"
+                android:id="@+id/day_avg"
                 style="@style/SecondText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -269,23 +310,23 @@
                 app:layout_constraintTop_toTopOf="@id/rday_text"
                 tools:text="500.00" />
             <TextView
-                android:id="@+id/cube_day_text"
+                android:id="@+id/gkal_day_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cube_day_colon"
+                android:text="@string/gkal_day_colon"
                 style="@style/ChildText"
                 app:layout_constraintTop_toBottomOf="@id/rday_text"
                 app:layout_constraintStart_toStartOf="@id/rday_text"
                 />
             <TextView
-                android:id="@+id/cube_day_cube"
+                android:id="@+id/gkal_day"
                 style="@style/SecondText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                app:layout_constraintBottom_toBottomOf="@id/cube_day_text"
+                app:layout_constraintBottom_toBottomOf="@id/gkal_day_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/cube_day_text"
+                app:layout_constraintTop_toTopOf="@id/gkal_day_text"
                 tools:text="500.00" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

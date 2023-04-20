@@ -29,7 +29,7 @@ class WaterMeterListAdapter @Inject constructor(val waterMeterShortListener: Wat
                 firstLayout.alpha = .5f
                 if(meter.spisan==1.toByte()){
                     dopText.text = "Списан"
-                }else if(meter.out == 1.toByte()){
+                }else if(meter  .out == 1.toByte()){
                     dopText.text = "На перевірці"
                 }else {
                     dopText.text = "Призупинен"

@@ -6,6 +6,8 @@ import com.yuzhny.mykis.data.cache.family.FamilyCache
 import com.yuzhny.mykis.data.cache.family.FamilyCacheImpl
 import com.yuzhny.mykis.data.cache.heat.HeatMeterCache
 import com.yuzhny.mykis.data.cache.heat.HeatMeterCacheImpl
+import com.yuzhny.mykis.data.cache.heat.reading.HeatReadingCache
+import com.yuzhny.mykis.data.cache.heat.reading.HeatReadingCacheImpl
 import com.yuzhny.mykis.data.cache.payment.PaymentCache
 import com.yuzhny.mykis.data.cache.payment.PaymentCacheImpl
 import com.yuzhny.mykis.data.cache.service.ServiceCache
@@ -24,6 +26,8 @@ import com.yuzhny.mykis.data.remote.family.FamilyRemote
 import com.yuzhny.mykis.data.remote.family.FamilyRemoteImpl
 import com.yuzhny.mykis.data.remote.heat.HeatMeterRemote
 import com.yuzhny.mykis.data.remote.heat.HeatMeterRemoteImpl
+import com.yuzhny.mykis.data.remote.heat.reading.HeatReadingRemote
+import com.yuzhny.mykis.data.remote.heat.reading.HeatReadingRemoteImpl
 import com.yuzhny.mykis.data.remote.payment.PaymentRemote
 import com.yuzhny.mykis.data.remote.payment.PaymentRemoteImpl
 import com.yuzhny.mykis.data.remote.service.ServiceRemote
@@ -100,9 +104,17 @@ abstract class AppartmentModule {
 
     @Singleton
     @Binds
-    abstract fun bindHeatHeatCache(impl: HeatMeterCacheImpl): HeatMeterCache
+    abstract fun bindHeatMeterCache(impl: HeatMeterCacheImpl): HeatMeterCache
 
     @Singleton
     @Binds
-    abstract fun bindHeatHeatRemote(impl: HeatMeterRemoteImpl): HeatMeterRemote
+    abstract fun bindHeatMeterRemote(impl: HeatMeterRemoteImpl): HeatMeterRemote
+
+    @Singleton
+    @Binds
+    abstract fun bindHeatReadingCache(impl: HeatReadingCacheImpl): HeatReadingCache
+
+    @Singleton
+    @Binds
+    abstract fun bindHeatReadingRemote(impl: HeatReadingRemoteImpl): HeatReadingRemote
   }

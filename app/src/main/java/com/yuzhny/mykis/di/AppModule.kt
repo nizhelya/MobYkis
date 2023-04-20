@@ -11,6 +11,7 @@ import com.yuzhny.mykis.data.cache.dao.*
 import com.yuzhny.mykis.data.cache.database.AppDatabase
 import com.yuzhny.mykis.data.cache.family.FamilyCache
 import com.yuzhny.mykis.data.cache.heat.HeatMeterCache
+import com.yuzhny.mykis.data.cache.heat.reading.HeatReadingCache
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.cache.payment.PaymentCache
 import com.yuzhny.mykis.data.cache.service.ServiceCache
@@ -22,6 +23,7 @@ import com.yuzhny.mykis.data.remote.family.FamilyRemote
 import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.data.remote.api.ApiService.Companion.BASE_URL
 import com.yuzhny.mykis.data.remote.heat.HeatMeterRemote
+import com.yuzhny.mykis.data.remote.heat.reading.HeatReadingRemote
 import com.yuzhny.mykis.data.remote.payment.PaymentRemote
 import com.yuzhny.mykis.data.remote.service.ServiceRemote
 import com.yuzhny.mykis.data.remote.water.meter.WaterMeterRemote
@@ -30,6 +32,7 @@ import com.yuzhny.mykis.domain.address.AddressRepository
 import com.yuzhny.mykis.domain.appartment.AppartmentRepository
 import com.yuzhny.mykis.domain.family.FamilyRepository
 import com.yuzhny.mykis.domain.heat.meter.HeatMeterRepository
+import com.yuzhny.mykis.domain.heat.reading.HeatReadingRepository
 import com.yuzhny.mykis.domain.payment.PaymentRepository
 import com.yuzhny.mykis.domain.service.ServiceRepository
 import com.yuzhny.mykis.domain.water.meter.WaterMeterRepository
@@ -131,6 +134,11 @@ object AppModule {
     fun provideHeatMeterDao(db: AppDatabase):HeatMeterDao{
         return  db.heatMeterDao()
     }
+
+    @Provides
+    fun provideHeatReadingDao(db: AppDatabase):HeatReadingDao{
+        return  db.heatReadingDao()
+    }
     @Singleton
     @Provides
     fun provideAppartmentRepository(
@@ -207,5 +215,14 @@ object AppModule {
         userCache: UserCache
     ): HeatMeterRepository {
         return  HeatMeterRepositoryImpl(heatMeterCache ,heatMeterRemote , userCache)
+    }
+    @Singleton
+    @Provides
+    fun provideHeatReadingRepository(
+        heatReadingCache : HeatReadingCache,
+        heatReadingRemote: HeatReadingRemote,
+        userCache: UserCache
+    ): HeatReadingRepository {
+        return  HeatReadingRepositoryImpl(heatReadingCache ,heatReadingRemote , userCache)
     }
 }
