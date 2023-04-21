@@ -1,8 +1,8 @@
-package com.yuzhny.mykis.data.remote.heat
+package com.yuzhny.mykis.data.remote.heat.meter
 
 import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.data.remote.core.Request
-import com.yuzhny.mykis.data.remote.water.meter.WaterMeterRemote
+import com.yuzhny.mykis.data.remote.heat.meter.HeatMeterRemote
 import com.yuzhny.mykis.domain.heat.meter.HeatMeterEntity
 import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure

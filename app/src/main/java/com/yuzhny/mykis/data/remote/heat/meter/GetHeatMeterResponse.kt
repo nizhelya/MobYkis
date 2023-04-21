@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.data.remote.heat
+package com.yuzhny.mykis.data.remote.heat.meter
 
 import com.squareup.moshi.Json
 import com.yuzhny.mykis.data.remote.core.BaseResponse

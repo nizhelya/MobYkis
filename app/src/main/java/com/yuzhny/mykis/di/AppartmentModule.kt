@@ -4,8 +4,8 @@ import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCacheImpl
 import com.yuzhny.mykis.data.cache.family.FamilyCache
 import com.yuzhny.mykis.data.cache.family.FamilyCacheImpl
-import com.yuzhny.mykis.data.cache.heat.HeatMeterCache
-import com.yuzhny.mykis.data.cache.heat.HeatMeterCacheImpl
+import com.yuzhny.mykis.data.cache.heat.meter.HeatMeterCache
+import com.yuzhny.mykis.data.cache.heat.meter.HeatMeterCacheImpl
 import com.yuzhny.mykis.data.cache.heat.reading.HeatReadingCache
 import com.yuzhny.mykis.data.cache.heat.reading.HeatReadingCacheImpl
 import com.yuzhny.mykis.data.cache.payment.PaymentCache
@@ -24,8 +24,8 @@ import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemoteImpl
 import com.yuzhny.mykis.data.remote.family.FamilyRemote
 import com.yuzhny.mykis.data.remote.family.FamilyRemoteImpl
-import com.yuzhny.mykis.data.remote.heat.HeatMeterRemote
-import com.yuzhny.mykis.data.remote.heat.HeatMeterRemoteImpl
+import com.yuzhny.mykis.data.remote.heat.meter.HeatMeterRemote
+import com.yuzhny.mykis.data.remote.heat.meter.HeatMeterRemoteImpl
 import com.yuzhny.mykis.data.remote.heat.reading.HeatReadingRemote
 import com.yuzhny.mykis.data.remote.heat.reading.HeatReadingRemoteImpl
 import com.yuzhny.mykis.data.remote.payment.PaymentRemote

@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.data.remote.heat.reading
 
+import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.data.remote.core.Request
 import com.yuzhny.mykis.data.remote.water.reading.WaterReadingRemote
@@ -32,6 +33,48 @@ class HeatReadingRemoteImpl @Inject constructor(private val request: Request,
         }
     }
 
+    override fun addNewHeatReading(
+        teplomerId: Int,
+        newValue: Double,
+        currentValue:Double,
+        userId: Int,
+        token: String
+    ): Either<Failure, GetSimpleResponse> {
+        return request.make(
+            apiService.addNewHeatReading(
+                createAddNewReadingMap(
+                    teplomerId,
+                    newValue,
+                    currentValue,
+                    userId ,
+                    token
+                )
+            )
+        )
+        {
+            it
+        }
+    }
+
+    override fun deleteCurrentHeatReading(
+        pokId: Int,
+        userId: Int,
+        token: String
+    ): Either<Failure, GetSimpleResponse> {
+        return request.make(
+            apiService.deleteCurrentHeatReading(
+                createDeleteWaterReadingMap(
+                    pokId,
+                    userId ,
+                    token
+                )
+            )
+        )
+        {
+            it
+        }
+    }
+
     private fun createGetHeatReadingMap(
         teplomerId: Int,
         userId: Int,
@@ -39,6 +82,32 @@ class HeatReadingRemoteImpl @Inject constructor(private val request: Request,
     ): Map<String, String> {
         val map = HashMap<String, String>()
         map.put(ApiService.TEPLOMER_ID, teplomerId.toString())
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
+        map.put(ApiService.PARAM_TOKEN, token)
+        return map
+    }
+    private fun createAddNewReadingMap(
+        teplomerId: Int,
+        newValue: Double,
+        currentValue: Double,
+        userId: Int,
+        token: String
+    ): Map<String, String> {
+        val map = HashMap<String, String>()
+        map.put(ApiService.TEPLOMER_ID, teplomerId.toString())
+        map.put(ApiService.NEW_VALUE, newValue.toString())
+        map.put(ApiService.CURRENT_VALUE, currentValue.toString())
+        map.put(ApiService.PARAM_USER_ID, userId.toString())
+        map.put(ApiService.PARAM_TOKEN, token)
+        return map
+    }
+    private fun createDeleteWaterReadingMap(
+        pokId: Int,
+        userId: Int,
+        token: String
+    ): Map<String, String> {
+        val map = HashMap<String, String>()
+        map.put(ApiService.POK_ID  , pokId.toString())
         map.put(ApiService.PARAM_USER_ID, userId.toString())
         map.put(ApiService.PARAM_TOKEN, token)
         return map

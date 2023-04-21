@@ -1,6 +1,7 @@
-package com.yuzhny.mykis.data.cache.heat
+package com.yuzhny.mykis.data.cache.heat.meter
 
 import com.yuzhny.mykis.data.cache.dao.HeatMeterDao
+import com.yuzhny.mykis.data.cache.heat.meter.HeatMeterCache
 import com.yuzhny.mykis.domain.heat.meter.HeatMeterEntity
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -8,7 +9,7 @@ import javax.inject.Singleton
 @Singleton
 class HeatMeterCacheImpl @Inject constructor(
     private val heatMeterDao: HeatMeterDao
-) :HeatMeterCache{
+) : HeatMeterCache {
     override fun insertHeatMeter(waterMeters: List<HeatMeterEntity>) {
         heatMeterDao.insertHeatMeter(waterMeters)
     }

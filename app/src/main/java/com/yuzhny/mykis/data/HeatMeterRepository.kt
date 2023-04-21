@@ -1,10 +1,8 @@
 package com.yuzhny.mykis.data
 
-import com.yuzhny.mykis.data.cache.heat.HeatMeterCache
+import com.yuzhny.mykis.data.cache.heat.meter.HeatMeterCache
 import com.yuzhny.mykis.data.cache.user.UserCache
-import com.yuzhny.mykis.data.cache.water.meter.WaterMeterCache
-import com.yuzhny.mykis.data.remote.heat.HeatMeterRemote
-import com.yuzhny.mykis.data.remote.water.meter.WaterMeterRemote
+import com.yuzhny.mykis.data.remote.heat.meter.HeatMeterRemote
 import com.yuzhny.mykis.domain.family.request.BooleanInt
 import com.yuzhny.mykis.domain.heat.meter.HeatMeterEntity
 import com.yuzhny.mykis.domain.heat.meter.HeatMeterRepository
@@ -12,8 +10,6 @@ import com.yuzhny.mykis.domain.type.Either
 import com.yuzhny.mykis.domain.type.Failure
 import com.yuzhny.mykis.domain.type.flatMap
 import com.yuzhny.mykis.domain.type.onNext
-import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity
-import com.yuzhny.mykis.domain.water.meter.WaterMeterRepository
 import javax.inject.Inject
 
 class HeatMeterRepositoryImpl @Inject constructor(

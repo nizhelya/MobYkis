@@ -4,7 +4,7 @@ import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.address.GetAddressResponse
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
 import com.yuzhny.mykis.data.remote.family.GetFamilyResponse
-import com.yuzhny.mykis.data.remote.heat.GetHeatMeterResponse
+import com.yuzhny.mykis.data.remote.heat.meter.GetHeatMeterResponse
 import com.yuzhny.mykis.data.remote.heat.reading.GetHeatReadingResponse
 import com.yuzhny.mykis.data.remote.payment.GetPaymentResponse
 import com.yuzhny.mykis.data.remote.service.GetServiceResponse
@@ -44,8 +44,10 @@ interface ApiService {
         const val GET_WATER_READINGS="getWaterReadings.php"
         const val GET_HEAT_READINGS="getHeatReadings.php"
         const val CHECK_ADD_FLAT="checkAddFlat.php"
-        const val ADD_NEW_READING="addCurrentWaterReading.php"
+        const val ADD_NEW_WATER_READING="addCurrentWaterReading.php"
+        const val ADD_NEW_HEAT_READING="addCurrentHeatReading.php"
         const val DELETE_CURRENT_WATER_READING="deleteCurrentWaterReading.php"
+        const val DELETE_CURRENT_HEAT_READING="deleteCurrentHeatReading.php"
         const val PARAM_ADDRESS_ID = "address_id"
         const val PARAM_USER_ID = "user_id"
         const val STREET_ID = "street_id"
@@ -115,7 +117,7 @@ interface ApiService {
     @POST(GET_WATER_READINGS)
     fun getWaterReadings(@FieldMap params :Map<String , String> ):Call<GetWaterReadingResponse>
     @FormUrlEncoded
-    @POST(ADD_NEW_READING)
+    @POST(ADD_NEW_WATER_READING)
     fun addNewWaterReading(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
     @FormUrlEncoded
     @POST(DELETE_CURRENT_WATER_READING)
@@ -126,4 +128,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST(GET_HEAT_READINGS)
     fun getHeatReadings(@FieldMap params :Map<String , String> ):Call<GetHeatReadingResponse>
+    @FormUrlEncoded
+    @POST(ADD_NEW_HEAT_READING)
+    fun addNewHeatReading(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
+    @FormUrlEncoded
+    @POST(DELETE_CURRENT_HEAT_READING)
+    fun deleteCurrentHeatReading(@FieldMap params :Map<String , String> ):Call<GetSimpleResponse>
 }

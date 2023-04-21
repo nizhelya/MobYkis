@@ -10,7 +10,7 @@ import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.dao.*
 import com.yuzhny.mykis.data.cache.database.AppDatabase
 import com.yuzhny.mykis.data.cache.family.FamilyCache
-import com.yuzhny.mykis.data.cache.heat.HeatMeterCache
+import com.yuzhny.mykis.data.cache.heat.meter.HeatMeterCache
 import com.yuzhny.mykis.data.cache.heat.reading.HeatReadingCache
 import com.yuzhny.mykis.data.cache.user.UserCache
 import com.yuzhny.mykis.data.cache.payment.PaymentCache
@@ -22,7 +22,7 @@ import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.family.FamilyRemote
 import com.yuzhny.mykis.data.remote.api.ApiService
 import com.yuzhny.mykis.data.remote.api.ApiService.Companion.BASE_URL
-import com.yuzhny.mykis.data.remote.heat.HeatMeterRemote
+import com.yuzhny.mykis.data.remote.heat.meter.HeatMeterRemote
 import com.yuzhny.mykis.data.remote.heat.reading.HeatReadingRemote
 import com.yuzhny.mykis.data.remote.payment.PaymentRemote
 import com.yuzhny.mykis.data.remote.service.ServiceRemote
