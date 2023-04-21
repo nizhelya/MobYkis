@@ -29,8 +29,10 @@ class HeatReadingAdapter @Inject constructor() :
             dateOt.text = reading.dateOt
             dateDo.text = reading.dateDo
             days.text = reading.days.toString()
-            area.text = reading.area.toString()
-            rate.text = reading.koef
+            rate.text = reading.tarif.toString()
+            coefficient.text = reading.koef
+            qty.text = reading.qty.toString()
+            gkal.text = reading.gkal.toString()
 //            cubs.text = reading.kub.toString()
             last.text = reading.last.toString()
             current.text = reading.currant.toString()

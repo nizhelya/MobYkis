@@ -71,6 +71,7 @@ class HeatMeterDetailFragment : BaseFragment() {
                 last.text = it.last.toString()
                 cur.text = it.currant.toString()
                 date.text = it.dateDo
+                qty.text = it.qty.toString()
                 if(it.dateDo == SimpleDateFormat("yyy-MM-dd").format(Date())){
                     deleteReadingButton.visibility = View.VISIBLE
                 }else deleteReadingButton.visibility = View.GONE

@@ -560,7 +560,8 @@ class GeneralFunctionsClass
                 'qty_day'=>$row['qty_day'],
                 'day_avg'=>$row['day_avg'],
                 'data_in'=>$row['data_in'],
-                'operator'=>$row['operator']
+                'operator'=>$row['operator'],
+                'qty'=>$row['qty']
             );
 
             array_push($results, $heatReadings);

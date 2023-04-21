@@ -97,23 +97,23 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/cubs_text"
+                    android:id="@+id/qty_text"
                     style="@style/FirstText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/cubs_colon"
+                    android:text="@string/qty_colon"
                     app:layout_constraintTop_toBottomOf="@id/linear"
                     app:layout_constraintStart_toStartOf="@id/linear"/>
 
                 <TextView
-                    android:id="@+id/cubs"
+                    android:id="@+id/qty"
                     style="@style/SecondText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="10"
-                    app:layout_constraintStart_toEndOf="@id/cubs_text"
-                    app:layout_constraintTop_toTopOf="@id/cubs_text"
-                    app:layout_constraintBottom_toBottomOf="@id/cubs_text"
+                    app:layout_constraintStart_toEndOf="@id/qty_text"
+                    app:layout_constraintTop_toTopOf="@id/qty_text"
+                    app:layout_constraintBottom_toBottomOf="@id/qty_text"
                     />
                 <Button
                     android:id="@+id/add_reading_button"
@@ -122,8 +122,8 @@
                     android:text="@string/add_reading"
                     android:drawableEnd="@drawable/ic_add"
                     android:drawableTint="?attr/colorOnPrimary"
-                    app:layout_constraintTop_toBottomOf="@id/cubs_text"
-                    app:layout_constraintStart_toStartOf="@id/cubs_text"
+                    app:layout_constraintTop_toBottomOf="@id/qty_text"
+                    app:layout_constraintStart_toStartOf="@id/qty_text"
                     />
                 <Button
                     android:id="@+id/delete_reading_button"

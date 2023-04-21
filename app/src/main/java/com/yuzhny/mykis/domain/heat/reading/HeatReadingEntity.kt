@@ -31,7 +31,7 @@ data class HeatReadingEntity (
     val gkal         : Double= 0.0,
     val avg          : Byte = 0,
     val tarif        : Double= 0.0,
-    val area         : Double = 0.0,
+    val qty        : Double = 0.0,
 //    val gkm2         : String= "Unknown",
 //    val otoplenie    : Double= 0.0,
     @Json(name = "pok_ot")

@@ -140,7 +140,10 @@
     //HeatDetail
     <string name="gkal_rasch_colon">Розрахунох:</string>
     <string name="gkal_day_colon">ГКал/день:</string>
+    <string name="qty_colon">Кількість:</string>
+    <string name="gkal_colon">Нараховано(ГКал):</string>
     <string name="rate_colon">Тариф:</string>
+    <string name="coefficient_colon">Коефіцієнт переведення:</string>
     //addReadingDialog
     <string name="new_reading">Нове показання</string>
     <string name="current_reading">Поточне показання</string>
