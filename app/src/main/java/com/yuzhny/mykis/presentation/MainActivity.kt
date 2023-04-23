@@ -25,7 +25,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : BaseActivity(){
 
-
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {

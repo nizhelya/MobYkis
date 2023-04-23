@@ -9,6 +9,7 @@ import com.yuzhny.mykis.domain.type.Failure
 
 
 abstract class BaseFragment : Fragment() {
+ val mainNavView: View = requireActivity().findViewById<View>(R.id.nav_host_fragment)
  open fun handleFailure(failure: Failure?) {
   when (failure) {
    is Failure.FailUpdateBti -> showMessage(getString(R.string.error_update))

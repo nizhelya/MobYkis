@@ -30,10 +30,8 @@ class HeatReadingAdapter @Inject constructor() :
             dateDo.text = reading.dateDo
             days.text = reading.days.toString()
             rate.text = reading.tarif.toString()
-            coefficient.text = reading.koef
             qty.text = reading.qty.toString()
             gkal.text = reading.gkal.toString()
-//            cubs.text = reading.kub.toString()
             last.text = reading.last.toString()
             current.text = reading.currant.toString()
             pokOt.text = reading.pokOt
@@ -41,7 +39,6 @@ class HeatReadingAdapter @Inject constructor() :
             gkalDay.text = reading.gkalDay
             gkalRasch.text =reading.gkalRasch
             dayAvg.text = reading.dayAvg
-            edizm.text = reading.edizm
             if(!trueOrFalse(reading.avg)){
                 cardAvg.visibility = View.GONE
                 avgText.visibility = View.GONE

@@ -56,8 +56,9 @@ class AppartmentListFragment : BaseFragment()
             appartmentListViewModel.getAppartment(it)
             appartmentListViewModel.currentAddress = it.addressId
             appartmentListViewModel.currentHouse = it.houseId
-            findNavController().navigate(AppartmentListFragmentDirections
-                .actionAppartmentFragmentToHeatMeterListFragment())
+            findNavController().navigate(R.id.action_appartmentFragment_to_bottomNavigationFragment)
+//            findNavController().navigate(AppartmentListFragmentDirections
+//                .actionAppartmentFragmentToHeatMeterListFragment())
 
         }
         viewAdapter.appartmentLongListener.onItemLongClick= {

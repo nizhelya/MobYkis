@@ -10,6 +10,7 @@
         android:id="@+id/infoViewPagerFragment"
         android:name="com.yuzhny.mykis.presentation.appartment.detail.InfoViewPagerFragment"
         android:label="ViewPagerFragment" />
+
     <fragment
         android:id="@+id/meterViewPagerFragment"
         android:name="com.yuzhny.mykis.presentation.appartment.detail.MeterViewPagerFragment"

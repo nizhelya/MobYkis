@@ -62,7 +62,6 @@ class PaymentListViewModel @Inject constructor(
 //    }
     fun getPaymentItem(addressId: Int, loadingView : View, recyclerView: RecyclerView){
     _paymentItem.clear()
-//    paymentItem.value = _paymentItem
         val yearList = paymentCacheImpl.getYearsFromFlat(addressId)
         viewModelScope.launch {
             for (i in yearList) {

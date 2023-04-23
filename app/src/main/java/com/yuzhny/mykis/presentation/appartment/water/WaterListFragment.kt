@@ -5,13 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentWaterListBinding
 import com.yuzhny.mykis.domain.water.meter.WaterMeterEntity
-import com.yuzhny.mykis.presentation.appartment.BottomNavigationFragmentDirections
+import com.yuzhny.mykis.presentation.MainActivity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import com.yuzhny.mykis.presentation.core.ext.onFailure
@@ -49,7 +54,7 @@ class WaterListFragment : BaseFragment() {
         waterAdapter.waterMeterShortListener.onItemClick = {
             waterViewModel.getWaterMeter(it)
             waterViewModel.currentVodomerId = it.vodomerId
-                findNavController().navigate(R.id.action_bottomNavigationFragment_to_waterMeterDetailFragment)
+            Navigation.findNavController(mainNavView).navigate(R.id.action_bottomNavigationFragment_to_waterMeterDetailFragment)
         }
     }
 
