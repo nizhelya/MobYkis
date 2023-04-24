@@ -7,6 +7,9 @@ import com.squareup.moshi.Json
 
 @Entity (tableName = "water_reading")
 data class WaterReadingEntity(
+    @Json(name = "address_id")
+    @ColumnInfo(name = "address_id")
+    val addressId       : Int= 0,
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "pok_id")
     @Json(name = "pok_id")

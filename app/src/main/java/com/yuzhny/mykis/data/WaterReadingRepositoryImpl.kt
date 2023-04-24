@@ -28,9 +28,9 @@ class WaterReadingRepositoryImpl @Inject constructor(
                     )
                 }
             }
-            .onNext {
-                waterReadingCache.deleteAllReading()
-            }
+//            .onNext {
+//                waterReadingCache.deleteAllReading()
+//            }
             .map {
                 it.sortedByDescending { it.pokId }
             }

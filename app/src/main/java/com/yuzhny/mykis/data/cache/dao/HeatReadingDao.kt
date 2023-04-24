@@ -16,4 +16,6 @@ interface HeatReadingDao {
     fun getHeatReading(teplomerId:Int): List<HeatReadingEntity>
     @Query("delete from water_reading")
     fun deleteAllReadings()
+    @Query("delete from heat_reading where address_id not in (:addressId)")
+    fun deleteReadingFromFlat(addressId: List<Int>)
 }

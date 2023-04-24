@@ -170,7 +170,10 @@ class GeneralFunctionsClass
                 'dteplomer_id' => $rowAppartment['dteplomer_id'],
                 'data_in' => $rowAppartment['data_in'],
                 'operator' => $rowAppartment['operator'],
-                'kod' => $rowAppartment['kod']
+                'kod' => $rowAppartment['kod'],
+                'ipay' => $rowAppartment['ipay'],
+                'mtb' => $rowAppartment['mtb'],
+                'pb' => $rowAppartment['pb']
             );
 
             array_push($appartments, $appartment);
@@ -448,7 +451,9 @@ class GeneralFunctionsClass
                 'kub_day'=>$row['kub_day'],
                 'qty_kub'=>$row['qty_kub'],
                 'data_in'=>$row['data_in'],
-                'operator'=>$row['operator']
+                'operator'=>$row['operator'],
+                'address_id'=>$row['address_id']
+
             );
 
             array_push($results, $waterReadings);
@@ -561,7 +566,8 @@ class GeneralFunctionsClass
                 'day_avg'=>$row['day_avg'],
                 'data_in'=>$row['data_in'],
                 'operator'=>$row['operator'],
-                'qty'=>$row['qty']
+                'qty'=>$row['qty'],
+                'address_id'=>$row['address_id']
             );
 
             array_push($results, $heatReadings);

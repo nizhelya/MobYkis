@@ -52,6 +52,10 @@ class HeatMeterListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mainNavView: View = requireActivity().findViewById<View>(R.id.nav_host_fragment)
+//
+//        binding.recyclerView.visibility = View.GONE
+//        binding.loadingView.visibility = View.VISIBLE
         heatViewModel.getHeatMeters(listViewModel.currentAddress)
         binding.recyclerView.adapter = heatAdapter
         heatAdapter.heatMeterShortListener.onItemClick = {
@@ -62,7 +66,17 @@ class HeatMeterListFragment : BaseFragment() {
     }
 
     private fun handleHeatMeters(heatMeters:List<HeatMeterEntity>?){
-        heatAdapter.submitList(heatMeters)
+//        if(heatMeters!!.isNotEmpty()) {
+            heatAdapter.submitList(heatMeters)
+//            binding.recyclerView.visibility = View.VISIBLE
+//            binding.loadingView.visibility = View.GONE
+//            binding.noHeatMeterImage.visibility = View.GONE
+//            binding.noDataSubtitle.visibility = View.GONE
+//        }else{
+//            binding.loadingView.visibility = View.GONE
+//            binding.noHeatMeterImage.visibility = View.VISIBLE
+//            binding.noDataSubtitle.visibility = View.VISIBLE
+//        }
     }
 
 

@@ -28,9 +28,9 @@ class HeatReadingRepositoryImpl @Inject constructor(
                     )
                 }
             }
-            .onNext {
-                heatReadingCache.deleteAllReading()
-            }
+//            .onNext {
+//                heatReadingCache.deleteAllReading()
+//            }
             .map {
                 it.sortedByDescending { it.pokId }
             }

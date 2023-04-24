@@ -28,10 +28,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HeatMeterDetailFragment : BaseFragment() {
 
-    private val listViewModel : AppartmentListViewModel by activityViewModels()
-    private val heatViewModel : HeatViewModel by activityViewModels()
+    private val listViewModel: AppartmentListViewModel by activityViewModels()
+    private val heatViewModel: HeatViewModel by activityViewModels()
 
-    private var _binding : FragmentHeatMeterDetailBinding? = null
+    private var _binding: FragmentHeatMeterDetailBinding? = null
     private val binding get() = _binding!!
 
     @Inject
@@ -41,18 +41,18 @@ class HeatMeterDetailFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         heatViewModel.apply {
-            onSuccess(heatReadings , ::handleReadings)
-            onSuccess(resultText , ::handleResultText)
+            onSuccess(heatReadings, ::handleReadings)
+            onSuccess(resultText, ::handleResultText)
             onFailure(failureData, ::handleFailure)
         }
         _binding = FragmentHeatMeterDetailBinding.inflate(inflater, container, false)
-        return  binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         heatViewModel.getHeatReadings()
-        heatViewModel.heatMeter.observe(this.viewLifecycleOwner){
+        heatViewModel.heatMeter.observe(this.viewLifecycleOwner) {
             binding.apply {
                 model.text = it.model
                 number.text = it.number
@@ -66,15 +66,25 @@ class HeatMeterDetailFragment : BaseFragment() {
                 out.isChecked = trueOrFalse(it.out)
             }
         }
-        heatViewModel.heatReading.observe(this.viewLifecycleOwner){
+        heatViewModel.heatReading.observe(this.viewLifecycleOwner) {
             binding.apply {
                 last.text = it.last.toString()
                 cur.text = it.currant.toString()
                 date.text = it.dateDo
                 qty.text = it.qty.toString()
-                if(it.dateDo == SimpleDateFormat("yyy-MM-dd").format(Date())){
-                    deleteReadingButton.visibility = View.VISIBLE
-                }else deleteReadingButton.visibility = View.GONE
+
+                if (SimpleDateFormat("dd").format(Date()).toInt() in 18..25) {
+                    if (it.dateDo == SimpleDateFormat("yyy-MM-dd").format(Date())) {
+                        deleteReadingButton.visibility = View.VISIBLE
+                        addReadingButton.visibility = View.GONE
+                    } else {
+                        deleteReadingButton.visibility = View.GONE
+                        addReadingButton.visibility = View.VISIBLE
+                    }
+                } else{
+                    deleteReadingButton.visibility = View.GONE
+                    addReadingButton.visibility = View.GONE
+                }
             }
         }
         binding.apply {
@@ -88,15 +98,15 @@ class HeatMeterDetailFragment : BaseFragment() {
         }
     }
 
-    private fun handleReadings(readingEntity: List<HeatReadingEntity>?){
-        if(readingEntity!!.isNotEmpty()){
+    private fun handleReadings(readingEntity: List<HeatReadingEntity>?) {
+        if (readingEntity!!.isNotEmpty()) {
             heatReadingAdapter.submitList(readingEntity)
             heatViewModel.getHeatReading(readingEntity[0])
         }
     }
 
     private fun showAddNewReading() {
-        val dialogLayout  = layoutInflater.inflate(R.layout.edit_dialog_layout , null)
+        val dialogLayout = layoutInflater.inflate(R.layout.edit_dialog_layout, null)
         val addReading = dialogLayout.findViewById<TextView>(R.id.add_reading)
         val currentReading = dialogLayout.findViewById<TextView>(R.id.current_reading)
         addReading.visibility = View.VISIBLE
@@ -114,14 +124,16 @@ class HeatMeterDetailFragment : BaseFragment() {
             .setView(dialogLayout)
             .show()
     }
+
     private fun handleResultText(getSimpleResponse: GetSimpleResponse?) {
         getSimpleResponse?.let {
-            if(it.success == 1){
+            if (it.success == 1) {
                 it.success = 0
                 heatViewModel.getHeatReadings()
             }
         }
     }
+
     private fun showDeleteReadingDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.delete_reading_title))

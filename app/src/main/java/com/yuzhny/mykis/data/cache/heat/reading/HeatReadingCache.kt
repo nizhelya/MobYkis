@@ -8,4 +8,5 @@ interface HeatReadingCache {
     fun insertHeatReading(heatReading:List<HeatReadingEntity>)
     fun getHeatReading(teplomerId:Int):List<HeatReadingEntity>
     fun deleteAllReading()
+    fun deleteReadingFromFlat(addressId:List<Int>)
 }

@@ -2,9 +2,13 @@ package com.yuzhny.mykis.data
 
 import com.yuzhny.mykis.data.cache.appartment.AppartmentCache
 import com.yuzhny.mykis.data.cache.family.FamilyCache
+import com.yuzhny.mykis.data.cache.heat.meter.HeatMeterCache
+import com.yuzhny.mykis.data.cache.heat.reading.HeatReadingCache
 import com.yuzhny.mykis.data.cache.payment.PaymentCache
 import com.yuzhny.mykis.data.cache.service.ServiceCache
 import com.yuzhny.mykis.data.cache.user.UserCache
+import com.yuzhny.mykis.data.cache.water.meter.WaterMeterCache
+import com.yuzhny.mykis.data.cache.water.reading.WaterReadingCache
 import com.yuzhny.mykis.data.remote.GetSimpleResponse
 import com.yuzhny.mykis.data.remote.appartment.AppartmentRemote
 import com.yuzhny.mykis.data.remote.appartment.GetAppartmentsResponse
@@ -21,9 +25,13 @@ class AppartmentRepositoryImpl @Inject constructor(
     private val familyCache: FamilyCache,
     private val serviceCache: ServiceCache,
     private val paymentCache: PaymentCache,
+    private val waterMeterCache: WaterMeterCache,
+    private val heatMeterCache: HeatMeterCache,
+    private val waterReadingCache: WaterReadingCache,
+    private val heatReadingCache: HeatReadingCache,
     private val userCache: UserCache
 ) : AppartmentRepository {
-    val addressIdList = mutableListOf<Int>()
+    private val addressIdList = mutableListOf<Int>()
 
     override fun getAppartmentsByUser(needFetch: Boolean): Either<Failure, List<AppartmentEntity>> {
         return userCache.getCurrentUser()
@@ -48,6 +56,10 @@ class AppartmentRepositoryImpl @Inject constructor(
                 familyCache.deleteFamilyFromFlat(addressIdList)
                 serviceCache.deleteServiceFromFlat(addressIdList)
                 paymentCache.deletePaymentFromFlat(addressIdList)
+                waterMeterCache.deleteWaterMeter(addressIdList)
+                heatMeterCache.deleteHeatMeter(addressIdList)
+                waterReadingCache.deleteReadingFromFlat(addressIdList)
+                heatReadingCache.deleteReadingFromFlat(addressIdList)
                 addressIdList.clear()
             }
             .onNext {

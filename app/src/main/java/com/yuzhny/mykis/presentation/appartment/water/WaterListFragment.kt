@@ -51,6 +51,8 @@ class WaterListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         waterViewModel.getWaterMeters(listViewModel.currentAddress)
         binding.recyclerView.adapter = waterAdapter
+        val mainNavView: View = requireActivity().findViewById<View>(R.id.nav_host_fragment)
+
         waterAdapter.waterMeterShortListener.onItemClick = {
             waterViewModel.getWaterMeter(it)
             waterViewModel.currentVodomerId = it.vodomerId

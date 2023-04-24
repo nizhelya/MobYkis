@@ -147,9 +147,13 @@ object AppModule {
         familyCache: FamilyCache,
         serviceCache: ServiceCache,
         paymentCache: PaymentCache,
+        waterMeterCache: WaterMeterCache,
+        heatMeterCache :HeatMeterCache,
+        waterReadingCache: WaterReadingCache,
+        heatReadingCache: HeatReadingCache,
         appartmentCache: AppartmentCache
     ): AppartmentRepository {
-        return AppartmentRepositoryImpl(appartmentRemote,appartmentCache,familyCache,serviceCache, paymentCache,userCache)
+        return AppartmentRepositoryImpl(appartmentRemote,appartmentCache,familyCache,serviceCache, paymentCache,waterMeterCache , heatMeterCache,waterReadingCache, heatReadingCache,userCache)
     }
 
     @Singleton

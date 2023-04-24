@@ -7,6 +7,9 @@ import com.squareup.moshi.Json
 
 @Entity(tableName = "heat_reading")
 data class HeatReadingEntity (
+    @Json(name = "address_id")
+    @ColumnInfo(name = "address_id")
+    val addressId       : Int= 0,
     @PrimaryKey(autoGenerate = false)
     @Json(name = "pok_id")
     @ColumnInfo(name = "pok_id")
@@ -55,5 +58,6 @@ data class HeatReadingEntity (
     @Json(name = "data_in")
     @ColumnInfo(name = "date_in")
     val dateIn       : String= "Unknown",
-    val operator     : String= "Unknown"
+    val operator     : String= "Unknown",
+
 )

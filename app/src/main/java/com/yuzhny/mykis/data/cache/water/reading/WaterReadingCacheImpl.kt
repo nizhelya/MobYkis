@@ -20,4 +20,8 @@ class WaterReadingCacheImpl @Inject constructor(
     override fun deleteAllReading() {
         waterReadingDao.deleteAllReadings()
     }
+
+    override fun deleteReadingFromFlat(addressId: List<Int>) {
+        waterReadingDao.deleteReadingFromFlat(addressId)
+    }
 }

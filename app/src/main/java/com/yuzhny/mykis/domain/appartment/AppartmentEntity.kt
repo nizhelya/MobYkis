@@ -24,7 +24,7 @@ data class AppartmentEntity(
     @Json(name = "house_id")
     @ColumnInfo(name = "house_id")
     val houseId: Int = 0,
-
+//    TODO("Удалить Код")
     val kod: String = "Unknown",
     val address: String = "Unknown",
     val nanim: String = "Unknown",
@@ -144,6 +144,9 @@ data class AppartmentEntity(
     val operator: String = "Unknown",
     @Json(name = "data_in")
     @ColumnInfo(name = "data_in")
-    val data_in: String = "Unknown"
+    val data_in: String = "Unknown",
+    val ipay :Int = 0,
+    val pb :Int = 0,
+    val mtb :Int = 0
 )
 

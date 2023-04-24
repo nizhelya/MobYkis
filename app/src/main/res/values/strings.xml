@@ -131,7 +131,8 @@
     <string name="last_colon">Попереднє :</string>
     <string name="current_colon">Поточне :</string>
     <string name="cubs_colon">Кубів:</string>
-
+    //HeatMeter
+    <string name="no_heat_meter">У вас нема лічільників тепла</string>
     //HeatDetail
     <string name="edizm_colon">Одиниці вимірювання:</string>
     <string name="area_colon">Площа:</string>

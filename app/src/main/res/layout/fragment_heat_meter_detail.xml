@@ -115,6 +115,12 @@
                     app:layout_constraintTop_toTopOf="@id/qty_text"
                     app:layout_constraintBottom_toBottomOf="@id/qty_text"
                     />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/qty_text"
+                    app:layout_constraintStart_toStartOf="@id/qty_text">
                 <Button
                     android:id="@+id/add_reading_button"
                     android:layout_width="wrap_content"
@@ -122,23 +128,18 @@
                     android:text="@string/add_reading"
                     android:drawableEnd="@drawable/ic_add"
                     android:drawableTint="?attr/colorOnPrimary"
-                    app:layout_constraintTop_toBottomOf="@id/qty_text"
-                    app:layout_constraintStart_toStartOf="@id/qty_text"
                     />
                 <Button
                     android:id="@+id/delete_reading_button"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/delete_reading"
                     android:drawableEnd="@drawable/ic_delete"
                     style="@style/Widget.Material3.Button.IconButton.Outlined"
                     android:drawableTint="?attr/colorPrimary"
                     android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="@id/add_reading_button"
-                    app:layout_constraintTop_toBottomOf="@id/add_reading_button"
-                    app:layout_constraintStart_toStartOf="@id/add_reading_button"
                     />
-
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

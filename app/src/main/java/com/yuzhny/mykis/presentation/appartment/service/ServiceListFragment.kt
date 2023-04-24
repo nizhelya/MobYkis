@@ -51,6 +51,8 @@ class ServiceListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mainNavView: View = requireActivity().findViewById<View>(R.id.nav_host_fragment)
+
         binding.loadingView.visibility = View.VISIBLE
         binding.mainConstraint.visibility = View.GONE
         serviceViewModel.getFlatService(
