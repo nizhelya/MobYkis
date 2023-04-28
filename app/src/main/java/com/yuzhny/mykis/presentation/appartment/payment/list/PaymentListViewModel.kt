@@ -1,4 +1,4 @@
-package com.yuzhny.mykis.presentation.appartment.payment
+package com.yuzhny.mykis.presentation.appartment.payment.list
 
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -10,8 +10,6 @@ import com.yuzhny.mykis.domain.family.request.BooleanInt
 import com.yuzhny.mykis.domain.payment.PaymentEntity
 import com.yuzhny.mykis.domain.payment.PaymentItemEntity
 import com.yuzhny.mykis.domain.payment.request.GetFlatPayment
-import com.yuzhny.mykis.domain.service.ServiceEntity
-import com.yuzhny.mykis.domain.service.request.getFlatService
 import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

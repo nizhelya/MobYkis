@@ -1,22 +1,19 @@
-package com.yuzhny.mykis.presentation.appartment.payment
+package com.yuzhny.mykis.presentation.appartment.payment.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.yuzhny.mykis.databinding.ChildPaymentListBinding
-import com.yuzhny.mykis.databinding.ItemPaymentListBinding
 import com.yuzhny.mykis.domain.payment.PaymentEntity
-import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 
 @FragmentScoped
 class PaymentChildAdapter @Inject constructor(
 ) : ListAdapter<PaymentEntity ,
-        PaymentChildAdapter.PaymentChildViewHolder >
+        PaymentChildAdapter.PaymentChildViewHolder>
     (DiffCallback){
     class PaymentChildViewHolder(var binding: ChildPaymentListBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -34,7 +31,7 @@ class PaymentChildAdapter @Inject constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentChildViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return PaymentChildAdapter.PaymentChildViewHolder(
+        return PaymentChildViewHolder(
             ChildPaymentListBinding.inflate(layoutInflater, parent, false)
         )
     }

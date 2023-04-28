@@ -53,6 +53,12 @@
         <item name="android:layout_marginStart">2dp</item>
         <item name="android:layout_marginEnd">2dp</item>
     </style>
+    <style name="ThirdText">
+        <item name="android:fontFamily">@font/exo_bold</item>
+<!--        <item name="android:layout_margin">4dp</item>-->
+<!--        <item name="android:layout_marginStart">2dp</item>-->
+<!--        <item name="android:layout_marginEnd">2dp</item>-->
+    </style>
     <style name="ChildText" >
         <item name="android:fontFamily">@font/exo_italic</item>
         <item name="android:textSize">14sp</item>

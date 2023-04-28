@@ -1,25 +1,16 @@
-package com.yuzhny.mykis.presentation.appartment.payment
+package com.yuzhny.mykis.presentation.appartment.payment.list
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.yuzhny.mykis.databinding.ItemPaymentListBinding
-import com.yuzhny.mykis.domain.family.FamilyEntity
-import com.yuzhny.mykis.domain.payment.PaymentEntity
 import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.yuzhny.mykis.R
-import com.yuzhny.mykis.data.cache.dao.PaymentDao
-import com.yuzhny.mykis.data.cache.payment.PaymentCacheImpl
-import com.yuzhny.mykis.databinding.ChildPaymentListBinding
 import com.yuzhny.mykis.domain.payment.PaymentItemEntity
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import java.time.Year
 
 @FragmentScoped
 class PaymentListAdapter @Inject constructor(
@@ -31,7 +22,7 @@ class PaymentListAdapter @Inject constructor(
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return PaymentListAdapter.PaymentViewHolder(
+        return PaymentViewHolder(
             ItemPaymentListBinding.inflate(layoutInflater, parent, false)
         )
     }
@@ -54,7 +45,7 @@ class PaymentListAdapter @Inject constructor(
             }
 
     }
-    private fun expandItem(payment:PaymentItemEntity, holder:PaymentViewHolder , position: Int){
+    private fun expandItem(payment:PaymentItemEntity, holder: PaymentViewHolder, position: Int){
       if(payment.isExpandable){
           holder.binding.recyclerView.visibility = View.VISIBLE
           holder.binding.viewOpen.setImageResource(R.drawable.ic_expand_less)

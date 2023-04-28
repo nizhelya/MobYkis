@@ -10,7 +10,7 @@
     </domain-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">192.168.0.177</domain>
-<!--        <domain includeSubdomains="true">192.168.0.106</domain>-->
+<!--        <domain includeSubdomains="true">192.168.0.103</domain>-->
     </domain-config>
     <debug-overrides>
         <trust-anchors>
@@ -21,3 +21,4 @@
     </debug-overrides>
 
 </network-security-config>
+

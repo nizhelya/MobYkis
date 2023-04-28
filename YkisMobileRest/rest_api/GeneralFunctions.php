@@ -3,6 +3,8 @@
 $DBOperations_path = "../sql/DBOperations.php";
 include($DBOperations_path);
 
+$DBOperationsMtb_path = "../sql/DBOperationsMtb.php";
+include($DBOperationsMtb_path);
 class GeneralFunctionsClass
 {
     public function __constructor()
@@ -573,5 +575,87 @@ class GeneralFunctionsClass
             array_push($results, $heatReadings);
         }
         return $results;
+    }
+    public function getMtbPayment($resultPayment)
+    {
+        $dbOperationsObject = new DBOperations();
+        $payment = array();
+        // print_r($resultHouses);
+        while ($row = mysqli_fetch_array($resultPayment)) {
+            $payment['kvartplata']= $row['@kvartplata'];
+            $payment['teplo']	    = $row['@teplo'];
+            $payment['voda']	    = $row['@voda'];
+            $payment['tbo']	    = $row['@tbo'] ;
+            $payment['payment_id'] = $row['@payment_id'];
+            $payment['edrpou'] 	= $row['@edrpou'];
+            $payment['firstname']	= $row['@firstname'];
+            $payment['patronymic']= $row['@patronymic'];
+            $payment['surname']	= $row['@surname'];
+            $payment['account']	= $row['@account'];
+            $payment['address']	= $row['@address'];
+            $payment['data_in']	= $row['@data_in'];
+            $payment['success']	= $row['@success'];
+            $payment['msg']		= $row['@msg'];
+        }
+            $partner = array();
+            $service = array();
+            $teplo = array();
+            $voda = array();
+            $tbo = array();
+            $kvartplata = array();
+            $transaction = array();
+            $billattr = array();
+            $data = array();
+            $requestData = array();
+
+
+            if ($payment['teplo'] >0)  {
+                $teplo["ServiceCode"] ="26134519";
+                $teplo["Sum"] =  $payment['teplo'];
+                $service[] =  $teplo;
+
+
+            }
+            if ($payment['kvartplata'] >0  ) {
+                $kvartplata["ServiceCode"] =$payment['edrpou'];
+                $kvartplata["Sum"] =  $payment['kvartplata'];
+                $service[] =  $kvartplata;
+            }
+            if ($payment['voda'] >0 ) {
+                $voda["ServiceCode"] ="31783053";
+                $voda["Sum"] = $payment['voda'];
+                $service[] =  $voda;
+            }
+            if ($payment['tbo'] >0) {
+                $tbo["ServiceCode"] ="30750184";
+                $tbo["Sum"] = $payment['tbo'] ;
+                $service[] =  $tbo;
+            }
+
+            $partner["PartnerToken"] = "8aff556f-1025-439a-8c7d-fda279523332";
+            $partner["OperationType"] = 10005;
+
+
+            $billattr["PayerAddress"] = $payment['address'];
+
+            $transaction["TransactionID"] = $payment['payment_id'];
+            $transaction["TerminalID"] = "1" ;
+            $transaction["DateTime"] = $payment['data_in'];
+
+            $data["PayType"] = "7";
+            $data["Phone"] = "";
+            $data["Email"] = "";
+            $data["Account"] = $payment['account'];
+            $data["FirstName"] = $payment['firstname'];
+            $data["LastName"] = $payment['surname'];
+            $data["MiddleName"] = $payment['patronymic'];
+            $data["Service"] = $service;
+            $data["BillAttr"] = $billattr;
+            $data["Transaction"] = $transaction;
+
+
+            $requestData["Partner"] =  $partner;
+            $requestData["Data"] = json_encode($data);
+        return $requestData;
     }
 }

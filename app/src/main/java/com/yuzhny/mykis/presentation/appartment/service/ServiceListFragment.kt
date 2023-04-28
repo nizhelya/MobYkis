@@ -63,8 +63,7 @@ class ServiceListFragment : BaseFragment() {
                 1
         )
         listViewModel.appartment.observe(this.viewLifecycleOwner){
-            osbb = it.osbb
-            binding.buttonKv.text = osbb
+            binding.buttonKv.text = it.osbb
         }
         serviceViewModel.totalDebt.observe(this.viewLifecycleOwner){
             it?.let {
@@ -103,6 +102,12 @@ class ServiceListFragment : BaseFragment() {
                 Navigation.findNavController(mainNavView).navigate(R.id.action_bottomNavigationFragment_to_serviceDetailFragment)
             }
             binding.constraint.layoutTransition.setAnimateParentHierarchy(false)
+            binding.ipayButton.setOnClickListener {
+                Navigation.findNavController(mainNavView).navigate(R.id.action_bottomNavigationFragment_to_paymentFragment)
+            }
+            binding.mtbButton.setOnClickListener {
+                Navigation.findNavController(mainNavView).navigate(R.id.action_bottomNavigationFragment_to_paymentFragment)
+            }
     }
 
     override fun onDestroyView() {

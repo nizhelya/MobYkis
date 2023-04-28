@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.appartment.payment.PaymentFragment"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/vodokanal_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vodokanal_colon"
+        style="@style/FirstText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/vodokanal_dolg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SecondText"
+        app:layout_constraintStart_toEndOf="@id/vodokanal_text"
+        app:layout_constraintTop_toTopOf="@id/vodokanal_text"
+        app:layout_constraintBottom_toBottomOf="@id/vodokanal_text"
+        tools:text="250.00"/>
+
+    <TextView
+        android:id="@+id/check_vodokanal_text"
+        style="@style/FirstText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pay_with_text"
+        app:layout_constraintBottom_toBottomOf="@+id/check_vodokanal"
+        app:layout_constraintEnd_toStartOf="@id/check_vodokanal"
+        app:layout_constraintTop_toTopOf="@+id/check_vodokanal" />
+        <CheckBox
+            android:id="@+id/check_vodokanal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/edit_vodokanal_layout"
+            app:layout_constraintBottom_toBottomOf="@id/edit_vodokanal_layout"
+            />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_vodokanal_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_pay_text"
+        app:layout_constraintEnd_toStartOf="@+id/check_vodokanal_text"
+        app:layout_constraintStart_toStartOf="@+id/vodokanal_text"
+        app:layout_constraintTop_toBottomOf="@id/vodokanal_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_vodokanal"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/ytke_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ytke_colon"
+        android:textSize="12sp"
+        style="@style/FirstText"
+        app:layout_constraintTop_toBottomOf="@id/edit_vodokanal_layout"
+        app:layout_constraintStart_toStartOf="@id/vodokanal_text"/>
+    <TextView
+        android:id="@+id/ytke_dolg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SecondText"
+        app:layout_constraintStart_toEndOf="@id/ytke_text"
+        app:layout_constraintTop_toTopOf="@id/ytke_text"
+        app:layout_constraintBottom_toBottomOf="@id/ytke_text"
+        tools:text="250.00"/>
+
+    <TextView
+        android:id="@+id/check_ytke_text"
+        style="@style/FirstText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pay_with_text"
+        app:layout_constraintBottom_toBottomOf="@+id/check_ytke"
+        app:layout_constraintEnd_toStartOf="@id/check_ytke"
+        app:layout_constraintTop_toTopOf="@+id/check_ytke" />
+
+    <CheckBox
+        android:id="@+id/check_ytke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_ytke_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edit_ytke_layout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_ytke_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_pay_text"
+        app:layout_constraintEnd_toStartOf="@+id/check_ytke_text"
+        app:layout_constraintStart_toStartOf="@+id/vodokanal_text"
+        app:layout_constraintTop_toBottomOf="@id/ytke_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_ytke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/yzhtrans_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/yzhtrans_colon"
+        style="@style/FirstText"
+        app:layout_constraintTop_toBottomOf="@id/edit_ytke_layout"
+        app:layout_constraintStart_toStartOf="@id/vodokanal_text"/>
+    <TextView
+        android:id="@+id/yzhtrans_dolg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SecondText"
+        app:layout_constraintStart_toEndOf="@id/yzhtrans_text"
+        app:layout_constraintTop_toTopOf="@id/yzhtrans_text"
+        app:layout_constraintBottom_toBottomOf="@id/yzhtrans_text"
+        tools:text="250.00"/>
+
+    <TextView
+        android:id="@+id/check_yzhtrans_text"
+        style="@style/FirstText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pay_with_text"
+        app:layout_constraintBottom_toBottomOf="@+id/check_yzhtrans"
+        app:layout_constraintEnd_toStartOf="@id/check_yzhtrans"
+
+        app:layout_constraintTop_toTopOf="@+id/check_yzhtrans" />
+
+    <CheckBox
+        android:id="@+id/check_yzhtrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_yzhtrans_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edit_yzhtrans_layout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_yzhtrans_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_pay_text"
+        app:layout_constraintEnd_toStartOf="@+id/check_yzhtrans_text"
+        app:layout_constraintStart_toStartOf="@+id/vodokanal_text"
+        app:layout_constraintTop_toBottomOf="@id/yzhtrans_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_yzhtrans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/kv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="OCББ Хіміків 14"
+        style="@style/FirstText"
+        app:layout_constraintTop_toBottomOf="@id/edit_yzhtrans_layout"
+        app:layout_constraintStart_toStartOf="@id/vodokanal_text"/>
+    <TextView
+        android:id="@+id/kv_dolg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SecondText"
+        app:layout_constraintStart_toEndOf="@id/kv_text"
+        app:layout_constraintTop_toTopOf="@id/kv_text"
+        app:layout_constraintBottom_toBottomOf="@id/kv_text"
+        tools:text="250.00"/>
+
+    <TextView
+        android:id="@+id/check_kv_text"
+        style="@style/FirstText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pay_with_text"
+        app:layout_constraintBottom_toBottomOf="@+id/check_kv"
+        app:layout_constraintEnd_toStartOf="@id/check_kv"
+
+        app:layout_constraintTop_toTopOf="@+id/check_kv" />
+    <CheckBox
+        android:id="@+id/check_kv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/edit_kv_layout"
+        app:layout_constraintBottom_toBottomOf="@id/edit_kv_layout"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_kv_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_pay_text"
+        app:layout_constraintEnd_toStartOf="@id/check_kv_text"
+        app:layout_constraintStart_toStartOf="@+id/vodokanal_text"
+        app:layout_constraintTop_toBottomOf="@id/kv_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_kv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/total_text"
+        android:layout_marginBottom="8dp"
+       app:layout_constraintStart_toStartOf="@id/vodokanal_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/summary"
+        style="@style/FirstText"
+        app:layout_constraintBottom_toTopOf="@id/cancel_button"/>
+    <TextView
+        android:id="@+id/total_dolg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SecondText"
+        app:layout_constraintStart_toEndOf="@id/total_text"
+        app:layout_constraintTop_toTopOf="@id/total_text"
+        app:layout_constraintBottom_toBottomOf="@id/total_text"
+        tools:text="250.00"/>
+
+    <TextView
+        android:id="@+id/total_pay_text"
+        style="@style/FirstText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pay_with_colon"
+        app:layout_constraintBottom_toBottomOf="@id/total_text"
+        app:layout_constraintEnd_toStartOf="@id/total_pay"
+
+        app:layout_constraintTop_toTopOf="@id/total_text" />
+    <TextView
+        android:id="@+id/total_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/total_pay_text"
+        app:layout_constraintBottom_toBottomOf="@id/total_pay_text"
+        style="@style/SecondText"
+        tools:text="250.00"/>
+
+        />
+    <Button
+        android:layout_marginBottom="8dp"
+        android:id="@+id/pay_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/pay"
+        app:layout_constraintStart_toEndOf="@id/cancel_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <Button
+        android:layout_marginBottom="8dp"
+        android:id="@+id/cancel_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pay_button"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

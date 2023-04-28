@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.yuzhny.mykis.presentation.appartment.payment.PaymentFlatListFragment
+import com.yuzhny.mykis.presentation.appartment.payment.list.PaymentFlatListFragment
 import com.yuzhny.mykis.presentation.appartment.service.ServiceListFragment
 
 class ChildPaymentFragmentAdapter (fragmentManager: FragmentManager, lifecycle: Lifecycle)

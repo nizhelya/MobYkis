@@ -17,6 +17,7 @@ import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.presentation.MainActivity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
+import com.yuzhny.mykis.presentation.core.ext.onFailure
 import com.yuzhny.mykis.presentation.core.ext.onSuccess
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -45,6 +46,7 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
 
         serviceViewModel.apply {
             onSuccess(serviceDetail , ::handleServices)
+            onFailure(failureData, ::handleFailure)
         }
         _binding = FragmentServiceDetailBinding.inflate(inflater, container, false)
         return binding.root
@@ -52,10 +54,11 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        serviceViewModel.serviceDetail.observe(this.viewLifecycleOwner){
-            if(it.isEmpty()){
-                binding.loadingView.visibility = View.VISIBLE
-                binding.recyclerView.visibility = View.INVISIBLE
+        Log.d("payment" , "onViewCreated")
+//        serviceViewModel.serviceDetail.observe(this.viewLifecycleOwner){
+//            if(it.isEmpty()){
+//                binding.loadingView.visibility = View.VISIBLE
+//                binding.recyclerView.visibility = View.INVISIBLE
                 serviceViewModel.getDetailService(
                     listViewModel.currentAddress,
                     listViewModel.currentHouse,
@@ -63,16 +66,17 @@ class ServiceDetailFragment @Inject constructor() : BaseFragment() {
                     0,
                     1,
                 )
-            }else if(it.size==12){
+//            }else if(it.size==12){
                 binding.loadingView.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
-            }else{
-                binding.loadingView.visibility = View.GONE
-                binding.recyclerView.visibility = View.VISIBLE
-                binding.loadingView.visibility = View.VISIBLE
-                binding.showAll.visibility = View.GONE
-            }
-        }
+                binding.showAll.visibility = View.VISIBLE
+//            }else{
+//                binding.loadingView.visibility = View.GONE
+//                binding.recyclerView.visibility = View.VISIBLE
+//                binding.loadingView.visibility = View.VISIBLE
+//                binding.showAll.visibility = View.GONE
+//            }
+//        }
         val actionBar = (activity as MainActivity).supportActionBar
         actionBar!!.setDisplayShowTitleEnabled(true)
         actionBar.title = serviceViewModel.currentServiceTitle

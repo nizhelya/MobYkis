@@ -12,6 +12,7 @@ import com.yuzhny.mykis.domain.service.request.getTotalDebtService
 import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.io.BufferedOutputStream
 import java.security.Provider.Service
 import javax.inject.Inject
 
@@ -30,6 +31,8 @@ class ServiceViewModel @Inject constructor(
 
     private val _totalDebt = MutableLiveData<ServiceEntity?>()
     val totalDebt : LiveData<ServiceEntity?> get() = _totalDebt
+
+    val totalPay = MutableLiveData<Double>()
 
     var currentService :Byte = 0
     var currentServiceTitle :String = ""

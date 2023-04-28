@@ -1,18 +1,11 @@
-package com.yuzhny.mykis.presentation.appartment.payment
+package com.yuzhny.mykis.presentation.appartment.payment.list
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.RecyclerView
-import com.yuzhny.mykis.R
 import com.yuzhny.mykis.databinding.FragmentPaymentFlatListBinding
-import com.yuzhny.mykis.databinding.FragmentServiceListBinding
-import com.yuzhny.mykis.domain.appartment.AppartmentEntity
 import com.yuzhny.mykis.domain.payment.PaymentEntity
 import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment

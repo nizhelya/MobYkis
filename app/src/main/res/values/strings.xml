@@ -152,6 +152,15 @@
     <string name="delete_reading">Видалити показання</string>
     //deleteReadingDialog
     <string name="delete_reading_title">Видалити останнє показання?</string>
+    //Payment
+    <string name="mtb_text">МТБ БАНК</string>
+    <string name="pay_text">Оплатити за допомогою :</string>
+    <string name="pb_text">ПриватБанк</string>
+    <string name="ipay_text">iPay.ua</string>
+    <string name="pay_with_text">до сплати </string>
+    <string name="pay_with_colon">До сплати:</string>
+    <string name="edit_pay_text">Сумма до сплати</string>
+    <string name="pay">Сплатити</string>
     //error
     <string name="error_network">Немає доступу до Інтернету \n Перевірте підключення</string>
     <string name="error_update">Невдалося оновити</string>

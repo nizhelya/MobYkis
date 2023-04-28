@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_bottomNavigationFragment_to_heatMeterDetailFragment"
             app:destination="@id/heatMeterDetailFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/waterMeterDetailFragment"
@@ -59,4 +62,9 @@
         android:id="@+id/heatMeterDetailFragment"
         android:name="com.yuzhny.mykis.presentation.appartment.heat.HeatMeterDetailFragment"
         android:label="HeatMeterDetailFragment" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.yuzhny.mykis.presentation.appartment.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
 </navigation>
