@@ -51,5 +51,6 @@ class BottomNavigationFragment   : Fragment() {
             .findFragmentById(R.id.nav_host_fragment_bottom) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.navView , navController)
+
     }
 }

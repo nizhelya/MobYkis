@@ -42,7 +42,7 @@
         <entry key="app/src/main/res/layout/fragment_heat_meter_detail.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/fragment_list_appartment.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/fragment_meter_view_pager.xml" value="0.3151041666666667" />
-        <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.536" />
+        <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.4" />
         <entry key="app/src/main/res/layout/fragment_payment_flat_list.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_payment_view_pager.xml" value="0.3151041666666667" />
         <entry key="app/src/main/res/layout/fragment_service_detail.xml" value="0.3067708333333333" />

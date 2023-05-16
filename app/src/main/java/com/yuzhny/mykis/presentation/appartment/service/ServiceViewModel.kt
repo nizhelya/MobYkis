@@ -2,18 +2,12 @@ package com.yuzhny.mykis.presentation.appartment.service
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.yuzhny.mykis.data.cache.service.ServiceCacheImpl
-import com.yuzhny.mykis.domain.address.AddressEntity
 import com.yuzhny.mykis.domain.service.ServiceEntity
 import com.yuzhny.mykis.domain.service.request.ServiceParams
 import com.yuzhny.mykis.domain.service.request.getFlatService
 import com.yuzhny.mykis.domain.service.request.getTotalDebtService
 import com.yuzhny.mykis.presentation.core.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
-import java.io.BufferedOutputStream
-import java.security.Provider.Service
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,10 +26,12 @@ class ServiceViewModel @Inject constructor(
     private val _totalDebt = MutableLiveData<ServiceEntity?>()
     val totalDebt : LiveData<ServiceEntity?> get() = _totalDebt
 
-    val totalPay = MutableLiveData<Double>()
+    private val _totalPay = MutableLiveData<Double>(0.0)
+    val totalPay : LiveData<Double> get() = _totalPay
 
     var currentService :Byte = 0
     var currentServiceTitle :String = ""
+
 
     fun getFlatService(addressId: Int , houseId: Int , service:Byte ,total:Byte ,qty:Byte , needFetch:Boolean = false) {
         getFlatServiceUseCase(ServiceParams(
@@ -107,6 +103,12 @@ class ServiceViewModel @Inject constructor(
                 )
             }
         }
+    }
+    fun plusTotalPay(double: Double){
+        _totalPay.value = _totalPay.value!!.plus(double)
+    }
+    fun minusTotalPay(double: Double){
+        _totalPay.value = _totalPay.value!!.minus(double)
     }
     private fun handle(address: ServiceEntity?, liveData : MutableLiveData<ServiceEntity?> ){
         liveData.value = address

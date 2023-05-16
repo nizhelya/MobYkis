@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.yuzhny.mykis"
-        minSdk 22
+        minSdk 28
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -110,6 +110,10 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     //Loading view
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    //Xpay
+    implementation 'com.github.pustovitandriy:XPAY_Android_SDK:1.0.0'
+
+
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

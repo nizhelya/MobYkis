@@ -31,7 +31,6 @@ if (isset($_POST['address_id']) && !empty($_POST['address_id']) &&
         $response["payment"] = $payment;
 //        echo json_encode($response);
     $json_data= json_encode($payment);
-//print_r(json_decode($json_data));
 
 
     $curl = curl_init();
@@ -59,7 +58,6 @@ if (isset($_POST['address_id']) && !empty($_POST['address_id']) &&
     curl_close( $curl );
 
     $curl_result_code = $curl_result;
-//print_r(json_decode($curl_result_code));
 
     $curl_url = curl_init();
     curl_setopt_array($curl_url, array(
@@ -82,7 +80,7 @@ if (isset($_POST['address_id']) && !empty($_POST['address_id']) &&
 //cURL Error: 35<br>cURL ErrorNo: Unknown SSL protocol error in connection to stage-papi.xpay.com.ua:443 {"type":"rpc","tid":22,"action":"QueryPaymentMarfin","method":"newOplata","result":null}
 
     $curl_result_url = curl_exec( $curl_url );
-
+    print_r($curl_result_url);
     curl_close( $curl_url );
     $paym = json_decode($curl_result_url,true);
 
@@ -121,7 +119,7 @@ if(isset($paym['Data']['uuid']) && ($paym['Data']['uuid'])) {
 } else {
     $uuid = "";
 }
-
+echo $code;
 if ($code == "200" && $status == "10" ) {
     $this->results['success'] = 1;
     $this->results['url'] = $uri;
@@ -132,7 +130,10 @@ if ($code == "200" && $status == "10" ) {
     $response["payment"] = array();
     echo json_encode($response);
 }
-echo $uri;
+    $response["success"] = 0;
+    $response["message"] = $uri;
+    $response["payment"] = array();
+    echo json_encode($response);;
 } else {
     $response["success"] = 0;
     $response["message"] = "Required field(s) is missing";
