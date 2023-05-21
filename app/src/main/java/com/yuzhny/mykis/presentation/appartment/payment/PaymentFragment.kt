@@ -14,6 +14,8 @@ import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.appartment.service.ServiceViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import ua.com.xpay.xpaylib.XPayLibPayment
+import ua.com.xpay.xpaylib.model.OrderItem
 
 @AndroidEntryPoint
 class PaymentFragment : BaseFragment() {
@@ -24,6 +26,32 @@ class PaymentFragment : BaseFragment() {
 
     private var _binding: FragmentPaymentBinding? = null
     private val binding get() = _binding!!
+    val orderListData = listOf(
+        OrderItem(
+            "Apple iPad Pro 2022", "512Gb, WiFi, Silver", 1300.01
+        ),
+        OrderItem(
+            "Apple iPhone 14 Pro", "512Gb, Silver", 1300.01
+        ),
+    )
+    private val payment = XPayLibPayment {
+        this.partnerToken = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+        this.transactionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+        this.googlePayGateway = "exampleGateway"
+        this.googlePayGatewayMerchantId = "exampleMerchantId"
+        this.terminalId = "111"
+        this.payeeEmail = "test@test.com"
+        this.payeePhone = "380xxxxxxxxx"
+        this.payeeUserId = "1"
+        this.payeeName = "Name"
+        this.currency = "UAH"
+        this.amount = 1.01
+        this.purpose = "purpose"
+        this.order = "example order"
+        this.site = "example site"
+        this.showOrderDetails = true
+        this.orderItemList = orderListData
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
