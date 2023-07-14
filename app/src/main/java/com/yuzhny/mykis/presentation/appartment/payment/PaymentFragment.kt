@@ -1,5 +1,6 @@
 package com.yuzhny.mykis.presentation.appartment.payment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,8 @@ import com.yuzhny.mykis.presentation.appartment.list.AppartmentListViewModel
 import com.yuzhny.mykis.presentation.appartment.service.ServiceViewModel
 import com.yuzhny.mykis.presentation.core.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers.Main
+import ua.com.xpay.xpaylib.PaymentActivity
 import ua.com.xpay.xpaylib.XPayLibPayment
 import ua.com.xpay.xpaylib.model.OrderItem
 
@@ -35,7 +38,7 @@ class PaymentFragment : BaseFragment() {
         ),
     )
     private val payment = XPayLibPayment {
-        this.partnerToken = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+        this.partnerToken =  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
         this.transactionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
         this.googlePayGateway = "exampleGateway"
         this.googlePayGatewayMerchantId = "exampleMerchantId"
@@ -45,7 +48,7 @@ class PaymentFragment : BaseFragment() {
         this.payeeUserId = "1"
         this.payeeName = "Name"
         this.currency = "UAH"
-        this.amount = 1.01
+        this.amount = 1.00
         this.purpose = "purpose"
         this.order = "example order"
         this.site = "example site"
@@ -164,9 +167,11 @@ class PaymentFragment : BaseFragment() {
                     serviceViewModel.plusTotalPay(0.0)
                 }
             }
+            payButton.setOnClickListener {
+                payment.startPaymentFrom(requireActivity() ,123)
+            }
         }
     }
-
     private fun checkEditText(boolean: Boolean ,editText: EditText , double: Double){
         editText.isEnabled = boolean
         if(boolean) {
