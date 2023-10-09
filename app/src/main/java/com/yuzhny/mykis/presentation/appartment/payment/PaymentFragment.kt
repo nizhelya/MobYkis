@@ -31,20 +31,21 @@ class PaymentFragment : BaseFragment() {
     private val binding get() = _binding!!
     val orderListData = listOf(
         OrderItem(
-            "Apple iPad Pro 2022", "512Gb, WiFi, Silver", 1300.01
-        ),
+                "Iphone 14", "256GB", 35000.00,
+        )
+        ,
         OrderItem(
-            "Apple iPhone 14 Pro", "512Gb, Silver", 1300.01
-        ),
+            "Iphone 15", "1TB" ,45000.00
+        )
     )
     private val payment = XPayLibPayment {
-        this.partnerToken =  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
-        this.transactionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+        this.partnerToken =  "72a8ddb8-9145-4a41-af1a-8c48ecaa4be1"
+        this.transactionId = "11111111-1111-1111-1111-11111111111"
         this.googlePayGateway = "exampleGateway"
         this.googlePayGatewayMerchantId = "exampleMerchantId"
         this.terminalId = "111"
         this.payeeEmail = "test@test.com"
-        this.payeePhone = "380xxxxxxxxx"
+        this.payeePhone = "380634742842"
         this.payeeUserId = "1"
         this.payeeName = "Name"
         this.currency = "UAH"
